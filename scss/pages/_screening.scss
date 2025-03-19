@@ -1,0 +1,271 @@
+@use "../variables" as *;
+@use "../mixins" as *;
+@use "sass:color";
+
+/* Screening Page Styles
+========================================================================== */
+
+/* Screening Guidelines Section
+--------------------------------*/
+.screening-guidelines {
+  .guideline-card {
+    margin-bottom: $spacer * 2;
+    border: none;
+    border-radius: $border-radius;
+    box-shadow: $box-shadow-sm;
+    transition: all 0.3s ease;
+    
+    &:hover {
+      box-shadow: $box-shadow;
+      transform: translateY(-5px);
+    }
+    
+    .card-header {
+      background-color: $primary;
+      color: $white;
+      font-weight: $font-weight-bold;
+      font-size: $h5-font-size;
+      border: none;
+    }
+    
+    .card-body {
+      padding: $spacer * 1.5;
+    }
+    
+    .guideline-age {
+      font-size: $h4-font-size;
+      color: $primary;
+      margin-bottom: $spacer;
+      font-weight: $font-weight-bold;
+    }
+    
+    .guideline-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      
+      li {
+        position: relative;
+        padding-left: $spacer * 1.5;
+        margin-bottom: $spacer * 0.75;
+        
+        &:before {
+          content: '✓';
+          color: $primary;
+          position: absolute;
+          left: 0;
+          top: 0;
+          font-weight: $font-weight-bold;
+        }
+        
+        &:last-child {
+          margin-bottom: 0;
+        }
+      }
+    }
+  }
+}
+
+/* Risk Factors Section
+--------------------------------*/
+.risk-factors {
+  background-color: $gray-100;
+  
+  .risk-factor-item {
+    margin-bottom: $spacer * 2;
+    background-color: $white;
+    border-radius: $border-radius;
+    padding: $spacer * 1.5;
+    box-shadow: $box-shadow-sm;
+    transition: all 0.3s ease;
+    
+    &:hover {
+      box-shadow: $box-shadow;
+    }
+    
+    .risk-factor-title {
+      display: flex;
+      align-items: center;
+      margin-bottom: $spacer;
+      
+      .risk-icon {
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        background-color: rgba($primary, 0.1);
+        color: $primary;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-right: $spacer;
+        flex-shrink: 0;
+      }
+      
+      h3 {
+        margin: 0;
+        font-size: $h5-font-size;
+      }
+    }
+    
+    .risk-factor-description {
+      color: $gray-700;
+      margin-bottom: 0;
+    }
+  }
+}
+
+/* Types of Screening Section
+--------------------------------*/
+.screening-types {
+  .screening-type {
+    margin-bottom: $spacer * 3;
+    
+    @include breakpoint-up(md) {
+      margin-bottom: $spacer * 4;
+    }
+    
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+  
+  .screening-image {
+    border-radius: $border-radius;
+    overflow: hidden;
+    margin-bottom: $spacer * 1.5;
+    
+    @include breakpoint-up(md) {
+      margin-bottom: 0;
+    }
+    
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+  }
+  
+  .screening-content {
+    h3 {
+      margin-bottom: $spacer;
+      color: $primary;
+    }
+    
+    .screening-details {
+      margin-top: $spacer * 1.5;
+      
+      .detail-item {
+        display: flex;
+        margin-bottom: $spacer * 0.75;
+        
+        &:last-child {
+          margin-bottom: 0;
+        }
+        
+        .detail-label {
+          font-weight: $font-weight-bold;
+          width: 150px;
+          flex-shrink: 0;
+        }
+        
+        .detail-value {
+          flex-grow: 1;
+        }
+      }
+    }
+  }
+}
+
+/* FAQ Section
+--------------------------------*/
+.screening-faq {
+  background-color: $gray-100;
+  
+  .accordion {
+    .accordion-item {
+      margin-bottom: $spacer;
+      border: none;
+      border-radius: $border-radius;
+      overflow: hidden;
+      background-color: $white;
+      box-shadow: $box-shadow-sm;
+      
+      &:last-child {
+        margin-bottom: 0;
+      }
+    }
+    
+    .accordion-header {
+      background-color: $white;
+      border: none;
+    }
+    
+    .accordion-button {
+      padding: $spacer * 1.25;
+      font-weight: $font-weight-medium;
+      color: $gray-900;
+      background-color: $white;
+      
+      &:not(.collapsed) {
+        color: $primary;
+        box-shadow: none;
+        
+        &::after {
+          transform: rotate(180deg);
+        }
+      }
+      
+      &::after {
+        background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3e%3cpath fill='none' stroke='%23343a40' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M2 5l6 6 6-6'/%3e%3c/svg%3e");
+        transition: transform 0.2s ease-in-out;
+      }
+    }
+    
+    .accordion-body {
+      padding: $spacer * 1.25;
+      padding-top: 0;
+    }
+  }
+}
+
+/* Self-Exam Guide
+--------------------------------*/
+.self-exam-guide {
+  .step-item {
+    display: flex;
+    align-items: flex-start;
+    margin-bottom: $spacer * 2;
+    
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+  
+  .step-number {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background-color: $primary;
+    color: $white;
+    font-weight: $font-weight-bold;
+    font-size: 1.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: $spacer * 1.5;
+    flex-shrink: 0;
+  }
+  
+  .step-content {
+    flex-grow: 1;
+    
+    h4 {
+      margin-bottom: $spacer * 0.5;
+    }
+    
+    p {
+      margin-bottom: 0;
+      color: $gray-700;
+    }
+  }
+} 

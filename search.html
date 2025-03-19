@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Search Results - Nzoya Foundation</title>
+    <meta name="description" content="Search results from Nzoya Foundation's breast cancer screening information website.">
+    <link rel="icon" href="images/favicon.svg" type="image/svg+xml">
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Header will be loaded via JavaScript -->
+    <header id="header" class="header"></header>
+
+    <main class="search-results">
+        <div class="container">
+            <h1>Search Results</h1>
+            <div id="searchQuery" class="search-query">
+                <!-- Will be populated via JavaScript -->
+            </div>
+            <div id="searchResults" class="search-results-container">
+                <!-- Will be populated via JavaScript -->
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer will be loaded via JavaScript -->
+    <footer id="footer" class="footer"></footer>
+
+    <!-- Scripts -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/js/all.min.js" crossorigin="anonymous"></script>
+    <script src="js/main.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Get search query from URL
+            const urlParams = new URLSearchParams(window.location.search);
+            const query = urlParams.get('q');
+            
+            // Display search query
+            const searchQueryElement = document.getElementById('searchQuery');
+            if (searchQueryElement) {
+                searchQueryElement.innerHTML = `<p>Showing results for: <strong>${query || ''}</strong></p>`;
+            }
+            
+            // For a static site, we'll show a message about contacting for more information
+            const searchResultsElement = document.getElementById('searchResults');
+            if (searchResultsElement) {
+                searchResultsElement.innerHTML = `
+                    <div class="search-message">
+                        <p>Thank you for your interest in learning more about breast cancer screening.</p>
+                        <p>For the most accurate and up-to-date information about your search for "${query || ''}", please:</p>
+                        <ul>
+                            <li>Browse our <a href="pages/resources.html">Resources</a> section</li>
+                            <li>Check our <a href="pages/faq.html">FAQ</a> page</li>
+                            <li>Contact us directly at <a href="tel:4255551234">(425) 555-1234</a></li>
+                            <li>Email us at <a href="mailto:info@nzoyafoundation.org">info@nzoyafoundation.org</a></li>
+                        </ul>
+                        <p>Our team is here to help you find the information you need about breast cancer screening and prevention.</p>
+                    </div>
+                `;
+            }
+        });
+    </script>
+</body>
+</html> 

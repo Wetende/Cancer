@@ -1,0 +1,311 @@
+@use "../variables" as *;
+@use "../mixins" as *;
+@use "sass:color";
+
+/* About Page Styles
+========================================================================== */
+
+/* About Hero
+--------------------------------*/
+.about-hero {
+  background-color: $primary;
+  padding: $spacer * 5 0;
+  
+  @include breakpoint-up(md) {
+    padding: $spacer * 8 0;
+  }
+  
+  .hero__title, .hero__subtitle, .hero__text {
+    color: $white;
+  }
+}
+
+/* Mission Section
+--------------------------------*/
+.mission-section {
+  .mission-content {
+    max-width: 800px;
+    margin: 0 auto;
+    text-align: center;
+    
+    .mission-title {
+      margin-bottom: $spacer * 1.5;
+      font-size: $h2-font-size;
+      color: $primary;
+    }
+    
+    .mission-text {
+      font-size: $font-size-lg;
+      line-height: 1.7;
+      margin-bottom: $spacer * 2;
+    }
+  }
+}
+
+/* Values Section
+--------------------------------*/
+.values-section {
+  background-color: $gray-100;
+  
+  .value-card {
+    height: 100%;
+    border: none;
+    background-color: $white;
+    border-radius: $border-radius;
+    box-shadow: $box-shadow-sm;
+    padding: $spacer * 2;
+    text-align: center;
+    transition: all 0.3s ease;
+    
+    &:hover {
+      transform: translateY(-10px);
+      box-shadow: $box-shadow;
+    }
+    
+    .value-icon {
+      width: 70px;
+      height: 70px;
+      margin: 0 auto $spacer * 1.5;
+      background-color: rgba($primary, 0.1);
+      color: $primary;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 28px;
+      transition: all 0.3s ease;
+      
+      .value-card:hover & {
+        background-color: $primary;
+        color: $white;
+      }
+    }
+    
+    .value-title {
+      font-size: $h4-font-size;
+      margin-bottom: $spacer;
+    }
+    
+    .value-text {
+      color: $gray-700;
+    }
+  }
+}
+
+/* Team Section
+--------------------------------*/
+.team-section {
+  .team-member {
+    margin-bottom: $spacer * 3;
+    
+    @include breakpoint-up(lg) {
+      margin-bottom: 0;
+    }
+  }
+  
+  .member-image {
+    position: relative;
+    border-radius: $border-radius;
+    overflow: hidden;
+    margin-bottom: $spacer * 1.5;
+    
+    img {
+      width: 100%;
+      height: 300px;
+      object-fit: cover;
+      transition: all 0.3s ease;
+    }
+    
+    .social-links {
+      position: absolute;
+      bottom: -50px;
+      left: 0;
+      width: 100%;
+      background-color: rgba($primary, 0.8);
+      padding: $spacer * 0.75;
+      display: flex;
+      justify-content: center;
+      transition: all 0.3s ease;
+      
+      a {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 36px;
+        height: 36px;
+        background-color: $white;
+        color: $primary;
+        border-radius: 50%;
+        margin: 0 $spacer * 0.5;
+        transition: all 0.3s ease;
+        
+        &:hover {
+          background-color: $primary;
+          color: $white;
+        }
+      }
+    }
+    
+    &:hover {
+      .social-links {
+        bottom: 0;
+      }
+      
+      img {
+        transform: scale(1.05);
+      }
+    }
+  }
+  
+  .member-info {
+    text-align: center;
+    
+    .member-name {
+      font-size: $h4-font-size;
+      margin-bottom: $spacer * 0.25;
+    }
+    
+    .member-position {
+      color: $primary;
+      font-weight: $font-weight-medium;
+      margin-bottom: $spacer * 0.75;
+    }
+    
+    .member-bio {
+      color: $gray-700;
+    }
+  }
+}
+
+/* History Timeline
+--------------------------------*/
+.history-section {
+  background-color: $gray-100;
+  
+  .timeline {
+    position: relative;
+    max-width: 1200px;
+    margin: 0 auto;
+    
+    &::after {
+      content: '';
+      position: absolute;
+      width: 6px;
+      background-color: $white;
+      top: 0;
+      bottom: 0;
+      left: 50%;
+      margin-left: -3px;
+      
+      @include breakpoint-down(md) {
+        left: 31px;
+      }
+    }
+    
+    .timeline-item {
+      padding: $spacer 0;
+      position: relative;
+      
+      &::after {
+        content: '';
+        display: table;
+        clear: both;
+      }
+      
+      &:nth-child(even) {
+        .timeline-content {
+          float: right;
+          
+          @include breakpoint-up(md) {
+            float: right;
+            
+            &::before {
+              content: " ";
+              height: 0;
+              position: absolute;
+              top: 22px;
+              width: 0;
+              z-index: 1;
+              left: -10px;
+              border: medium solid $white;
+              border-width: 10px 10px 10px 0;
+              border-color: transparent $white transparent transparent;
+            }
+          }
+        }
+      }
+      
+      &:nth-child(odd) {
+        .timeline-content {
+          @include breakpoint-up(md) {
+            float: left;
+            text-align: right;
+            
+            &::before {
+              content: " ";
+              height: 0;
+              position: absolute;
+              top: 22px;
+              width: 0;
+              z-index: 1;
+              right: -10px;
+              border: medium solid $white;
+              border-width: 10px 0 10px 10px;
+              border-color: transparent transparent transparent $white;
+            }
+          }
+        }
+      }
+    }
+    
+    .timeline-icon {
+      width: 40px;
+      height: 40px;
+      background-color: $primary;
+      border-radius: 50%;
+      position: absolute;
+      top: 15px;
+      left: 50%;
+      margin-left: -20px;
+      z-index: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: $white;
+      
+      @include breakpoint-down(md) {
+        left: 10px;
+        margin-left: 0;
+      }
+    }
+    
+    .timeline-content {
+      padding: $spacer * 1.5;
+      background-color: $white;
+      border-radius: $border-radius;
+      box-shadow: $box-shadow-sm;
+      width: 45%;
+      position: relative;
+      
+      @include breakpoint-down(md) {
+        width: calc(100% - 70px);
+        margin-left: 70px;
+      }
+      
+      .timeline-date {
+        font-weight: $font-weight-bold;
+        color: $primary;
+        margin-bottom: $spacer * 0.5;
+      }
+      
+      .timeline-title {
+        margin-bottom: $spacer * 0.75;
+        font-size: $h5-font-size;
+      }
+      
+      .timeline-text {
+        margin-bottom: 0;
+      }
+    }
+  }
+} 

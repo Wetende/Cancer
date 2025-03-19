@@ -1,0 +1,34 @@
+{
+  "name": "breast-cancer-screening-website",
+  "version": "1.0.0",
+  "description": "Breast Cancer Screening Information Website",
+  "main": "index.js",
+  "scripts": {
+    "sass": "sass scss/main.scss:css/main.css",
+    "sass:watch": "sass --watch scss/main.scss:css/main.css",
+    "prefix": "postcss css/main.css --use autoprefixer -o css/main.css",
+    "minify": "postcss css/main.css --use cssnano -o css/main.min.css",
+    "build": "npm run sass && npm run prefix && npm run minify",
+    "watch": "npm run sass:watch"
+  },
+  "browserslist": [
+    "last 2 versions",
+    "> 1%",
+    "IE 11"
+  ],
+  "keywords": [
+    "breast cancer",
+    "cancer screening",
+    "health",
+    "education"
+  ],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "autoprefixer": "^10.4.14",
+    "cssnano": "^6.0.1",
+    "postcss": "^8.4.24",
+    "postcss-cli": "^10.1.0",
+    "sass": "^1.62.1"
+  }
+} 

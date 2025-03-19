@@ -1,104 +1,146 @@
-# Breast Cancer Screening Information Website
+# Nzoya Foundation - Breast Cancer Screening Information Website
 
-A static informational website about breast cancer screening with Google Forms integration for appointment scheduling.
+A comprehensive website providing information about breast cancer screening, resources, facility locator, and risk assessment tools to promote early detection and prevention in Bellevue, WA and surrounding communities.
 
-## Overview
-
-This website provides comprehensive information about breast cancer screening, including:
-
-- Types of screenings available (mammograms, MRIs, breast exams)
-- Screening guidelines and recommendations
-- Facility locations and contact information
-- Frequently asked questions
-- Resources in multiple languages
-- Appointment scheduling through Google Forms
+![Nzoya Foundation Website](images/screenshot.png)
 
 ## Features
 
-- Responsive design for all devices
-- Interactive FAQ accordion
-- Smooth scrolling navigation
-- Google Forms integration for appointment requests
-- Mobile-friendly navigation
-- Accessibility considerations
-- Custom 404 error page
-
-## Technical Implementation
-
-The website is built using:
-
-- HTML5 for structure
-- CSS3 for styling (with custom properties and responsive design)
-- Vanilla JavaScript for interactivity
-- Google Forms for appointment scheduling
-- Font Awesome for icons
-- Google Fonts for typography
+- **Educational Content**: Detailed information about breast cancer screening types, benefits, and recommendations
+- **Facility Finder**: Interactive map to locate screening facilities in the Bellevue and Seattle area
+- **Risk Calculator**: Personalized breast cancer risk assessment tool
+- **Resource Library**: Articles, videos, and downloadable materials about breast health
+- **FAQ Section**: Answers to common questions about breast cancer screening
+- **Mobile Responsive**: Optimized for all devices from smartphones to desktop computers
+- **Multilingual Support**: Content available in multiple languages for the diverse Bellevue community
 
 ## Project Structure
 
 ```
-/
-├── index.html           # Main HTML file
-├── 404.html             # Custom error page
-├── css/
-│   └── styles.css       # CSS styles
-├── js/
-│   └── main.js          # JavaScript functionality
-├── images/              # Website images
-│   ├── logo.svg         # Site logo
-│   └── favicon.svg      # Favicon
-├── form-structure.md    # Google Form structure documentation
-├── .htaccess            # Server configuration
-└── README.md            # Project documentation
+nzoya-foundation/
+├── css/              # Compiled CSS files
+├── data/             # JSON data files for facilities and other dynamic content
+├── fonts/            # Custom font files
+├── images/           # Image assets 
+├── js/               # JavaScript files
+│   ├── modules/      # Modular JS components
+│   └── vendors/      # Third-party JS libraries
+├── pages/            # HTML pages
+│   ├── about.html
+│   ├── blog.html
+│   ├── contact.html
+│   ├── facilities.html
+│   ├── faq.html
+│   ├── resources.html
+│   ├── risk-calculator.html
+│   └── screening.html
+├── scss/             # SCSS source files
+│   ├── pages/        # Page-specific styles
+│   ├── partials/     # Reusable components
+│   └── main.scss     # Main SCSS file that imports all partials
+├── index.html        # Homepage
+├── deploy.sh         # Deployment script
+└── README.md         # Project documentation
 ```
 
-## Google Forms Integration
+## Technology Stack
 
-The website uses an embedded Google Form to handle appointment scheduling requests. The form is embedded in the "Schedule a Screening" section.
+- **HTML5**: Semantic markup
+- **SCSS/CSS3**: For styling, using a modular SCSS architecture
+- **JavaScript**: For interactive elements and dynamic content
+- **Google Maps API**: For the facilities locator feature
+- **JSON**: For facility data storage and management
 
-### Setting Up the Google Form
+## Setup and Installation
 
-A detailed structure for the Google Form is provided in the `form-structure.md` file. To implement:
+1. Clone the repository:
+   ```
+   git clone https://github.com/nzoya-foundation/breast-cancer-screening.git
+   ```
 
-1. Create a new Google Form following the structure outlined in `form-structure.md`
-2. Configure the form settings as recommended
-3. Get the embed code from the "Send" button > "< >" option
-4. Replace the iframe src in the index.html file with your new form URL
+2. Navigate to the project directory:
+   ```
+   cd breast-cancer-screening
+   ```
 
-## Local Development
+3. If you have Sass installed globally, compile the SCSS files:
+   ```
+   sass scss/main.scss css/styles.css
+   ```
 
-To run this website locally:
+4. For local development, use a local server:
+   ```
+   # Using Python 3
+   python -m http.server
+   
+   # Using PHP
+   php -S localhost:8000
+   ```
 
-1. Clone the repository
-2. Open index.html in your browser
-3. For best results, use a local server (e.g., Live Server in VSCode)
+5. Open your browser and navigate to http://localhost:8000
+
+## Development
+
+### SCSS Structure
+
+The project uses a modular SCSS architecture:
+
+- `_variables.scss`: Global variables for colors, fonts, etc.
+- `_mixins.scss`: Reusable SCSS mixins
+- `_typography.scss`: Typography styles
+- `_base.scss`: Base element styles
+- `pages/`: Page-specific styles
+- `partials/`: Reusable component styles
+
+### JavaScript
+
+- Core functionality is in `js/main.js`
+- Page-specific scripts are named accordingly (e.g., `facilities-map.js`)
+- Third-party libraries are stored in `js/vendors/`
 
 ## Deployment
 
-This is a static website that can be deployed to any web hosting service:
+A deployment script (`deploy.sh`) is included to help build and deploy the website:
 
-1. Upload all files to your web hosting service
-2. Ensure directory structure is maintained
-3. No server-side processing is required
+1. Make the script executable:
+   ```
+   chmod +x deploy.sh
+   ```
 
-## Customization
+2. Run the deployment script:
+   ```
+   ./deploy.sh
+   ```
 
-To customize this website:
+3. Follow the prompts to deploy to your server
 
-- Update content in index.html
-- Modify styles in css/styles.css
-- Change colors by updating the CSS custom properties in :root
-- Add your own images to the images directory
-- Edit the JavaScript functionality in js/main.js
+## Browser Support
 
-## Image Credits
+- Chrome (latest)
+- Firefox (latest)
+- Safari (latest)
+- Edge (latest)
+- Opera (latest)
+- Mobile browsers (iOS Safari, Android Chrome)
 
-The website uses SVG graphics created specifically for this project. The logo and favicon are generated programmatically with SVG code.
+## Contributing
+
+1. Fork the repository
+2. Create your feature branch (`git checkout -b feature/amazing-feature`)
+3. Commit your changes (`git commit -m 'Add some amazing feature'`)
+4. Push to the branch (`git push origin feature/amazing-feature`)
+5. Open a Pull Request
 
 ## License
 
-This project is available for personal and commercial use.
+This project is licensed under the MIT License - see the LICENSE file for details.
+
+## Acknowledgments
+
+- [Font Awesome](https://fontawesome.com/) for the icons
+- [Google Fonts](https://fonts.google.com/) for typography
+- [Google Maps API](https://developers.google.com/maps) for mapping functionality
 
 ## Contact
 
-For questions or support, please contact [your contact information]. 
+For questions or support, please email [info@nzoyafoundation.org](mailto:info@nzoyafoundation.org) 

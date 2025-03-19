@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Screening Facilities | Breast Cancer Screening</title>
+    <meta name="description" content="Find breast cancer screening facilities near you. Locate mammogram centers, hospitals and clinics offering breast cancer screening services.">
+    
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="../css/main.min.css">
+    
+    <!-- Scripts -->
+    <script src="../js/main.js"></script>
+    <script src="../js/facilities-map.js"></script>
+</head>
+<body>
+    <!-- Header will be loaded via JavaScript -->
+    <header id="header" class="header"></header>
+
+    <main>
+        <!-- Hero Section -->
+        <section class="hero hero--sm">
+            <div class="container">
+                <h1 class="hero__title">Find Screening Facilities</h1>
+                <p class="hero__subtitle">Locate breast cancer screening services near you</p>
+            </div>
+        </section>
+
+        <!-- Search Section -->
+        <section class="facilities-search section">
+            <div class="container">
+                <div class="search-panel">
+                    <h2 class="search-panel__title">Find Facilities</h2>
+                    <form id="facilitiesSearchForm" class="search-form">
+                        <div class="form-row">
+                            <div class="col-md-5">
+                                <div class="form-group">
+                                    <label for="location" class="form-label">Location</label>
+                                    <input type="text" id="location" name="location" class="form-control" placeholder="Enter zip code or city" required>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label for="facilityType" class="form-label">Facility Type</label>
+                                    <select id="facilityType" name="facilityType" class="form-control">
+                                        <option value="all">All Facilities</option>
+                                        <option value="hospital">Hospitals</option>
+                                        <option value="clinic">Clinics</option>
+                                        <option value="imaging">Imaging Centers</option>
+                                        <option value="mobile">Mobile Screening Units</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="form-group">
+                                    <label for="radius" class="form-label">Distance</label>
+                                    <select id="radius" name="radius" class="form-control">
+                                        <option value="5">5 miles</option>
+                                        <option value="10" selected>10 miles</option>
+                                        <option value="25">25 miles</option>
+                                        <option value="50">50 miles</option>
+                                        <option value="100">100 miles</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="filter-options">
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" id="insuranceAccepted" name="insuranceAccepted">
+                                <label class="form-check-label" for="insuranceAccepted">Accepts Insurance</label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" id="lowCost" name="lowCost">
+                                <label class="form-check-label" for="lowCost">Low-Cost Options</label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" id="wheelchairAccessible" name="wheelchairAccessible">
+                                <label class="form-check-label" for="wheelchairAccessible">Wheelchair Accessible</label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" id="eveningWeekend" name="eveningWeekend">
+                                <label class="form-check-label" for="eveningWeekend">Evening/Weekend Hours</label>
+                            </div>
+                        </div>
+                        
+                        <div class="search-actions">
+                            <button type="submit" class="btn btn-primary">Search</button>
+                            <button type="button" id="useCurrentLocation" class="btn btn-outline-primary">
+                                <i class="fas fa-map-marker-alt"></i> Use Current Location
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </section>
+
+        <!-- Map Section -->
+        <section class="facilities-map section">
+            <div class="container-fluid">
+                <div class="row">
+                    <!-- Facilities List -->
+                    <div class="col-md-4 col-lg-3">
+                        <div class="facilities-list">
+                            <div class="facilities-list__header">
+                                <h3 class="facilities-list__title">Results</h3>
+                                <div class="facilities-list__count">
+                                    <span id="facilitiesCount">0</span> facilities found
+                                </div>
+                                <div class="facilities-list__sort">
+                                    <label for="sortBy">Sort by:</label>
+                                    <select id="sortBy" class="form-control form-control-sm">
+                                        <option value="distance">Distance</option>
+                                        <option value="name">Name</option>
+                                        <option value="rating">Rating</option>
+                                    </select>
+                                </div>
+                            </div>
+                            
+                            <div id="facilitiesList" class="facilities-list__results">
+                                <!-- Will be populated by JavaScript -->
+                                <div class="loading-indicator">
+                                    <p>Enter a location to find nearby facilities</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Map Container -->
+                    <div class="col-md-8 col-lg-9">
+                        <div id="facilitiesMap" class="map-container">
+                            <!-- Google Maps will be loaded here -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Facility Details Modal -->
+        <div class="modal" id="facilityDetailsModal">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="facilityDetailsTitle">Facility Details</h5>
+                        <button type="button" class="close-modal">&times;</button>
+                    </div>
+                    <div class="modal-body" id="facilityDetailsBody">
+                        <!-- Will be populated by JavaScript -->
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" id="getDirections" class="btn btn-primary">Get Directions</button>
+                        <button type="button" class="btn btn-secondary close-modal">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Information Section -->
+        <section class="facilities-info section section--bg-light">
+            <div class="container">
+                <h2 class="section-title">Information About Screening Facilities</h2>
+                
+                <div class="info-grid">
+                    <div class="info-card">
+                        <div class="info-card__icon">
+                            <i class="fas fa-hospital"></i>
+                        </div>
+                        <h3 class="info-card__title">Types of Facilities</h3>
+                        <p>Breast cancer screening may be available at various locations including hospitals, clinics, imaging centers, and mobile screening units. Each offers different services and levels of care.</p>
+                    </div>
+                    
+                    <div class="info-card">
+                        <div class="info-card__icon">
+                            <i class="fas fa-hand-holding-usd"></i>
+                        </div>
+                        <h3 class="info-card__title">Financial Assistance</h3>
+                        <p>Many facilities offer financial assistance programs or sliding scale fees. Some accept insurance, Medicaid, or Medicare. The CDC's National Breast and Cervical Cancer Early Detection Program (NBCCEDP) provides free or low-cost screenings.</p>
+                    </div>
+                    
+                    <div class="info-card">
+                        <div class="info-card__icon">
+                            <i class="fas fa-clipboard-check"></i>
+                        </div>
+                        <h3 class="info-card__title">What to Expect</h3>
+                        <p>Most screening appointments take 30 minutes or less. You'll be asked to remove clothing from the waist up and wear a gown. The technologist will position each breast for the mammogram, which may cause brief discomfort.</p>
+                    </div>
+                    
+                    <div class="info-card">
+                        <div class="info-card__icon">
+                            <i class="fas fa-calendar-check"></i>
+                        </div>
+                        <h3 class="info-card__title">Preparing for Your Visit</h3>
+                        <p>Schedule your mammogram when your breasts are least tender. Don't wear deodorant, talcum powder, or lotion under your arms or on your breasts on the day of the exam. Bring your insurance card and any previous mammogram records.</p>
+                    </div>
+                </div>
+                
+                <div class="section-cta">
+                    <p>Can't find a facility near you or need help scheduling an appointment?</p>
+                    <a href="contact.html" class="btn btn-primary">Contact Us for Assistance</a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer will be loaded via JavaScript -->
+    <footer id="footer" class="footer"></footer>
+
+    <!-- Scripts -->
+    <script src="../js/main.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/js/all.min.js" crossorigin="anonymous"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&libraries=places&callback=initMap" async defer></script>
+    <script src="../js/facilities-map.js"></script>
+</body>
+</html> 

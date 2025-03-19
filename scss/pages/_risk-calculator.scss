@@ -1,0 +1,465 @@
+// Risk Calculator Page Styles
+
+// Calculator Intro Section
+.calculator-intro {
+    padding: $spacing-lg 0;
+    background-color: $light;
+
+    .intro-card {
+        background-color: $white;
+        border-radius: $border-radius;
+        padding: $spacing-lg;
+        box-shadow: $box-shadow;
+
+        &__title {
+            color: $primary;
+            margin-bottom: $spacing-md;
+            font-size: $font-size-2xl;
+            text-align: center;
+        }
+
+        &__text {
+            color: $text-color;
+            font-size: $font-size-lg;
+            line-height: 1.6;
+            margin-bottom: $spacing-md;
+        }
+
+        &__disclaimer {
+            background-color: $light;
+            border-left: 4px solid $warning;
+            padding: $spacing-md;
+            margin-top: $spacing-lg;
+            border-radius: 0 $border-radius $border-radius 0;
+
+            h3 {
+                color: $warning-dark;
+                font-size: $font-size-lg;
+                margin-bottom: $spacing-sm;
+                display: flex;
+                align-items: center;
+
+                i {
+                    margin-right: $spacing-sm;
+                }
+            }
+
+            p {
+                color: $text-muted;
+                font-size: $font-size-sm;
+                line-height: 1.5;
+                margin: 0;
+            }
+        }
+    }
+}
+
+// Calculator Form Section
+.calculator-section {
+    padding: $spacing-xl 0;
+}
+
+.calculator-wrapper {
+    background-color: $white;
+    border-radius: $border-radius;
+    padding: $spacing-xl;
+    box-shadow: $box-shadow;
+    max-width: 800px;
+    margin: 0 auto;
+
+    @include media-breakpoint-down(md) {
+        padding: $spacing-lg;
+    }
+}
+
+// Progress Bar
+.calculator-progress {
+    margin-bottom: $spacing-xl;
+
+    .progress {
+        height: 8px;
+        background-color: $light;
+        border-radius: 4px;
+        overflow: hidden;
+    }
+
+    .progress-bar {
+        background-color: $primary;
+        transition: width 0.4s ease;
+    }
+}
+
+// Form Steps
+.calc-step {
+    display: none;
+
+    &:first-child {
+        display: block;
+    }
+
+    .step-title {
+        color: $dark;
+        font-size: $font-size-xl;
+        margin-bottom: $spacing-lg;
+        padding-bottom: $spacing-sm;
+        border-bottom: 1px solid $border-color;
+    }
+
+    .form-group {
+        margin-bottom: $spacing-lg;
+    }
+
+    .form-label {
+        font-weight: $font-weight-bold;
+        margin-bottom: $spacing-sm;
+        display: block;
+    }
+
+    .form-control {
+        padding: $spacing-md;
+        border: 1px solid $border-color;
+        border-radius: $border-radius;
+        transition: all 0.3s ease;
+
+        &:focus {
+            border-color: $primary;
+            box-shadow: 0 0 0 3px rgba($primary, 0.1);
+            outline: none;
+        }
+
+        &.error {
+            border-color: $danger;
+        }
+    }
+
+    .form-text {
+        color: $text-muted;
+        font-size: $font-size-sm;
+        margin-top: $spacing-xs;
+    }
+
+    .radio-group {
+        display: flex;
+        flex-wrap: wrap;
+        gap: $spacing-md;
+        margin-top: $spacing-sm;
+
+        .form-check {
+            display: flex;
+            align-items: center;
+            margin: 0;
+
+            .form-check-input {
+                margin-right: $spacing-sm;
+            }
+        }
+    }
+
+    .error-message {
+        color: $danger;
+        font-size: $font-size-sm;
+        margin-top: $spacing-xs;
+    }
+
+    .step-navigation {
+        display: flex;
+        justify-content: space-between;
+        margin-top: $spacing-xl;
+
+        .btn {
+            min-width: 120px;
+        }
+    }
+}
+
+// Results Display
+.risk-results {
+    .results-title {
+        color: $dark;
+        font-size: $font-size-xl;
+        margin-bottom: $spacing-lg;
+        text-align: center;
+    }
+
+    .risk-score-display {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin-bottom: $spacing-xl;
+    }
+
+    .risk-meter {
+        position: relative;
+        width: 200px;
+        height: 200px;
+        border-radius: 50%;
+        background: conic-gradient(
+            $success 0% 25%,
+            $warning 25% 50%,
+            $danger-light 50% 75%,
+            $danger 75% 100%
+        );
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-bottom: $spacing-md;
+
+        &::before {
+            content: '';
+            position: absolute;
+            width: 160px;
+            height: 160px;
+            border-radius: 50%;
+            background-color: $white;
+        }
+
+        .risk-score {
+            position: relative;
+            z-index: 1;
+            font-size: $font-size-3xl;
+            font-weight: $font-weight-bold;
+        }
+    }
+
+    .risk-category {
+        font-size: $font-size-xl;
+        font-weight: $font-weight-bold;
+        margin-bottom: $spacing-md;
+        text-align: center;
+        padding: $spacing-sm $spacing-md;
+        border-radius: $border-radius;
+        display: inline-block;
+
+        &.low {
+            background-color: rgba($success, 0.1);
+            color: $success-dark;
+        }
+
+        &.moderate {
+            background-color: rgba($warning, 0.1);
+            color: $warning-dark;
+        }
+
+        &.high {
+            background-color: rgba($danger-light, 0.1);
+            color: $danger-light;
+        }
+
+        &.very-high {
+            background-color: rgba($danger, 0.1);
+            color: $danger;
+        }
+    }
+
+    .risk-recommendations {
+        background-color: $light;
+        border-radius: $border-radius;
+        padding: $spacing-lg;
+        margin-bottom: $spacing-lg;
+
+        h4 {
+            color: $dark;
+            font-size: $font-size-lg;
+            margin-bottom: $spacing-md;
+        }
+
+        ul {
+            margin: 0 0 $spacing-lg 0;
+            padding-left: $spacing-lg;
+
+            li {
+                margin-bottom: $spacing-sm;
+            }
+        }
+
+        .next-steps {
+            margin-top: $spacing-lg;
+            padding-top: $spacing-lg;
+            border-top: 1px solid $border-color;
+
+            &-buttons {
+                display: flex;
+                gap: $spacing-md;
+                margin-top: $spacing-md;
+                flex-wrap: wrap;
+
+                .btn {
+                    flex: 1;
+                    min-width: 150px;
+                }
+            }
+        }
+    }
+
+    .risk-disclaimer {
+        background-color: rgba($warning, 0.05);
+        border-left: 4px solid $warning;
+        padding: $spacing-md;
+        margin-bottom: $spacing-lg;
+        border-radius: 0 $border-radius $border-radius 0;
+
+        h4 {
+            color: $warning-dark;
+            font-size: $font-size-md;
+            margin-bottom: $spacing-sm;
+            display: flex;
+            align-items: center;
+
+            i {
+                margin-right: $spacing-sm;
+            }
+        }
+
+        p {
+            color: $text-muted;
+            font-size: $font-size-sm;
+            line-height: 1.5;
+            margin: 0;
+        }
+    }
+
+    .results-actions {
+        text-align: center;
+        margin-top: $spacing-lg;
+    }
+}
+
+// More Information Section
+.more-info-section {
+    padding: $spacing-xl 0;
+
+    .section-title {
+        text-align: center;
+        margin-bottom: $spacing-xl;
+    }
+
+    .info-card {
+        height: 100%;
+    }
+
+    .section-cta {
+        text-align: center;
+        margin-top: $spacing-xl;
+        padding-top: $spacing-lg;
+        border-top: 1px solid $border-color;
+
+        p {
+            font-size: $font-size-lg;
+            margin-bottom: $spacing-md;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+    }
+}
+
+// BMI Calculator Modal
+.modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba($dark, 0.5);
+    z-index: 1000;
+    justify-content: center;
+    align-items: center;
+
+    &.active {
+        display: flex;
+    }
+
+    .modal-dialog {
+        width: 100%;
+        max-width: 500px;
+        margin: 0 auto;
+    }
+
+    .modal-content {
+        background-color: $white;
+        border-radius: $border-radius;
+        box-shadow: $box-shadow-lg;
+    }
+
+    .modal-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: $spacing-md $spacing-lg;
+        border-bottom: 1px solid $border-color;
+
+        .modal-title {
+            margin: 0;
+            font-size: $font-size-lg;
+        }
+
+        .close-modal {
+            background: none;
+            border: none;
+            font-size: $font-size-2xl;
+            cursor: pointer;
+            color: $text-muted;
+            transition: color 0.3s ease;
+
+            &:hover {
+                color: $danger;
+            }
+        }
+    }
+
+    .modal-body {
+        padding: $spacing-lg;
+    }
+
+    .input-group {
+        display: flex;
+        gap: $spacing-md;
+    }
+
+    #bmiResult {
+        background-color: $light;
+        padding: $spacing-md;
+        border-radius: $border-radius;
+        text-align: center;
+
+        h4 {
+            font-size: $font-size-lg;
+            margin-bottom: $spacing-sm;
+        }
+
+        #bmiValue {
+            font-weight: $font-weight-bold;
+            color: $primary;
+        }
+
+        #bmiCategory {
+            margin-bottom: $spacing-md;
+        }
+    }
+}
+
+// Print Styles
+@media print {
+    header, footer, .calculator-intro, .calculator-progress, 
+    .more-info-section, .hero, .calculator-form {
+        display: none !important;
+    }
+
+    .risk-results {
+        display: block !important;
+    }
+
+    .calculator-section {
+        padding: 0 !important;
+    }
+
+    .calculator-wrapper {
+        box-shadow: none !important;
+        padding: 0 !important;
+    }
+
+    .next-steps-buttons {
+        display: none !important;
+    }
+} 

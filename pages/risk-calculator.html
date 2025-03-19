@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Risk Assessment Calculator | Breast Cancer Screening</title>
+    <meta name="description" content="Assess your personal risk of breast cancer with our risk calculator tool. Get personalized recommendations based on your risk factors.">
+    <link rel="stylesheet" href="../css/main.min.css">
+</head>
+<body>
+    <!-- Header will be loaded via JavaScript -->
+    <header id="header" class="header"></header>
+
+    <main>
+        <!-- Hero Section -->
+        <section class="hero hero--sm">
+            <div class="container">
+                <h1 class="hero__title">Breast Cancer Risk Calculator</h1>
+                <p class="hero__subtitle">Assess your personal risk factors and get recommendations</p>
+            </div>
+        </section>
+
+        <!-- Introduction Section -->
+        <section class="calculator-intro section">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-8 offset-lg-2">
+                        <div class="intro-card">
+                            <h2 class="intro-card__title">Understanding Your Risk</h2>
+                            <p class="intro-card__text">
+                                This calculator helps you assess your personal risk of developing breast cancer based on various factors. Please answer the questions accurately for the most reliable assessment.
+                            </p>
+                            <div class="intro-card__disclaimer">
+                                <h3><i class="fas fa-exclamation-circle"></i> Important Disclaimer</h3>
+                                <p>This tool provides a simple risk assessment based on common risk factors. It is not a diagnostic tool and should not replace professional medical advice. Always consult your healthcare provider about your breast cancer risk and appropriate screening.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Calculator Section -->
+        <section class="calculator-section section">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-8 offset-lg-2">
+                        <div id="riskCalculator" class="calculator-wrapper">
+                            <!-- Progress Bar -->
+                            <div class="calculator-progress">
+                                <div class="progress">
+                                    <div class="progress-bar" role="progressbar" style="width: 0%" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
+                                </div>
+                            </div>
+
+                            <!-- Calculator Form -->
+                            <form class="calculator-form">
+                                <!-- Step 1: Basic Information -->
+                                <div class="calc-step" id="step1">
+                                    <h3 class="step-title">Step 1: Basic Information</h3>
+                                    
+                                    <div class="form-group">
+                                        <label for="age" class="form-label">Age</label>
+                                        <input type="number" id="age" name="age" class="form-control" min="18" max="120" required>
+                                    </div>
+                                    
+                                    <div class="form-group">
+                                        <label for="gender" class="form-label">Gender at Birth</label>
+                                        <select id="gender" name="gender" class="form-control" required>
+                                            <option value="">Select option</option>
+                                            <option value="female">Female</option>
+                                            <option value="male">Male</option>
+                                        </select>
+                                        <small class="form-text">Note: This calculator is primarily designed for individuals assigned female at birth. While men can develop breast cancer, the risk factors are different.</small>
+                                    </div>
+                                    
+                                    <div class="form-group">
+                                        <label for="ethnicity" class="form-label">Ethnicity</label>
+                                        <select id="ethnicity" name="ethnicity" class="form-control" required>
+                                            <option value="">Select option</option>
+                                            <option value="caucasian">Caucasian</option>
+                                            <option value="african_american">African American</option>
+                                            <option value="hispanic">Hispanic</option>
+                                            <option value="asian">Asian</option>
+                                            <option value="other">Other</option>
+                                        </select>
+                                    </div>
+                                    
+                                    <div class="step-navigation">
+                                        <button class="btn btn-outline-primary btn-prev" disabled>Previous</button>
+                                        <button class="btn btn-primary btn-next">Next</button>
+                                    </div>
+                                </div>
+                                
+                                <!-- Step 2: Family History -->
+                                <div class="calc-step" id="step2">
+                                    <h3 class="step-title">Step 2: Family History</h3>
+                                    
+                                    <div class="form-group">
+                                        <label class="form-label">Do you have a family history of breast cancer in a first-degree relative (mother, sister, daughter)?</label>
+                                        <div class="radio-group">
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="radio" name="familyHistory" id="familyHistoryYes" value="yes" required>
+                                                <label class="form-check-label" for="familyHistoryYes">Yes</label>
+                                            </div>
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="radio" name="familyHistory" id="familyHistoryNo" value="no">
+                                                <label class="form-check-label" for="familyHistoryNo">No</label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="form-group">
+                                        <label class="form-label">Do you have a known genetic mutation (BRCA1, BRCA2, etc.)?</label>
+                                        <div class="radio-group">
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="radio" name="geneticMutation" id="geneticMutationYes" value="yes" required>
+                                                <label class="form-check-label" for="geneticMutationYes">Yes</label>
+                                            </div>
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="radio" name="geneticMutation" id="geneticMutationNo" value="no">
+                                                <label class="form-check-label" for="geneticMutationNo">No</label>
+                                            </div>
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="radio" name="geneticMutation" id="geneticMutationUnknown" value="unknown">
+                                                <label class="form-check-label" for="geneticMutationUnknown">Unknown/Not Tested</label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="step-navigation">
+                                        <button class="btn btn-outline-primary btn-prev">Previous</button>
+                                        <button class="btn btn-primary btn-next">Next</button>
+                                    </div>
+                                </div>
+                                
+                                <!-- Step 3: Reproductive History -->
+                                <div class="calc-step" id="step3">
+                                    <h3 class="step-title">Step 3: Reproductive History</h3>
+                                    
+                                    <div class="form-group">
+                                        <label for="menarcheAge" class="form-label">Age at first menstrual period</label>
+                                        <input type="number" id="menarcheAge" name="menarcheAge" class="form-control" min="8" max="20" required>
+                                    </div>
+                                    
+                                    <div class="form-group">
+                                        <label for="firstPregnancyAge" class="form-label">Age at first full-term pregnancy (if applicable)</label>
+                                        <input type="number" id="firstPregnancyAge" name="firstPregnancyAge" class="form-control" min="0" max="55">
+                                        <small class="form-text">Enter 0 if you have never been pregnant.</small>
+                                    </div>
+                                    
+                                    <div class="form-group">
+                                        <label class="form-label">Have you ever breastfed for a total of one year or more?</label>
+                                        <div class="radio-group">
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="radio" name="breastfeeding" id="breastfeedingYes" value="yes" required>
+                                                <label class="form-check-label" for="breastfeedingYes">Yes</label>
+                                            </div>
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="radio" name="breastfeeding" id="breastfeedingNo" value="no">
+                                                <label class="form-check-label" for="breastfeedingNo">No</label>
+                                            </div>
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="radio" name="breastfeeding" id="breastfeedingNA" value="na">
+                                                <label class="form-check-label" for="breastfeedingNA">Not Applicable</label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="step-navigation">
+                                        <button class="btn btn-outline-primary btn-prev">Previous</button>
+                                        <button class="btn btn-primary btn-next">Next</button>
+                                    </div>
+                                </div>
+                                
+                                <!-- Step 4: Medical History -->
+                                <div class="calc-step" id="step4">
+                                    <h3 class="step-title">Step 4: Medical History</h3>
+                                    
+                                    <div class="form-group">
+                                        <label for="previousBiopsies" class="form-label">Number of previous breast biopsies</label>
+                                        <input type="number" id="previousBiopsies" name="previousBiopsies" class="form-control" min="0" max="20" required>
+                                    </div>
+                                    
+                                    <div class="form-group">
+                                        <label class="form-label">Have you been diagnosed with atypical hyperplasia in a previous biopsy?</label>
+                                        <div class="radio-group">
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="radio" name="atypicalHyperplasia" id="atypicalHyperplasiaYes" value="yes" required>
+                                                <label class="form-check-label" for="atypicalHyperplasiaYes">Yes</label>
+                                            </div>
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="radio" name="atypicalHyperplasia" id="atypicalHyperplasiaNo" value="no">
+                                                <label class="form-check-label" for="atypicalHyperplasiaNo">No</label>
+                                            </div>
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="radio" name="atypicalHyperplasia" id="atypicalHyperplasiaUnknown" value="unknown">
+                                                <label class="form-check-label" for="atypicalHyperplasiaUnknown">Unknown</label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="form-group">
+                                        <label for="breastDensity" class="form-label">Breast Density (if known from previous mammogram)</label>
+                                        <select id="breastDensity" name="breastDensity" class="form-control">
+                                            <option value="">Select option</option>
+                                            <option value="fatty">Almost entirely fatty</option>
+                                            <option value="scattered">Scattered areas of fibroglandular density</option>
+                                            <option value="heterogeneously_dense">Heterogeneously dense</option>
+                                            <option value="extremely_dense">Extremely dense</option>
+                                            <option value="unknown">Unknown</option>
+                                        </select>
+                                    </div>
+                                    
+                                    <div class="form-group">
+                                        <label class="form-label">Are you currently using or have you used hormone replacement therapy?</label>
+                                        <div class="radio-group">
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="radio" name="hormoneTherapy" id="hormoneTherapyYes" value="yes" required>
+                                                <label class="form-check-label" for="hormoneTherapyYes">Yes</label>
+                                            </div>
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="radio" name="hormoneTherapy" id="hormoneTherapyNo" value="no">
+                                                <label class="form-check-label" for="hormoneTherapyNo">No</label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="step-navigation">
+                                        <button class="btn btn-outline-primary btn-prev">Previous</button>
+                                        <button class="btn btn-primary btn-next">Next</button>
+                                    </div>
+                                </div>
+                                
+                                <!-- Step 5: Lifestyle Factors -->
+                                <div class="calc-step" id="step5">
+                                    <h3 class="step-title">Step 5: Lifestyle Factors</h3>
+                                    
+                                    <div class="form-group">
+                                        <label for="alcohol" class="form-label">Average alcoholic drinks per week</label>
+                                        <input type="number" id="alcohol" name="alcohol" class="form-control" min="0" max="50" required>
+                                    </div>
+                                    
+                                    <div class="form-group">
+                                        <label for="exercise" class="form-label">Hours of moderate exercise per week</label>
+                                        <input type="number" id="exercise" name="exercise" class="form-control" min="0" max="40" required>
+                                    </div>
+                                    
+                                    <div class="form-group">
+                                        <label for="bmi" class="form-label">Body Mass Index (BMI)</label>
+                                        <input type="number" id="bmi" name="bmi" class="form-control" min="15" max="50" step="0.1" required>
+                                        <small class="form-text">
+                                            <a href="#" class="bmi-calculator-link">Calculate your BMI</a>
+                                        </small>
+                                    </div>
+                                    
+                                    <div class="step-navigation">
+                                        <button class="btn btn-outline-primary btn-prev">Previous</button>
+                                        <button class="btn btn-primary btn-submit">Calculate Risk</button>
+                                    </div>
+                                </div>
+                            </form>
+                            
+                            <!-- Results Section (initially hidden) -->
+                            <div class="risk-results" style="display: none;">
+                                <h3 class="results-title">Your Risk Assessment Results</h3>
+                                
+                                <div class="risk-score-display">
+                                    <div class="risk-meter">
+                                        <div class="risk-score"></div>
+                                    </div>
+                                    <div class="risk-category"></div>
+                                </div>
+                                
+                                <div class="risk-recommendations">
+                                    <!-- Will be populated by JavaScript -->
+                                </div>
+                                
+                                <div class="risk-disclaimer">
+                                    <h4><i class="fas fa-exclamation-circle"></i> Important Note</h4>
+                                    <p>This assessment is based on a simplified risk model and is for informational purposes only. It does not replace professional medical advice. Always consult with your healthcare provider about your personal risk and recommended screening schedule.</p>
+                                </div>
+                                
+                                <div class="results-actions">
+                                    <button class="btn btn-outline-primary btn-restart">Start Over</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- More Information Section -->
+        <section class="more-info-section section--bg-light">
+            <div class="container">
+                <h2 class="section-title">Understanding Risk Factors</h2>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="info-card">
+                            <h3 class="info-card__title">Factors You Can Control</h3>
+                            <ul class="info-card__list">
+                                <li>Maintaining a healthy weight</li>
+                                <li>Regular physical activity</li>
+                                <li>Limiting alcohol consumption</li>
+                                <li>Avoiding hormone therapy after menopause</li>
+                                <li>Breastfeeding if possible</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="info-card">
+                            <h3 class="info-card__title">Factors You Cannot Control</h3>
+                            <ul class="info-card__list">
+                                <li>Genetic factors and family history</li>
+                                <li>Personal history of breast conditions</li>
+                                <li>Age (risk increases with age)</li>
+                                <li>Dense breast tissue</li>
+                                <li>Early menstruation or late menopause</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="section-cta">
+                    <p>Remember that having risk factors doesn't mean you will develop breast cancer. Regular screening based on your personal risk profile is key to early detection.</p>
+                    <a href="screening.html" class="btn btn-primary">Learn About Screening Options</a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer will be loaded via JavaScript -->
+    <footer id="footer" class="footer"></footer>
+
+    <!-- BMI Calculator Modal -->
+    <div class="modal" id="bmiCalculatorModal">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">BMI Calculator</h5>
+                    <button type="button" class="close-modal">&times;</button>
+                </div>
+                <div class="modal-body">
+                    <form id="bmiForm">
+                        <div class="form-group">
+                            <label>Height</label>
+                            <div class="input-group">
+                                <input type="number" id="heightFeet" class="form-control" placeholder="Feet" min="3" max="8">
+                                <input type="number" id="heightInches" class="form-control" placeholder="Inches" min="0" max="11">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label>Weight (in pounds)</label>
+                            <input type="number" id="weightPounds" class="form-control" min="50" max="500">
+                        </div>
+                        <button type="button" id="calculateBmi" class="btn btn-primary">Calculate</button>
+                    </form>
+                    <div id="bmiResult" class="mt-3" style="display: none;">
+                        <h4>Your BMI: <span id="bmiValue"></span></h4>
+                        <p id="bmiCategory"></p>
+                        <button type="button" id="useBmiValue" class="btn btn-outline-primary">Use this value</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/js/all.min.js" crossorigin="anonymous"></script>
+    <script src="../js/main.js"></script>
+    <script src="../js/risk-calculator.js"></script>
+</body>
+</html> 

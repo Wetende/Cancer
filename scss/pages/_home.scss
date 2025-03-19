@@ -1,0 +1,231 @@
+@use "../variables" as *;
+@use "../mixins" as *;
+@use "sass:color";
+
+/* Home Page Styles
+========================================================================== */
+
+/* Hero Section
+--------------------------------*/
+.home-hero {
+  background-image: url('../images/home-hero-bg.jpg');
+  background-size: cover;
+  background-position: center;
+  padding: $spacer * 6 0;
+  
+  @include breakpoint-up(md) {
+    padding: $spacer * 10 0;
+  }
+  
+  .hero__title {
+    font-size: 2.5rem;
+    
+    @include breakpoint-up(md) {
+      font-size: 3.5rem;
+    }
+  }
+  
+  .hero__text {
+    font-size: 1.25rem;
+  }
+}
+
+/* Featured Services
+--------------------------------*/
+.featured-services {
+  margin-top: -$spacer * 5;
+  position: relative;
+  z-index: 10;
+  
+  .card {
+    border: none;
+    transition: all 0.3s ease;
+    
+    &:hover {
+      transform: translateY(-10px);
+    }
+  }
+  
+  .service-icon {
+    width: 70px;
+    height: 70px;
+    margin: 0 auto $spacer;
+    background-color: rgba($primary, 0.1);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: $primary;
+    font-size: 28px;
+    transition: all 0.3s ease;
+    
+    .card:hover & {
+      background-color: $primary;
+      color: $white;
+    }
+  }
+}
+
+/* Statistics Section
+--------------------------------*/
+.statistics-section {
+  background-color: $primary;
+  color: $white;
+  
+  .stat-item {
+    text-align: center;
+    margin-bottom: $spacer * 2;
+    
+    @include breakpoint-up(md) {
+      margin-bottom: 0;
+    }
+  }
+  
+  .stat-number {
+    font-size: 3rem;
+    font-weight: $font-weight-bold;
+    margin-bottom: $spacer * 0.5;
+    line-height: 1;
+  }
+  
+  .stat-label {
+    font-size: 1.125rem;
+    font-weight: $font-weight-medium;
+  }
+}
+
+/* Screening Process
+--------------------------------*/
+.screening-process {
+  .process-step {
+    margin-bottom: $spacer * 3;
+    position: relative;
+    
+    @include breakpoint-up(md) {
+      &:not(:last-child):after {
+        content: '';
+        position: absolute;
+        top: 40px;
+        right: -50px;
+        width: 100px;
+        height: 2px;
+        background-color: $gray-300;
+      }
+    }
+  }
+  
+  .step-number {
+    width: 80px;
+    height: 80px;
+    background-color: $primary;
+    color: $white;
+    font-size: 2rem;
+    font-weight: $font-weight-bold;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    margin: 0 auto $spacer;
+  }
+  
+  .step-title {
+    font-size: 1.5rem;
+    margin-bottom: $spacer;
+    font-weight: $font-weight-bold;
+  }
+}
+
+/* Testimonials Section
+--------------------------------*/
+.testimonials-section {
+  background-color: $gray-100;
+  
+  .testimonial-slider {
+    .testimonial-item {
+      padding: $spacer * 2;
+      background-color: $white;
+      border-radius: $border-radius;
+      box-shadow: $box-shadow-sm;
+      margin: $spacer;
+      text-align: center;
+    }
+    
+    .testimonial-quote {
+      font-style: italic;
+      margin-bottom: $spacer;
+      position: relative;
+      
+      &:before, &:after {
+        content: '"';
+        font-size: 50px;
+        color: rgba($primary, 0.2);
+        line-height: 0;
+        font-family: serif;
+        position: absolute;
+      }
+      
+      &:before {
+        left: -20px;
+        top: 15px;
+      }
+      
+      &:after {
+        right: -20px;
+        bottom: -10px;
+      }
+    }
+    
+    .testimonial-author {
+      font-weight: $font-weight-bold;
+      margin-bottom: $spacer * 0.25;
+    }
+    
+    .testimonial-role {
+      font-size: $font-size-sm;
+      color: $gray-600;
+    }
+  }
+}
+
+/* Latest Articles
+--------------------------------*/
+.latest-articles {
+  .article-card {
+    margin-bottom: $spacer * 2;
+    height: 100%;
+    
+    .card-img-top {
+      height: 200px;
+      object-fit: cover;
+    }
+    
+    .card-meta {
+      font-size: $font-size-sm;
+      color: $gray-600;
+      margin-bottom: $spacer * 0.5;
+      display: flex;
+      
+      > div {
+        margin-right: $spacer;
+        
+        &:last-child {
+          margin-right: 0;
+        }
+      }
+    }
+    
+    .card-title {
+      font-size: 1.25rem;
+      margin-bottom: $spacer * 0.5;
+      
+      a {
+        color: $gray-900;
+        text-decoration: none;
+        
+        &:hover {
+          color: $primary;
+        }
+      }
+    }
+  }
+} 

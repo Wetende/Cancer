@@ -1,0 +1,48 @@
+# Ignore planning documents
+/documents/
+
+# Ignore system files
+.DS_Store
+Thumbs.db
+
+# Ignore IDE files
+.idea/
+.vscode/
+*.sublime-project
+*.sublime-workspace
+
+# Ignore dependencies
+/node_modules/
+/vendor/
+
+# Ignore build artifacts
+/dist/
+/build/
+
+# Ignore logs
+*.log
+/logs/
+
+# Ignore configuration files with sensitive information
+.env
+config.local.php
+
+# Node.js dependencies
+node_modules/
+npm-debug.log
+yarn-error.log
+package-lock.json
+yarn.lock
+
+# Compiled CSS files
+/css/*.css
+/css/*.css.map
+/css/*.min.css
+/css/*.min.css.map
+
+# Temporary files and logs
+*.tmp
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local 

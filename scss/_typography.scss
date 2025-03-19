@@ -1,0 +1,384 @@
+@use "variables" as *;
+@use "mixins" as *;
+
+/* Typography
+========================================================================== */
+
+/* Headings
+--------------------------------*/
+.heading-1 {
+  @include heading(1);
+}
+
+.heading-2 {
+  @include heading(2);
+}
+
+.heading-3 {
+  @include heading(3);
+}
+
+.heading-4 {
+  @include heading(4);
+}
+
+.heading-5 {
+  @include heading(5);
+}
+
+.heading-6 {
+  @include heading(6);
+}
+
+/* Specialized headings
+--------------------------------*/
+.section-title {
+  font-size: $h2-font-size;
+  font-weight: $font-weight-bold;
+  margin-bottom: $spacer * 1.5;
+  position: relative;
+  
+  &::after {
+    content: '';
+    display: block;
+    width: 50px;
+    height: 3px;
+    background-color: $breast-cancer-pink;
+    margin-top: $spacer * 0.5;
+  }
+  
+  &--centered {
+    text-align: center;
+    
+    &::after {
+      margin-left: auto;
+      margin-right: auto;
+    }
+  }
+  
+  @include breakpoint-up(md) {
+    font-size: $h1-font-size;
+  }
+}
+
+.page-title {
+  font-size: $h1-font-size;
+  color: $dark;
+  margin-bottom: $spacer * 2;
+  
+  @include breakpoint-up(md) {
+    font-size: $h1-font-size * 1.2;
+  }
+}
+
+.subtitle {
+  font-size: $h5-font-size;
+  color: $gray-600;
+  font-weight: $font-weight-normal;
+  margin-bottom: $spacer * 1.5;
+  
+  @include breakpoint-up(md) {
+    font-size: $h4-font-size;
+  }
+}
+
+/* Text styles
+--------------------------------*/
+.lead {
+  font-size: $font-size-lg;
+  font-weight: $font-weight-normal;
+  line-height: $line-height-lg;
+  margin-bottom: $spacer * 1.5;
+  
+  @include breakpoint-up(md) {
+    font-size: $font-size-lg * 1.1;
+  }
+}
+
+.text-small {
+  font-size: $font-size-sm;
+}
+
+.text-large {
+  font-size: $font-size-lg;
+}
+
+/* Text colors
+--------------------------------*/
+.text-primary {
+  color: $primary !important;
+}
+
+.text-secondary {
+  color: $secondary !important;
+}
+
+.text-success {
+  color: $success !important;
+}
+
+.text-danger {
+  color: $danger !important;
+}
+
+.text-warning {
+  color: $warning !important;
+}
+
+.text-info {
+  color: $info !important;
+}
+
+.text-light {
+  color: $light !important;
+}
+
+.text-dark {
+  color: $dark !important;
+}
+
+.text-muted {
+  color: $gray-600 !important;
+}
+
+.text-breast-cancer {
+  color: $breast-cancer-pink !important;
+}
+
+/* Text alignment
+--------------------------------*/
+.text-left {
+  text-align: left !important;
+}
+
+.text-center {
+  text-align: center !important;
+}
+
+.text-right {
+  text-align: right !important;
+}
+
+@include breakpoint-up(sm) {
+  .text-sm-left {
+    text-align: left !important;
+  }
+  
+  .text-sm-center {
+    text-align: center !important;
+  }
+  
+  .text-sm-right {
+    text-align: right !important;
+  }
+}
+
+@include breakpoint-up(md) {
+  .text-md-left {
+    text-align: left !important;
+  }
+  
+  .text-md-center {
+    text-align: center !important;
+  }
+  
+  .text-md-right {
+    text-align: right !important;
+  }
+}
+
+@include breakpoint-up(lg) {
+  .text-lg-left {
+    text-align: left !important;
+  }
+  
+  .text-lg-center {
+    text-align: center !important;
+  }
+  
+  .text-lg-right {
+    text-align: right !important;
+  }
+}
+
+/* Text transforms
+--------------------------------*/
+.text-lowercase {
+  text-transform: lowercase !important;
+}
+
+.text-uppercase {
+  text-transform: uppercase !important;
+}
+
+.text-capitalize {
+  text-transform: capitalize !important;
+}
+
+/* Font weights
+--------------------------------*/
+.font-weight-light {
+  font-weight: $font-weight-light !important;
+}
+
+.font-weight-normal {
+  font-weight: $font-weight-normal !important;
+}
+
+.font-weight-medium {
+  font-weight: $font-weight-medium !important;
+}
+
+.font-weight-bold {
+  font-weight: $font-weight-bold !important;
+}
+
+/* Font styles
+--------------------------------*/
+.font-italic {
+  font-style: italic !important;
+}
+
+.font-normal {
+  font-style: normal !important;
+}
+
+/* Text decorations
+--------------------------------*/
+.text-decoration-none {
+  text-decoration: none !important;
+}
+
+.text-decoration-underline {
+  text-decoration: underline !important;
+}
+
+.text-decoration-line-through {
+  text-decoration: line-through !important;
+}
+
+/* Text wrapping and overflow
+--------------------------------*/
+.text-wrap {
+  white-space: normal !important;
+}
+
+.text-nowrap {
+  white-space: nowrap !important;
+}
+
+.text-truncate {
+  @include text-truncate;
+}
+
+/* Lists
+--------------------------------*/
+.list-unstyled {
+  padding-left: 0;
+  list-style: none;
+}
+
+.list-inline {
+  padding-left: 0;
+  list-style: none;
+  
+  li {
+    display: inline-block;
+    
+    &:not(:last-child) {
+      margin-right: $spacer * 0.5;
+    }
+  }
+}
+
+.list-check {
+  padding-left: 0;
+  list-style: none;
+  
+  li {
+    position: relative;
+    padding-left: $spacer * 1.75;
+    margin-bottom: $spacer * 0.75;
+    
+    &::before {
+      content: '✓';
+      position: absolute;
+      left: 0;
+      top: 0;
+      color: $success;
+      font-weight: $font-weight-bold;
+    }
+  }
+}
+
+/* Blockquotes
+--------------------------------*/
+blockquote {
+  margin: 0 0 $spacer;
+  padding: $spacer;
+  border-left: 5px solid $breast-cancer-pink;
+  background-color: $gray-100;
+  font-style: italic;
+  
+  footer, cite {
+    display: block;
+    margin-top: $spacer * 0.5;
+    font-size: $font-size-sm;
+    color: $gray-700;
+    font-weight: $font-weight-medium;
+    font-style: normal;
+    
+    &::before {
+      content: '\2014 \00A0'; // Em dash and non-breaking space
+    }
+  }
+}
+
+/* Horizontal Rules
+--------------------------------*/
+hr {
+  margin-top: $spacer;
+  margin-bottom: $spacer;
+  border: 0;
+  border-top: 1px solid $gray-300;
+}
+
+.hr-fancy {
+  position: relative;
+  border: 0;
+  height: 1px;
+  background: $gray-300;
+  margin: $spacer * 2 0;
+  
+  &::before {
+    content: '';
+    position: absolute;
+    left: 50%;
+    top: -3px;
+    width: 50px;
+    height: 7px;
+    background: $breast-cancer-pink;
+    transform: translateX(-50%);
+  }
+}
+
+/* Code
+--------------------------------*/
+code {
+  font-size: 87.5%;
+  color: $danger;
+  word-wrap: break-word;
+}
+
+pre {
+  display: block;
+  font-size: 87.5%;
+  color: $gray-900;
+  margin-bottom: $spacer;
+  
+  code {
+    font-size: inherit;
+    color: inherit;
+    word-break: normal;
+  }
+} 

@@ -1,0 +1,165 @@
+@use "sass:color";
+
+// Color Variables
+$primary: #007bff;
+$primary-light: color.adjust($primary, $lightness: 15%);
+$primary-dark: color.adjust($primary, $lightness: -15%);
+
+$secondary: #6c757d;
+$secondary-light: color.adjust($secondary, $lightness: 15%);
+$secondary-dark: color.adjust($secondary, $lightness: -15%);
+
+$success: #28a745;
+$success-light: color.adjust($success, $lightness: 15%);
+$success-dark: color.adjust($success, $lightness: -15%);
+
+$danger: #dc3545;
+$danger-light: color.adjust($danger, $lightness: 15%);
+$danger-dark: color.adjust($danger, $lightness: -15%);
+
+$warning: #ffc107;
+$warning-light: color.adjust($warning, $lightness: 15%);
+$warning-dark: color.adjust($warning, $lightness: -15%);
+
+$info: #17a2b8;
+$info-light: color.adjust($info, $lightness: 15%);
+$info-dark: color.adjust($info, $lightness: -15%);
+
+$light: #f8f9fa;
+$dark: #343a40;
+$white: #ffffff;
+$black: #000000;
+
+// Brand-specific colors
+$breast-cancer-pink: #ff6b8b;
+$healthcare-blue: #4a90e2;
+$healing-green: #3eaf7c;
+
+// Neutral colors
+$gray-50: #fafafa;
+$gray-100: #f8f9fa;
+$gray-200: #e9ecef;
+$gray-300: #dee2e6;
+$gray-400: #ced4da;
+$gray-500: #adb5bd;
+$gray-600: #6c757d;
+$gray-700: #495057;
+$gray-800: #343a40;
+$gray-900: #212529;
+
+// Border colors
+$border-color: $gray-300;
+$border-color-light: $gray-200;
+$border-color-dark: $gray-400;
+
+// Text colors
+$text-color: $gray-800;
+$text-muted: $gray-600;
+
+// Typography
+$font-family-sans-serif: 'Roboto', sans-serif;
+$font-family-serif: 'Merriweather', serif;
+$font-family-base: $font-family-sans-serif;
+
+$font-size-base: 1rem; // 16px
+$font-size-lg: $font-size-base * 1.25; // 20px
+$font-size-md: $font-size-base; // 16px
+$font-size-sm: $font-size-base * 0.875; // 14px
+$font-size-xs: $font-size-base * 0.75; // 12px
+$font-size-2xl: $font-size-base * 1.75; // 28px
+$font-size-xl: $font-size-base * 1.5; // 24px
+$font-size-3xl: $font-size-base * 2; // 32px
+
+$font-weight-light: 300;
+$font-weight-normal: 400;
+$font-weight-medium: 500;
+$font-weight-bold: 700;
+
+$line-height-base: 1.5;
+$line-height-sm: 1.25;
+$line-height-lg: 1.8;
+
+// Heading sizes
+$h1-font-size: $font-size-base * 2.5; // 40px
+$h2-font-size: $font-size-base * 2; // 32px
+$h3-font-size: $font-size-base * 1.75; // 28px
+$h4-font-size: $font-size-base * 1.5; // 24px
+$h5-font-size: $font-size-base * 1.25; // 20px
+$h6-font-size: $font-size-base; // 16px
+
+// Spacing
+$spacer: 1rem;
+$spacing-xs: $spacer; // 16px
+$spacing-sm: $spacer * 2; // 32px
+$spacing-md: $spacer * 3; // 48px
+$spacing-lg: $spacer * 5; // 80px
+$spacing-xl: $spacer * 7; // 112px
+$spacers: (
+  0: 0,
+  1: $spacer * 0.25,  // 4px
+  2: $spacer * 0.5,   // 8px
+  3: $spacer,         // 16px
+  4: $spacer * 1.5,   // 24px
+  5: $spacer * 3,     // 48px
+  6: $spacer * 4.5,   // 72px
+  7: $spacer * 6      // 96px
+);
+
+// Breakpoints
+$breakpoint-xs: 0;
+$breakpoint-sm: 576px;
+$breakpoint-md: 768px;
+$breakpoint-lg: 992px;
+$breakpoint-xl: 1200px;
+$breakpoint-xxl: 1400px;
+
+$breakpoints: (
+  xs: $breakpoint-xs,
+  sm: $breakpoint-sm,
+  md: $breakpoint-md,
+  lg: $breakpoint-lg,
+  xl: $breakpoint-xl,
+  xxl: $breakpoint-xxl
+);
+
+// Grid
+$grid-columns: 12;
+$grid-gutter-width: 30px;
+$container-max-width: 1200px;
+
+// Border radius
+$border-radius: 0.25rem;
+$border-radius-lg: 0.5rem;
+$border-radius-sm: 0.125rem;
+$border-radius-pill: 50rem;
+
+// Box shadows
+$box-shadow-sm: 0 0.125rem 0.25rem rgba($black, 0.075);
+$box-shadow: 0 0.5rem 1rem rgba($black, 0.15);
+$box-shadow-lg: 0 1rem 3rem rgba($black, 0.175);
+
+// Z-index values
+$z-index-dropdown: 1000;
+$z-index-sticky: 1020;
+$z-index-fixed: 1030;
+$z-index-modal-backdrop: 1040;
+$z-index-modal: 1050;
+$z-index-popover: 1060;
+$z-index-tooltip: 1070;
+$z-index-toast: 1080;
+$z-index-drawer: 1090;
+$z-index-drawer-backdrop: 1085;
+
+// Transitions
+$transition-base: all 0.2s ease-in-out;
+$transition-fade: opacity 0.15s linear;
+
+// Component-specific variables
+$header-height: 70px;
+$footer-padding: $spacer * 2;
+$sidebar-width: 280px;
+
+// Buttons
+$btn-padding-y: 0.5rem;
+$btn-padding-x: 1rem;
+$btn-font-weight: $font-weight-medium; 

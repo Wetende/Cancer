@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="robots" content="noindex, nofollow">
+    <title>Page Not Found | Nzoya Foundation</title>
+    <link rel="icon" href="images/favicon.svg" type="image/svg+xml">
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        .error-page {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 70vh;
+            text-align: center;
+            padding: 2rem;
+        }
+        
+        .error-page__icon {
+            font-size: 4rem;
+            color: #e46b76;
+            margin-bottom: 1.5rem;
+        }
+        
+        .error-page__title {
+            font-size: 2.5rem;
+            color: #333;
+            margin-bottom: 1rem;
+        }
+        
+        .error-page__message {
+            font-size: 1.2rem;
+            max-width: 600px;
+            margin: 0 auto 2rem;
+            color: #666;
+        }
+        
+        .error-page__links {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+        
+        .error-page__btn {
+            display: inline-block;
+            background-color: #e46b76;
+            color: white;
+            text-decoration: none;
+            padding: 0.7rem 1.5rem;
+            border-radius: 4px;
+            font-weight: 600;
+            transition: background-color 0.3s;
+        }
+        
+        .error-page__btn:hover {
+            background-color: #d05164;
+        }
+        
+        .error-page__search {
+            max-width: 500px;
+            width: 100%;
+            margin-top: 1rem;
+        }
+        
+        .error-page__search form {
+            display: flex;
+            width: 100%;
+        }
+        
+        .error-page__search input {
+            flex: 1;
+            padding: 0.7rem 1rem;
+            border: 1px solid #ddd;
+            border-right: none;
+            border-radius: 4px 0 0 4px;
+            font-size: 1rem;
+            outline: none;
+        }
+        
+        .error-page__search button {
+            background-color: #e46b76;
+            color: white;
+            border: none;
+            padding: 0.7rem 1.2rem;
+            border-radius: 0 4px 4px 0;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        
+        .error-page__search button:hover {
+            background-color: #d05164;
+        }
+    </style>
+</head>
+<body>
+    <header id="header"></header>
+
+    <main class="error-page">
+        <div class="error-page__icon">
+            <i class="fas fa-exclamation-circle"></i>
+        </div>
+        <h1 class="error-page__title">Page Not Found</h1>
+        <p class="error-page__message">
+            We're sorry, but the page you were looking for doesn't exist. It might have been moved or deleted, or you may have typed the address incorrectly.
+        </p>
+        <div class="error-page__links">
+            <a href="index.html" class="error-page__btn">
+                <i class="fas fa-home"></i> Back to Home
+            </a>
+            <a href="pages/screening.html" class="error-page__btn">
+                <i class="fas fa-info-circle"></i> Screening Information
+            </a>
+            <a href="pages/facilities.html" class="error-page__btn">
+                <i class="fas fa-map-marker-alt"></i> Find Facilities
+            </a>
+        </div>
+        <div class="error-page__search">
+            <form action="/search" method="get">
+                <input type="text" name="q" placeholder="Search the Nzoya Foundation site...">
+                <button type="submit">
+                    <i class="fas fa-search"></i>
+                </button>
+            </form>
+        </div>
+    </main>
+
+    <footer id="footer"></footer>
+
+    <script src="js/main.js"></script>
+    <script>
+        // If the base URL is different than expected, fix the links
+        if (window.location.pathname.includes('/pages/')) {
+            document.querySelectorAll('.error-page__btn').forEach(link => {
+                if (link.getAttribute('href') === 'index.html') {
+                    link.setAttribute('href', '../index.html');
+                } else if (link.getAttribute('href').startsWith('pages/')) {
+                    link.setAttribute('href', link.getAttribute('href').replace('pages/', ''));
+                }
+            });
+            
+            // Fix form action
+            document.querySelector('.error-page__search form').setAttribute('action', '../search');
+            
+            // Fix CSS and JS paths
+            document.querySelector('link[href="css/styles.css"]').setAttribute('href', '../css/styles.css');
+            document.querySelector('script[src="js/main.js"]').setAttribute('src', '../js/main.js');
+            
+            // Fix favicon
+            document.querySelector('link[href="images/favicon.svg"]').setAttribute('href', '../images/favicon.svg');
+        }
+    </script>
+</body>
+</html> 

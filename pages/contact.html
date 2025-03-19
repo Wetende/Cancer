@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us - Breast Cancer Screening</title>
+    <meta name="description" content="Get in touch with our breast cancer screening center. Find contact information, location details, and emergency contacts.">
+    <link rel="stylesheet" href="../css/main.min.css">
+</head>
+<body>
+    <!-- Header will be loaded via JavaScript -->
+    <header id="header" class="header"></header>
+
+    <!-- Contact Hero Section -->
+    <section class="contact-hero">
+        <div class="container">
+            <h1 class="contact-hero__title">Contact Us</h1>
+            <p class="contact-hero__subtitle">We're Here to Help</p>
+        </div>
+    </section>
+
+    <!-- Contact Information Section -->
+    <section class="contact-info-section">
+        <div class="container">
+            <div class="contact-info-grid">
+                <div class="contact-info-card">
+                    <div class="contact-info-card__icon">
+                        <i class="fas fa-phone"></i>
+                    </div>
+                    <h3 class="contact-info-card__title">Phone</h3>
+                    <p class="contact-info-card__text">
+                        Main: (555) 123-4567<br>
+                        Toll-free: 1-800-555-0123
+                    </p>
+                </div>
+                <div class="contact-info-card">
+                    <div class="contact-info-card__icon">
+                        <i class="fas fa-envelope"></i>
+                    </div>
+                    <h3 class="contact-info-card__title">Email</h3>
+                    <p class="contact-info-card__text">
+                        General: info@bcscreening.org<br>
+                        Support: support@bcscreening.org
+                    </p>
+                </div>
+                <div class="contact-info-card">
+                    <div class="contact-info-card__icon">
+                        <i class="fas fa-clock"></i>
+                    </div>
+                    <h3 class="contact-info-card__title">Hours</h3>
+                    <p class="contact-info-card__text">
+                        Monday - Friday: 8:00 AM - 6:00 PM<br>
+                        Saturday: 9:00 AM - 2:00 PM
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Form Section -->
+    <section class="contact-form-section">
+        <div class="container">
+            <div class="contact-form-wrapper">
+                <div class="contact-form-content">
+                    <h2 class="section-title">Send Us a Message</h2>
+                    <form id="contactForm" class="contact-form" action="process.php" method="POST">
+                        <div class="form-group">
+                            <label for="name" class="form-label">Full Name *</label>
+                            <input type="text" id="name" name="name" class="form-control" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email" class="form-label">Email Address *</label>
+                            <input type="email" id="email" name="email" class="form-control" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="phone" class="form-label">Phone Number</label>
+                            <input type="tel" id="phone" name="phone" class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <label for="subject" class="form-label">Subject *</label>
+                            <select id="subject" name="subject" class="form-control" required>
+                                <option value="">Select a subject</option>
+                                <option value="appointment">Schedule Appointment</option>
+                                <option value="information">Request Information</option>
+                                <option value="support">Support</option>
+                                <option value="other">Other</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="message" class="form-label">Message *</label>
+                            <textarea id="message" name="message" class="form-control" rows="5" required></textarea>
+                        </div>
+                        <div class="form-group">
+                            <button type="submit" class="btn btn-primary">Send Message</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Location Section -->
+    <section class="location-section">
+        <div class="container">
+            <h2 class="section-title">Our Location</h2>
+            <div class="location-grid">
+                <div class="location-map">
+                    <!-- Map will be loaded via JavaScript -->
+                    <div id="locationMap" class="location-map__container"></div>
+                </div>
+                <div class="location-details">
+                    <div class="location-card">
+                        <h3 class="location-card__title">Main Center</h3>
+                        <address class="location-card__address">
+                            123 Healthcare Avenue<br>
+                            Suite 200<br>
+                            Cityville, ST 12345
+                        </address>
+                        <div class="location-card__directions">
+                            <a href="#" class="btn btn-outline-primary">Get Directions</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Emergency Contacts Section -->
+    <section class="emergency-section">
+        <div class="container">
+            <h2 class="section-title">Emergency Contacts</h2>
+            <div class="emergency-content">
+                <div class="emergency-card">
+                    <div class="emergency-card__icon">
+                        <i class="fas fa-ambulance"></i>
+                    </div>
+                    <h3 class="emergency-card__title">Emergency Services</h3>
+                    <p class="emergency-card__text">
+                        For medical emergencies, please dial:<br>
+                        <strong>911</strong>
+                    </p>
+                </div>
+                <div class="emergency-card">
+                    <div class="emergency-card__icon">
+                        <i class="fas fa-phone-alt"></i>
+                    </div>
+                    <h3 class="emergency-card__title">24/7 Helpline</h3>
+                    <p class="emergency-card__text">
+                        For urgent support:<br>
+                        <strong>1-800-555-9999</strong>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer will be loaded via JavaScript -->
+    <footer id="footer" class="footer"></footer>
+
+    <!-- Scripts -->
+    <script src="https://kit.fontawesome.com/your-kit-code.js" crossorigin="anonymous"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY"></script>
+    <script src="../js/main.js"></script>
+    <script src="../js/contact-form.js"></script>
+    <script src="../js/location-map.js"></script>
+</body>
+</html> 

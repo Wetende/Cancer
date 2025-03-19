@@ -1,0 +1,345 @@
+@use "../variables" as *;@use "../mixins" as *;
+@use "sass:color";
+
+/* Button Styles
+========================================================================== */
+
+/* Button Base
+--------------------------------*/
+.btn {
+  display: inline-block;
+  font-weight: $font-weight-medium;
+  text-align: center;
+  white-space: nowrap;
+  vertical-align: middle;
+  user-select: none;
+  border: 1px solid transparent;
+  padding: $spacer * 0.75 $spacer * 1.5;
+  font-size: $font-size-base;
+  line-height: 1.5;
+  border-radius: $border-radius;
+  transition: $transition-base;
+  cursor: pointer;
+  text-decoration: none;
+  
+  &:focus, &.focus {
+    outline: 0;
+    box-shadow: 0 0 0 0.2rem rgba($primary, 0.25);
+  }
+  
+  &:disabled, &.disabled {
+    opacity: 0.65;
+    pointer-events: none;
+  }
+  
+  /* Button Sizes */
+  &--sm {
+    padding: $spacer * 0.5 $spacer;
+    font-size: $font-size-sm;
+    border-radius: $border-radius-sm;
+  }
+  
+  &--lg {
+    padding: $spacer $spacer * 2;
+    font-size: $font-size-lg;
+    border-radius: $border-radius-lg;
+  }
+  
+  /* Button Block */
+  &--block {
+    display: block;
+    width: 100%;
+  }
+}
+
+/* Button Variations
+--------------------------------*/
+.btn--primary {
+  background-color: $primary;
+  border-color: $primary;
+  color: $white;
+  
+  &:hover, &:focus, &:active {
+    background-color: color.adjust($primary, $lightness: -10%);
+    border-color: color.adjust($primary, $lightness: -10%);
+    color: $white;
+    text-decoration: none;
+  }
+}
+
+.btn--secondary {
+  background-color: $secondary;
+  border-color: $secondary;
+  color: $white;
+  
+  &:hover, &:focus, &:active {
+    background-color: color.adjust($secondary, $lightness: -10%);
+    border-color: color.adjust($secondary, $lightness: -10%);
+    color: $white;
+    text-decoration: none;
+  }
+}
+
+.btn--success {
+  background-color: $success;
+  border-color: $success;
+  color: $white;
+  
+  &:hover, &:focus, &:active {
+    background-color: color.adjust($success, $lightness: -10%);
+    border-color: color.adjust($success, $lightness: -10%);
+    color: $white;
+    text-decoration: none;
+  }
+}
+
+.btn--danger {
+  background-color: $danger;
+  border-color: $danger;
+  color: $white;
+  
+  &:hover, &:focus, &:active {
+    background-color: color.adjust($danger, $lightness: -10%);
+    border-color: color.adjust($danger, $lightness: -10%);
+    color: $white;
+    text-decoration: none;
+  }
+}
+
+.btn--warning {
+  background-color: $warning;
+  border-color: $warning;
+  color: $gray-900;
+  
+  &:hover, &:focus, &:active {
+    background-color: color.adjust($warning, $lightness: -10%);
+    border-color: color.adjust($warning, $lightness: -10%);
+    color: $gray-900;
+    text-decoration: none;
+  }
+}
+
+.btn--info {
+  background-color: $info;
+  border-color: $info;
+  color: $white;
+  
+  &:hover, &:focus, &:active {
+    background-color: color.adjust($info, $lightness: -10%);
+    border-color: color.adjust($info, $lightness: -10%);
+    color: $white;
+    text-decoration: none;
+  }
+}
+
+.btn--dark {
+  background-color: $gray-800;
+  border-color: $gray-800;
+  color: $white;
+  
+  &:hover, &:focus, &:active {
+    background-color: $gray-900;
+    border-color: $gray-900;
+    color: $white;
+    text-decoration: none;
+  }
+}
+
+.btn--light {
+  background-color: $gray-100;
+  border-color: $gray-100;
+  color: $gray-800;
+  
+  &:hover, &:focus, &:active {
+    background-color: $gray-200;
+    border-color: $gray-200;
+    color: $gray-800;
+    text-decoration: none;
+  }
+}
+
+/* Outline Buttons
+--------------------------------*/
+.btn--outline-primary {
+  background-color: transparent;
+  border-color: $primary;
+  color: $primary;
+  
+  &:hover, &:focus, &:active {
+    background-color: $primary;
+    color: $white;
+    text-decoration: none;
+  }
+}
+
+.btn--outline-secondary {
+  background-color: transparent;
+  border-color: $secondary;
+  color: $secondary;
+  
+  &:hover, &:focus, &:active {
+    background-color: $secondary;
+    color: $white;
+    text-decoration: none;
+  }
+}
+
+.btn--outline-dark {
+  background-color: transparent;
+  border-color: $gray-800;
+  color: $gray-800;
+  
+  &:hover, &:focus, &:active {
+    background-color: $gray-800;
+    color: $white;
+    text-decoration: none;
+  }
+}
+
+/* Special Buttons
+--------------------------------*/
+.btn--link {
+  padding: 0;
+  background-color: transparent;
+  border: none;
+  color: $primary;
+  font-weight: $font-weight-medium;
+  text-decoration: none;
+  
+  &:hover, &:focus, &:active {
+    color: color.adjust($primary, $lightness: -15%);
+    text-decoration: underline;
+    background-color: transparent;
+    border-color: transparent;
+    box-shadow: none;
+  }
+}
+
+.btn--icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  
+  .icon {
+    margin-right: $spacer * 0.5;
+    width: 16px;
+    height: 16px;
+    
+    &:only-child {
+      margin-right: 0;
+    }
+  }
+  
+  &.btn--icon-right {
+    .icon {
+      order: 2;
+      margin-right: 0;
+      margin-left: $spacer * 0.5;
+    }
+  }
+}
+
+.btn--rounded {
+  border-radius: 50px;
+}
+
+.btn--circle {
+  width: 40px;
+  height: 40px;
+  padding: 0;
+  border-radius: 50%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  
+  &.btn--sm {
+    width: 32px;
+    height: 32px;
+  }
+  
+  &.btn--lg {
+    width: 48px;
+    height: 48px;
+  }
+  
+  .icon {
+    margin-right: 0;
+  }
+}
+
+/* Button with Hover Effect
+--------------------------------*/
+.btn--ripple {
+  position: relative;
+  overflow: hidden;
+  transform: translate3d(0, 0, 0);
+  
+  &::after {
+    content: "";
+    display: block;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    pointer-events: none;
+    background-image: radial-gradient(circle, #fff 10%, transparent 10.01%);
+    background-repeat: no-repeat;
+    background-position: 50%;
+    transform: scale(10, 10);
+    opacity: 0;
+    transition: transform 0.5s, opacity 0.5s;
+  }
+  
+  &:active::after {
+    transform: scale(0, 0);
+    opacity: 0.3;
+    transition: 0s;
+  }
+}
+
+/* Button Group
+--------------------------------*/
+.btn-group {
+  display: inline-flex;
+  position: relative;
+  
+  .btn {
+    position: relative;
+    flex: 1 1 auto;
+    
+    &:not(:first-child) {
+      margin-left: -1px;
+      border-top-left-radius: 0;
+      border-bottom-left-radius: 0;
+    }
+    
+    &:not(:last-child) {
+      border-top-right-radius: 0;
+      border-bottom-right-radius: 0;
+    }
+    
+    &:hover, &:focus, &:active {
+      z-index: 1;
+    }
+  }
+  
+  &--vertical {
+    flex-direction: column;
+    align-items: stretch;
+    
+    .btn {
+      &:not(:first-child) {
+        margin-left: 0;
+        margin-top: -1px;
+        border-top-left-radius: 0;
+        border-top-right-radius: 0;
+      }
+      
+      &:not(:last-child) {
+        border-bottom-left-radius: 0;
+        border-bottom-right-radius: 0;
+      }
+    }
+  }
+} 
