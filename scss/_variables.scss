@@ -1,11 +1,11 @@
 @use "sass:color";
 
 // Color Variables
-$primary: #007bff;
+$primary: #FF69B4;
 $primary-light: color.adjust($primary, $lightness: 15%);
 $primary-dark: color.adjust($primary, $lightness: -15%);
 
-$secondary: #6c757d;
+$secondary: #4A90E2;
 $secondary-light: color.adjust($secondary, $lightness: 15%);
 $secondary-dark: color.adjust($secondary, $lightness: -15%);
 
@@ -53,13 +53,13 @@ $border-color-light: $gray-200;
 $border-color-dark: $gray-400;
 
 // Text colors
-$text-color: $gray-800;
+$body-color: $gray-900;
 $text-muted: $gray-600;
 
 // Typography
 $font-family-sans-serif: 'Roboto', sans-serif;
 $font-family-serif: 'Merriweather', serif;
-$font-family-base: $font-family-sans-serif;
+$font-family-base: 'Open Sans', sans-serif;
 
 $font-size-base: 1rem; // 16px
 $font-size-lg: $font-size-base * 1.25; // 20px
@@ -70,6 +70,7 @@ $font-size-2xl: $font-size-base * 1.75; // 28px
 $font-size-xl: $font-size-base * 1.5; // 24px
 $font-size-3xl: $font-size-base * 2; // 32px
 
+// Font weights
 $font-weight-light: 300;
 $font-weight-normal: 400;
 $font-weight-medium: 500;
@@ -162,4 +163,37 @@ $sidebar-width: 280px;
 // Buttons
 $btn-padding-y: 0.5rem;
 $btn-padding-x: 1rem;
-$btn-font-weight: $font-weight-medium; 
+$btn-font-weight: $font-weight-medium;
+
+// Borders
+$border-width: 1px;
+$border-color: $gray-300;
+$border-radius: .25rem;
+$border-radius-lg: .5rem;
+$border-radius-sm: .2rem;
+
+// Grid
+$grid-breakpoints: $breakpoints;
+
+// Container
+$container-max-widths: (
+  sm: 540px,
+  md: 720px,
+  lg: 960px,
+  xl: 1140px,
+  xxl: 1320px
+);
+
+// Z-index
+$zindex-dropdown: 1000;
+$zindex-sticky: 1020;
+$zindex-fixed: 1030;
+$zindex-modal-backdrop: 1040;
+$zindex-modal: 1050;
+$zindex-popover: 1060;
+$zindex-tooltip: 1070;
+
+// Components
+$transition-base: all .2s ease-in-out;
+$transition-fade: opacity .15s linear;
+$transition-collapse: height .35s ease; 

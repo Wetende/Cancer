@@ -1,49 +1,213 @@
+@use '../variables' as *;
+@use '../mixins' as *;
+@use "sass:color";
+
 // Facilities Page Styles
-.facilities-search {
-    padding: $spacing-lg 0;
-
-    .search-panel {
-        background-color: $white;
-        border-radius: $border-radius;
-        box-shadow: $box-shadow;
-        padding: $spacing-md;
-        margin-bottom: $spacing-md;
-
-        &__title {
-            font-size: $font-size-lg;
-            margin-bottom: $spacing-md;
-            color: $primary;
+.facilities-hero {
+    background-color: $primary;
+    color: $white;
+    padding: $spacer * 4 0;
+    text-align: center;
+    
+    &__title {
+        font-size: 2.5rem;
+        margin-bottom: $spacer;
+        
+        @include media-breakpoint-up(md) {
+            font-size: 3.5rem;
         }
     }
+    
+    &__subtitle {
+        font-size: 1.25rem;
+        opacity: 0.9;
+    }
+}
 
-    .search-form {
-        .form-group {
-            margin-bottom: $spacing-sm;
+.facilities-search {
+    padding: $spacer * 3 0;
+    background-color: $light;
+    
+    &__form {
+        max-width: 600px;
+        margin: 0 auto;
+        display: flex;
+        gap: $spacer;
+        
+        @include media-breakpoint-down(sm) {
+            flex-direction: column;
         }
+    }
+    
+    &__input {
+        flex: 1;
+        padding: $spacer;
+        border: 1px solid $gray-300;
+        border-radius: $border-radius;
+        font-size: 1rem;
+        
+        &:focus {
+            outline: none;
+            border-color: $primary;
+            box-shadow: 0 0 0 2px rgba($primary, 0.2);
+        }
+    }
+    
+    &__button {
+        padding: $spacer $spacer * 2;
+        background-color: $primary;
+        color: $white;
+        border: none;
+        border-radius: $border-radius;
+        font-weight: 600;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+        
+        &:hover {
+            background-color: color.adjust($primary, $lightness: -10%);
+        }
+    }
+}
 
-        .filter-options {
+.facilities-grid {
+    padding: $spacer * 4 0;
+    
+    &__container {
+        display: grid;
+        gap: $spacer * 2;
+        
+        @include media-breakpoint-up(sm) {
+            grid-template-columns: repeat(2, 1fr);
+        }
+        
+        @include media-breakpoint-up(lg) {
+            grid-template-columns: repeat(3, 1fr);
+        }
+    }
+}
+
+.facility-card {
+    background: $white;
+    border-radius: $border-radius;
+    box-shadow: $box-shadow;
+    overflow: hidden;
+    transition: transform 0.3s ease;
+    
+    &:hover {
+        transform: translateY(-5px);
+    }
+    
+    &__image {
+        width: 100%;
+        height: 200px;
+        object-fit: cover;
+    }
+    
+    &__content {
+        padding: $spacer * 2;
+    }
+    
+    &__title {
+        font-size: 1.25rem;
+        margin-bottom: $spacer;
+        color: $dark;
+    }
+    
+    &__info {
+        margin-bottom: $spacer;
+        
+        p {
+            margin: 0 0 $spacer * 0.5;
+            color: $gray-600;
             display: flex;
-            flex-wrap: wrap;
-            margin: $spacing-sm 0;
-            padding: $spacing-sm 0;
-            border-top: 1px solid $gray-300;
-            border-bottom: 1px solid $gray-300;
-
-            .form-check {
-                margin-right: $spacing-md;
-                margin-bottom: $spacing-xs;
+            align-items: center;
+            gap: $spacer * 0.5;
+            
+            i {
+                color: $primary;
+                width: 20px;
             }
         }
-
-        .search-actions {
-            display: flex;
-            justify-content: flex-start;
-            margin-top: $spacing-md;
-
-            .btn {
-                margin-right: $spacing-sm;
+    }
+    
+    &__actions {
+        display: flex;
+        gap: $spacer;
+        
+        .btn {
+            flex: 1;
+            padding: $spacer * 0.5 $spacer;
+            text-align: center;
+            text-decoration: none;
+            border-radius: $border-radius;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            
+            &-primary {
+                background-color: $primary;
+                color: $white;
+                
+                &:hover {
+                    background-color: color.adjust($primary, $lightness: -10%);
+                }
+            }
+            
+            &-secondary {
+                background-color: $light;
+                color: $primary;
+                
+                &:hover {
+                    background-color: color.adjust($light, $lightness: -5%);
+                }
             }
         }
+    }
+}
+
+.facility-filters {
+    margin-bottom: $spacer * 3;
+    
+    &__list {
+        display: flex;
+        flex-wrap: wrap;
+        gap: $spacer;
+        justify-content: center;
+        list-style: none;
+        padding: 0;
+        margin: 0;
+    }
+    
+    &__item {
+        button {
+            background: none;
+            border: 2px solid $primary;
+            color: $primary;
+            padding: $spacer * 0.5 $spacer;
+            border-radius: $border-radius;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: 600;
+            
+            &:hover,
+            &.active {
+                background: $primary;
+                color: $white;
+            }
+        }
+    }
+}
+
+.facility-map {
+    height: 400px;
+    margin-top: $spacer * 4;
+    border-radius: $border-radius;
+    overflow: hidden;
+    box-shadow: $box-shadow;
+    
+    iframe {
+        width: 100%;
+        height: 100%;
+        border: 0;
     }
 }
 
@@ -82,7 +246,7 @@
     &__title {
         font-size: $font-size-lg;
         margin-bottom: $spacing-xs;
-        color: darken($primary, 15%);
+        color: color.adjust($primary, $lightness: -15%);
     }
 
     &__count {
