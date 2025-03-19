@@ -16,6 +16,26 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // Initialize hero slider
     initHeroSlider();
+
+    // Mobile Navigation Toggle
+    const navbarToggle = document.querySelector('.navbar-toggle');
+    const navbarMenu = document.querySelector('.navbar-menu');
+
+    if (navbarToggle && navbarMenu) {
+        navbarToggle.addEventListener('click', function() {
+            navbarMenu.classList.toggle('active');
+            navbarToggle.classList.toggle('active');
+        });
+
+        // Close menu when clicking outside
+        document.addEventListener('click', function(event) {
+            const isClickInside = navbarToggle.contains(event.target) || navbarMenu.contains(event.target);
+            if (!isClickInside && navbarMenu.classList.contains('active')) {
+                navbarMenu.classList.remove('active');
+                navbarToggle.classList.remove('active');
+            }
+        });
+    }
 });
 
 // Component Loading System
@@ -26,6 +46,7 @@ function loadComponents() {
     // Load Header
     const header = document.getElementById('header');
     if (header) {
+        header.className = 'sticky-header';
         header.innerHTML = `
             <div class="container">
                 <div class="logo">

@@ -365,4 +365,108 @@
       }
     }
   }
+}
+
+// Primary button (CTA)
+.btn-primary {
+  display: inline-block;
+  color: $white;
+  font-weight: 600;
+  padding: 10px 20px;
+  border-radius: 50px;
+  background: linear-gradient(to right, #C75B7A, #6B9080);
+  border: 2px solid $white;
+  transition: all 0.3s ease;
+  text-align: center;
+  text-decoration: none;
+  
+  @include breakpoint-down(md) {
+    padding: 8px 15px;
+    font-size: 0.9rem;
+  }
+  
+  &:hover, &:focus {
+    background: linear-gradient(to right, #A84765, #557366);
+    transform: scale(1.05);
+    box-shadow: 0 0 15px rgba($accent, 0.5);
+    color: $white;
+    text-decoration: none;
+  }
+}
+
+// Secondary button
+.btn-secondary {
+  display: inline-block;
+  color: $accent;
+  font-weight: 600;
+  padding: 10px 20px;
+  border-radius: 50px;
+  background: transparent;
+  border: 2px solid $accent;
+  transition: all 0.3s ease;
+  text-align: center;
+  text-decoration: none;
+  
+  @include breakpoint-down(md) {
+    padding: 8px 15px;
+    font-size: 0.9rem;
+  }
+  
+  &:hover, &:focus {
+    background-color: rgba($accent, 0.1);
+    transform: scale(1.05);
+    box-shadow: 0 0 10px rgba($accent, 0.3);
+    color: $accent;
+    text-decoration: none;
+  }
+}
+
+// Outline button
+.btn-outline-primary {
+  display: inline-block;
+  color: $accent;
+  font-weight: 600;
+  padding: 10px 20px;
+  border-radius: 50px;
+  background: transparent;
+  border: 2px solid $accent;
+  transition: all 0.3s ease;
+  text-align: center;
+  text-decoration: none;
+  
+  @include breakpoint-down(md) {
+    padding: 8px 15px;
+    font-size: 0.9rem;
+  }
+  
+  &:hover, &:focus {
+    background-color: $accent;
+    color: $white;
+    text-decoration: none;
+  }
+}
+
+// Link button
+.btn-link {
+  display: inline-block;
+  color: $accent;
+  font-weight: 600;
+  text-decoration: none;
+  padding: 5px 0;
+  position: relative;
+  
+  &::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background-color: $accent;
+    transition: width 0.3s ease;
+  }
+  
+  &:hover::after, &:focus::after {
+    width: 100%;
+  }
 } 

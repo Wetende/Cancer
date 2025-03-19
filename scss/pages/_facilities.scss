@@ -567,11 +567,11 @@
         gap: $spacing-md;
         margin-bottom: $spacing-lg;
 
-        @media (min-width: $breakpoint-sm) {
+        @include breakpoint-up(sm) {
             grid-template-columns: repeat(2, 1fr);
         }
 
-        @media (min-width: $breakpoint-lg) {
+        @include breakpoint-up(lg) {
             grid-template-columns: repeat(4, 1fr);
         }
     }
@@ -615,7 +615,7 @@
 }
 
 // Responsive Adjustments
-@media (max-width: #{$breakpoint-md - 1px}) {
+@include breakpoint-down(md) {
     .facilities-list {
         height: 300px;
         border-right: none;
