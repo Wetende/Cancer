@@ -5,6 +5,10 @@ $primary: #FF69B4;
 $primary-light: color.adjust($primary, $lightness: 15%);
 $primary-dark: color.adjust($primary, $lightness: -15%);
 
+// Accent colors (updated per requirements)
+$accent: #8B0F3A;
+$accent-dark: #6A0B2B;
+
 $secondary: #4A90E2;
 $secondary-light: color.adjust($secondary, $lightness: 15%);
 $secondary-dark: color.adjust($secondary, $lightness: -15%);

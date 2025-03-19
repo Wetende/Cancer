@@ -52,6 +52,29 @@
   }
 }
 
+/* CTA Button (new style) */
+.cta-button {
+  display: inline-block;
+  background: linear-gradient(135deg, #C75B7A 0%, #8B0F3A 100%);
+  color: white;
+  padding: $spacer * 1.25 $spacer * 2.5;
+  border-radius: $border-radius;
+  font-weight: $font-weight-bold;
+  transition: $transition-base;
+  text-decoration: none;
+  border: 2px solid white;
+  box-shadow: $box-shadow;
+  text-align: center;
+  
+  &:hover, &:focus {
+    background: linear-gradient(135deg, #A24964 0%, #6A0B2B 100%);
+    color: white;
+    transform: translateY(-3px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+    text-decoration: none;
+  }
+}
+
 /* Button Variations
 --------------------------------*/
 .btn--primary {
