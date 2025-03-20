@@ -364,10 +364,23 @@
 
     <script src="../../../js/utils.js"></script>
     <script src="../../../js/components.js"></script>
-    <script src="../../../js/main.js"></script>
+    <script src="../../../js/hero.js"></script>
     <script>
-        // Initialize accordion functionality
+        // Initialize page
         document.addEventListener('DOMContentLoaded', function() {
+            console.log('[Debug] Screening page loaded');
+            
+            // Load header and footer components
+            if (typeof loadHeader === 'function') {
+                loadHeader();
+            }
+            if (typeof loadFooter === 'function') {
+                loadFooter();
+            }
+            
+            // Hero is initialized by hero.js
+            
+            // Initialize accordion functionality
             const accordionButtons = document.querySelectorAll('.accordion-button');
             
             accordionButtons.forEach(button => {

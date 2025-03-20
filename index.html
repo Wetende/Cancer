@@ -7,13 +7,158 @@
     <meta name="keywords" content="Nzoya Foundation, breast cancer, screening, mammogram, breast MRI, breast health, cancer prevention, Bellevue, WA, Seattle">
     <meta name="author" content="Nzoya Foundation">
     <title>Breast Cancer Screening Information | Nzoya Foundation</title>
-    <link rel="icon" id="favicon-link" href="/Cancer/images/favicon.svg" type="image/svg+xml">
-    <link rel="stylesheet" id="styles-link" href="/Cancer/css/styles.css">
+    <link rel="icon" id="favicon-link" href="images/favicon.svg" type="image/svg+xml">
+    <link rel="stylesheet" id="styles-link" href="css/styles.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
     <style>
         .hero h2 {
             font-family: 'Montserrat', sans-serif;
+        }
+        /* Inline critical CSS for hero slider to ensure it works even if CSS files fail to load */
+        .hero-slider {
+            position: relative;
+            width: 100%;
+            height: 80vh;
+            min-height: 600px;
+            overflow: hidden;
+        }
+        .hero-slide {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.8s ease, visibility 0.8s ease;
+            z-index: 0;
+        }
+        .hero-slide.active {
+            opacity: 1;
+            visibility: visible;
+            z-index: 1;
+        }
+        .hero-slide::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.4);
+        }
+        .hero-slide .hero-content {
+            position: relative;
+            z-index: 2;
+            color: white;
+            max-width: 800px;
+            text-align: center;
+            margin: 0 auto;
+            padding: 0 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .hero-slide h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            color: white;
+        }
+        .hero-slide p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            max-width: 600px;
+        }
+        .slider-navigation {
+            position: absolute;
+            bottom: 30px;
+            left: 0;
+            right: 0;
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            z-index: 10;
+        }
+        .slider-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background-color: rgba(255, 255, 255, 0.5);
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        .slider-dot.active {
+            background-color: #e84c93;
+            transform: scale(1.2);
+        }
+        .slider-arrow {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 50px;
+            height: 50px;
+            background-color: rgba(255, 255, 255, 0.7);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            z-index: 10;
+            transition: all 0.3s ease;
+            opacity: 0.7;
+        }
+        .slider-arrow:hover {
+            background-color: white;
+            opacity: 1;
+        }
+        .slider-arrow-left {
+            left: 30px;
+        }
+        .slider-arrow-right {
+            right: 30px;
+        }
+        .slider-arrow i {
+            color: #333;
+            font-size: 1.2rem;
+        }
+        .btn-primary {
+            display: inline-block;
+            padding: 15px 30px;
+            background-color: #e84c93;
+            color: white;
+            text-decoration: none;
+            border-radius: 4px;
+            font-weight: bold;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            text-align: center;
+            margin: 0 auto;
+        }
+        .btn-primary:hover {
+            background-color: #d43a81;
+            transform: translateY(-2px);
+        }
+        @media (max-width: 768px) {
+            .hero-slider {
+                height: 70vh;
+                min-height: 500px;
+            }
+            .hero-slide h2 {
+                font-size: 2rem;
+            }
+            .hero-slide p {
+                font-size: 1rem;
+            }
+            .btn-primary {
+                padding: 12px 24px;
+                font-size: 1rem;
+            }
         }
     </style>
 </head>
@@ -25,7 +170,7 @@
     <main>
         <section class="hero">
             <div class="hero-slider">
-                <div class="hero-slide" style="background-image: url('images/content/womanstanding.jpg');">
+                <div class="hero-slide active" style="background-image: url('images/content/womanstanding.jpg');">
                     <div class="hero-content">
                         <h2>Early Detection Saves Lives</h2>
                         <p>Nzoya Foundation is dedicated to breast cancer awareness and early detection in the Bellevue, WA community. Learn about screening options and schedule your mammogram today.</p>
@@ -58,16 +203,24 @@
 
         <section id="about" class="about-section">
             <div class="container">
-                <h2>About Breast Cancer Screening</h2>
+                <div class="section-header">
+                    <h2>About Breast Cancer Screening</h2>
+                    <div class="section-divider"></div>
+                </div>
                 <div class="content-columns">
                     <div class="col">
-                        <p>Breast cancer screening focuses on finding the disease early when it is easier to treat. Screening tests are done on a regular schedule for people with no breast cancer symptoms. These tests identify signs that might otherwise go unnoticed.</p>
-                        <p>Regular screenings are important because the earlier we detect the disease, the better. People with smaller, early-stage breast cancer have more treatment options and a better chance for a full recovery and a long, healthy life.</p>
+                        <div class="about-content-box">
+                            <h3>Early Detection Matters</h3>
+                            <p>Breast cancer screening focuses on finding the disease early when it is easier to treat. Screening tests are done on a regular schedule for people with no breast cancer symptoms. These tests identify signs that might otherwise go unnoticed.</p>
+                            <p>Regular screenings are important because the earlier we detect the disease, the better. People with smaller, early-stage breast cancer have more treatment options and a better chance for a full recovery and a long, healthy life.</p>
+                        </div>
                     </div>
                     <div class="col">
-                        <h3>Our Expertise</h3>
-                        <p>Our breast health experts provide screening tests and can help you decide what is right for you. This depends on your age, health, risk level, and other factors. The screenings we recommend — 3D mammogram and sometimes breast MRI (magnetic resonance imaging) — are based on the best scientific evidence.</p>
-                        <p>The technologists and radiologists who perform and interpret your screenings specialize in breast imaging and exceed national standards.</p>
+                        <div class="about-content-box">
+                            <h3>Our Expertise</h3>
+                            <p>Our breast health experts provide screening tests and can help you decide what is right for you. This depends on your age, health, risk level, and other factors. The screenings we recommend — 3D mammogram and sometimes breast MRI (magnetic resonance imaging) — are based on the best scientific evidence.</p>
+                            <p>The technologists and radiologists who perform and interpret your screenings specialize in breast imaging and exceed national standards.</p>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -75,7 +228,10 @@
 
         <section id="screening-types" class="screening-types-section">
             <div class="container">
-                <h2>Types of Breast Screening</h2>
+                <div class="section-header">
+                    <h2>Types of Breast Screening</h2>
+                    <div class="section-divider"></div>
+                </div>
                 <div class="screening-cards">
                     <div class="card">
                         <div class="icon-container">
@@ -116,21 +272,29 @@
 
         <section id="schedule" class="schedule-section">
             <div class="container">
-                <h2>Schedule a Screening</h2>
+                <div class="section-header">
+                    <h2>Schedule a Screening</h2>
+                    <div class="section-divider"></div>
+                </div>
                 <div class="content-columns">
                     <div class="col">
-                        <h3>Locations</h3>
-                        <ul class="locations-list">
-                            <li>South Lake Union Clinic</li>
-                            <li>UW Medical Center - Roosevelt</li>
-                            <li>UW Medical Center - Northwest</li>
-                            <li>UW Medicine - Eastside Specialty Center</li>
-                            <li>Mobile Mammogram Van (various locations)</li>
-                        </ul>
-                        <p>Call <a href="tel:2066067800">206.606.7800</a> to request a screening mammogram or breast MRI.</p>
+                        <div class="schedule-content-box">
+                            <h3>Locations 📍</h3>
+                            <ul class="locations-list">
+                                <li>📍 Bellevue Main Center - 1200 Bellevue Way NE</li>
+                                <li>📍 Overlake Medical Pavilion - 1231 116th Ave NE</li>
+                                <li>📍 Factoria Screening Center - 3707 Factoria Blvd SE</li>
+                                <li>📍 Crossroads Bellevue - 15600 NE 8th St</li>
+                                <li>📍 Mobile Mammogram Van (various Bellevue locations)</li>
+                            </ul>
+                            <div class="contact-info-box">
+                                <i class="fas fa-phone-alt"></i>
+                                <p>Call <a href="tel:4255551234">425.555.1234</a> to request a screening mammogram or breast MRI.</p>
+                            </div>
+                        </div>
                     </div>
                     <div class="col">
-                        <div id="schedule-form">
+                        <div class="form-container" id="schedule-form">
                             <h3>Request Information</h3>
                             <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSdFn1O0QwDFi1insIGMgygG2Yv-PYKOUjZ9OcCN-VOIQnwRVw/viewform?embedded=true" width="100%" height="600" frameborder="0" marginheight="0" marginwidth="0">Loading…</iframe>
                         </div>
@@ -141,7 +305,10 @@
 
         <section id="faq" class="faq-section">
             <div class="container">
-                <h2>Frequently Asked Questions</h2>
+                <div class="section-header">
+                    <h2>Frequently Asked Questions</h2>
+                    <div class="section-divider"></div>
+                </div>
                 <div class="accordion">
                     <div class="accordion-item">
                         <button class="accordion-header">What is 3D mammography?</button>
@@ -181,13 +348,16 @@
 
         <section id="resources" class="resources-section">
             <div class="container">
-                <h2>Additional Resources</h2>
+                <div class="section-header">
+                    <h2>Additional Resources</h2>
+                    <div class="section-divider"></div>
+                </div>
                 <div class="resources-grid">
                     <div class="resource-card">
                         <img src="images/content/educativematerial.jpg" alt="Multilingual Resources" class="resource-image">
                         <h3>Multilingual Resources</h3>
                         <p>Information about screening mammograms available in multiple languages:</p>
-                        <ul>
+                        <ul class="resource-list">
                             <li><a href="#">Arabic</a></li>
                             <li><a href="#">Chinese</a></li>
                             <li><a href="#">Korean</a></li>
@@ -222,7 +392,10 @@
 
         <section id="contact" class="contact-section">
             <div class="container">
-                <h2>Contact Us</h2>
+                <div class="section-header">
+                    <h2>Contact Us</h2>
+                    <div class="section-divider"></div>
+                </div>
                 <div class="contact-info">
                     <div class="contact-method">
                         <img src="images/content/womansmiling.jpg" alt="Call Us" class="contact-image">
@@ -249,20 +422,100 @@
     <footer id="footer"></footer>
 
     <!-- Scripts -->
-    <script src="/Cancer/js/utils.js"></script>
-    <script src="/Cancer/js/components.js"></script>
-    <script src="/Cancer/js/main.js"></script>
+    <script src="js/utils.js"></script>
+    <script src="js/components.js"></script>
+    <script src="js/hero.js"></script>
     <script>
         document.addEventListener('DOMContentLoaded', function() {
+            console.log('[Debug] Home page loaded');
+            
             // Load header and footer components
-            loadComponent('#header', 'header.html', function() {
-                console.log('[Component Loading] Header loaded successfully');
+            if (typeof loadHeader === 'function') {
+                loadHeader();
+            }
+            if (typeof loadFooter === 'function') {
+                loadFooter();
+            }
+            
+            // Hero is initialized by hero.js
+        });
+        
+        // Standalone slider implementation as fallback
+        function standaloneSliderInit() {
+            const slider = document.querySelector('.hero-slider');
+            const slides = document.querySelectorAll('.hero-slide');
+            const dotsContainer = document.querySelector('.slider-navigation');
+            const prevBtn = document.querySelector('.slider-arrow-left');
+            const nextBtn = document.querySelector('.slider-arrow-right');
+            
+            if (!slider || slides.length === 0) {
+                return;
+            }
+            
+            let currentSlide = 0;
+            let slideInterval;
+            const intervalTime = 6000;
+            
+            // Set initial active slide
+            slides[0].classList.add('active');
+            
+            // Create navigation dots
+            slides.forEach((_, index) => {
+                const dot = document.createElement('div');
+                dot.classList.add('slider-dot');
+                if (index === 0) dot.classList.add('active');
+                dot.addEventListener('click', () => goToSlide(index));
+                dotsContainer.appendChild(dot);
             });
             
-            loadComponent('#footer', 'footer.html', function() {
-                console.log('[Component Loading] Footer loaded successfully');
+            function goToSlide(slideIndex) {
+                if (slideIndex < 0) slideIndex = slides.length - 1;
+                else if (slideIndex >= slides.length) slideIndex = 0;
+                
+                slides.forEach(slide => slide.classList.remove('active'));
+                slides[slideIndex].classList.add('active');
+                
+                currentSlide = slideIndex;
+                
+                document.querySelectorAll('.slider-dot').forEach((dot, index) => {
+                    dot.classList.toggle('active', index === currentSlide);
+                });
+                
+                resetInterval();
+            }
+            
+            function nextSlide() {
+                goToSlide(currentSlide + 1);
+            }
+            
+            function prevSlide() {
+                goToSlide(currentSlide - 1);
+            }
+            
+            if (prevBtn) prevBtn.addEventListener('click', function(e) {
+                e.preventDefault();
+                prevSlide();
             });
-        });
+            
+            if (nextBtn) nextBtn.addEventListener('click', function(e) {
+                e.preventDefault();
+                nextSlide();
+            });
+            
+            function startInterval() {
+                slideInterval = setInterval(nextSlide, intervalTime);
+            }
+            
+            function resetInterval() {
+                clearInterval(slideInterval);
+                startInterval();
+            }
+            
+            startInterval();
+            
+            slider.addEventListener('mouseenter', () => clearInterval(slideInterval));
+            slider.addEventListener('mouseleave', startInterval);
+        }
     </script>
 </body>
 </html> 

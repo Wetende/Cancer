@@ -196,12 +196,47 @@ function loadHero(container, options = {}) {
             if (ctaElement) ctaElement.style.display = 'none';
         }
         
-        if (imageSrc) {
-            const imgElement = document.getElementById('hero-img');
-            if (imgElement) {
-                imgElement.setAttribute('src', imageSrc);
-                if (imageAlt) imgElement.setAttribute('alt', imageAlt);
+        // Configure the background image for static hero
+        const heroStatic = document.querySelector('.hero-static');
+        if (heroStatic && imageSrc) {
+            heroStatic.style.backgroundImage = `url('${imageSrc}')`;
+        }
+    });
+}
+
+// Load hero component with overlay background
+function loadHeroWithOverlay(container, options = {}) {
+    loadComponent(container, 'hero.html', () => {
+        const { title, description, ctaText, ctaUrl, backgroundImage } = options;
+        
+        // Set hero content
+        if (title) {
+            const titleElement = document.getElementById('hero-title');
+            if (titleElement) titleElement.textContent = title;
+        }
+        
+        if (description) {
+            const descElement = document.getElementById('hero-description');
+            if (descElement) descElement.textContent = description;
+        }
+        
+        if (ctaText) {
+            const ctaElement = document.getElementById('hero-cta');
+            if (ctaElement) {
+                ctaElement.textContent = ctaText;
+                if (ctaUrl) ctaElement.setAttribute('href', ctaUrl);
             }
+        } else {
+            // Remove CTA if not needed
+            const ctaElement = document.getElementById('hero-cta');
+            if (ctaElement) ctaElement.style.display = 'none';
+        }
+        
+        // Set the background image for the hero static component
+        const heroStatic = document.querySelector('.hero-static');
+        if (heroStatic && backgroundImage) {
+            console.log('[Hero] Setting background image:', backgroundImage);
+            heroStatic.style.backgroundImage = `url('${backgroundImage}')`;
         }
     });
 }

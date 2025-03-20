@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="{{meta_description}}">
+    <meta name="keywords" content="{{meta_keywords}}">
+    <meta name="author" content="Nzoya Foundation">
+    <title>{{page_title}} | Nzoya Foundation</title>
+    
+    <link rel="icon" href="/Cancer/images/favicon.svg" type="image/svg+xml">
+    <link rel="stylesheet" href="/Cancer/css/styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Page-specific styles -->
+    <style id="page-styles">
+        /* Add page-specific styles here */
+    </style>
+</head>
+<body>
+    <!-- Header will be loaded here -->
+    <header id="header"></header>
+
+    <!-- Main content -->
+    <main id="main-content" class="{{page_class}}">
+        <!-- Hero section with overlay -->
+        <section class="hero-section" id="hero-container">
+            <!-- Hero content will be loaded by the loadHeroWithOverlay function -->
+        </section>
+
+        <!-- Content section -->
+        <div class="container">
+            <!-- Main content goes here -->
+        </div>
+    </main>
+
+    <!-- Footer will be loaded here -->
+    <footer id="footer"></footer>
+
+    <!-- Scripts -->
+    <script src="/Cancer/js/utils.js"></script>
+    <script src="/Cancer/js/components.js"></script>
+    <script src="/Cancer/js/hero.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log('[Debug] Template page loaded');
+            
+            // Load header and footer components
+            if (typeof loadHeader === 'function') {
+                loadHeader();
+            }
+            if (typeof loadFooter === 'function') {
+                loadFooter();
+            }
+            
+            // Hero is initialized by hero.js
+            
+            // Initialize the hero with overlay background (if needed)
+            if (typeof loadHeroWithOverlay === 'function') {
+                loadHeroWithOverlay('#hero-container', {
+                    title: '{{hero_title}}',
+                    description: '{{hero_description}}',
+                    ctaText: '{{hero_cta_text}}',
+                    ctaUrl: '{{hero_cta_url}}',
+                    backgroundImage: '{{hero_background_image}}'
+                });
+            }
+            
+            // Add breadcrumb below hero
+            const heroContainer = document.getElementById('hero-container');
+            if (heroContainer) {
+                const breadcrumb = document.createElement('nav');
+                breadcrumb.className = 'breadcrumb container';
+                breadcrumb.innerHTML = '<a href="/Cancer/index.html">Home</a> &gt; <span>{{page_title}}</span>';
+                
+                // Insert after hero section
+                heroContainer.parentNode.insertBefore(breadcrumb, heroContainer.nextSibling);
+            }
+            
+            // Initialize page-specific functions
+            // Add your page-specific functions here
+        });
+    </script>
+</body>
+</html> 

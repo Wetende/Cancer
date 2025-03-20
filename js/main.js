@@ -82,6 +82,9 @@ function initPageSpecific() {
         console.log('[Main] Initializing risk calculator');
         initRiskCalculator();
     }
+    
+    // Initialize sub-page heroes
+    initSubpageHero();
 }
 
 // Home page initialization
@@ -140,6 +143,15 @@ function handleSearch(event) {
 // Accordion functionality
 function initAccordion() {
     const accordionHeaders = document.querySelectorAll('.accordion-header');
+    
+    // Check if we have accordion items
+    if (accordionHeaders.length === 0) return;
+    
+    // Set first item as active by default if none are active
+    const hasActiveItem = document.querySelector('.accordion-item.active');
+    if (!hasActiveItem && accordionHeaders.length > 0) {
+        accordionHeaders[0].parentElement.classList.add('active');
+    }
     
     accordionHeaders.forEach(header => {
         header.addEventListener('click', function() {
@@ -333,7 +345,9 @@ if (googleForm) {
     });
 }
 
-// Hero Slider functionality
+// Make initHeroSlider globally available
+window.initHeroSlider = initHeroSlider;
+
 function initHeroSlider() {
     const slider = document.querySelector('.hero-slider');
     const slides = document.querySelectorAll('.hero-slide');
@@ -341,7 +355,9 @@ function initHeroSlider() {
     const prevBtn = document.querySelector('.slider-arrow-left');
     const nextBtn = document.querySelector('.slider-arrow-right');
     
-    if (!slider || slides.length === 0) return;
+    if (!slider || slides.length === 0) {
+        return;
+    }
     
     let currentSlide = 0;
     let slideInterval;
@@ -355,7 +371,9 @@ function initHeroSlider() {
         const dot = document.createElement('div');
         dot.classList.add('slider-dot');
         if (index === 0) dot.classList.add('active');
-        dot.addEventListener('click', () => goToSlide(index));
+        dot.addEventListener('click', () => {
+            goToSlide(index);
+        });
         dotsContainer.appendChild(dot);
     });
     
@@ -374,7 +392,6 @@ function initHeroSlider() {
         slides[slideIndex].classList.add('active');
         
         currentSlide = slideIndex;
-        slider.style.transform = `translateX(-${currentSlide * 100}%)`;
         
         // Update active dot
         document.querySelectorAll('.slider-dot').forEach((dot, index) => {
@@ -396,8 +413,19 @@ function initHeroSlider() {
     }
     
     // Add event listeners to navigation buttons
-    if (prevBtn) prevBtn.addEventListener('click', prevSlide);
-    if (nextBtn) nextBtn.addEventListener('click', nextSlide);
+    if (prevBtn) {
+        prevBtn.addEventListener('click', function(e) {
+            e.preventDefault();
+            prevSlide();
+        });
+    }
+    
+    if (nextBtn) {
+        nextBtn.addEventListener('click', function(e) {
+            e.preventDefault();
+            nextSlide();
+        });
+    }
     
     // Auto slide functionality
     function startInterval() {
@@ -489,4 +517,125 @@ const utils = {
 };
 
 // Export utilities for use in other scripts
-window.utils = utils; 
+window.utils = utils;
+
+// Initialize the hero section for subpages
+function initSubpageHero() {
+    // Skip for home page
+    const path = window.location.pathname;
+    if (path.endsWith('/index.html') || path.endsWith('/') || path.endsWith('/Cancer/')) {
+        console.log('[Hero] Skipping hero initialization for home page');
+        return;
+    }
+    
+    const heroContainer = document.getElementById('hero-container');
+    if (!heroContainer) {
+        console.log('[Hero] Hero container not found, skipping initialization');
+        return;
+    }
+    
+    console.log('[Hero] Initializing subpage hero for path:', path);
+    
+    // Get page information
+    const pageTitle = document.title;
+    console.log('[Hero] Page title:', pageTitle);
+    
+    const pageName = pageTitle.split('|')[0].trim();
+    console.log('[Hero] Extracted page name:', pageName);
+    
+    // Default hero options
+    const defaultOptions = {
+        title: pageName,
+        description: '', // Default empty
+        ctaText: '', // Default empty (will hide the button)
+        ctaUrl: '#',
+        backgroundImage: '/Cancer/images/content/slide2.jpg' // Default background
+    };
+    
+    // Page-specific configurations
+    const pageConfigs = {
+        'About Screening': {
+            description: 'Understanding Breast Cancer Screening and Early Detection',
+            ctaText: 'Schedule a Screening',
+            ctaUrl: '#schedule',
+            backgroundImage: '/Cancer/images/content/breast.jpg'
+        },
+        'Breast Cancer': {
+            description: 'Learn about breast cancer, symptoms, and treatment options',
+            ctaText: 'Get Support',
+            ctaUrl: '#support',
+            backgroundImage: '/Cancer/images/content/womanstanding.jpg'
+        },
+        'Screening': {
+            description: 'Find information about our screening programs and services',
+            ctaText: 'Find a Facility',
+            ctaUrl: '#facilities',
+            backgroundImage: '/Cancer/images/content/medical-5051144_1280.jpg'
+        },
+        'Facilities': {
+            description: 'Locate breast cancer screening facilities near you',
+            ctaText: 'Schedule an Appointment',
+            ctaUrl: '#schedule',
+            backgroundImage: '/Cancer/images/content/operation-1807543_1280.jpg'
+        },
+        'Resources': {
+            description: 'Access helpful resources and support services',
+            ctaText: 'View All Resources',
+            ctaUrl: '#resources-list',
+            backgroundImage: '/Cancer/images/content/educativematerial.jpg'
+        },
+        'FAQ': {
+            description: 'Find answers to commonly asked questions',
+            ctaText: 'Contact Us',
+            ctaUrl: '/Cancer/pages/contact.html',
+            backgroundImage: '/Cancer/images/content/group of women.jpg'
+        },
+        'Contact Us': {
+            description: 'Get in touch with our team',
+            ctaText: 'View Locations',
+            ctaUrl: '#locations',
+            backgroundImage: '/Cancer/images/content/image3.jpg'
+        },
+        'Risk Assessment Calculator': {
+            description: 'Assess your personal risk of breast cancer',
+            ctaText: 'Start Assessment',
+            ctaUrl: '#calculator',
+            backgroundImage: '/Cancer/images/content/breast-cancer-2773775_1280.jpg'
+        }
+    };
+    
+    // Get the specific config or use default
+    console.log('[Hero] Available configurations:', Object.keys(pageConfigs));
+    const config = pageConfigs[pageName] || {};
+    console.log('[Hero] Selected config:', config);
+    
+    const options = {...defaultOptions, ...config};
+    console.log('[Hero] Final options:', options);
+    
+    // Initialize hero if the function exists
+    if (typeof loadHeroWithOverlay === 'function') {
+        console.log('[Hero] Loading hero with overlay');
+        loadHeroWithOverlay('#hero-container', options);
+    } else {
+        console.error('[Hero] loadHeroWithOverlay function not found');
+    }
+    
+    // Add breadcrumb below hero
+    addBreadcrumbAfterHero(heroContainer, pageName);
+}
+
+// Add breadcrumb navigation after hero
+function addBreadcrumbAfterHero(heroContainer, pageName) {
+    if (!heroContainer) return;
+    
+    // Check if breadcrumb already exists
+    const existingBreadcrumb = document.querySelector('.breadcrumb');
+    if (existingBreadcrumb) return;
+    
+    const breadcrumb = document.createElement('nav');
+    breadcrumb.className = 'breadcrumb container';
+    breadcrumb.innerHTML = `<a href="/Cancer/index.html">Home</a> &gt; <span>${pageName}</span>`;
+    
+    // Insert after hero section
+    heroContainer.parentNode.insertBefore(breadcrumb, heroContainer.nextSibling);
+} 

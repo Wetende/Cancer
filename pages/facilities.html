@@ -8,28 +8,112 @@
     
     <!-- Stylesheets -->
     <link rel="stylesheet" id="styles-link" href="/Cancer/css/styles.css">
+    <style>
+        .info-card {
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 8px 15px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+            background-color: #fff;
+            position: relative;
+            z-index: 1;
+            padding: 1.75rem;
+            border-top: 4px solid #d43f8d;
+        }
+        
+        .info-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 14px 28px rgba(0,0,0,0.2);
+        }
+        
+        .info-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(212, 63, 141, 0.08) 0%, rgba(255, 255, 255, 0) 60%);
+            z-index: -1;
+        }
+        
+        .info-card__icon {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background-color: #fce4f1;
+            margin-bottom: 1.25rem;
+        }
+        
+        .info-card__icon i {
+            font-size: 1.75rem;
+            color: #d43f8d;
+        }
+        
+        .info-card__title {
+            margin-bottom: 1rem;
+            font-size: 1.35rem;
+            color: #333;
+            position: relative;
+            padding-bottom: 0.75rem;
+        }
+        
+        .info-card__title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 50px;
+            height: 3px;
+            background-color: #d43f8d;
+        }
+        
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+        
+        .section-cta {
+            background-color: #f8f9fa;
+            border-radius: 10px;
+            padding: 2rem;
+            text-align: center;
+            margin-top: 2.5rem;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        }
+        
+        .section-cta p {
+            font-size: 1.2rem;
+            margin-bottom: 1.25rem;
+        }
+        
+        @media (max-width: 768px) {
+            .info-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
 </head>
 <body>
     <!-- Header will be loaded via JavaScript -->
     <header id="header" class="header"></header>
 
     <main>
-        <!-- Hero Section -->
-        <section class="hero hero--sm">
-            <div class="container">
-                <div class="hero-image">
-                    <img src="../images/content/operation-1807543_1280.jpg" alt="Screening Facilities" class="full-width-image">
-                </div>
-                <h1 class="hero__title">Find Screening Facilities</h1>
-                <p class="hero__subtitle">Locate breast cancer screening services near you</p>
-            </div>
+        <!-- Hero section with overlay -->
+        <section class="hero-section" id="hero-container">
+            <!-- Hero content will be loaded by the loadHeroWithOverlay function -->
         </section>
 
         <!-- Search Section -->
         <section class="facilities-search section">
             <div class="container">
                 <div class="search-panel">
-                    <h2 class="search-panel__title">Find Facilities</h2>
+                    <h2 class="search-panel__title">Find Facilities 📍</h2>
                     <form id="facilitiesSearchForm" class="search-form">
                         <div class="form-row">
                             <div class="col-md-5">
@@ -117,9 +201,34 @@
                             </div>
                             
                             <div id="facilitiesList" class="facilities-list__results">
-                                <!-- Will be populated by JavaScript -->
-                                <div class="loading-indicator">
-                                    <p>Enter a location to find nearby facilities</p>
+                                <!-- Sample facilities -->
+                                <div class="facility-item">
+                                    <h4 class="facility-name">📍 Bellevue Main Center</h4>
+                                    <p class="facility-address">1200 Bellevue Way NE, Bellevue, WA 98004</p>
+                                    <p class="facility-phone">425-555-1234</p>
+                                    <p class="facility-type">Screening & Diagnostic Center</p>
+                                    <a href="#" class="facility-details-btn">View Details</a>
+                                </div>
+                                <div class="facility-item">
+                                    <h4 class="facility-name">📍 Overlake Medical Pavilion</h4>
+                                    <p class="facility-address">1231 116th Ave NE, Bellevue, WA 98004</p>
+                                    <p class="facility-phone">425-555-2345</p>
+                                    <p class="facility-type">Hospital Imaging Department</p>
+                                    <a href="#" class="facility-details-btn">View Details</a>
+                                </div>
+                                <div class="facility-item">
+                                    <h4 class="facility-name">📍 Factoria Screening Center</h4>
+                                    <p class="facility-address">3707 Factoria Blvd SE, Bellevue, WA 98006</p>
+                                    <p class="facility-phone">425-555-3456</p>
+                                    <p class="facility-type">Screening Center</p>
+                                    <a href="#" class="facility-details-btn">View Details</a>
+                                </div>
+                                <div class="facility-item">
+                                    <h4 class="facility-name">📍 Crossroads Bellevue Clinic</h4>
+                                    <p class="facility-address">15600 NE 8th St, Bellevue, WA 98008</p>
+                                    <p class="facility-phone">425-555-4567</p>
+                                    <p class="facility-type">Mobile Screening Unit</p>
+                                    <a href="#" class="facility-details-btn">View Details</a>
                                 </div>
                             </div>
                         </div>
@@ -157,18 +266,15 @@
         <!-- Information Section -->
         <section class="facilities-info section section--bg-light">
             <div class="container">
-                <div class="section-image">
-                    <img src="../images/content/medical-5051144_1280.jpg" alt="Information About Screening" class="section-img">
-                </div>
-                <h2 class="section-title">Information About Screening Facilities</h2>
+                <h2 class="section-title">Information About Bellevue Screening Facilities 📍</h2>
                 
                 <div class="info-grid">
                     <div class="info-card">
                         <div class="info-card__icon">
                             <i class="fas fa-hospital"></i>
                         </div>
-                        <h3 class="info-card__title">Types of Facilities</h3>
-                        <p>Breast cancer screening may be available at various locations including hospitals, clinics, imaging centers, and mobile screening units. Each offers different services and levels of care.</p>
+                        <h3 class="info-card__title">Types of Facilities in Bellevue 📍</h3>
+                        <p>Bellevue offers world-class breast cancer screening at various locations including Overlake Hospital, specialized clinics, dedicated imaging centers, and mobile screening units that serve the entire Greater Bellevue area.</p>
                     </div>
                     
                     <div class="info-card">
@@ -176,15 +282,15 @@
                             <i class="fas fa-hand-holding-usd"></i>
                         </div>
                         <h3 class="info-card__title">Financial Assistance</h3>
-                        <p>Many facilities offer financial assistance programs or sliding scale fees. Some accept insurance, Medicaid, or Medicare. The CDC's National Breast and Cervical Cancer Early Detection Program (NBCCEDP) provides free or low-cost screenings.</p>
+                        <p>Bellevue screening centers offer various financial assistance programs and accept most insurance plans. Washington state's Breast, Cervical, and Colon Health Program provides free screenings for eligible residents in King County including Bellevue.</p>
                     </div>
                     
                     <div class="info-card">
                         <div class="info-card__icon">
                             <i class="fas fa-clipboard-check"></i>
                         </div>
-                        <h3 class="info-card__title">What to Expect</h3>
-                        <p>Most screening appointments take 30 minutes or less. You'll be asked to remove clothing from the waist up and wear a gown. The technologist will position each breast for the mammogram, which may cause brief discomfort.</p>
+                        <h3 class="info-card__title">What to Expect at Bellevue Centers 📍</h3>
+                        <p>At Bellevue screening facilities, most appointments take 30 minutes or less. Our trained technologists ensure a comfortable experience while providing high-quality imaging using state-of-the-art equipment found at all Bellevue locations.</p>
                     </div>
                     
                     <div class="info-card">
@@ -192,12 +298,12 @@
                             <i class="fas fa-calendar-check"></i>
                         </div>
                         <h3 class="info-card__title">Preparing for Your Visit</h3>
-                        <p>Schedule your mammogram when your breasts are least tender. Don't wear deodorant, talcum powder, or lotion under your arms or on your breasts on the day of the exam. Bring your insurance card and any previous mammogram records.</p>
+                        <p>For your visit to any Bellevue screening center, don't wear deodorant, talcum powder, or lotion under your arms or on your breasts. Bring your insurance card and any previous mammogram records. Free parking is available at all Bellevue locations.</p>
                     </div>
                 </div>
                 
                 <div class="section-cta">
-                    <p>Can't find a facility near you or need help scheduling an appointment?</p>
+                    <p>Need help finding a Bellevue facility or scheduling an appointment? 📍</p>
                     <a href="contact.html" class="btn btn-primary">Contact Us for Assistance</a>
                 </div>
             </div>
@@ -210,16 +316,23 @@
     <!-- Scripts -->
     <script id="utils-script" src="../js/utils.js"></script>
     <script id="components-script" src="../js/components.js"></script>
-    <script id="main-script" src="../js/main.js"></script>
+    <script src="../js/hero.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/js/all.min.js" crossorigin="anonymous"></script>
     <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&libraries=places&callback=initMap" async defer></script>
     <script id="facilities-script" src="../js/facilities-map.js"></script>
     <script>
-        // Initialize components after DOM is loaded
         document.addEventListener('DOMContentLoaded', function() {
+            console.log('[Debug] Facilities page loaded');
+            
             // Load header and footer
-            loadComponent('#header', 'header.html');
-            loadComponent('#footer', 'footer.html');
+            if (typeof loadHeader === 'function') {
+                loadHeader();
+            }
+            if (typeof loadFooter === 'function') {
+                loadFooter();
+            }
+            
+            // Hero is initialized by hero.js
             
             // Initialize page-specific scripts
             if (typeof initPage === 'function') {

@@ -11,82 +11,116 @@
     <link rel="stylesheet" id="styles-link" href="/Cancer/css/styles.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        .info-card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            object-position: center;
+            border-radius: 8px 8px 0 0;
+        }
+        
+        .info-card {
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .info-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+        }
+        
+        .info-card h2 {
+            margin-top: 1rem;
+            padding: 0 1rem;
+        }
+        
+        .info-card p {
+            flex-grow: 1;
+            padding: 0 1rem;
+        }
+        
+        .info-card a {
+            margin: 1rem;
+            align-self: flex-start;
+        }
+    </style>
 </head>
 <body>
     <header id="header"></header>
 
     <main class="about-cancer-page">
-        <section class="hero-section">
-            <div class="container">
-                <div class="hero-image">
-                    <img src="../images/content/breast-cancer-2773774_1920.jpg" alt="Understanding Breast Cancer" class="full-width-image">
-                </div>
-                <h1>Breast Cancer</h1>
-                <p class="lead">No matter who you are or where you live in Bellevue, breast cancer may touch your life. Our comprehensive guide provides the latest evidence-based information on breast cancer risk factors, screening, diagnosis, treatment, metastatic breast cancer, survivorship, and more.</p>
-            </div>
+        <!-- Hero section with overlay -->
+        <section class="hero-section" id="hero-container">
+            <!-- Hero content will be loaded by the loadHeroWithOverlay function -->
         </section>
 
         <section class="info-cards">
             <div class="container">
                 <div class="card-grid">
                     <div class="info-card">
-                        <img src="../images/about/facts-statistics.jpg" alt="Facts and Statistics">
+                        <img src="../images/content/breast.jpg" alt="Facts and Statistics">
                         <h2>Facts and Statistics</h2>
                         <p>Learn the basics of breast cancer, including warning signs, statistics and information for women and men with breast cancer.</p>
                         <a href="breast-cancer/facts-statistics/index.html" class="btn-secondary">Learn More</a>
                     </div>
 
                     <div class="info-card">
-                        <img src="../images/about/risk-factors.jpg" alt="Risk Factors">
+                        <img src="../images/content/pink-ribbon-3715346_1280.jpg" alt="Risk Factors">
                         <h2>Breast Cancer Risk Factors</h2>
                         <p>Learn about breast cancer risk factors, genetic counseling and testing, options for people at higher risk and healthy lifestyle choices.</p>
                         <a href="breast-cancer/risk-factors/index.html" class="btn-secondary">Learn More</a>
                     </div>
 
                     <div class="info-card">
-                        <img src="../images/about/screening.jpg" alt="Screening and Early Detection">
+                        <img src="../images/content/medical-5051144_1280.jpg" alt="Screening and Early Detection">
                         <h2>Screening and Early Detection</h2>
                         <p>Learn about breast cancer screening tests, when to get screened and what to do if you find a lump or change in your breast.</p>
                         <a href="breast-cancer/screening/index.html" class="btn-secondary">Learn More</a>
                     </div>
 
                     <div class="info-card">
-                        <img src="../images/about/diagnosis.jpg" alt="Diagnosing Breast Cancer">
+                        <img src="../images/content/doctor-650534_1280.jpg" alt="Diagnosing Breast Cancer">
                         <h2>Diagnosing Breast Cancer</h2>
                         <p>Learn about breast biopsies and understanding your diagnosis, including information on pathology reports and factors that affect treatment.</p>
                         <a href="breast-cancer/diagnosis/index.html" class="btn-secondary">Learn More</a>
                     </div>
 
                     <div class="info-card">
-                        <img src="../images/about/treatment.jpg" alt="Treating Breast Cancer">
+                        <img src="../images/content/treatment-4099432_1280.jpg" alt="Treating Breast Cancer">
                         <h2>Treating Breast Cancer</h2>
                         <p>Learn about types of treatment, side effects, getting high-quality care and other issues, including the importance of clinical trials.</p>
                         <a href="breast-cancer/treatment/index.html" class="btn-secondary">Learn More</a>
                     </div>
 
                     <div class="info-card">
-                        <img src="../images/about/metastatic.jpg" alt="Metastatic Breast Cancer">
+                        <img src="../images/content/operation-1807543_1280.jpg" alt="Metastatic Breast Cancer">
                         <h2>Metastatic Breast Cancer</h2>
                         <p>Learn about metastatic breast cancer treatment and care, including clinical trials, side effects, quality of life and family support.</p>
                         <a href="breast-cancer/metastatic/index.html" class="btn-secondary">Learn More</a>
                     </div>
 
                     <div class="info-card">
-                        <img src="../images/about/survivorship.jpg" alt="Survivorship Topics">
+                        <img src="../images/content/survivor.jpg" alt="Survivorship Topics">
                         <h2>Survivorship Topics</h2>
                         <p>Read about common concerns and issues for people diagnosed with breast cancer.</p>
                         <a href="breast-cancer/survivorship/index.html" class="btn-secondary">Learn More</a>
                     </div>
 
                     <div class="info-card">
-                        <img src="../images/about/financial.jpg" alt="Financial Assistance">
+                        <img src="../images/content/pink-1821381_1280.jpg" alt="Financial Assistance">
                         <h2>Financial Assistance</h2>
                         <p>Find resources for prescription costs, medical expenses, transportation, lodging, and child and elder care in the Bellevue area.</p>
                         <a href="breast-cancer/financial-assistance/index.html" class="btn-secondary">Learn More</a>
                     </div>
 
                     <div class="info-card">
-                        <img src="../images/about/support.jpg" alt="Support">
+                        <img src="../images/content/people-2557396_1280.jpg" alt="Support">
                         <h2>Support</h2>
                         <p>Connect with local support groups and other types of social support in the Bellevue community.</p>
                         <a href="breast-cancer/support/index.html" class="btn-secondary">Learn More</a>
@@ -107,6 +141,21 @@
 
     <script src="../js/utils.js"></script>
     <script src="../js/components.js"></script>
-    <script src="../js/main.js"></script>
+    <script src="../js/hero.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log('[Debug] Breast Cancer page loaded');
+            
+            // Load header and footer components
+            if (typeof loadHeader === 'function') {
+                loadHeader();
+            }
+            if (typeof loadFooter === 'function') {
+                loadFooter();
+            }
+            
+            // Hero is initialized by hero.js
+        });
+    </script>
 </body>
 </html> 

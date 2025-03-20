@@ -7,216 +7,620 @@
     <meta name="description" content="Learn about breast cancer screening guidelines, types of screening, risk factors, and self-examination techniques.">
     <link rel="stylesheet" href="../css/main.min.css">
     <link rel="stylesheet" id="styles-link" href="/Cancer/css/styles.css">
+    <style>
+        /* Section Styles */
+        .section {
+            padding: 3.5rem 0;
+        }
+        
+        .section--bg-light {
+            background-color: #f8f9fa;
+        }
+        
+        .section-title {
+            position: relative;
+            margin-bottom: 2rem;
+            padding-bottom: 0.75rem;
+            font-size: 2rem;
+            color: #333;
+            text-align: center;
+        }
+        
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background-color: #d43f8d;
+        }
+        
+        /* Screening Types Section */
+        .screening-types-section {
+            padding: 4rem 0;
+            background-color: #fff;
+        }
+        
+        .screening-type__image {
+            width: 100%;
+            height: 220px;
+            object-fit: cover;
+            object-position: center;
+            border-radius: 8px 8px 0 0;
+            transition: transform 0.5s ease;
+        }
+        
+        .screening-type {
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+            transition: all 0.3s ease;
+            background-color: #fff;
+            margin-bottom: 1.5rem;
+        }
+        
+        .screening-type:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 12px 24px rgba(0,0,0,0.2);
+        }
+        
+        .screening-type:hover .screening-type__image {
+            transform: scale(1.05);
+        }
+        
+        .screening-type__content {
+            padding: 1.25rem;
+        }
+        
+        .screening-type__title {
+            margin-top: 0;
+            margin-bottom: 0.5rem;
+            font-size: 1.25rem;
+            color: #d43f8d;
+        }
+        
+        .screening-type__text {
+            margin-bottom: 0;
+            color: #555;
+            line-height: 1.5;
+        }
+        
+        .screening-types-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+        
+        /* Guidelines Section */
+        .guidelines-section {
+            padding: 4rem 0;
+            background-color: #f8f9fa;
+        }
+        
+        .guidelines-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+        
+        .guideline-card {
+            background-color: #fff;
+            border-radius: 8px;
+            padding: 1.5rem;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+            border-top: 4px solid #d43f8d;
+        }
+        
+        .guideline-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+        }
+        
+        .guideline-card__header {
+            margin-bottom: 1rem;
+        }
+        
+        .guideline-card__title {
+            font-size: 1.25rem;
+            color: #d43f8d;
+            margin: 0;
+        }
+        
+        .guideline-card__list {
+            padding-left: 1.25rem;
+            margin: 0;
+        }
+        
+        .guideline-card__list li {
+            margin-bottom: 0.5rem;
+            color: #555;
+        }
+        
+        /* FAQ Section */
+        .faq-section {
+            padding: 4rem 0;
+            background-color: #fff;
+        }
+        
+        .accordion {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        
+        .accordion-item {
+            margin-bottom: 1rem;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        }
+        
+        .accordion-button {
+            width: 100%;
+            text-align: left;
+            padding: 1.25rem;
+            background-color: #fff;
+            border: none;
+            font-weight: 600;
+            font-size: 1.1rem;
+            color: #333;
+            cursor: pointer;
+            position: relative;
+            transition: all 0.3s;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .accordion-button:hover {
+            background-color: #f8f9fa;
+        }
+        
+        .accordion-button.active {
+            background-color: #fce4f1;
+            color: #d43f8d;
+        }
+        
+        .accordion-icon {
+            position: relative;
+            width: 20px;
+            height: 20px;
+        }
+        
+        .accordion-icon::before,
+        .accordion-icon::after {
+            content: '';
+            position: absolute;
+            background-color: #d43f8d;
+            transition: all 0.3s;
+        }
+        
+        .accordion-icon::before {
+            top: 9px;
+            left: 0;
+            width: 100%;
+            height: 2px;
+        }
+        
+        .accordion-icon::after {
+            top: 0;
+            left: 9px;
+            width: 2px;
+            height: 100%;
+        }
+        
+        .accordion-button.active .accordion-icon::after {
+            transform: rotate(90deg);
+            opacity: 0;
+        }
+        
+        .accordion-content {
+            background-color: #fff;
+            padding: 0 1.25rem;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease, padding 0.3s ease;
+        }
+        
+        .accordion-button.active + .accordion-content {
+            padding: 0 1.25rem 1.25rem;
+            max-height: 1000px;
+        }
+        
+        .accordion-content p {
+            color: #555;
+            line-height: 1.6;
+        }
+        
+        /* Risk Factors Section */
+        .risk-factors-section {
+            padding: 4rem 0;
+            background-color: #f8f9fa;
+        }
+        
+        .risk-factors-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+        
+        .risk-factor-item {
+            background-color: #fff;
+            border-radius: 8px;
+            padding: 1.5rem;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            text-align: center;
+            transition: transform 0.3s ease;
+        }
+        
+        .risk-factor-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+        }
+        
+        .risk-factor-item__icon {
+            display: inline-flex;
+            justify-content: center;
+            align-items: center;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background-color: #fce4f1;
+            margin-bottom: 1rem;
+        }
+        
+        .risk-factor-item__icon i {
+            font-size: 1.5rem;
+            color: #d43f8d;
+        }
+        
+        .risk-factor-item__title {
+            font-size: 1.25rem;
+            color: #333;
+            margin-bottom: 0.75rem;
+        }
+        
+        .risk-factor-item__text {
+            color: #555;
+            margin: 0;
+        }
+        
+        /* Self-Exam Guide Section */
+        .self-exam-section {
+            padding: 4rem 0;
+            background-color: #fff;
+        }
+        
+        .self-exam-steps {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+        
+        .step-item {
+            position: relative;
+            background-color: #fff;
+            border-radius: 8px;
+            padding: 2rem 1.5rem 1.5rem;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            text-align: center;
+            transition: transform 0.3s ease;
+        }
+        
+        .step-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+        }
+        
+        .step-item__number {
+            position: absolute;
+            top: -20px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background-color: #d43f8d;
+            color: #fff;
+            font-weight: 700;
+            font-size: 1.25rem;
+        }
+        
+        .step-item__title {
+            font-size: 1.25rem;
+            color: #333;
+            margin-bottom: 0.75rem;
+        }
+        
+        .step-item__text {
+            color: #555;
+            margin: 0;
+        }
+
+        .question-cta {
+            margin-top: 3rem;
+            text-align: center;
+        }
+        
+        .question-cta .btn {
+            display: inline-block;
+            padding: 0.75rem 1.5rem;
+            background-color: #d43f8d;
+            color: white;
+            text-decoration: none;
+            border-radius: 4px;
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+        
+        .question-cta .btn:hover {
+            background-color: #c42e7c;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 10px rgba(212, 63, 141, 0.3);
+        }
+        
+        @media (max-width: 768px) {
+            .screening-types-grid,
+            .guidelines-grid,
+            .risk-factors-grid,
+            .self-exam-steps {
+                grid-template-columns: 1fr;
+            }
+            
+            .section {
+                padding: 2.5rem 0;
+            }
+            
+            .section-title {
+                font-size: 1.75rem;
+            }
+        }
+    </style>
 </head>
 <body>
     <!-- Header will be loaded via JavaScript -->
     <header id="header" class="header"></header>
 
-    <!-- Screening Hero Section -->
-    <section class="screening-hero">
-        <div class="hero-background" style="background-image: url('../images/content/breast.jpg');"></div>
-        <div class="container">
-            <div class="hero-text">
-                <h1>Breast Cancer Screening</h1>
-                <p class="lead">Early Detection Saves Lives</p>
-            </div>
-        </div>
-    </section>
+    <main>
+        <!-- Hero section with overlay -->
+        <section class="hero-section" id="hero-container">
+            <!-- Hero content will be loaded by the loadHeroWithOverlay function -->
+        </section>
 
-    <!-- Screening Guidelines Section -->
-    <section class="guidelines-section">
-        <div class="container">
-            <div class="section-image">
-                <img src="../images/content/medical-5051144_1280.jpg" alt="Screening Guidelines" class="section-img">
-            </div>
-            <h2 class="section-title">Screening Guidelines</h2>
-            <div class="guidelines-grid">
-                <div class="guideline-card">
-                    <div class="guideline-card__header">
-                        <h3 class="guideline-card__title">Ages 20-39</h3>
+        <!-- Screening Guidelines Section -->
+        <section class="guidelines-section section section--bg-light">
+            <div class="container">
+                <h2 class="section-title">Screening Guidelines</h2>
+                <div class="guidelines-grid">
+                    <div class="guideline-card">
+                        <div class="guideline-card__header">
+                            <h3 class="guideline-card__title">Ages 20-39</h3>
+                        </div>
+                        <ul class="guideline-card__list">
+                            <li>Monthly breast self-examination</li>
+                            <li>Clinical breast examination every 1-3 years</li>
+                            <li>Risk assessment with healthcare provider</li>
+                        </ul>
                     </div>
-                    <ul class="guideline-card__list">
-                        <li>Monthly breast self-examination</li>
-                        <li>Clinical breast examination every 1-3 years</li>
-                        <li>Risk assessment with healthcare provider</li>
-                    </ul>
-                </div>
-                <div class="guideline-card">
-                    <div class="guideline-card__header">
-                        <h3 class="guideline-card__title">Ages 40-49</h3>
+                    <div class="guideline-card">
+                        <div class="guideline-card__header">
+                            <h3 class="guideline-card__title">Ages 40-49</h3>
+                        </div>
+                        <ul class="guideline-card__list">
+                            <li>Annual mammogram recommended</li>
+                            <li>Monthly breast self-examination</li>
+                            <li>Annual clinical breast examination</li>
+                        </ul>
                     </div>
-                    <ul class="guideline-card__list">
-                        <li>Annual mammogram recommended</li>
-                        <li>Monthly breast self-examination</li>
-                        <li>Annual clinical breast examination</li>
-                    </ul>
-                </div>
-                <div class="guideline-card">
-                    <div class="guideline-card__header">
-                        <h3 class="guideline-card__title">Ages 50+</h3>
+                    <div class="guideline-card">
+                        <div class="guideline-card__header">
+                            <h3 class="guideline-card__title">Ages 50+</h3>
+                        </div>
+                        <ul class="guideline-card__list">
+                            <li>Annual or biennial mammogram</li>
+                            <li>Monthly breast self-examination</li>
+                            <li>Annual clinical breast examination</li>
+                        </ul>
                     </div>
-                    <ul class="guideline-card__list">
-                        <li>Annual or biennial mammogram</li>
-                        <li>Monthly breast self-examination</li>
-                        <li>Annual clinical breast examination</li>
-                    </ul>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <!-- Risk Factors Section -->
-    <section class="risk-factors-section">
-        <div class="container">
-            <div class="section-image">
-                <img src="../images/content/breast-cancer-2773775_1280.jpg" alt="Risk Factors" class="section-img">
-            </div>
-            <h2 class="section-title">Risk Factors</h2>
-            <div class="risk-factors-grid">
-                <div class="risk-factor-item">
-                    <div class="risk-factor-item__icon">
-                        <i class="fas fa-dna"></i>
+        <!-- Types of Screening Section -->
+        <section class="screening-types-section section">
+            <div class="container">
+                <h2 class="section-title">Types of Screening</h2>
+                <div class="screening-types-grid">
+                    <div class="screening-type">
+                        <img src="../images/content/breast-cancer-2773774_1920.jpg" alt="Mammogram" class="screening-type__image">
+                        <div class="screening-type__content">
+                            <h3 class="screening-type__title">Mammogram</h3>
+                            <p class="screening-type__text">X-ray examination of the breast tissue to detect abnormalities</p>
+                        </div>
                     </div>
-                    <h3 class="risk-factor-item__title">Genetic Factors</h3>
-                    <p class="risk-factor-item__text">Family history and genetic mutations like BRCA1 and BRCA2</p>
-                </div>
-                <div class="risk-factor-item">
-                    <div class="risk-factor-item__icon">
-                        <i class="fas fa-calendar-alt"></i>
+                    <div class="screening-type">
+                        <img src="../images/content/medical-5051144_1280.jpg" alt="Ultrasound" class="screening-type__image">
+                        <div class="screening-type__content">
+                            <h3 class="screening-type__title">Ultrasound</h3>
+                            <p class="screening-type__text">Sound waves used to create images of breast tissue</p>
+                        </div>
                     </div>
-                    <h3 class="risk-factor-item__title">Age</h3>
-                    <p class="risk-factor-item__text">Risk increases with age, especially after 50</p>
-                </div>
-                <div class="risk-factor-item">
-                    <div class="risk-factor-item__icon">
-                        <i class="fas fa-venus"></i>
+                    <div class="screening-type">
+                        <img src="../images/content/doctor-650534_1280.jpg" alt="MRI" class="screening-type__image">
+                        <div class="screening-type__content">
+                            <h3 class="screening-type__title">MRI</h3>
+                            <p class="screening-type__text">Magnetic resonance imaging for detailed breast examination</p>
+                        </div>
                     </div>
-                    <h3 class="risk-factor-item__title">Reproductive History</h3>
-                    <p class="risk-factor-item__text">Late pregnancy or no pregnancies can increase risk</p>
-                </div>
-                <div class="risk-factor-item">
-                    <div class="risk-factor-item__icon">
-                        <i class="fas fa-heartbeat"></i>
-                    </div>
-                    <h3 class="risk-factor-item__title">Lifestyle Factors</h3>
-                    <p class="risk-factor-item__text">Diet, exercise, alcohol consumption, and smoking</p>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <!-- Types of Screening Section -->
-    <section class="screening-types-section">
-        <div class="container">
-            <div class="section-image">
-                <img src="../images/content/operation-1807543_1280.jpg" alt="Types of Screening" class="section-img">
+        <!-- Risk Factors Section -->
+        <section class="risk-factors-section section section--bg-light">
+            <div class="container">
+                <h2 class="section-title">Risk Factors</h2>
+                <div class="risk-factors-grid">
+                    <div class="risk-factor-item">
+                        <div class="risk-factor-item__icon">
+                            <i class="fas fa-dna"></i>
+                        </div>
+                        <h3 class="risk-factor-item__title">Genetic Factors</h3>
+                        <p class="risk-factor-item__text">Family history and genetic mutations like BRCA1 and BRCA2</p>
+                    </div>
+                    <div class="risk-factor-item">
+                        <div class="risk-factor-item__icon">
+                            <i class="fas fa-calendar-alt"></i>
+                        </div>
+                        <h3 class="risk-factor-item__title">Age</h3>
+                        <p class="risk-factor-item__text">Risk increases with age, especially after 50</p>
+                    </div>
+                    <div class="risk-factor-item">
+                        <div class="risk-factor-item__icon">
+                            <i class="fas fa-venus"></i>
+                        </div>
+                        <h3 class="risk-factor-item__title">Reproductive History</h3>
+                        <p class="risk-factor-item__text">Late pregnancy or no pregnancies can increase risk</p>
+                    </div>
+                    <div class="risk-factor-item">
+                        <div class="risk-factor-item__icon">
+                            <i class="fas fa-heartbeat"></i>
+                        </div>
+                        <h3 class="risk-factor-item__title">Lifestyle Factors</h3>
+                        <p class="risk-factor-item__text">Diet, exercise, alcohol consumption, and smoking</p>
+                    </div>
+                </div>
             </div>
-            <h2 class="section-title">Types of Screening</h2>
-            <div class="screening-types-grid">
-                <div class="screening-type">
-                    <img src="../images/screening/mammogram.jpg" alt="Mammogram" class="screening-type__image">
-                    <h3 class="screening-type__title">Mammogram</h3>
-                    <p class="screening-type__text">X-ray examination of the breast tissue to detect abnormalities</p>
-                </div>
-                <div class="screening-type">
-                    <img src="../images/screening/ultrasound.jpg" alt="Ultrasound" class="screening-type__image">
-                    <h3 class="screening-type__title">Ultrasound</h3>
-                    <p class="screening-type__text">Sound waves used to create images of breast tissue</p>
-                </div>
-                <div class="screening-type">
-                    <img src="../images/screening/mri.jpg" alt="MRI" class="screening-type__image">
-                    <h3 class="screening-type__title">MRI</h3>
-                    <p class="screening-type__text">Magnetic resonance imaging for detailed breast examination</p>
-                </div>
-            </div>
-        </div>
-    </section>
+        </section>
 
-    <!-- FAQ Section -->
-    <section class="faq-section">
-        <div class="container">
-            <div class="section-image">
-                <img src="../images/content/doctor-650534_1280.jpg" alt="Frequently Asked Questions" class="section-img">
-            </div>
-            <h2 class="section-title">Frequently Asked Questions</h2>
-            <div class="accordion">
-                <div class="accordion-item">
-                    <button class="accordion-button">
-                        When should I start getting mammograms?
-                        <span class="accordion-icon"></span>
-                    </button>
-                    <div class="accordion-content">
-                        <p>The general recommendation is to begin annual mammograms at age 40. However, if you have risk factors, your doctor may recommend starting earlier.</p>
+        <!-- Self-Exam Guide -->
+        <section class="self-exam-section section">
+            <div class="container">
+                <h2 class="section-title">Breast Self-Examination Guide</h2>
+                <div class="self-exam-steps">
+                    <div class="step-item">
+                        <div class="step-item__number">1</div>
+                        <h3 class="step-item__title">Visual Inspection</h3>
+                        <p class="step-item__text">Look for any changes in size, shape, or color of your breasts while standing in front of a mirror.</p>
                     </div>
-                </div>
-                <div class="accordion-item">
-                    <button class="accordion-button">
-                        How painful is a mammogram?
-                        <span class="accordion-icon"></span>
-                    </button>
-                    <div class="accordion-content">
-                        <p>Mammograms can cause temporary discomfort due to breast compression, but the procedure is quick and essential for early detection.</p>
+                    <div class="step-item">
+                        <div class="step-item__number">2</div>
+                        <h3 class="step-item__title">Physical Examination</h3>
+                        <p class="step-item__text">Use your fingers to check for any lumps or abnormalities in your breast tissue.</p>
                     </div>
-                </div>
-                <div class="accordion-item">
-                    <button class="accordion-button">
-                        What should I expect during a screening?
-                        <span class="accordion-icon"></span>
-                    </button>
-                    <div class="accordion-content">
-                        <p>A typical screening mammogram takes about 20-30 minutes. You'll need to undress from the waist up and stand in front of the mammogram machine while each breast is compressed for imaging.</p>
+                    <div class="step-item">
+                        <div class="step-item__number">3</div>
+                        <h3 class="step-item__title">Lying Down Check</h3>
+                        <p class="step-item__text">Repeat the examination while lying down, as this spreads the breast tissue more evenly.</p>
                     </div>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <!-- Self-Exam Guide -->
-    <section class="self-exam-section">
-        <div class="container">
-            <div class="section-image">
-                <img src="../images/content/womansmiling.jpg" alt="Self-Examination Guide" class="section-img">
+        <!-- FAQ Section -->
+        <section class="faq-section section section--bg-light">
+            <div class="container">
+                <h2 class="section-title">Frequently Asked Questions</h2>
+                <div class="accordion">
+                    <div class="accordion-item">
+                        <button class="accordion-button">
+                            When should I start getting mammograms?
+                            <span class="accordion-icon"></span>
+                        </button>
+                        <div class="accordion-content">
+                            <p>The general recommendation is to begin annual mammograms at age 40. However, if you have risk factors, your doctor may recommend starting earlier.</p>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <button class="accordion-button">
+                            How painful is a mammogram?
+                            <span class="accordion-icon"></span>
+                        </button>
+                        <div class="accordion-content">
+                            <p>Mammograms can cause temporary discomfort due to breast compression, but the procedure is quick and essential for early detection.</p>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <button class="accordion-button">
+                            What should I expect during a screening?
+                            <span class="accordion-icon"></span>
+                        </button>
+                        <div class="accordion-content">
+                            <p>A typical screening mammogram takes about 20-30 minutes. You'll need to undress from the waist up and stand in front of the mammogram machine while each breast is compressed for imaging.</p>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <button class="accordion-button">
+                            How often should I get screened?
+                            <span class="accordion-icon"></span>
+                        </button>
+                        <div class="accordion-content">
+                            <p>For women 40 and older with average risk, annual mammograms are recommended. Women 55 and older can switch to biennial screening or continue yearly screening, based on their doctor's recommendation.</p>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <button class="accordion-button">
+                            What if my results are abnormal?
+                            <span class="accordion-icon"></span>
+                        </button>
+                        <div class="accordion-content">
+                            <p>An abnormal result doesn't necessarily mean you have cancer. You may need additional imaging or a biopsy to determine if there's a problem. About 80% of women who get follow-up tests do not have cancer.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="question-cta">
+                    <a href="faq.html" class="btn">View More FAQs</a>
+                </div>
             </div>
-            <h2 class="section-title">Breast Self-Examination Guide</h2>
-            <div class="self-exam-steps">
-                <div class="step-item">
-                    <div class="step-item__number">1</div>
-                    <h3 class="step-item__title">Visual Inspection</h3>
-                    <p class="step-item__text">Look for any changes in size, shape, or color of your breasts while standing in front of a mirror.</p>
-                </div>
-                <div class="step-item">
-                    <div class="step-item__number">2</div>
-                    <h3 class="step-item__title">Physical Examination</h3>
-                    <p class="step-item__text">Use your fingers to check for any lumps or abnormalities in your breast tissue.</p>
-                </div>
-                <div class="step-item">
-                    <div class="step-item__number">3</div>
-                    <h3 class="step-item__title">Lying Down Check</h3>
-                    <p class="step-item__text">Repeat the examination while lying down, as this spreads the breast tissue more evenly.</p>
-                </div>
-            </div>
-        </div>
-    </section>
+        </section>
+    </main>
 
     <!-- Footer will be loaded via JavaScript -->
     <footer id="footer" class="footer"></footer>
 
     <!-- Scripts -->
-    <script src="https://kit.fontawesome.com/your-kit-code.js" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/js/all.min.js" crossorigin="anonymous"></script>
     <script id="utils-script" src="../js/utils.js"></script>
     <script id="components-script" src="../js/components.js"></script>
-    <script id="main-script" src="../js/main.js"></script>
+    <script src="../js/hero.js"></script>
     <script>
-        // Initialize components after DOM is loaded
         document.addEventListener('DOMContentLoaded', function() {
-            // Load header and footer
-            loadComponent('#header', 'header.html');
-            loadComponent('#footer', 'footer.html');
+            console.log('[Debug] Screening page loaded');
             
-            // Initialize page-specific scripts
-            if (typeof initPage === 'function') {
-                initPage();
+            // Load header and footer components
+            if (typeof loadHeader === 'function') {
+                loadHeader();
             }
+            if (typeof loadFooter === 'function') {
+                loadFooter();
+            }
+            
+            // Hero is initialized by hero.js
+            
+            // Initialize accordion functionality
+            const accordionButtons = document.querySelectorAll('.accordion-button');
+            
+            accordionButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    // Toggle active class on the clicked button
+                    this.classList.toggle('active');
+                    
+                    // Close all other accordions if you want only one open at a time
+                    accordionButtons.forEach(otherButton => {
+                        if (otherButton !== this) {
+                            otherButton.classList.remove('active');
+                        }
+                    });
+                });
+            });
         });
     </script>
 </body>

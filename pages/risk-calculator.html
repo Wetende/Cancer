@@ -6,21 +6,35 @@
     <title>Risk Assessment Calculator | Breast Cancer Screening</title>
     <meta name="description" content="Assess your personal risk of breast cancer with our risk calculator tool. Get personalized recommendations based on your risk factors.">
     <link rel="stylesheet" id="styles-link" href="/Cancer/css/styles.css">
+    <style>
+        .section-image {
+            margin-bottom: 1.5rem;
+            border-radius: 8px;
+            overflow: hidden;
+            height: 220px;
+        }
+        
+        .section-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center;
+            transition: transform 0.3s ease;
+        }
+        
+        .section-image:hover img {
+            transform: scale(1.03);
+        }
+    </style>
 </head>
 <body>
     <!-- Header will be loaded via JavaScript -->
     <header id="header" class="header"></header>
 
     <main>
-        <!-- Hero Section -->
-        <section class="risk-calculator-hero">
-            <div class="hero-background" style="background-image: url('../images/content/breast-cancer-2773775_1280.jpg');"></div>
-            <div class="container">
-                <div class="hero-text">
-                    <h1>Breast Cancer Risk Calculator</h1>
-                    <p class="lead">Assess your personal risk factors and get recommendations</p>
-                </div>
-            </div>
+        <!-- Hero section with overlay -->
+        <section class="hero-section" id="hero-container">
+            <!-- Hero content will be loaded by the loadHeroWithOverlay function -->
         </section>
 
         <!-- Introduction Section -->
@@ -376,7 +390,24 @@
 
     <!-- Scripts -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/js/all.min.js" crossorigin="anonymous"></script>
-    <script src="../js/main.js"></script>
+    <script src="../js/utils.js"></script>
+    <script src="../js/components.js"></script>
+    <script src="../js/hero.js"></script>
     <script src="../js/risk-calculator.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log('[Debug] Risk Calculator page loaded');
+            
+            // Load header and footer components
+            if (typeof loadHeader === 'function') {
+                loadHeader();
+            }
+            if (typeof loadFooter === 'function') {
+                loadFooter();
+            }
+            
+            // Hero is initialized by hero.js
+        });
+    </script>
 </body>
 </html> 

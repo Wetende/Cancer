@@ -32,7 +32,7 @@
     <!-- Scripts -->
     <script id="utils-script" src="js/utils.js"></script>
     <script id="components-script" src="js/components.js"></script>
-    <script id="main-script" src="js/main.js"></script>
+    <script id="hero-script" src="js/hero.js"></script>
     <script>
         // Update paths for assets based on current page depth
         function resolveAssetPaths() {
@@ -44,7 +44,7 @@
             document.getElementById('styles-link').href = basePath + 'css/styles.css';
             document.getElementById('utils-script').src = basePath + 'js/utils.js';
             document.getElementById('components-script').src = basePath + 'js/components.js';
-            document.getElementById('main-script').src = basePath + 'js/main.js';
+            document.getElementById('hero-script').src = basePath + 'js/hero.js';
             
             console.log('[Template] Asset paths updated to use absolute path: ' + basePath);
         }

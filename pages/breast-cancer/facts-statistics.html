@@ -248,6 +248,115 @@
 
     <footer id="footer"></footer>
 
-    <script src="../../js/main.js"></script>
+    <!-- Scripts -->
+    <script src="../../js/utils.js"></script>
+    <script src="../../js/components.js"></script>
+    <script src="../../js/hero.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log('[Debug] Facts & Statistics page loaded');
+            
+            // Load header and footer components
+            if (typeof loadHeader === 'function') {
+                loadHeader();
+            }
+            if (typeof loadFooter === 'function') {
+                loadFooter();
+            }
+            
+            // Hero is initialized by hero.js
+            
+            // Initialize charts
+            if (typeof initCharts === 'function') {
+                initCharts();
+            }
+        });
+        
+        // Chart initialization function
+        function initCharts() {
+            // Age distribution chart
+            const ageCtx = document.getElementById('ageDistributionChart').getContext('2d');
+            const ageChart = new Chart(ageCtx, {
+                type: 'bar',
+                data: {
+                    labels: ['<40', '40-49', '50-59', '60-69', '70+'],
+                    datasets: [{
+                        label: 'Percentage of Cases',
+                        data: [5, 15, 25, 30, 25],
+                        backgroundColor: '#e9968d',
+                        borderColor: '#d06c62',
+                        borderWidth: 1
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    scales: {
+                        y: {
+                            beginAtZero: true,
+                            max: 35,
+                            title: {
+                                display: true,
+                                text: 'Percentage (%)'
+                            }
+                        },
+                        x: {
+                            title: {
+                                display: true,
+                                text: 'Age Group'
+                            }
+                        }
+                    },
+                    plugins: {
+                        legend: {
+                            display: false
+                        }
+                    }
+                }
+            });
+
+            // Survival rate chart
+            const survivalCtx = document.getElementById('survivalRateChart').getContext('2d');
+            const survivalChart = new Chart(survivalCtx, {
+                type: 'line',
+                data: {
+                    labels: ['1 year', '3 years', '5 years', '10 years'],
+                    datasets: [{
+                        label: 'Early Stage',
+                        data: [98, 95, 91, 85],
+                        borderColor: '#4CAF50',
+                        backgroundColor: 'rgba(76, 175, 80, 0.1)',
+                        tension: 0.3,
+                        fill: true
+                    }, {
+                        label: 'Advanced Stage',
+                        data: [85, 70, 55, 35],
+                        borderColor: '#FF5722',
+                        backgroundColor: 'rgba(255, 87, 34, 0.1)',
+                        tension: 0.3,
+                        fill: true
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    scales: {
+                        y: {
+                            beginAtZero: true,
+                            max: 100,
+                            title: {
+                                display: true,
+                                text: 'Survival Rate (%)'
+                            }
+                        },
+                        x: {
+                            title: {
+                                display: true,
+                                text: 'Time After Diagnosis'
+                            }
+                        }
+                    }
+                }
+            });
+        }
+    </script>
 </body>
 </html> 

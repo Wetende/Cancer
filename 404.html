@@ -132,8 +132,24 @@
 
     <footer id="footer"></footer>
 
-    <script src="js/main.js"></script>
+    <script src="js/utils.js"></script>
+    <script src="js/components.js"></script>
+    <script src="js/hero.js"></script>
     <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log('[Debug] 404 page loaded');
+            
+            // Load header and footer components
+            if (typeof loadHeader === 'function') {
+                loadHeader();
+            }
+            if (typeof loadFooter === 'function') {
+                loadFooter();
+            }
+            
+            // Hero is initialized by hero.js
+        });
+    
         // If the base URL is different than expected, fix the links
         if (window.location.pathname.includes('/pages/')) {
             document.querySelectorAll('.error-page__btn').forEach(link => {
@@ -149,7 +165,7 @@
             
             // Fix CSS and JS paths
             document.querySelector('link[href="css/styles.css"]').setAttribute('href', '../css/styles.css');
-            document.querySelector('script[src="js/main.js"]').setAttribute('src', '../js/main.js');
+            document.querySelector('script[src="js/hero.js"]').setAttribute('src', '../js/hero.js');
             
             // Fix favicon
             document.querySelector('link[href="images/favicon.svg"]').setAttribute('href', '../images/favicon.svg');

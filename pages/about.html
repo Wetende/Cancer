@@ -156,19 +156,9 @@
 
     <!-- Main content -->
     <main id="main-content" class="about-page">
-        <!-- Hero section -->
-        <section class="hero-section">
-            <div class="container">
-                <div class="hero-image">
-                    <img src="/Cancer/images/content/breast.jpg" alt="About Breast Cancer Screening" class="full-width-image">
-                </div>
-                <nav class="breadcrumb">
-                    <a href="/Cancer/index.html">Home</a> &gt;
-                    <span>About Screening</span>
-                </nav>
-                <h1>About Screening</h1>
-                <p class="lead">Understanding Breast Cancer Screening and Early Detection</p>
-            </div>
+        <!-- Hero section with overlay -->
+        <section class="hero-section" id="hero-container">
+            <!-- Hero content will be loaded by the loadHeroWithOverlay function -->
         </section>
 
         <!-- Content section -->
@@ -190,9 +180,6 @@
                 <div class="main-content" id="content-area">
                     <!-- Overview Section -->
                     <section id="overview" class="about-content content-section">
-                        <div class="section-image">
-                            <img src="/Cancer/images/content/medical-5051144_1280.jpg" alt="Breast Cancer Screening Overview" class="section-img">
-                        </div>
                         <h2>Why Screening Matters</h2>
                         <div class="content-columns">
                             <div class="col">
@@ -213,9 +200,6 @@
 
                     <!-- Types Section -->
                     <section id="types" class="about-content content-section">
-                        <div class="section-image">
-                            <img src="/Cancer/images/content/operation-1807543_1280.jpg" alt="Types of Breast Cancer Screening" class="section-img">
-                        </div>
                         <h2>Types of Screening</h2>
                         <div class="screening-grid">
                             <div class="screening-card">
@@ -244,9 +228,6 @@
 
                     <!-- Guidelines Section -->
                     <section id="guidelines" class="about-content content-section">
-                        <div class="section-image">
-                            <img src="/Cancer/images/content/doctor-650534_1280.jpg" alt="Screening Guidelines" class="section-img">
-                        </div>
                         <h2>Screening Guidelines</h2>
                         <div class="guidelines-content">
                             <div class="guideline-item">
@@ -283,31 +264,66 @@
     <!-- Scripts -->
     <script src="/Cancer/js/utils.js"></script>
     <script src="/Cancer/js/components.js"></script>
-    <script src="/Cancer/js/main.js"></script>
+    <script src="/Cancer/js/hero.js"></script>
     <script>
         document.addEventListener('DOMContentLoaded', function() {
+            console.log('[Debug] About page loaded');
+            
             // Load header and footer components
-            loadComponent('#header', '/Cancer/components/header.html');
-            loadComponent('#footer', '/Cancer/components/footer.html');
+            if (typeof loadHeader === 'function') {
+                loadHeader();
+            }
+            if (typeof loadFooter === 'function') {
+                loadFooter();
+            }
             
-            // Add smooth scrolling for navigation links
-            const navLinks = document.querySelectorAll('#section-nav-list a');
+            // Hero is initialized by hero.js
             
-            navLinks.forEach(link => {
-                link.addEventListener('click', function(e) {
-                    const targetId = this.getAttribute('href');
-                    if (targetId.startsWith('#')) {
-                        e.preventDefault();
-                        const targetElement = document.querySelector(targetId);
-                        if (targetElement) {
-                            window.scrollTo({
-                                top: targetElement.offsetTop - 100,
-                                behavior: 'smooth'
-                            });
-                        }
+            // Timeline animation
+            const timelineItems = document.querySelectorAll('.timeline-item');
+            
+            // Function to check if an element is in viewport
+            function isInViewport(element) {
+                const rect = element.getBoundingClientRect();
+                return (
+                    rect.top >= 0 &&
+                    rect.left >= 0 &&
+                    rect.bottom <= (window.innerHeight || document.documentElement.clientHeight) &&
+                    rect.right <= (window.innerWidth || document.documentElement.clientWidth)
+                );
+            }
+            
+            // Function to handle scroll event
+            function handleScroll() {
+                timelineItems.forEach(item => {
+                    if (isInViewport(item)) {
+                        item.classList.add('visible');
                     }
                 });
-            });
+            }
+            
+            // Initial check for items in viewport
+            handleScroll();
+            
+            // Add scroll event listener
+            window.addEventListener('scroll', handleScroll);
+            
+            // Add scroll event for mission-vision section
+            const missionVisionItems = document.querySelectorAll('.mission-vision-item');
+            
+            function handleMissionVisionScroll() {
+                missionVisionItems.forEach(item => {
+                    if (isInViewport(item)) {
+                        item.classList.add('visible');
+                    }
+                });
+            }
+            
+            // Initial check
+            handleMissionVisionScroll();
+            
+            // Add scroll event listener
+            window.addEventListener('scroll', handleMissionVisionScroll);
         });
     </script>
     <!-- Page-specific scripts -->

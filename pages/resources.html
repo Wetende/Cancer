@@ -144,19 +144,47 @@
         }
         
         .section-image {
-            margin-bottom: 1.5rem;
-            border-radius: 8px;
+            margin-bottom: 2rem;
+            border-radius: 12px;
             overflow: hidden;
+            height: 300px; /* Increased height for better visual */
+            position: relative;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.15);
+        }
+        
+        .section-image::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 40%;
+            background: linear-gradient(to top, rgba(0,0,0,0.6), rgba(0,0,0,0));
+            z-index: 1;
         }
         
         .section-image img {
             width: 100%;
-            height: auto;
-            transition: transform 0.3s ease;
+            height: 100%;
+            object-fit: cover;
+            object-position: center;
+            transition: transform 0.5s ease;
         }
         
-        .section-image img:hover {
-            transform: scale(1.03);
+        .section-image:hover img {
+            transform: scale(1.05);
+        }
+        
+        .section-image__title {
+            position: absolute;
+            bottom: 20px;
+            left: 25px;
+            color: white;
+            font-size: 1.75rem;
+            font-weight: 600;
+            margin: 0;
+            z-index: 2;
+            text-shadow: 1px 1px 3px rgba(0,0,0,0.5);
         }
         
         @media (max-width: 768px) {
@@ -177,16 +205,9 @@
 
     <!-- Main content -->
     <main id="main-content" class="resources-page">
-        <!-- Hero section -->
-        <section class="hero-section">
-            <div class="container">
-                <div class="hero-image">
-                    <img src="" alt="Resources and Support" class="full-width-image" id="hero-img" data-src="images/content/educativematerial.jpg">
-                </div>
-                <div id="breadcrumb-container"></div>
-                <h1 id="page-title">Resources</h1>
-                <p class="lead" id="page-description">Supporting Your Journey to Better Health in Bellevue and Beyond</p>
-            </div>
+        <!-- Hero section with overlay -->
+        <section class="hero-section" id="hero-container">
+            <!-- Hero content will be loaded by the loadHeroWithOverlay function -->
         </section>
 
         <!-- Resource Navigation -->
@@ -229,7 +250,8 @@
                     <!-- National Organizations Section -->
                     <section id="national-organizations" class="resources-content content-section">
                         <div class="section-image">
-                            <img src="" alt="National Organizations" class="section-img" id="national-img" data-src="images/content/breast-cancer-2773774_1920.jpg">
+                            <img src="../images/content/breast-cancer-2773774_1920.jpg" alt="National Organizations" class="section-img" id="national-img" data-src="images/content/breast-cancer-2773774_1920.jpg">
+                            <h2 class="section-image__title">National Organizations</h2>
                         </div>
                         <h2>National Cancer Organizations</h2>
                         <p>Connect with these trusted national organizations for comprehensive information about breast cancer screening, prevention, and treatment.</p>
@@ -241,7 +263,8 @@
                     <!-- Research and Clinical Trials Section -->
                     <section id="research" class="resources-content content-section">
                         <div class="section-image">
-                            <img src="" alt="Research and Clinical Trials" class="section-img" id="research-img" data-src="images/content/medical-5051144_1280.jpg">
+                            <img src="../images/content/medical-5051144_1280.jpg" alt="Research and Clinical Trials" class="section-img" id="research-img" data-src="images/content/medical-5051144_1280.jpg">
+                            <h2 class="section-image__title">Research & Trials</h2>
                         </div>
                         <h2>Research and Clinical Trials</h2>
                         <p>Learn about the latest research initiatives and find clinical trials that may be relevant to your situation.</p>
@@ -253,7 +276,8 @@
                     <!-- Support and Community Section -->
                     <section id="support" class="resources-content content-section">
                         <div class="section-image">
-                            <img src="" alt="Support and Community" class="section-img" id="support-img" data-src="images/content/group of women.jpg">
+                            <img src="../images/content/group of women.jpg" alt="Support and Community" class="section-img" id="support-img" data-src="images/content/group of women.jpg">
+                            <h2 class="section-image__title">Support & Community</h2>
                         </div>
                         <h2>Support & Community Resources</h2>
                         <p>Connect with others through support groups and community resources both in the Bellevue area and online.</p>
@@ -265,7 +289,8 @@
                     <!-- Financial Assistance Section -->
                     <section id="financial" class="resources-content content-section">
                         <div class="section-image">
-                            <img src="" alt="Financial Assistance" class="section-img" id="financial-img" data-src="images/content/doctor-650534_1280.jpg">
+                            <img src="../images/content/doctor-650534_1280.jpg" alt="Financial Assistance" class="section-img" id="financial-img" data-src="images/content/doctor-650534_1280.jpg">
+                            <h2 class="section-image__title">Financial Assistance</h2>
                         </div>
                         <h2>Financial Assistance Programs</h2>
                         <p>Discover resources that can help with medical expenses, insurance questions, and other financial concerns related to breast cancer care.</p>
@@ -382,18 +407,20 @@
     <!-- Scripts -->
     <script id="utils-script" src="../js/utils.js"></script>
     <script id="components-script" src="../js/components.js"></script>
-    <script id="main-script" src="../js/main.js"></script>
+    <script src="../js/hero.js"></script>
     <script>
-        // Initialize components after DOM is loaded
         document.addEventListener('DOMContentLoaded', function() {
-            // Load header and footer
-            loadComponent('#header', 'header.html');
-            loadComponent('#footer', 'footer.html');
+            console.log('[Debug] Resources page loaded');
             
-            // Initialize page-specific scripts
-            if (typeof initPage === 'function') {
-                initPage();
+            // Load header and footer components
+            if (typeof loadHeader === 'function') {
+                loadHeader();
             }
+            if (typeof loadFooter === 'function') {
+                loadFooter();
+            }
+            
+            // Hero is initialized by hero.js
 
             // Add smooth scrolling for navigation links
             const navLinks = document.querySelectorAll('#section-nav-list a, .resource-nav__item');

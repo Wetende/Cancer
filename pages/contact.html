@@ -15,49 +15,130 @@
     
     <!-- Page-specific styles -->
     <style id="page-styles">
-        .contact-content {
-            margin-bottom: 2.5rem;
+        /* Main Contact Section Styles */
+        .contact-page {
+            --card-border-radius: 12px;
+            --card-shadow: 0 4px 12px rgba(0,0,0,0.08);
+            --transition-hover: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+            --section-spacing: 4rem 0;
         }
         
+        .contact-section {
+            padding: var(--section-spacing);
+        }
+        
+        .contact-section:nth-child(even) {
+            background-color: var(--color-grey-100);
+        }
+        
+        .section-title {
+            position: relative;
+            margin-bottom: 2.5rem;
+            font-size: 2.2rem;
+            text-align: center;
+        }
+        
+        .section-title:after {
+            content: '';
+            position: absolute;
+            bottom: -12px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: var(--color-primary);
+            border-radius: 2px;
+        }
+        
+        /* Contact Info Cards */
         .contact-info-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 2rem;
             margin: 2rem 0;
         }
         
         .contact-info-card {
-            background-color: #f8f9fa;
-            border-radius: 8px;
-            padding: 2rem;
+            background-color: #fff;
+            border-radius: var(--card-border-radius);
+            padding: 2.5rem 2rem;
             text-align: center;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-            transition: transform 0.3s ease;
-            border-top: 4px solid #d43f8d;
+            box-shadow: var(--card-shadow);
+            transition: var(--transition-hover);
+            border-top: 4px solid var(--color-primary);
         }
         
         .contact-info-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transform: translateY(-8px);
+            box-shadow: 0 8px 24px rgba(0,0,0,0.12);
         }
         
         .contact-info-card__icon {
-            font-size: 2.5rem;
-            color: #d43f8d;
-            margin-bottom: 1rem;
+            font-size: 3rem;
+            color: var(--color-primary);
+            margin-bottom: 1.5rem;
+            transition: transform 0.3s ease;
+        }
+        
+        .contact-info-card:hover .contact-info-card__icon {
+            transform: scale(1.1);
         }
         
         .contact-info-card h3 {
-            color: #333;
+            color: var(--color-grey-800);
             margin-bottom: 1rem;
+            font-size: 1.5rem;
+        }
+        
+        .contact-info-card p {
+            color: var(--color-grey-600);
+            line-height: 1.7;
+        }
+        
+        /* Contact Form */
+        .contact-form-section {
+            padding: var(--section-spacing);
+            background-color: var(--color-white);
+        }
+        
+        .contact-form-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
+            gap: 3rem;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        @media (max-width: 992px) {
+            .contact-form-container {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        .contact-form-info {
+            padding-right: 2rem;
+        }
+        
+        .contact-form-info h2 {
+            font-size: 2.2rem;
+            margin-bottom: 1.5rem;
+            color: var(--color-grey-800);
+        }
+        
+        .contact-form-info p {
+            font-size: 1.1rem;
+            line-height: 1.7;
+            color: var(--color-grey-600);
+            margin-bottom: 1.5rem;
         }
         
         .contact-form-wrapper {
-            background-color: #f8f9fa;
-            border-radius: 8px;
-            padding: 2rem;
-            margin: 2rem 0;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            background-color: var(--color-white);
+            border-radius: var(--card-border-radius);
+            padding: 3rem;
+            box-shadow: var(--card-shadow);
+            border-left: 5px solid var(--color-primary);
         }
         
         .form-group {
@@ -67,23 +148,61 @@
         .form-label {
             display: block;
             margin-bottom: 0.5rem;
-            color: #333;
+            color: var(--color-grey-800);
             font-weight: 600;
         }
         
         .form-control {
             width: 100%;
-            padding: 0.75rem;
-            border: 1px solid #ddd;
-            border-radius: 4px;
+            padding: 0.9rem;
+            border: 1px solid var(--color-grey-300);
+            border-radius: 6px;
             font-size: 1rem;
-            transition: border-color 0.3s ease;
+            transition: border-color 0.3s ease, box-shadow 0.3s ease;
+            background-color: var(--color-grey-50);
         }
         
         .form-control:focus {
-            border-color: #d43f8d;
+            border-color: var(--color-primary);
             outline: none;
-            box-shadow: 0 0 0 2px rgba(212, 63, 141, 0.1);
+            box-shadow: 0 0 0 3px rgba(212, 63, 141, 0.1);
+        }
+        
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem;
+        }
+        
+        @media (max-width: 576px) {
+            .form-row {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        .btn-submit {
+            display: inline-block;
+            padding: 1rem 2rem;
+            background-color: var(--color-primary);
+            color: var(--color-white);
+            border: none;
+            border-radius: 6px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition-hover);
+            width: 100%;
+        }
+        
+        .btn-submit:hover {
+            background-color: var(--color-primary-dark);
+            transform: translateY(-2px);
+        }
+        
+        /* Location Section */
+        .location-section {
+            padding: var(--section-spacing);
+            background-color: var(--color-grey-100);
         }
         
         .location-grid {
@@ -94,76 +213,103 @@
         }
         
         .location-card {
-            background-color: #f8f9fa;
-            border-radius: 8px;
+            background-color: var(--color-white);
+            border-radius: var(--card-border-radius);
             padding: 2rem;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-            border-left: 4px solid #007bff;
+            box-shadow: var(--card-shadow);
+            transition: var(--transition-hover);
+            border-left: 4px solid var(--color-primary);
+        }
+        
+        .location-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 24px rgba(0,0,0,0.12);
         }
         
         .location-card__title {
-            color: #007bff;
+            color: var(--color-primary);
             margin-bottom: 1rem;
+            font-size: 1.5rem;
+        }
+        
+        .location-card address {
+            font-style: normal;
+            line-height: 1.7;
+            color: var(--color-grey-600);
         }
         
         .location-map__container {
-            height: 400px;
-            border-radius: 8px;
+            height: 450px;
+            border-radius: var(--card-border-radius);
             overflow: hidden;
+            box-shadow: var(--card-shadow);
+            margin-top: 2rem;
+        }
+        
+        /* Emergency Section */
+        .emergency-section {
+            padding: var(--section-spacing);
+            background-color: var(--color-white);
         }
         
         .emergency-content {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 2rem;
             margin: 2rem 0;
         }
         
         .emergency-card {
-            background-color: #f8f9fa;
-            border-radius: 8px;
-            padding: 2rem;
+            background-color: #fff8f8;
+            border-radius: var(--card-border-radius);
+            padding: 2.5rem 2rem;
             text-align: center;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            box-shadow: var(--card-shadow);
+            transition: var(--transition-hover);
             border-top: 4px solid #dc3545;
         }
         
+        .emergency-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 24px rgba(0,0,0,0.12);
+        }
+        
         .emergency-card__icon {
-            font-size: 2.5rem;
+            font-size: 3rem;
             color: #dc3545;
+            margin-bottom: 1.5rem;
+        }
+        
+        .emergency-card h3 {
+            color: var(--color-grey-800);
             margin-bottom: 1rem;
+            font-size: 1.5rem;
+        }
+        
+        .emergency-card p {
+            color: var(--color-grey-600);
+            line-height: 1.7;
         }
         
         .emergency-card strong {
-            font-size: 1.25rem;
+            font-size: 1.5rem;
             color: #dc3545;
+            display: block;
+            margin-top: 0.5rem;
         }
         
-        .section-image {
-            margin-bottom: 1.5rem;
-            border-radius: 8px;
-            overflow: hidden;
-        }
-        
-        .section-image img {
-            width: 100%;
-            height: auto;
-            transition: transform 0.3s ease;
-        }
-        
-        .section-image img:hover {
-            transform: scale(1.03);
-        }
-        
+        /* Responsive Adjustments */
         @media (max-width: 768px) {
-            .contact-info-grid,
-            .location-grid,
-            .emergency-content {
-                grid-template-columns: 1fr;
+            .section-title {
+                font-size: 1.8rem;
             }
             
             .contact-form-wrapper {
-                padding: 1.5rem;
+                padding: 2rem;
+            }
+            
+            .location-map__container {
+                height: 350px;
             }
         }
     </style>
@@ -174,28 +320,15 @@
 
     <!-- Main content -->
     <main id="main-content" class="contact-page">
-        <!-- Hero section -->
-        <section class="hero-section">
-            <div class="container">
-                <div class="hero-image">
-                    <img src="/Cancer/images/content/group of women.jpg" alt="Contact Us" class="full-width-image">
-                </div>
-                <nav class="breadcrumb">
-                    <a href="/Cancer/index.html">Home</a> &gt;
-                    <span>Contact Us</span>
-                </nav>
-                <h1>Contact Us</h1>
-                <p class="lead">We're Here to Help - Reach Out to Our Team</p>
-            </div>
+        <!-- Hero section with overlay -->
+        <section class="hero-section" id="hero-container">
+            <!-- Hero content will be loaded by the loadHeroWithOverlay function -->
         </section>
 
-        <!-- Content section -->
-        <div class="container">
-            <!-- Contact Information Section -->
-            <section class="contact-content content-section">
-                <div class="section-image">
-                    <img src="/Cancer/images/content/doctor-650534_1280.jpg" alt="Contact Information" class="section-img">
-                </div>
+        <!-- Contact Information Section -->
+        <section class="contact-section">
+            <div class="container">
+                <h2 class="section-title">Get In Touch With Us</h2>
                 <div class="contact-info-grid">
                     <div class="contact-info-card">
                         <div class="contact-info-card__icon">
@@ -203,8 +336,8 @@
                         </div>
                         <h3>Phone</h3>
                         <p>
-                            Main: (555) 123-4567<br>
-                            Toll-free: 1-800-555-0123
+                            <strong>Appointments:</strong> (555) 123-4567<br>
+                            <strong>General Inquiries:</strong> 1-800-555-0123
                         </p>
                     </div>
                     <div class="contact-info-card">
@@ -213,8 +346,8 @@
                         </div>
                         <h3>Email</h3>
                         <p>
-                            General: info@bcscreening.org<br>
-                            Support: support@bcscreening.org
+                            <strong>General:</strong> info@nzoyafoundation.org<br>
+                            <strong>Support:</strong> support@nzoyafoundation.org
                         </p>
                     </div>
                     <div class="contact-info-card">
@@ -223,66 +356,101 @@
                         </div>
                         <h3>Hours</h3>
                         <p>
-                            Monday - Friday: 8:00 AM - 6:00 PM<br>
-                            Saturday: 9:00 AM - 2:00 PM
+                            <strong>Monday - Friday:</strong> 8:00 AM - 6:00 PM<br>
+                            <strong>Saturday:</strong> 9:00 AM - 2:00 PM<br>
+                            <strong>Sunday:</strong> Closed
                         </p>
                     </div>
                 </div>
-            </section>
+            </div>
+        </section>
 
-            <!-- Contact Form Section -->
-            <section class="contact-content content-section">
-                <div class="contact-form-wrapper">
-                    <div class="section-image">
-                        <img src="/Cancer/images/content/womansmiling.jpg" alt="Send Us a Message" class="section-img">
+        <!-- Contact Form Section -->
+        <section class="contact-form-section" id="contact-form">
+            <div class="container">
+                <div class="contact-form-container">
+                    <div class="contact-form-info">
+                        <h2>Send Us a Message</h2>
+                        <p>Have questions about breast cancer screening or need more information? Fill out this form and our team will get back to you as soon as possible.</p>
+                        <p>We are committed to supporting you on your breast health journey and providing the resources you need.</p>
+                        <div class="contact-features">
+                            <div class="feature">
+                                <i class="fas fa-check-circle"></i> Fast response time
+                            </div>
+                            <div class="feature">
+                                <i class="fas fa-check-circle"></i> Confidential communication
+                            </div>
+                            <div class="feature">
+                                <i class="fas fa-check-circle"></i> Expert support
+                            </div>
+                        </div>
                     </div>
-                    <h2>Send Us a Message</h2>
-                    <form id="contactForm" class="contact-form" action="process.php" method="POST">
-                        <div class="form-group">
-                            <label for="name" class="form-label">Full Name *</label>
-                            <input type="text" id="name" name="name" class="form-control" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="email" class="form-label">Email Address *</label>
-                            <input type="email" id="email" name="email" class="form-control" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="phone" class="form-label">Phone Number</label>
-                            <input type="tel" id="phone" name="phone" class="form-control">
-                        </div>
-                        <div class="form-group">
-                            <label for="subject" class="form-label">Subject *</label>
-                            <input type="text" id="subject" name="subject" class="form-control" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="message" class="form-label">Message *</label>
-                            <textarea id="message" name="message" rows="5" class="form-control" required></textarea>
-                        </div>
-                        <button type="submit" class="btn-primary">Send Message</button>
-                    </form>
+                    <div class="contact-form-wrapper">
+                        <form id="contactForm" class="contact-form" action="process.php" method="POST">
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="name" class="form-label">Full Name *</label>
+                                    <input type="text" id="name" name="name" class="form-control" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="email" class="form-label">Email Address *</label>
+                                    <input type="email" id="email" name="email" class="form-control" required>
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="phone" class="form-label">Phone Number</label>
+                                    <input type="tel" id="phone" name="phone" class="form-control">
+                                </div>
+                                <div class="form-group">
+                                    <label for="subject" class="form-label">Subject *</label>
+                                    <input type="text" id="subject" name="subject" class="form-control" required>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="message" class="form-label">Message *</label>
+                                <textarea id="message" name="message" rows="5" class="form-control" required></textarea>
+                            </div>
+                            <button type="submit" class="btn-submit">Send Message</button>
+                        </form>
+                    </div>
                 </div>
-            </section>
+            </div>
+        </section>
 
-            <!-- Location Section -->
-            <section class="contact-content content-section">
-                <h2>Our Location</h2>
+        <!-- Location Section -->
+        <section class="location-section">
+            <div class="container">
+                <h2 class="section-title">Our Locations 📍</h2>
                 <div class="location-grid">
                     <div class="location-card">
-                        <h3 class="location-card__title">Bellevue Office</h3>
+                        <h3 class="location-card__title">Bellevue Main Center 📍</h3>
                         <address>
-                            123 Main Street<br>
+                            <strong>Address:</strong><br>
+                            1200 Bellevue Way NE<br>
                             Bellevue, WA 98004<br><br>
                             <strong>Directions:</strong><br>
                             Near Bellevue Square Mall, across from Downtown Park
                         </address>
                     </div>
                     <div class="location-card">
-                        <h3 class="location-card__title">Seattle Office</h3>
+                        <h3 class="location-card__title">Overlake Medical Pavilion 📍</h3>
                         <address>
-                            456 Pacific Avenue<br>
-                            Seattle, WA 98101<br><br>
+                            <strong>Address:</strong><br>
+                            1231 116th Ave NE<br>
+                            Bellevue, WA 98004<br><br>
                             <strong>Directions:</strong><br>
-                            Two blocks from Pike Place Market
+                            Near Overlake Hospital, adjacent to the medical center
+                        </address>
+                    </div>
+                    <div class="location-card">
+                        <h3 class="location-card__title">Factoria Screening Center 📍</h3>
+                        <address>
+                            <strong>Address:</strong><br>
+                            3707 Factoria Blvd SE<br>
+                            Bellevue, WA 98006<br><br>
+                            <strong>Directions:</strong><br>
+                            In the Factoria Mall complex, across from T-Mobile headquarters
                         </address>
                     </div>
                 </div>
@@ -290,11 +458,13 @@
                     <!-- Map will be loaded here -->
                     <img src="/Cancer/images/content/map-placeholder.jpg" alt="Location Map" style="width:100%; height:100%; object-fit:cover;">
                 </div>
-            </section>
+            </div>
+        </section>
 
-            <!-- Emergency Section -->
-            <section class="contact-content content-section">
-                <h2>Emergency Contacts</h2>
+        <!-- Emergency Section -->
+        <section class="emergency-section">
+            <div class="container">
+                <h2 class="section-title">Emergency Contacts</h2>
                 <div class="emergency-content">
                     <div class="emergency-card">
                         <div class="emergency-card__icon">
@@ -302,8 +472,8 @@
                         </div>
                         <h3>Emergency Services</h3>
                         <p>
-                            For medical emergencies, please dial:<br>
-                            <strong>911</strong>
+                            For medical emergencies, please dial:
+                            <strong>999</strong>
                         </p>
                     </div>
                     <div class="emergency-card">
@@ -312,13 +482,13 @@
                         </div>
                         <h3>24/7 Helpline</h3>
                         <p>
-                            For urgent support:<br>
+                            For urgent support:
                             <strong>1-800-555-9999</strong>
                         </p>
                     </div>
                 </div>
-            </section>
-        </div>
+            </div>
+        </section>
     </main>
 
     <!-- Footer will be loaded here -->
@@ -327,12 +497,36 @@
     <!-- Scripts -->
     <script src="/Cancer/js/utils.js"></script>
     <script src="/Cancer/js/components.js"></script>
-    <script src="/Cancer/js/main.js"></script>
+    <script src="/Cancer/js/hero.js"></script>
     <script>
         document.addEventListener('DOMContentLoaded', function() {
+            console.log('[Debug] Contact page loaded');
+            
             // Load header and footer components
-            loadComponent('#header', '/Cancer/components/header.html');
-            loadComponent('#footer', '/Cancer/components/footer.html');
+            if (typeof loadHeader === 'function') {
+                loadHeader();
+            }
+            if (typeof loadFooter === 'function') {
+                loadFooter();
+            }
+            
+            // Hero is initialized by hero.js
+            
+            // Smooth scrolling for anchor links
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    const targetId = this.getAttribute('href');
+                    const targetElement = document.querySelector(targetId);
+                    
+                    if (targetElement) {
+                        window.scrollTo({
+                            top: targetElement.offsetTop - 100,
+                            behavior: 'smooth'
+                        });
+                    }
+                });
+            });
             
             // Initialize form validation
             const form = document.getElementById('contactForm');
