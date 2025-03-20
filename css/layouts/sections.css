@@ -1,0 +1,135 @@
+/* 
+ * Section Layouts
+ * Common section layouts inspired by Komen.org
+ */
+
+/* Base section styles */
+section {
+    padding: var(--spacing-8) 0;
+}
+
+@media (min-width: 768px) {
+    section {
+        padding: var(--spacing-12) 0;
+    }
+}
+
+/* Section with background */
+.section-bg {
+    background-color: var(--color-grey-100);
+}
+
+.section-primary {
+    background-color: var(--color-primary-light);
+    color: var(--color-white);
+}
+
+.section-primary h1,
+.section-primary h2,
+.section-primary h3,
+.section-primary h4,
+.section-primary h5,
+.section-primary h6 {
+    color: var(--color-white);
+}
+
+.section-secondary {
+    background-color: var(--color-secondary-light);
+    color: var(--color-white);
+}
+
+.section-secondary h1,
+.section-secondary h2,
+.section-secondary h3,
+.section-secondary h4,
+.section-secondary h5,
+.section-secondary h6 {
+    color: var(--color-white);
+}
+
+/* Section header with centered title and subtitle */
+.section-header {
+    text-align: center;
+    margin-bottom: var(--spacing-8);
+}
+
+.section-header h2 {
+    margin-bottom: var(--spacing-4);
+}
+
+.section-header .section-subheading {
+    font-size: var(--font-size-lg);
+    margin-bottom: var(--spacing-6);
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* Common section layouts */
+.about-section,
+.screening-types-section,
+.schedule-section,
+.faq-section,
+.resources-section,
+.contact-section {
+    padding: var(--spacing-8) 0;
+}
+
+@media (min-width: 768px) {
+    .about-section,
+    .screening-types-section,
+    .schedule-section,
+    .faq-section,
+    .resources-section,
+    .contact-section {
+        padding: var(--spacing-12) 0;
+    }
+}
+
+/* Alternating sections */
+.about-section,
+.faq-section,
+.contact-section {
+    background-color: var(--color-grey-100);
+}
+
+/* Section dividers */
+.section-divider {
+    height: 4px;
+    width: 60px;
+    background-color: var(--color-primary);
+    margin: 0 auto var(--spacing-8) auto;
+}
+
+/* Section with image background */
+.section-image-bg {
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    color: var(--color-white);
+    position: relative;
+}
+
+.section-image-bg::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+.section-image-bg .container {
+    position: relative;
+    z-index: 1;
+}
+
+.section-image-bg h1,
+.section-image-bg h2,
+.section-image-bg h3,
+.section-image-bg h4,
+.section-image-bg h5,
+.section-image-bg h6 {
+    color: var(--color-white);
+} 

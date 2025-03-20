@@ -1,0 +1,28 @@
+/* 
+ * Breadcrumb
+ * Breadcrumb component styles inspired by Komen.org
+ */
+
+.breadcrumb {
+    padding: var(--spacing-3) 0;
+    background-color: var(--color-grey-100);
+    font-size: var(--font-size-sm);
+    color: var(--color-grey-500);
+}
+
+.breadcrumb a {
+    color: var(--color-grey-500);
+    text-decoration: none;
+    transition: var(--transition-base);
+}
+
+.breadcrumb a:hover,
+.breadcrumb a:focus {
+    color: var(--color-primary);
+    text-decoration: underline;
+}
+
+.breadcrumb span {
+    color: var(--color-grey-600);
+    font-weight: var(--font-weight-semibold);
+} 

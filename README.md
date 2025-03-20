@@ -7,6 +7,7 @@ A comprehensive website providing information about breast cancer screening, res
 ## Features
 
 - **Educational Content**: Detailed information about breast cancer screening types, benefits, and recommendations
+- **Comprehensive Breast Cancer Resources**: In-depth information about diagnosis, treatment, symptoms, and support
 - **Facility Finder**: Interactive map to locate screening facilities in the Bellevue and Seattle area
 - **Risk Calculator**: Personalized breast cancer risk assessment tool
 - **Resource Library**: Articles, videos, and downloadable materials about breast health
@@ -18,16 +19,26 @@ A comprehensive website providing information about breast cancer screening, res
 
 ```
 nzoya-foundation/
+├── components/        # Reusable site components (header, footer)
 ├── css/              # Compiled CSS files
 ├── data/             # JSON data files for facilities and other dynamic content
 ├── fonts/            # Custom font files
 ├── images/           # Image assets 
 ├── js/               # JavaScript files
-│   ├── modules/      # Modular JS components
-│   └── vendors/      # Third-party JS libraries
+│   ├── utils.js      # Utility functions for path resolution
+│   ├── components.js # Component loading functionality
+│   └── main.js       # Main application script
 ├── pages/            # HTML pages
 │   ├── about.html
+│   ├── about-breast-cancer.html
 │   ├── blog.html
+│   ├── breast-cancer.html
+│   ├── breast-cancer/  # Comprehensive breast cancer information
+│   │   ├── diagnosis/
+│   │   ├── screening/
+│   │   ├── symptoms/
+│   │   ├── treatment/
+│   │   └── README.md  # Documentation for breast cancer section
 │   ├── contact.html
 │   ├── facilities.html
 │   ├── faq.html

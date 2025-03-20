@@ -1,0 +1,153 @@
+/* 
+ * Typography
+ * Consistent typography styles inspired by Komen.org
+ */
+
+body {
+    font-family: var(--font-secondary);
+    font-size: var(--font-size-base);
+    line-height: 1.5;
+    color: var(--color-grey-600);
+}
+
+/* Headings */
+h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-primary);
+    font-weight: var(--font-weight-bold);
+    line-height: 1.2;
+    margin-bottom: var(--spacing-4);
+    color: var(--color-grey-600);
+}
+
+h1 {
+    font-size: var(--font-size-3xl);
+    margin-bottom: var(--spacing-6);
+}
+
+h2 {
+    font-size: var(--font-size-2xl);
+    margin-bottom: var(--spacing-5);
+}
+
+h3 {
+    font-size: var(--font-size-xl);
+    margin-bottom: var(--spacing-4);
+}
+
+h4 {
+    font-size: var(--font-size-lg);
+    margin-bottom: var(--spacing-3);
+}
+
+h5 {
+    font-size: var(--font-size-md);
+    margin-bottom: var(--spacing-2);
+}
+
+h6 {
+    font-size: var(--font-size-base);
+    margin-bottom: var(--spacing-2);
+}
+
+/* Paragraph text */
+p {
+    margin-bottom: var(--spacing-4);
+}
+
+p:last-child {
+    margin-bottom: 0;
+}
+
+/* Larger screen sizes */
+@media (min-width: 768px) {
+    h1 {
+        font-size: var(--font-size-4xl);
+    }
+    
+    h2 {
+        font-size: var(--font-size-3xl);
+    }
+    
+    h3 {
+        font-size: var(--font-size-2xl);
+    }
+}
+
+/* Text styles */
+.text-primary {
+    color: var(--color-primary);
+}
+
+.text-secondary {
+    color: var(--color-secondary);
+}
+
+.text-center {
+    text-align: center;
+}
+
+.text-right {
+    text-align: right;
+}
+
+.text-left {
+    text-align: left;
+}
+
+.text-bold {
+    font-weight: var(--font-weight-bold);
+}
+
+.text-semibold {
+    font-weight: var(--font-weight-semibold);
+}
+
+.text-normal {
+    font-weight: var(--font-weight-regular);
+}
+
+/* Lead text for intro paragraphs */
+.lead {
+    font-size: var(--font-size-lg);
+    line-height: 1.4;
+    margin-bottom: var(--spacing-6);
+}
+
+/* Small text for captions, footnotes, etc. */
+.small {
+    font-size: var(--font-size-sm);
+    line-height: 1.4;
+}
+
+/* Links */
+a {
+    color: var(--color-primary);
+    text-decoration: none;
+    transition: var(--transition-base);
+}
+
+a:hover, 
+a:focus {
+    color: var(--color-primary-dark);
+    text-decoration: underline;
+}
+
+/* Lists */
+ul.styled-list,
+ol.styled-list {
+    margin-bottom: var(--spacing-4);
+    padding-left: var(--spacing-6);
+}
+
+ul.styled-list {
+    list-style-type: disc;
+}
+
+ol.styled-list {
+    list-style-type: decimal;
+}
+
+ul.styled-list li,
+ol.styled-list li {
+    margin-bottom: var(--spacing-2);
+} 

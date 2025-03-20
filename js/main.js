@@ -1,6 +1,19 @@
-document.addEventListener('DOMContentLoaded', function() {
-    // Load shared components
-    loadComponents();
+/**
+ * Main JavaScript
+ * Entry point for the website
+ */
+
+document.addEventListener('DOMContentLoaded', () => {
+    console.log('[Main] Initializing...');
+    
+    // Ensure CSS path is correct
+    updateCssPath();
+    
+    // Load components if needed
+    initComponents();
+    
+    // Initialize any page-specific functionality
+    initPageSpecific();
     
     // Initialize accordion functionality
     initAccordion();
@@ -16,132 +29,86 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // Initialize hero slider
     initHeroSlider();
-
-    // Mobile Navigation Toggle
-    const navbarToggle = document.querySelector('.navbar-toggle');
-    const navbarMenu = document.querySelector('.navbar-menu');
-
-    if (navbarToggle && navbarMenu) {
-        navbarToggle.addEventListener('click', function() {
-            navbarMenu.classList.toggle('active');
-            navbarToggle.classList.toggle('active');
-        });
-
-        // Close menu when clicking outside
-        document.addEventListener('click', function(event) {
-            const isClickInside = navbarToggle.contains(event.target) || navbarMenu.contains(event.target);
-            if (!isClickInside && navbarMenu.classList.contains('active')) {
-                navbarMenu.classList.remove('active');
-                navbarToggle.classList.remove('active');
-            }
-        });
-    }
 });
 
-// Component Loading System
-function loadComponents() {
-    const isSubpage = document.location.pathname.includes('/pages/');
-    const basePath = isSubpage ? '../' : '';
+// Update CSS path to ensure it's using the absolute path
+function updateCssPath() {
+    const stylesLink = document.getElementById('styles-link');
+    if (stylesLink) {
+        // Set absolute path to ensure CSS loads correctly
+        const absolutePath = '/Cancer/css/styles.css';
+        if (stylesLink.getAttribute('href') !== absolutePath) {
+            console.log(`[Main] Updating CSS path to: ${absolutePath}`);
+            stylesLink.setAttribute('href', absolutePath);
+        }
+    }
+}
+
+// Initialize components
+function initComponents() {
+    // Check if components need to be loaded
+    if (typeof loadHeader === 'function' && document.querySelector('#header')) {
+        console.log('[Main] Loading header component');
+        loadHeader();
+    }
     
-    // Load Header
-    const header = document.getElementById('header');
-    if (header) {
-        header.className = 'sticky-header';
-        header.innerHTML = `
-            <div class="container">
-                <div class="logo">
-                    <a href="${basePath}index.html" class="logo-link">
-                        <img src="${basePath}images/logo.svg" alt="Nzoya Foundation Logo" class="logo-img" width="50" height="50">
-                        <h1>Nzoya Foundation</h1>
-                    </a>
-                </div>
-                <nav class="main-nav">
-                    <ul class="nav-list">
-                        <li><a href="${basePath}index.html" class="nav-link">Home</a></li>
-                        <li class="has-dropdown">
-                            <a href="${basePath}pages/about.html" class="nav-link">About Screening</a>
-                            <ul class="dropdown-menu">
-                                <li><a href="${basePath}pages/risk-calculator.html">Risk Calculator</a></li>
-                            </ul>
-                        </li>
-                        <li class="has-dropdown">
-                            <a href="${basePath}pages/screening.html" class="nav-link">Schedule</a>
-                            <ul class="dropdown-menu">
-                                <li><a href="${basePath}pages/facilities.html">Find Facilities</a></li>
-                            </ul>
-                        </li>
-                        <li><a href="${basePath}pages/resources.html" class="nav-link">Resources</a></li>
-                        <li><a href="${basePath}pages/faq.html" class="nav-link">FAQ</a></li>
-                        <li><a href="${basePath}pages/contact.html" class="btn-primary">Contact Us</a></li>
-                    </ul>
-                </nav>
-                <div class="header__actions">
-                    <button class="search-toggle">
-                        <i class="fas fa-search"></i>
-                    </button>
-                    <button class="mobile-menu-toggle">
-                        <span></span>
-                        <span></span>
-                        <span></span>
-                    </button>
-                </div>
-            </div>
-            <div class="search-panel">
-                <div class="container">
-                    <form class="search-form" onsubmit="return handleSearch(event)">
-                        <input type="text" placeholder="Search..." class="search-input">
-                        <button type="submit" class="search-submit">
-                            <i class="fas fa-search"></i>
-                        </button>
-                    </form>
-                </div>
-            </div>
-        `;
+    if (typeof loadFooter === 'function' && document.querySelector('#footer')) {
+        console.log('[Main] Loading footer component');
+        loadFooter();
     }
-
-    // Load Footer
-    const footer = document.getElementById('footer');
-    if (footer) {
-        footer.innerHTML = `
-            <div class="container">
-                <div class="footer-content">
-                    <div class="footer-logo">
-                        <h3>Nzoya Foundation</h3>
-                        <p>Providing resources for early detection and prevention in Bellevue, WA and surrounding communities.</p>
-                    </div>
-                    <div class="footer-links">
-                        <h4>Quick Links</h4>
-                        <ul>
-                            <li><a href="${basePath}index.html">Home</a></li>
-                            <li><a href="${basePath}pages/about.html">About Screening</a></li>
-                            <li><a href="${basePath}pages/risk-calculator.html">Risk Calculator</a></li>
-                            <li><a href="${basePath}pages/screening.html">Schedule</a></li>
-                            <li><a href="${basePath}pages/facilities.html">Find Facilities</a></li>
-                            <li><a href="${basePath}pages/resources.html">Resources</a></li>
-                            <li><a href="${basePath}pages/faq.html">FAQ</a></li>
-                            <li><a href="${basePath}pages/contact.html">Contact</a></li>
-                        </ul>
-                    </div>
-                    <div class="footer-social">
-                        <h4>Connect With Us</h4>
-                        <div class="social-icons">
-                            <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
-                            <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
-                            <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
-                            <a href="#" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
-                        </div>
-                    </div>
-                </div>
-                <div class="footer-bottom">
-                    <p>&copy; ${new Date().getFullYear()} Nzoya Foundation. All rights reserved.</p>
-                    <p>This website is for informational purposes only and does not provide medical advice.</p>
-                </div>
-            </div>
-        `;
-    }
-
+    
     // Initialize search functionality
     initSearch();
+}
+
+// Initialize page-specific functionality
+function initPageSpecific() {
+    const path = window.location.pathname;
+    
+    // Home page
+    if (path.endsWith('/index.html') || path.endsWith('/') || path.endsWith('/Cancer/')) {
+        console.log('[Main] Initializing home page');
+        initHomePage();
+    }
+    
+    // Contact page
+    if (path.includes('/contact')) {
+        console.log('[Main] Initializing contact page');
+        initContactForm();
+    }
+    
+    // Risk calculator
+    if (path.includes('/risk-calculator')) {
+        console.log('[Main] Initializing risk calculator');
+        initRiskCalculator();
+    }
+}
+
+// Home page initialization
+function initHomePage() {
+    // Initialize home page specific features
+    console.log('[Main] Home page initialized');
+}
+
+// Contact form initialization
+function initContactForm() {
+    const form = document.querySelector('.contact-form');
+    if (!form) return;
+    
+    form.addEventListener('submit', (e) => {
+        e.preventDefault();
+        console.log('[Contact] Form submitted');
+        // Form handling logic here
+    });
+}
+
+// Risk calculator initialization
+function initRiskCalculator() {
+    const calculator = document.querySelector('.risk-calculator');
+    if (!calculator) return;
+    
+    console.log('[Risk] Calculator initialized');
+    // Risk calculator logic here
 }
 
 // Search functionality
@@ -378,7 +345,10 @@ function initHeroSlider() {
     
     let currentSlide = 0;
     let slideInterval;
-    const intervalTime = 5000; // Time between automatic slide changes
+    const intervalTime = 6000; // Time between automatic slide changes
+    
+    // Set initial active slide
+    slides[0].classList.add('active');
     
     // Create navigation dots
     slides.forEach((_, index) => {
@@ -396,6 +366,12 @@ function initHeroSlider() {
         } else if (slideIndex >= slides.length) {
             slideIndex = 0;
         }
+        
+        // Remove active class from all slides
+        slides.forEach(slide => slide.classList.remove('active'));
+        
+        // Add active class to current slide
+        slides[slideIndex].classList.add('active');
         
         currentSlide = slideIndex;
         slider.style.transform = `translateX(-${currentSlide * 100}%)`;
@@ -441,6 +417,39 @@ function initHeroSlider() {
     // Pause on hover
     slider.addEventListener('mouseenter', () => clearInterval(slideInterval));
     slider.addEventListener('mouseleave', startInterval);
+    
+    // Add keyboard navigation
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'ArrowLeft') {
+            prevSlide();
+        } else if (e.key === 'ArrowRight') {
+            nextSlide();
+        }
+    });
+    
+    // Add touch support for mobile
+    let touchStartX = 0;
+    let touchEndX = 0;
+    
+    slider.addEventListener('touchstart', (e) => {
+        touchStartX = e.changedTouches[0].screenX;
+    });
+    
+    slider.addEventListener('touchend', (e) => {
+        touchEndX = e.changedTouches[0].screenX;
+        handleSwipe();
+    });
+    
+    function handleSwipe() {
+        const swipeThreshold = 50;
+        if (touchEndX < touchStartX - swipeThreshold) {
+            // Swipe left, go to next slide
+            nextSlide();
+        } else if (touchEndX > touchStartX + swipeThreshold) {
+            // Swipe right, go to previous slide
+            prevSlide();
+        }
+    }
 }
 
 // Utility Functions

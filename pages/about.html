@@ -3,114 +3,335 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>About Screening - Nzoya Foundation</title>
     <meta name="description" content="Learn about breast cancer screening options, early detection methods, and our comprehensive screening programs at Nzoya Foundation.">
-    <link rel="stylesheet" href="../css/main.min.css">
+    <meta name="keywords" content="breast cancer screening, early detection, mammogram, breast MRI, clinical breast exam, screening guidelines">
+    <meta name="author" content="Nzoya Foundation">
+    <title>About Screening | Nzoya Foundation</title>
+    
+    <link rel="icon" href="/Cancer/images/favicon.svg" type="image/svg+xml">
+    <link rel="stylesheet" href="/Cancer/css/styles.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Page-specific styles -->
+    <style id="page-styles">
+        .about-content {
+            margin-bottom: 2.5rem;
+        }
+        
+        .content-columns {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+        
+        .benefits-list {
+            list-style: none;
+            padding: 0;
+            margin: 1rem 0;
+        }
+        
+        .benefits-list li {
+            position: relative;
+            padding-left: 1.5rem;
+            margin-bottom: 0.75rem;
+        }
+        
+        .benefits-list li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: #28a745;
+            font-weight: bold;
+        }
+        
+        .screening-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+        
+        .screening-card {
+            background-color: #f8f9fa;
+            border-radius: 8px;
+            padding: 1.5rem;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+            border-top: 4px solid #d43f8d;
+        }
+        
+        .screening-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        .screening-card__icon {
+            font-size: 2.5rem;
+            color: #d43f8d;
+            margin-bottom: 1rem;
+            text-align: center;
+        }
+        
+        .screening-card h3 {
+            color: #333;
+            margin-bottom: 1rem;
+            text-align: center;
+        }
+        
+        .guidelines-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+        
+        .guideline-item {
+            background-color: #f8f9fa;
+            border-radius: 8px;
+            padding: 1.5rem;
+            border-left: 4px solid #007bff;
+        }
+        
+        .guideline-item h3 {
+            color: #007bff;
+            margin-bottom: 0.75rem;
+        }
+        
+        .section-image {
+            margin-bottom: 1.5rem;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+        
+        .section-image img {
+            width: 100%;
+            height: auto;
+            transition: transform 0.3s ease;
+        }
+        
+        .section-image img:hover {
+            transform: scale(1.03);
+        }
+        
+        .cta-section {
+            background-color: #f8f9fa;
+            padding: 3rem 0;
+            margin-top: 2rem;
+            text-align: center;
+        }
+        
+        .cta-button {
+            display: inline-block;
+            padding: 1rem 2rem;
+            background-color: #d43f8d;
+            color: white;
+            text-decoration: none;
+            border-radius: 4px;
+            transition: background-color 0.3s ease;
+            margin-top: 1rem;
+        }
+        
+        .cta-button:hover {
+            background-color: #c03579;
+        }
+        
+        @media (max-width: 768px) {
+            .content-columns,
+            .screening-grid,
+            .guidelines-content {
+                grid-template-columns: 1fr;
+            }
+            
+            .guideline-item {
+                margin-bottom: 1rem;
+            }
+        }
+    </style>
 </head>
 <body>
-    <!-- Header will be loaded via JavaScript -->
-    <header id="header" class="header"></header>
+    <!-- Header will be loaded here -->
+    <header id="header"></header>
 
-    <!-- About Hero Section -->
-    <section class="about-hero">
-        <div class="hero-background" style="background-image: url('../images/content/breast.jpg');"></div>
-        <div class="container">
-            <div class="hero-text">
+    <!-- Main content -->
+    <main id="main-content" class="about-page">
+        <!-- Hero section -->
+        <section class="hero-section">
+            <div class="container">
+                <div class="hero-image">
+                    <img src="/Cancer/images/content/breast.jpg" alt="About Breast Cancer Screening" class="full-width-image">
+                </div>
+                <nav class="breadcrumb">
+                    <a href="/Cancer/index.html">Home</a> &gt;
+                    <span>About Screening</span>
+                </nav>
                 <h1>About Screening</h1>
                 <p class="lead">Understanding Breast Cancer Screening and Early Detection</p>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <!-- Screening Overview Section -->
-    <section class="screening-overview-section">
+        <!-- Content section -->
         <div class="container">
-            <div class="section-image">
-                <img src="../images/content/medical-5051144_1280.jpg" alt="Breast Cancer Screening Overview" class="section-img">
-            </div>
-            <h2 class="section-title">Why Screening Matters</h2>
-            <div class="content-columns">
-                <div class="col">
-                    <p>Breast cancer screening is a vital tool in the early detection of breast cancer. When found early, breast cancer is more likely to be smaller, less likely to have spread, and more likely to be treated successfully.</p>
-                    <p>Regular screening can detect breast cancer before physical symptoms develop, when treatment is most effective.</p>
-                </div>
-                <div class="col">
-                    <h3>Benefits of Regular Screening</h3>
-                    <ul class="benefits-list">
-                        <li>Early detection of breast cancer</li>
-                        <li>Better treatment outcomes</li>
-                        <li>Peace of mind and regular monitoring</li>
-                        <li>Professional medical assessment</li>
-                    </ul>
+            <div class="content-grid">
+                <!-- Sidebar -->
+                <aside class="sidebar" id="sidebar">
+                    <nav class="section-nav">
+                        <h2>Quick Navigation</h2>
+                        <ul id="section-nav-list">
+                            <li><a href="#overview">Why Screening Matters</a></li>
+                            <li><a href="#types">Types of Screening</a></li>
+                            <li><a href="#guidelines">Screening Guidelines</a></li>
+                        </ul>
+                    </nav>
+                </aside>
+
+                <!-- Main content area -->
+                <div class="main-content" id="content-area">
+                    <!-- Overview Section -->
+                    <section id="overview" class="about-content content-section">
+                        <div class="section-image">
+                            <img src="/Cancer/images/content/medical-5051144_1280.jpg" alt="Breast Cancer Screening Overview" class="section-img">
+                        </div>
+                        <h2>Why Screening Matters</h2>
+                        <div class="content-columns">
+                            <div class="col">
+                                <p>Breast cancer screening is a vital tool in the early detection of breast cancer. When found early, breast cancer is more likely to be smaller, less likely to have spread, and more likely to be treated successfully.</p>
+                                <p>Regular screening can detect breast cancer before physical symptoms develop, when treatment is most effective.</p>
+                            </div>
+                            <div class="col">
+                                <h3>Benefits of Regular Screening</h3>
+                                <ul class="benefits-list">
+                                    <li>Early detection of breast cancer</li>
+                                    <li>Better treatment outcomes</li>
+                                    <li>Peace of mind and regular monitoring</li>
+                                    <li>Professional medical assessment</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- Types Section -->
+                    <section id="types" class="about-content content-section">
+                        <div class="section-image">
+                            <img src="/Cancer/images/content/operation-1807543_1280.jpg" alt="Types of Breast Cancer Screening" class="section-img">
+                        </div>
+                        <h2>Types of Screening</h2>
+                        <div class="screening-grid">
+                            <div class="screening-card">
+                                <div class="screening-card__icon">
+                                    <i class="fas fa-x-ray"></i>
+                                </div>
+                                <h3>Mammogram</h3>
+                                <p>A mammogram is an X-ray picture of the breast that can detect tumors that cannot be felt. We use state-of-the-art 3D mammography for the most accurate screening.</p>
+                            </div>
+                            <div class="screening-card">
+                                <div class="screening-card__icon">
+                                    <i class="fas fa-magnet"></i>
+                                </div>
+                                <h3>Breast MRI</h3>
+                                <p>Magnetic resonance imaging (MRI) uses magnetic fields to create detailed pictures of the breast tissue. Particularly useful for high-risk patients.</p>
+                            </div>
+                            <div class="screening-card">
+                                <div class="screening-card__icon">
+                                    <i class="fas fa-hand-holding-medical"></i>
+                                </div>
+                                <h3>Clinical Breast Exam</h3>
+                                <p>A physical examination by a healthcare provider to check for any changes or abnormalities in the breast tissue.</p>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- Guidelines Section -->
+                    <section id="guidelines" class="about-content content-section">
+                        <div class="section-image">
+                            <img src="/Cancer/images/content/doctor-650534_1280.jpg" alt="Screening Guidelines" class="section-img">
+                        </div>
+                        <h2>Screening Guidelines</h2>
+                        <div class="guidelines-content">
+                            <div class="guideline-item">
+                                <h3>Ages 40-74</h3>
+                                <p>Mammogram every 1-2 years, depending on personal risk factors and doctor recommendations.</p>
+                            </div>
+                            <div class="guideline-item">
+                                <h3>High Risk Individuals</h3>
+                                <p>May need to start screening earlier or have more frequent screenings. Consult with your healthcare provider.</p>
+                            </div>
+                            <div class="guideline-item">
+                                <h3>Risk Assessment</h3>
+                                <p>Take our <a href="/Cancer/pages/risk-calculator.html" class="text-primary">risk assessment quiz</a> to understand your personal risk factors.</p>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- CTA Section -->
+                    <section class="cta-section">
+                        <div class="container">
+                            <h2>Ready to Schedule Your Screening?</h2>
+                            <p>Find a screening facility near you and take the first step towards breast health.</p>
+                            <a href="/Cancer/pages/facilities.html" class="cta-button">Find a Facility</a>
+                        </div>
+                    </section>
                 </div>
             </div>
         </div>
-    </section>
+    </main>
 
-    <!-- Screening Types Section -->
-    <section class="screening-types-section">
-        <div class="container">
-            <div class="section-image">
-                <img src="../images/content/operation-1807543_1280.jpg" alt="Types of Breast Cancer Screening" class="section-img">
-            </div>
-            <h2 class="section-title">Types of Screening</h2>
-            <div class="screening-grid">
-                <div class="screening-card">
-                    <div class="screening-card__icon">
-                        <i class="fas fa-x-ray"></i>
-                    </div>
-                    <h3>Mammogram</h3>
-                    <p>A mammogram is an X-ray picture of the breast that can detect tumors that cannot be felt. We use state-of-the-art 3D mammography for the most accurate screening.</p>
-                </div>
-                <div class="screening-card">
-                    <div class="screening-card__icon">
-                        <i class="fas fa-magnet"></i>
-                    </div>
-                    <h3>Breast MRI</h3>
-                    <p>Magnetic resonance imaging (MRI) uses magnetic fields to create detailed pictures of the breast tissue. Particularly useful for high-risk patients.</p>
-                </div>
-                <div class="screening-card">
-                    <div class="screening-card__icon">
-                        <i class="fas fa-hand-holding-medical"></i>
-                    </div>
-                    <h3>Clinical Breast Exam</h3>
-                    <p>A physical examination by a healthcare provider to check for any changes or abnormalities in the breast tissue.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Guidelines Section -->
-    <section class="guidelines-section">
-        <div class="container">
-            <div class="section-image">
-                <img src="../images/content/doctor-650534_1280.jpg" alt="Screening Guidelines" class="section-img">
-            </div>
-            <h2 class="section-title">Screening Guidelines</h2>
-            <div class="guidelines-content">
-                <div class="guideline-item">
-                    <h3>Ages 40-74</h3>
-                    <p>Mammogram every 1-2 years, depending on personal risk factors and doctor recommendations.</p>
-                </div>
-                <div class="guideline-item">
-                    <h3>High Risk Individuals</h3>
-                    <p>May need to start screening earlier or have more frequent screenings. Consult with your healthcare provider.</p>
-                </div>
-                <div class="guideline-item">
-                    <h3>Risk Assessment</h3>
-                    <p>Take our <a href="risk-calculator.html">risk assessment quiz</a> to understand your personal risk factors.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Footer will be loaded via JavaScript -->
-    <footer id="footer" class="footer"></footer>
+    <!-- Footer will be loaded here -->
+    <footer id="footer"></footer>
 
     <!-- Scripts -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/js/all.min.js" crossorigin="anonymous"></script>
-    <script src="../js/main.js"></script>
+    <script src="/Cancer/js/utils.js"></script>
+    <script src="/Cancer/js/components.js"></script>
+    <script src="/Cancer/js/main.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Load header and footer components
+            loadComponent('#header', '/Cancer/components/header.html');
+            loadComponent('#footer', '/Cancer/components/footer.html');
+            
+            // Add smooth scrolling for navigation links
+            const navLinks = document.querySelectorAll('#section-nav-list a');
+            
+            navLinks.forEach(link => {
+                link.addEventListener('click', function(e) {
+                    const targetId = this.getAttribute('href');
+                    if (targetId.startsWith('#')) {
+                        e.preventDefault();
+                        const targetElement = document.querySelector(targetId);
+                        if (targetElement) {
+                            window.scrollTo({
+                                top: targetElement.offsetTop - 100,
+                                behavior: 'smooth'
+                            });
+                        }
+                    }
+                });
+            });
+        });
+    </script>
+    <!-- Page-specific scripts -->
+    <script id="page-scripts">
+        // Add smooth scrolling for navigation links
+        document.addEventListener('DOMContentLoaded', function() {
+            const navLinks = document.querySelectorAll('#section-nav-list a');
+            
+            navLinks.forEach(link => {
+                link.addEventListener('click', function(e) {
+                    const targetId = this.getAttribute('href');
+                    if (targetId.startsWith('#')) {
+                        e.preventDefault();
+                        const targetElement = document.querySelector(targetId);
+                        if (targetElement) {
+                            window.scrollTo({
+                                top: targetElement.offsetTop - 100,
+                                behavior: 'smooth'
+                            });
+                        }
+                    }
+                });
+            });
+        });
+    </script>
 </body>
 </html> 

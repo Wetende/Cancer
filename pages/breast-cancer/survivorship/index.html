@@ -7,36 +7,152 @@
     <meta name="keywords" content="breast cancer survivorship, follow-up care, long-term effects, healthy living, survivor support">
     <meta name="author" content="Nzoya Foundation">
     <title>Breast Cancer Survivorship | Life After Treatment</title>
-    <link rel="icon" href="../../../images/favicon.svg" type="image/svg+xml">
-    <link rel="stylesheet" href="../../../css/styles.css">
+    <!-- Dynamic asset path resolution will be handled by JavaScript -->
+    <link rel="icon" id="favicon-link" href="images/favicon.svg" type="image/svg+xml">
+    <link rel="stylesheet" id="styles-link" href="/Cancer/css/styles.css">
+    <link rel="stylesheet" id="theme-link" href="css/komen-theme.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+    <!-- Page-specific styles -->
+    <style id="page-styles">
+        .survivorship-content {
+            margin-bottom: 2.5rem;
+        }
+        
+        .care-plan, .effects-grid, .challenges-grid, 
+        .lifestyle-grid, .relationship-grid, .work-grid,
+        .support-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+            margin: 1.5rem 0;
+        }
+        
+        .component-card, .effect-card, .challenge-card, 
+        .lifestyle-card, .relationship-card, .work-card,
+        .support-card {
+            background-color: #f8f9fa;
+            border-radius: 8px;
+            padding: 1.5rem;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+        }
+        
+        .component-card:hover, .effect-card:hover, 
+        .challenge-card:hover, .lifestyle-card:hover, 
+        .relationship-card:hover, .work-card:hover,
+        .support-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        .plan-components {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin-top: 1.5rem;
+        }
+        
+        .component-card h4, .challenge-card h4, .work-card h4 {
+            color: #d43f8d;
+            margin-bottom: 0.75rem;
+        }
+        
+        .emotional-content, .relationships-content, 
+        .work-content, .support-content {
+            margin-top: 1.5rem;
+        }
+        
+        .connect-box {
+            background-color: #f0f7fd;
+            border-left: 4px solid #007bff;
+            padding: 1.5rem;
+            margin-top: 2rem;
+            border-radius: 0 8px 8px 0;
+        }
+        
+        /* Color-coded cards for emotional challenges */
+        .challenge-card:nth-child(1) {
+            border-top: 4px solid #d43f8d;
+        }
+        
+        .challenge-card:nth-child(2) {
+            border-top: 4px solid #17a2b8;
+        }
+        
+        .challenge-card:nth-child(3) {
+            border-top: 4px solid #ffc107;
+        }
+        
+        .challenge-card:nth-child(4) {
+            border-top: 4px solid #28a745;
+        }
+        
+        /* Color-coded cards for lifestyle */
+        .lifestyle-card:nth-child(1) {
+            border-top: 4px solid #28a745; /* Nutrition - green */
+        }
+        
+        .lifestyle-card:nth-child(2) {
+            border-top: 4px solid #007bff; /* Exercise - blue */
+        }
+        
+        .lifestyle-card:nth-child(3) {
+            border-top: 4px solid #6f42c1; /* Stress Management - purple */
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            .care-plan, .effects-grid, .challenges-grid, 
+            .lifestyle-grid, .relationship-grid, .work-grid,
+            .support-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        .section-image {
+            margin-bottom: 1.5rem;
+            overflow: hidden;
+            border-radius: 8px;
+        }
+        
+        .section-image img {
+            width: 100%;
+            height: auto;
+            transition: transform 0.3s ease;
+        }
+        
+        .section-image img:hover {
+            transform: scale(1.03);
+        }
+    </style>
 </head>
 <body>
+    <!-- Header will be loaded here -->
     <header id="header"></header>
 
-    <main class="survivorship-page">
+    <!-- Main content -->
+    <main id="main-content" class="survivorship-page">
+        <!-- Hero section -->
         <section class="hero-section">
             <div class="container">
                 <div class="hero-image">
-                    <img src="../../../images/content/survivor.jpg" alt="Breast Cancer Survivorship" class="full-width-image">
+                    <img src="" alt="Breast Cancer Survivorship" class="full-width-image" id="hero-img" data-src="images/content/survivor.jpg">
                 </div>
-                <nav class="breadcrumb">
-                    <a href="../../../index.html">Home</a> &gt;
-                    <a href="../../about-breast-cancer.html">About Breast Cancer</a> &gt;
-                    <span>Survivorship</span>
-                </nav>
-                <h1>Life After Breast Cancer Treatment</h1>
-                <p class="lead">Completing breast cancer treatment is a significant milestone. Learn about follow-up care, managing long-term effects, and living a healthy life after treatment.</p>
+                <div id="breadcrumb-container"></div>
+                <h1 id="page-title">Life After Breast Cancer Treatment</h1>
+                <p class="lead" id="page-description">Completing breast cancer treatment is a significant milestone. Learn about follow-up care, managing long-term effects, and living a healthy life after treatment.</p>
             </div>
         </section>
 
+        <!-- Content section -->
         <div class="container">
             <div class="content-grid">
-                <aside class="sidebar">
+                <!-- Sidebar -->
+                <aside class="sidebar" id="sidebar">
                     <nav class="section-nav">
                         <h2>Quick Navigation</h2>
-                        <ul>
+                        <ul id="section-nav-list">
                             <li><a href="#follow-up">Follow-up Care</a></li>
                             <li><a href="#long-term">Long-term Effects</a></li>
                             <li><a href="#emotional">Emotional Well-being</a></li>
@@ -48,10 +164,11 @@
                     </nav>
                 </aside>
 
-                <div class="main-content">
+                <!-- Main content area -->
+                <div class="main-content" id="content-area">
                     <section id="follow-up" class="content-section">
                         <div class="section-image">
-                            <img src="../../../images/content/doctor-650534_1280.jpg" alt="Follow-up Care" class="section-img">
+                            <img src="" alt="Follow-up Care" class="section-img" id="followup-img" data-src="images/content/doctor-650534_1280.jpg">
                         </div>
                         <h2>Follow-up Care</h2>
                         <div class="care-plan">
@@ -80,7 +197,7 @@
                         </div>
                     </section>
 
-                    <section id="long-term" class="survivorship-content">
+                    <section id="long-term" class="survivorship-content content-section">
                         <h2>Managing Long-term Effects</h2>
                         <div class="effects-grid">
                             <div class="effect-card">
@@ -106,7 +223,7 @@
 
                     <section id="emotional" class="content-section">
                         <div class="section-image">
-                            <img src="../../../images/content/womansmiling.jpg" alt="Emotional Well-being" class="section-img">
+                            <img src="" alt="Emotional Well-being" class="section-img" id="emotional-img" data-src="images/content/womansmiling.jpg">
                         </div>
                         <h2>Emotional Well-being</h2>
                         <div class="emotional-content">
@@ -134,7 +251,7 @@
 
                     <section id="healthy-living" class="content-section">
                         <div class="section-image">
-                            <img src="../../../images/content/womenlying.jpg" alt="Healthy Living After Treatment" class="section-img">
+                            <img src="" alt="Healthy Living After Treatment" class="section-img" id="healthy-img" data-src="images/content/womenlying.jpg">
                         </div>
                         <h2>Healthy Living After Treatment</h2>
                         <div class="lifestyle-grid">
@@ -168,7 +285,7 @@
                         </div>
                     </section>
 
-                    <section id="relationships" class="survivorship-content">
+                    <section id="relationships" class="survivorship-content content-section">
                         <h2>Relationships and Intimacy</h2>
                         <div class="relationships-content">
                             <div class="relationship-grid">
@@ -194,7 +311,7 @@
                         </div>
                     </section>
 
-                    <section id="work" class="survivorship-content">
+                    <section id="work" class="survivorship-content content-section">
                         <h2>Returning to Work</h2>
                         <div class="work-content">
                             <h3>Planning Your Return</h3>
@@ -223,7 +340,7 @@
 
                     <section id="support" class="content-section">
                         <div class="section-image">
-                            <img src="../../../images/content/group of women.jpg" alt="Support Resources" class="section-img">
+                            <img src="" alt="Support Resources" class="section-img" id="support-img" data-src="images/content/group of women.jpg">
                         </div>
                         <h2>Support Resources</h2>
                         <div class="support-content">
@@ -250,7 +367,7 @@
                             <div class="connect-box">
                                 <h3>Connect with Us</h3>
                                 <p>Our team is here to help you navigate life after breast cancer treatment.</p>
-                                <a href="../support/index.html" class="btn-secondary">Get Support</a>
+                                <a href="#" class="btn-secondary" data-href="pages/breast-cancer/support/index.html">Get Support</a>
                             </div>
                         </div>
                     </section>
@@ -259,8 +376,126 @@
         </div>
     </main>
 
+    <!-- Footer will be loaded here -->
     <footer id="footer"></footer>
 
-    <script src="../../../js/main.js"></script>
+    <!-- Scripts -->
+    <script id="utils-script" src="js/utils.js"></script>
+    <script id="components-script" src="js/components.js"></script>
+    <script id="main-script" src="js/main.js"></script>
+    <script>
+        // Resolve asset paths based on current page depth
+        function resolveAssetPaths() {
+            const path = window.location.pathname;
+            let depth = 0;
+            
+            // Count directory levels
+            if (path.includes('/pages/')) {
+                depth = path.split('/').length - 2; // Adjust for domain and filename
+            }
+            
+            const basePath = depth === 0 ? '' : '../'.repeat(depth);
+            
+            // Update asset links
+            document.getElementById('favicon-link').href = basePath + 'images/favicon.svg';
+            document.getElementById('styles-link').href = basePath + 'css/styles.css';
+            document.getElementById('theme-link').href = basePath + 'css/komen-theme.css';
+            document.getElementById('utils-script').src = basePath + 'js/utils.js';
+            document.getElementById('components-script').src = basePath + 'js/components.js';
+            document.getElementById('main-script').src = basePath + 'js/main.js';
+            
+            // Update image paths
+            const heroImg = document.getElementById('hero-img');
+            if (heroImg && heroImg.getAttribute('data-src')) {
+                heroImg.src = basePath + heroImg.getAttribute('data-src');
+            }
+            
+            // Update section images
+            const sectionImages = document.querySelectorAll('.section-img[data-src]');
+            sectionImages.forEach(img => {
+                img.src = basePath + img.getAttribute('data-src');
+            });
+            
+            // Update specific section images
+            const followupImg = document.getElementById('followup-img');
+            if (followupImg && followupImg.getAttribute('data-src')) {
+                followupImg.src = basePath + followupImg.getAttribute('data-src');
+            }
+            
+            const emotionalImg = document.getElementById('emotional-img');
+            if (emotionalImg && emotionalImg.getAttribute('data-src')) {
+                emotionalImg.src = basePath + emotionalImg.getAttribute('data-src');
+            }
+            
+            const healthyImg = document.getElementById('healthy-img');
+            if (healthyImg && healthyImg.getAttribute('data-src')) {
+                healthyImg.src = basePath + healthyImg.getAttribute('data-src');
+            }
+            
+            const supportImg = document.getElementById('support-img');
+            if (supportImg && supportImg.getAttribute('data-src')) {
+                supportImg.src = basePath + supportImg.getAttribute('data-src');
+            }
+            
+            // Update link paths
+            const dynamicLinks = document.querySelectorAll('a[data-href]');
+            dynamicLinks.forEach(link => {
+                link.href = basePath + link.getAttribute('data-href');
+            });
+        }
+        
+        // Execute path resolution immediately
+        resolveAssetPaths();
+        
+        // Initialize components
+        document.addEventListener('DOMContentLoaded', function() {
+            // Load header and footer
+            loadComponent('#header', basePath + 'components/header.html');
+            loadComponent('#footer', basePath + 'components/footer.html');
+            
+            // Load breadcrumb (with configuration)
+            loadBreadcrumb('#breadcrumb-container', [
+                { text: 'Home', url: basePath + 'index.html' },
+                { text: 'About Breast Cancer', url: basePath + 'pages/about-breast-cancer.html' },
+                { text: 'Survivorship', url: '#' }
+            ]);
+            
+            // Initialize page-specific scripts
+            if (typeof initPage === 'function') {
+                initPage();
+            }
+        });
+
+        // Define basePath for component loading
+        let basePath = '';
+        const path = window.location.pathname;
+        if (path.includes('/pages/')) {
+            const depth = path.split('/').length - 2;
+            basePath = depth === 0 ? '' : '../'.repeat(depth);
+        }
+    </script>
+    <!-- Page-specific scripts -->
+    <script id="page-scripts">
+        // Add smooth scrolling for navigation links
+        document.addEventListener('DOMContentLoaded', function() {
+            const navLinks = document.querySelectorAll('#section-nav-list a');
+            
+            navLinks.forEach(link => {
+                link.addEventListener('click', function(e) {
+                    const targetId = this.getAttribute('href');
+                    if (targetId.startsWith('#')) {
+                        e.preventDefault();
+                        const targetElement = document.querySelector(targetId);
+                        if (targetElement) {
+                            window.scrollTo({
+                                top: targetElement.offsetTop - 100,
+                                behavior: 'smooth'
+                            });
+                        }
+                    }
+                });
+            });
+        });
+    </script>
 </body>
 </html> 

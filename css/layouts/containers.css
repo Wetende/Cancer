@@ -1,0 +1,120 @@
+/* 
+ * Containers
+ * Responsive container layouts inspired by Komen.org
+ */
+
+.container {
+    width: 100%;
+    padding-right: var(--spacing-4);
+    padding-left: var(--spacing-4);
+    margin-right: auto;
+    margin-left: auto;
+}
+
+/* Container sizes */
+@media (min-width: 640px) {
+    .container {
+        max-width: var(--container-sm);
+    }
+}
+
+@media (min-width: 768px) {
+    .container {
+        max-width: var(--container-md);
+    }
+}
+
+@media (min-width: 1024px) {
+    .container {
+        max-width: var(--container-lg);
+    }
+}
+
+@media (min-width: 1280px) {
+    .container {
+        max-width: var(--container-xl);
+    }
+}
+
+@media (min-width: 1440px) {
+    .container {
+        max-width: var(--container-2xl);
+    }
+}
+
+/* Fluid container that takes full width */
+.container-fluid {
+    width: 100%;
+    padding-right: var(--spacing-4);
+    padding-left: var(--spacing-4);
+    margin-right: auto;
+    margin-left: auto;
+}
+
+/* Container padding utilities */
+.container-py {
+    padding-top: var(--spacing-8);
+    padding-bottom: var(--spacing-8);
+}
+
+.container-py-lg {
+    padding-top: var(--spacing-12);
+    padding-bottom: var(--spacing-12);
+}
+
+.container-py-sm {
+    padding-top: var(--spacing-4);
+    padding-bottom: var(--spacing-4);
+}
+
+@media (min-width: 768px) {
+    .container-py {
+        padding-top: var(--spacing-12);
+        padding-bottom: var(--spacing-12);
+    }
+    
+    .container-py-lg {
+        padding-top: var(--spacing-16);
+        padding-bottom: var(--spacing-16);
+    }
+    
+    .container-py-sm {
+        padding-top: var(--spacing-6);
+        padding-bottom: var(--spacing-6);
+    }
+}
+
+/* Content columns for two-column layouts */
+.content-columns {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-6);
+}
+
+@media (min-width: 768px) {
+    .content-columns {
+        flex-direction: row;
+        align-items: flex-start;
+    }
+    
+    .content-columns .col {
+        flex: 1;
+    }
+    
+    /* Column width variants */
+    .content-columns .col-40 {
+        flex: 0 0 40%;
+    }
+    
+    .content-columns .col-60 {
+        flex: 0 0 60%;
+    }
+    
+    .content-columns .col-33 {
+        flex: 0 0 33.333333%;
+    }
+    
+    .content-columns .col-66 {
+        flex: 0 0 66.666667%;
+    }
+} 

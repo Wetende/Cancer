@@ -4,13 +4,105 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Learn about breast cancer diagnosis, biopsies, pathology reports, and understanding your diagnosis in Bellevue, WA.">
-    <meta name="keywords" content="breast cancer diagnosis, breast biopsy, pathology report, breast cancer types, Bellevue, WA">
+    <meta name="keywords" content="breast cancer diagnosis, breast biopsy, pathology report, breast cancer symptoms, Bellevue, WA">
     <meta name="author" content="Nzoya Foundation">
-    <title>Diagnosing Breast Cancer | Nzoya Foundation</title>
-    <link rel="icon" href="../../../images/favicon.svg" type="image/svg+xml">
-    <link rel="stylesheet" href="../../../css/styles.css">
+    <title>Breast Cancer Diagnosis | Nzoya Foundation</title>
+    <link rel="icon" id="favicon-link" href="images/favicon.svg" type="image/svg+xml">
+    <link rel="stylesheet" id="styles-link" href="/Cancer/css/styles.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+    <style id="page-styles">
+        .diagnosis-steps {
+            counter-reset: diagnosis-step;
+            margin: 2rem 0;
+        }
+        
+        .diagnosis-step {
+            position: relative;
+            padding-left: 3.5rem;
+            margin-bottom: 2rem;
+        }
+        
+        .diagnosis-step:before {
+            counter-increment: diagnosis-step;
+            content: counter(diagnosis-step);
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 2.5rem;
+            height: 2.5rem;
+            background-color: #e46b76;
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 1.25rem;
+        }
+        
+        .biopsy-types-grid, .questions-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 1.5rem;
+            margin: 1.5rem 0;
+        }
+        
+        .biopsy-type, .question-card {
+            border: 1px solid #e9e9e9;
+            border-radius: 8px;
+            padding: 1.5rem;
+            background-color: #fff;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        
+        .biopsy-type:hover, .question-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        .biopsy-type__image {
+            width: 100%;
+            height: 180px;
+            object-fit: cover;
+            border-radius: 6px;
+            margin-bottom: 1rem;
+        }
+        
+        .biopsy-type h3, .question-card h3 {
+            color: #e46b76;
+            margin-top: 0;
+            margin-bottom: 0.75rem;
+            font-size: 1.25rem;
+        }
+        
+        .pathology-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1.5rem 0;
+        }
+        
+        .pathology-table th {
+            background-color: #e46b76;
+            color: white;
+            text-align: left;
+            padding: 0.75rem 1rem;
+        }
+        
+        .pathology-table td {
+            padding: 0.75rem 1rem;
+            border-bottom: 1px solid #e9e9e9;
+        }
+        
+        .pathology-table tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+        
+        .pathology-table tr:hover {
+            background-color: #f0f0f0;
+        }
+    </style>
 </head>
 <body>
     <header id="header"></header>
@@ -18,16 +110,13 @@
     <main class="diagnosis-page">
         <section class="hero-section">
             <div class="container">
-                <div class="hero-image">
-                    <img src="../../../images/content/treatment-4099432_1280.jpg" alt="Breast Cancer Diagnosis" class="full-width-image">
-                </div>
                 <nav class="breadcrumb">
                     <a href="../../../index.html">Home</a> &gt;
-                    <a href="../../about-breast-cancer.html">About Breast Cancer</a> &gt;
+                    <a href="../../breast-cancer.html">Breast Cancer</a> &gt;
                     <span>Diagnosis</span>
                 </nav>
-                <h1>Diagnosing Breast Cancer</h1>
-                <p class="lead">Understanding your breast cancer diagnosis is an important step in making treatment decisions. Learn about diagnostic tests, biopsies, pathology reports, and factors that affect treatment options.</p>
+                <h1>Breast Cancer Diagnosis</h1>
+                <p class="lead">Understanding a breast cancer diagnosis can be overwhelming. Learn about the diagnostic process, types of biopsies, how to interpret pathology reports, and important questions to ask your healthcare team.</p>
             </div>
         </section>
 
@@ -37,233 +126,250 @@
                     <nav class="section-nav">
                         <h2>Quick Navigation</h2>
                         <ul>
-                            <li><a href="#diagnostic-tests">Diagnostic Tests</a>
+                            <li><a href="#initial-evaluation">Initial Evaluation</a></li>
+                            <li><a href="#imaging">Diagnostic Imaging</a></li>
+                            <li><a href="#biopsies">Breast Biopsies</a>
                                 <ul>
-                                    <li><a href="#imaging">Imaging Tests</a></li>
-                                    <li><a href="#biopsy">Biopsy</a></li>
+                                    <li><a href="#fine-needle">Fine Needle Aspiration</a></li>
+                                    <li><a href="#core-needle">Core Needle Biopsy</a></li>
+                                    <li><a href="#surgical">Surgical Biopsy</a></li>
                                 </ul>
                             </li>
-                            <li><a href="#pathology">Understanding Pathology Reports</a>
-                                <ul>
-                                    <li><a href="#cancer-type">Cancer Type</a></li>
-                                    <li><a href="#tumor-grade">Tumor Grade</a></li>
-                                    <li><a href="#hormone-status">Hormone Status</a></li>
-                                </ul>
-                            </li>
+                            <li><a href="#pathology">Understanding Pathology</a></li>
                             <li><a href="#staging">Cancer Staging</a></li>
-                            <li><a href="#treatment-factors">Factors Affecting Treatment</a></li>
-                            <li><a href="#second-opinion">Getting a Second Opinion</a></li>
-                            <li><a href="#support">Support During Diagnosis</a></li>
+                            <li><a href="#questions">Important Questions</a></li>
+                            <li><a href="#second-opinion">Second Opinions</a></li>
                         </ul>
                     </nav>
                 </aside>
 
                 <div class="main-content">
-                    <section id="diagnostic-tests" class="content-section">
-                        <div class="section-image">
-                            <img src="../../../images/content/medical-5051144_1280.jpg" alt="Diagnostic Tests" class="section-img">
-                        </div>
-                        <h2>Diagnostic Tests</h2>
+                    <section id="initial-evaluation">
+                        <h2>Initial Evaluation</h2>
+                        <p>The diagnostic process typically begins when a person or their healthcare provider notices a breast change or abnormality. Initial evaluation may include:</p>
+                        <ul>
+                            <li>Clinical breast examination by a healthcare provider</li>
+                            <li>Review of personal and family medical history</li>
+                            <li>Discussion of symptoms and changes you've noticed</li>
+                        </ul>
+                        <p>If there are concerns about possible breast cancer, your healthcare provider will recommend diagnostic imaging tests.</p>
+                    </section>
+
+                    <section id="imaging">
+                        <h2>Diagnostic Imaging</h2>
+                        <p>Several imaging tests may be used to evaluate breast changes and help determine if a biopsy is needed:</p>
                         
-                        <div id="imaging" class="diagnostic-content">
-                            <h3>Imaging Tests</h3>
-                            <div class="test-grid">
-                                <div class="test-card">
-                                    <h4>Diagnostic Mammogram</h4>
-                                    <p>A more detailed mammogram that focuses on a specific area of concern.</p>
-                                </div>
-                                <div class="test-card">
-                                    <h4>Breast Ultrasound</h4>
-                                    <p>Uses sound waves to create images of breast tissue and can help distinguish between solid masses and fluid-filled cysts.</p>
-                                </div>
-                                <div class="test-card">
-                                    <h4>Breast MRI</h4>
-                                    <p>Creates detailed images using magnetic fields and can be especially helpful for women at high risk.</p>
-                                </div>
+                        <div class="diagnosis-steps">
+                            <div class="diagnosis-step">
+                                <h3>Diagnostic Mammogram</h3>
+                                <p>A more detailed X-ray examination than a screening mammogram. It focuses on areas of concern and may involve additional views of the breast. Diagnostic mammograms are used when there's a breast symptom or an abnormal finding on a screening mammogram.</p>
                             </div>
-                        </div>
-
-                        <div id="biopsy" class="diagnostic-content">
-                            <h3>Breast Biopsy</h3>
-                            <p>A biopsy is the only definitive way to diagnose breast cancer. During a biopsy, tissue or fluid is removed from the breast and examined under a microscope.</p>
                             
-                            <div class="biopsy-types">
-                                <h4>Types of Biopsies</h4>
-                                <div class="type-grid">
-                                    <div class="type-card">
-                                        <h5>Fine Needle Aspiration (FNA)</h5>
-                                        <p>Uses a thin needle to remove fluid or cells from a breast lump.</p>
-                                    </div>
-                                    <div class="type-card">
-                                        <h5>Core Needle Biopsy</h5>
-                                        <p>Uses a larger needle to remove small cylinders of tissue from the abnormal area.</p>
-                                    </div>
-                                    <div class="type-card">
-                                        <h5>Surgical Biopsy</h5>
-                                        <p>Removes part or all of the suspicious area through surgery.</p>
-                                    </div>
-                                </div>
+                            <div class="diagnosis-step">
+                                <h3>Breast Ultrasound</h3>
+                                <p>Uses sound waves to create images of breast tissue. Particularly useful for distinguishing between fluid-filled cysts and solid masses, and for evaluating lumps in women under 30 or pregnant women (who shouldn't be exposed to X-rays).</p>
+                            </div>
+                            
+                            <div class="diagnosis-step">
+                                <h3>Breast MRI</h3>
+                                <p>Uses magnetic fields and radio waves to create detailed images of breast tissue. May be used when more information is needed after other imaging tests, or to screen high-risk women. Contrast dye is usually injected to highlight abnormal areas.</p>
+                            </div>
+                            
+                            <div class="diagnosis-step">
+                                <h3>Other Imaging</h3>
+                                <p>Additional tests like 3D mammography (tomosynthesis), breast-specific gamma imaging, or molecular breast imaging may be used in some cases.</p>
                             </div>
                         </div>
-                    </section>
-
-                    <section id="pathology" class="content-section">
-                        <div class="section-image">
-                            <img src="../../../images/content/operation-1807543_1280.jpg" alt="Understanding Pathology Reports" class="section-img">
-                        </div>
-                        <h2>Understanding Pathology Reports</h2>
                         
-                        <div id="cancer-type" class="pathology-content">
-                            <h3>Cancer Type</h3>
-                            <div class="info-grid">
-                                <div class="info-card">
-                                    <h4>Ductal Carcinoma In Situ (DCIS)</h4>
-                                    <p>Non-invasive breast cancer confined to the ducts.</p>
-                                </div>
-                                <div class="info-card">
-                                    <h4>Invasive Ductal Carcinoma (IDC)</h4>
-                                    <p>Cancer that has spread beyond the ducts into surrounding tissue.</p>
-                                </div>
-                                <div class="info-card">
-                                    <h4>Invasive Lobular Carcinoma (ILC)</h4>
-                                    <p>Cancer that begins in the lobules and can spread to other parts of the breast.</p>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div id="tumor-grade" class="pathology-content">
-                            <h3>Tumor Grade</h3>
-                            <p>Tumor grade describes how abnormal the cancer cells look compared to normal cells.</p>
-                            <div class="grade-grid">
-                                <div class="grade-card">
-                                    <h4>Grade 1</h4>
-                                    <p>Well-differentiated cells that look most like normal cells.</p>
-                                </div>
-                                <div class="grade-card">
-                                    <h4>Grade 2</h4>
-                                    <p>Moderately differentiated cells.</p>
-                                </div>
-                                <div class="grade-card">
-                                    <h4>Grade 3</h4>
-                                    <p>Poorly differentiated cells that look very different from normal cells.</p>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div id="hormone-status" class="pathology-content">
-                            <h3>Hormone Receptor Status</h3>
-                            <div class="status-grid">
-                                <div class="status-card">
-                                    <h4>Estrogen Receptor (ER)</h4>
-                                    <p>Indicates if the cancer cells grow in response to estrogen.</p>
-                                </div>
-                                <div class="status-card">
-                                    <h4>Progesterone Receptor (PR)</h4>
-                                    <p>Shows if the cancer cells grow in response to progesterone.</p>
-                                </div>
-                                <div class="status-card">
-                                    <h4>HER2 Status</h4>
-                                    <p>Determines if the cancer cells have too much HER2 protein.</p>
-                                </div>
-                            </div>
-                        </div>
+                        <p>If imaging tests suggest a suspicious area that might be cancer, the next step is usually a biopsy to remove some cells or tissue for examination under a microscope.</p>
                     </section>
 
-                    <section id="staging" class="content-section">
-                        <div class="section-image">
-                            <img src="../../../images/content/doctor-650534_1280.jpg" alt="Cancer Staging" class="section-img">
-                        </div>
-                        <h2>Cancer Staging</h2>
-                        <div class="staging-content">
-                            <p>Staging describes the extent of cancer in your body. It helps determine your prognosis and treatment options.</p>
-                            
-                            <div class="stage-grid">
-                                <div class="stage-card">
-                                    <h4>Stage 0</h4>
-                                    <p>Non-invasive breast cancer (DCIS)</p>
-                                </div>
-                                <div class="stage-card">
-                                    <h4>Stage I</h4>
-                                    <p>Early-stage invasive breast cancer</p>
-                                </div>
-                                <div class="stage-card">
-                                    <h4>Stage II</h4>
-                                    <p>Cancer is larger or has spread to lymph nodes</p>
-                                </div>
-                                <div class="stage-card">
-                                    <h4>Stage III</h4>
-                                    <p>Locally advanced breast cancer</p>
-                                </div>
-                                <div class="stage-card">
-                                    <h4>Stage IV</h4>
-                                    <p>Metastatic breast cancer that has spread to other parts of the body</p>
-                                </div>
-                            </div>
-                        </div>
-                    </section>
-
-                    <section id="treatment-factors">
-                        <h2>Factors Affecting Treatment</h2>
-                        <div class="factors-content">
-                            <ul>
-                                <li>Stage of the cancer</li>
-                                <li>Tumor grade</li>
-                                <li>Hormone receptor status</li>
-                                <li>HER2 status</li>
-                                <li>Age and menopausal status</li>
-                                <li>Overall health</li>
-                                <li>Personal preferences</li>
-                            </ul>
-                        </div>
-                    </section>
-
-                    <section id="second-opinion">
-                        <h2>Getting a Second Opinion</h2>
-                        <div class="second-opinion-content">
-                            <p>Getting a second opinion is common and can help you feel more confident about your diagnosis and treatment plan.</p>
-                            <div class="tips-box">
-                                <h4>Tips for Getting a Second Opinion</h4>
+                    <section id="biopsies">
+                        <h2>Breast Biopsies</h2>
+                        <p>A biopsy is the only definitive way to diagnose breast cancer. During a biopsy, a small amount of tissue or cells is removed from the suspicious area and examined under a microscope by a pathologist. There are several types of breast biopsies:</p>
+                        
+                        <div class="biopsy-types-grid">
+                            <div class="biopsy-type" id="fine-needle">
+                                <h3>Fine Needle Aspiration (FNA)</h3>
+                                <p>A thin needle is used to withdraw a small sample of cells from a breast lump. This is the least invasive type of biopsy but doesn't always provide enough tissue for a complete diagnosis.</p>
                                 <ul>
-                                    <li>Don't worry about offending your doctor</li>
-                                    <li>Ask for copies of all your medical records and test results</li>
-                                    <li>Check with your insurance about coverage</li>
-                                    <li>Consider seeking opinions at major cancer centers</li>
+                                    <li><strong>Procedure Time:</strong> About 5-10 minutes</li>
+                                    <li><strong>Recovery:</strong> Minimal; can return to normal activities immediately</li>
+                                    <li><strong>Scarring:</strong> None to minimal</li>
+                                </ul>
+                            </div>
+                            
+                            <div class="biopsy-type" id="core-needle">
+                                <h3>Core Needle Biopsy</h3>
+                                <p>A larger needle is used to remove small cylinders (cores) of tissue from the abnormal area. This is the most common type of biopsy and is usually guided by ultrasound, stereotactic (mammography), or MRI.</p>
+                                <ul>
+                                    <li><strong>Procedure Time:</strong> About 20-30 minutes</li>
+                                    <li><strong>Recovery:</strong> Quick; usually 24 hours</li>
+                                    <li><strong>Scarring:</strong> Minimal</li>
+                                </ul>
+                            </div>
+                            
+                            <div class="biopsy-type" id="surgical">
+                                <h3>Surgical Biopsy</h3>
+                                <p>A surgeon removes all or part of the abnormal area through an incision in the breast. There are two types:</p>
+                                <ul>
+                                    <li><strong>Excisional:</strong> Removes the entire abnormal area</li>
+                                    <li><strong>Incisional:</strong> Removes only part of the abnormal area</li>
+                                    <li><strong>Procedure Time:</strong> About 30-60 minutes</li>
+                                    <li><strong>Recovery:</strong> Several days</li>
+                                    <li><strong>Scarring:</strong> More noticeable than needle biopsies</li>
+                                </ul>
+                            </div>
+                            
+                            <div class="biopsy-type" id="vacuum-assisted">
+                                <h3>Vacuum-Assisted Biopsy</h3>
+                                <p>Uses a vacuum-powered instrument to collect multiple tissue samples with a single insertion. Often used for microcalcifications or hard-to-reach areas.</p>
+                                <ul>
+                                    <li><strong>Procedure Time:</strong> About 30-45 minutes</li>
+                                    <li><strong>Recovery:</strong> Usually 24-48 hours</li>
+                                    <li><strong>Scarring:</strong> Minimal</li>
+                                </ul>
+                            </div>
+                        </div>
+                        
+                        <p><strong>Note:</strong> Most biopsies are done as outpatient procedures with local anesthesia. Your healthcare team will recommend the most appropriate type of biopsy based on the location and characteristics of the abnormal area.</p>
+                    </section>
+
+                    <section id="pathology">
+                        <h2>Understanding Pathology Reports</h2>
+                        <p>After a biopsy, the tissue sample is sent to a laboratory where a pathologist examines it under a microscope. The pathology report provides crucial information about the breast cells and helps determine treatment options.</p>
+                        
+                        <p>Key elements of a breast cancer pathology report include:</p>
+                        
+                        <table class="pathology-table">
+                            <tr>
+                                <th>Pathology Element</th>
+                                <th>What It Means</th>
+                            </tr>
+                            <tr>
+                                <td><strong>Type of Breast Cancer</strong></td>
+                                <td>The most common types are ductal carcinoma in situ (DCIS), invasive ductal carcinoma, and invasive lobular carcinoma.</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Tumor Grade</strong></td>
+                                <td>Indicates how abnormal the cancer cells look and how quickly they are likely to grow and spread. Graded 1 (low-grade, slow growing) to 3 (high-grade, fast growing).</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Tumor Size</strong></td>
+                                <td>The size of the tumor in centimeters.</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Hormone Receptor Status</strong></td>
+                                <td>Whether the cancer cells have receptors for estrogen (ER) and progesterone (PR). Hormone receptor-positive cancers can be treated with hormone therapy.</td>
+                            </tr>
+                            <tr>
+                                <td><strong>HER2 Status</strong></td>
+                                <td>Whether the cancer cells make too much of a protein called HER2. HER2-positive cancers can be treated with targeted therapies.</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Lymph Node Status</strong></td>
+                                <td>Whether cancer cells were found in the lymph nodes, which indicates if the cancer has spread beyond the breast.</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Margins</strong></td>
+                                <td>Whether the edges of the removed tissue are free of cancer cells. "Clear" or "negative" margins mean no cancer cells were found at the edge.</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Lymphovascular Invasion</strong></td>
+                                <td>Whether cancer cells were found in blood vessels or lymphatic vessels, which may indicate a higher risk of spread.</td>
+                            </tr>
+                        </table>
+                        
+                        <p>Some patients may also have genomic testing (such as Oncotype DX, MammaPrint, or PAM50) to provide additional information about the risk of recurrence and the potential benefit of chemotherapy.</p>
+                    </section>
+
+                    <section id="staging">
+                        <h2>Cancer Staging</h2>
+                        <p>Staging describes the extent of cancer in the body and helps guide treatment decisions. The most common staging system for breast cancer is the TNM system:</p>
+                        
+                        <ul>
+                            <li><strong>T (Tumor):</strong> Size and extent of the main tumor</li>
+                            <li><strong>N (Nodes):</strong> Whether cancer has spread to nearby lymph nodes</li>
+                            <li><strong>M (Metastasis):</strong> Whether cancer has spread to distant parts of the body</li>
+                        </ul>
+                        
+                        <p>Based on TNM factors, breast cancer is assigned a stage from 0 to IV:</p>
+                        
+                        <ul>
+                            <li><strong>Stage 0:</strong> Non-invasive cancer (DCIS)</li>
+                            <li><strong>Stage I:</strong> Small, invasive cancer that has not spread</li>
+                            <li><strong>Stage II:</strong> Cancer is larger or has spread to few nearby lymph nodes</li>
+                            <li><strong>Stage III:</strong> Cancer has spread to many lymph nodes or nearby tissues</li>
+                            <li><strong>Stage IV:</strong> Cancer has spread to distant organs (metastatic)</li>
+                        </ul>
+                        
+                        <p>The American Joint Committee on Cancer (AJCC) now also includes biomarkers (hormone receptor and HER2 status) and tumor grade in its staging system, as these factors significantly influence prognosis and treatment options.</p>
+                    </section>
+
+                    <section id="questions">
+                        <h2>Important Questions to Ask</h2>
+                        <p>After a breast cancer diagnosis, it's important to gather information to understand your condition and make informed treatment decisions. Here are some questions to ask your healthcare team:</p>
+                        
+                        <div class="questions-grid">
+                            <div class="question-card">
+                                <h3>About Your Diagnosis</h3>
+                                <ul>
+                                    <li>What type of breast cancer do I have?</li>
+                                    <li>What is the stage and grade of my cancer?</li>
+                                    <li>Are my hormone receptors positive or negative?</li>
+                                    <li>Is my cancer HER2-positive or negative?</li>
+                                    <li>Has the cancer spread to my lymph nodes or other parts of my body?</li>
+                                    <li>What does my pathology report tell you about my prognosis?</li>
+                                </ul>
+                            </div>
+                            
+                            <div class="question-card">
+                                <h3>About Treatment Options</h3>
+                                <ul>
+                                    <li>What are my treatment options?</li>
+                                    <li>Which treatments do you recommend and why?</li>
+                                    <li>What are the benefits and risks of each treatment?</li>
+                                    <li>How will each treatment affect my daily life?</li>
+                                    <li>Are there clinical trials I should consider?</li>
+                                    <li>How quickly do I need to make a decision about treatment?</li>
+                                </ul>
+                            </div>
+                            
+                            <div class="question-card">
+                                <h3>About Your Healthcare Team</h3>
+                                <ul>
+                                    <li>Who will coordinate my care?</li>
+                                    <li>Which specialists will I see?</li>
+                                    <li>How many patients with my type of cancer have you treated?</li>
+                                    <li>How do I contact you or your team if I have questions?</li>
+                                    <li>What support resources are available to me?</li>
+                                    <li>Should I get a second opinion?</li>
                                 </ul>
                             </div>
                         </div>
                     </section>
 
-                    <section id="support" class="content-section">
-                        <div class="section-image">
-                            <img src="../../../images/content/group of women.jpg" alt="Support During Diagnosis" class="section-img">
-                        </div>
-                        <h2>Support During Diagnosis</h2>
-                        <div class="support-content">
-                            <p>A breast cancer diagnosis can be overwhelming. Support is available to help you through this time.</p>
-                            <div class="support-grid">
-                                <div class="support-card">
-                                    <h4>Emotional Support</h4>
-                                    <ul>
-                                        <li>Support groups in Bellevue</li>
-                                        <li>One-on-one counseling</li>
-                                        <li>Online communities</li>
-                                    </ul>
-                                </div>
-                                <div class="support-card">
-                                    <h4>Practical Support</h4>
-                                    <ul>
-                                        <li>Patient navigators</li>
-                                        <li>Transportation assistance</li>
-                                        <li>Financial counseling</li>
-                                    </ul>
-                                </div>
-                            </div>
-                            <div class="cta-box">
-                                <h4>Need Support?</h4>
-                                <p>Our team is here to help you understand your diagnosis and connect you with resources.</p>
-                                <a href="../support/index.html" class="btn-secondary">Connect With Support</a>
-                            </div>
-                        </div>
+                    <section id="second-opinion">
+                        <h2>Getting a Second Opinion</h2>
+                        <p>Seeking a second opinion is a common and often recommended step after a breast cancer diagnosis. A second opinion can:</p>
+                        <ul>
+                            <li>Confirm your diagnosis</li>
+                            <li>Provide additional treatment options</li>
+                            <li>Give you peace of mind about your treatment plan</li>
+                            <li>Help you feel more confident in your healthcare team</li>
+                        </ul>
+                        
+                        <p>Most doctors understand the value of second opinions and will not be offended if you seek one. Many insurance plans cover second opinions, but check with your insurer before making appointments.</p>
+                        
+                        <p>When seeking a second opinion:</p>
+                        <ul>
+                            <li>Ask your doctor to recommend another specialist or look for specialists at National Cancer Institute-designated cancer centers</li>
+                            <li>Gather all relevant medical records, including imaging studies and pathology reports</li>
+                            <li>Prepare a list of questions, especially about areas where you're uncertain</li>
+                            <li>Consider bringing a family member or friend to help take notes</li>
+                        </ul>
+                        
+                        <p>Remember that the goal is to make informed decisions about your care. If the second opinion differs significantly from the first, you might consider getting a third opinion or asking the two doctors to discuss your case.</p>
                     </section>
                 </div>
             </div>
@@ -272,6 +378,8 @@
 
     <footer id="footer"></footer>
 
+    <script src="../../../js/utils.js"></script>
+    <script src="../../../js/components.js"></script>
     <script src="../../../js/main.js"></script>
 </body>
 </html> 

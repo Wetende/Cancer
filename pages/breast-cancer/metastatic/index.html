@@ -5,237 +5,432 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Learn about metastatic breast cancer, its symptoms, treatment options, and support resources.">
     <meta name="keywords" content="metastatic breast cancer, stage 4 breast cancer, advanced breast cancer, breast cancer treatment">
-    <meta name="author" content="Your Organization">
+    <meta name="author" content="Nzoya Foundation">
     <title>Metastatic Breast Cancer | Understanding Stage IV Breast Cancer</title>
-    <link rel="stylesheet" href="/css/styles.css">
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <!-- Dynamic asset path resolution will be handled by JavaScript -->
+    <link rel="icon" id="favicon-link" href="images/favicon.svg" type="image/svg+xml">
+    <link rel="stylesheet" id="styles-link" href="/Cancer/css/styles.css">
+    <link rel="stylesheet" id="theme-link" href="css/komen-theme.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+    <!-- Page-specific styles -->
+    <style id="page-styles">
+        .metastatic-content {
+            margin-bottom: 2.5rem;
+        }
+        
+        .info-box {
+            background-color: #f8f9fa;
+            border-radius: 8px;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        
+        .common-sites {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+        
+        .common-sites li {
+            background-color: #e6f2ff;
+            border-radius: 4px;
+            padding: 0.5rem 1rem;
+            font-weight: 500;
+        }
+        
+        .symptoms-grid, .quality-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin-top: 1.5rem;
+        }
+        
+        .symptom-card, .treatment-card, .quality-card, .support-card {
+            background-color: #f8f9fa;
+            border-radius: 8px;
+            padding: 1.5rem;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+        }
+        
+        .symptom-card:hover, .treatment-card:hover, 
+        .quality-card:hover, .support-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        .treatment-options {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 1.5rem;
+            margin-top: 1.5rem;
+        }
+        
+        .treatment-goals, .diagnostic-tools, .monitoring-info, 
+        .trials-info, .research-updates {
+            margin-top: 2rem;
+        }
+        
+        .support-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 1.5rem;
+            margin-top: 1.5rem;
+        }
+        
+        .research-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 1.5rem;
+            margin-top: 1.5rem;
+        }
+        
+        /* Color-coded cards */
+        .symptom-card:nth-child(1) {
+            border-top: 4px solid #D81B60; /* Bone - pink */
+        }
+        
+        .symptom-card:nth-child(2) {
+            border-top: 4px solid #FFC107; /* Liver - amber */
+        }
+        
+        .symptom-card:nth-child(3) {
+            border-top: 4px solid #2196F3; /* Lung - blue */
+        }
+        
+        .symptom-card:nth-child(4) {
+            border-top: 4px solid #9C27B0; /* Brain - purple */
+        }
+    </style>
 </head>
 <body>
-    <header>
-        <!-- Navigation will be included here -->
-    </header>
+    <!-- Header will be loaded here -->
+    <header id="header"></header>
 
-    <main class="metastatic-page">
-        <div class="hero-section">
-            <nav class="breadcrumb" aria-label="breadcrumb">
-                <ol>
-                    <li><a href="/index.html">Home</a></li>
-                    <li><a href="/pages/about-breast-cancer.html">About Breast Cancer</a></li>
-                    <li>Metastatic Breast Cancer</li>
-                </ol>
-            </nav>
+    <!-- Main content -->
+    <main id="main-content" class="metastatic-page">
+        <!-- Hero section -->
+        <section class="hero-section">
+            <div class="container">
+                <div class="hero-image">
+                    <img src="" alt="Metastatic Breast Cancer" class="full-width-image" id="hero-img" data-src="images/content/treatment-4099432_1280.jpg">
+                </div>
+                <div id="breadcrumb-container"></div>
+                <h1 id="page-title">Understanding Metastatic Breast Cancer</h1>
+                <p class="lead" id="page-description">Metastatic breast cancer (also called stage IV or advanced breast cancer) is breast cancer that has spread beyond the breast to other organs in the body. Learn about diagnosis, treatment, and living with metastatic breast cancer.</p>
+            </div>
+        </section>
 
-            <h1>Understanding Metastatic Breast Cancer</h1>
-            <p class="lead">Metastatic breast cancer (also called stage IV or advanced breast cancer) is breast cancer that has spread beyond the breast to other organs in the body. Learn about diagnosis, treatment, and living with metastatic breast cancer.</p>
-        </div>
-
-        <div class="content-wrapper">
-            <aside class="sidebar">
-                <nav class="page-navigation">
-                    <h2>Quick Navigation</h2>
-                    <ul>
-                        <li><a href="#basics">What is Metastatic Breast Cancer?</a></li>
-                        <li><a href="#symptoms">Signs and Symptoms</a></li>
-                        <li><a href="#diagnosis">Diagnosis and Monitoring</a></li>
-                        <li><a href="#treatment">Treatment Options</a></li>
-                        <li><a href="#quality">Quality of Life</a></li>
-                        <li><a href="#support">Support and Resources</a></li>
-                        <li><a href="#research">Clinical Trials and Research</a></li>
-                    </ul>
-                </nav>
-            </aside>
-
-            <div class="main-content">
-                <section id="basics" class="metastatic-content">
-                    <h2>What is Metastatic Breast Cancer?</h2>
-                    <div class="info-box">
-                        <p>Metastatic breast cancer occurs when cancer cells spread beyond the breast to other parts of the body, most commonly to the:</p>
-                        <ul class="common-sites">
-                            <li>Bones</li>
-                            <li>Liver</li>
-                            <li>Lungs</li>
-                            <li>Brain</li>
+        <!-- Content section -->
+        <div class="container">
+            <div class="content-grid">
+                <!-- Sidebar -->
+                <aside class="sidebar" id="sidebar">
+                    <nav class="section-nav">
+                        <h2>Quick Navigation</h2>
+                        <ul id="section-nav-list">
+                            <li><a href="#basics">What is Metastatic Breast Cancer?</a></li>
+                            <li><a href="#symptoms">Signs and Symptoms</a></li>
+                            <li><a href="#diagnosis">Diagnosis and Monitoring</a></li>
+                            <li><a href="#treatment">Treatment Options</a></li>
+                            <li><a href="#quality">Quality of Life</a></li>
+                            <li><a href="#support">Support and Resources</a></li>
+                            <li><a href="#research">Clinical Trials and Research</a></li>
                         </ul>
-                    </div>
+                    </nav>
+                </aside>
 
-                    <div class="key-facts">
-                        <h3>Key Facts About Metastatic Breast Cancer</h3>
-                        <ul>
-                            <li>It can occur at any age and can affect both women and men</li>
-                            <li>About 30% of people diagnosed with early-stage breast cancer will develop metastatic disease</li>
-                            <li>Some people have metastatic breast cancer when first diagnosed (called de novo metastatic breast cancer)</li>
-                            <li>While currently not curable, it is treatable, and many people live for years with good quality of life</li>
-                        </ul>
-                    </div>
-                </section>
-
-                <section id="symptoms" class="metastatic-content">
-                    <h2>Signs and Symptoms</h2>
-                    <div class="symptoms-grid">
-                        <div class="symptom-card">
-                            <h3>Bone Metastasis</h3>
-                            <ul>
-                                <li>Bone pain</li>
-                                <li>Fractures</li>
-                                <li>High calcium levels</li>
+                <!-- Main content area -->
+                <div class="main-content" id="content-area">
+                    <section id="basics" class="metastatic-content content-section">
+                        <h2>What is Metastatic Breast Cancer?</h2>
+                        <div class="info-box">
+                            <p>Metastatic breast cancer occurs when cancer cells spread beyond the breast to other parts of the body, most commonly to the:</p>
+                            <ul class="common-sites">
+                                <li>Bones</li>
+                                <li>Liver</li>
+                                <li>Lungs</li>
+                                <li>Brain</li>
                             </ul>
                         </div>
-                        <div class="symptom-card">
-                            <h3>Liver Metastasis</h3>
-                            <ul>
-                                <li>Yellowing of skin</li>
-                                <li>Abdominal pain</li>
-                                <li>Loss of appetite</li>
-                            </ul>
-                        </div>
-                        <div class="symptom-card">
-                            <h3>Lung Metastasis</h3>
-                            <ul>
-                                <li>Shortness of breath</li>
-                                <li>Chronic cough</li>
-                                <li>Chest pain</li>
-                            </ul>
-                        </div>
-                        <div class="symptom-card">
-                            <h3>Brain Metastasis</h3>
-                            <ul>
-                                <li>Headaches</li>
-                                <li>Vision changes</li>
-                                <li>Memory problems</li>
-                            </ul>
-                        </div>
-                    </div>
-                </section>
 
-                <section id="diagnosis" class="metastatic-content">
-                    <h2>Diagnosis and Monitoring</h2>
-                    <div class="diagnostic-tools">
-                        <h3>Common Diagnostic Tests</h3>
-                        <ul>
-                            <li>Blood tests</li>
-                            <li>Imaging tests (CT scans, PET scans, bone scans)</li>
-                            <li>Biopsies of suspected metastases</li>
-                            <li>Tumor marker tests</li>
-                        </ul>
-                    </div>
-
-                    <div class="monitoring-info">
-                        <h3>Monitoring Treatment Response</h3>
-                        <p>Your healthcare team will regularly monitor your response to treatment through:</p>
-                        <ul>
-                            <li>Physical exams</li>
-                            <li>Blood tests</li>
-                            <li>Imaging scans</li>
-                            <li>Symptom assessment</li>
-                        </ul>
-                    </div>
-                </section>
-
-                <section id="treatment" class="metastatic-content">
-                    <h2>Treatment Options</h2>
-                    <div class="treatment-options">
-                        <div class="treatment-card">
-                            <h3>Systemic Treatments</h3>
+                        <div class="key-facts">
+                            <h3>Key Facts About Metastatic Breast Cancer</h3>
                             <ul>
-                                <li>Hormone therapy</li>
-                                <li>Chemotherapy</li>
-                                <li>Targeted therapy</li>
-                                <li>Immunotherapy</li>
+                                <li>It can occur at any age and can affect both women and men</li>
+                                <li>About 30% of people diagnosed with early-stage breast cancer will develop metastatic disease</li>
+                                <li>Some people have metastatic breast cancer when first diagnosed (called de novo metastatic breast cancer)</li>
+                                <li>While currently not curable, it is treatable, and many people live for years with good quality of life</li>
                             </ul>
                         </div>
-                        <div class="treatment-card">
-                            <h3>Local Treatments</h3>
+                    </section>
+
+                    <section id="symptoms" class="metastatic-content content-section">
+                        <h2>Signs and Symptoms</h2>
+                        <div class="symptoms-grid">
+                            <div class="symptom-card">
+                                <h3>Bone Metastasis</h3>
+                                <ul>
+                                    <li>Bone pain</li>
+                                    <li>Fractures</li>
+                                    <li>High calcium levels</li>
+                                </ul>
+                            </div>
+                            <div class="symptom-card">
+                                <h3>Liver Metastasis</h3>
+                                <ul>
+                                    <li>Yellowing of skin</li>
+                                    <li>Abdominal pain</li>
+                                    <li>Loss of appetite</li>
+                                </ul>
+                            </div>
+                            <div class="symptom-card">
+                                <h3>Lung Metastasis</h3>
+                                <ul>
+                                    <li>Shortness of breath</li>
+                                    <li>Chronic cough</li>
+                                    <li>Chest pain</li>
+                                </ul>
+                            </div>
+                            <div class="symptom-card">
+                                <h3>Brain Metastasis</h3>
+                                <ul>
+                                    <li>Headaches</li>
+                                    <li>Vision changes</li>
+                                    <li>Memory problems</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </section>
+
+                    <section id="diagnosis" class="metastatic-content content-section">
+                        <h2>Diagnosis and Monitoring</h2>
+                        <div class="diagnostic-tools">
+                            <h3>Common Diagnostic Tests</h3>
                             <ul>
-                                <li>Surgery</li>
-                                <li>Radiation therapy</li>
-                                <li>Ablation</li>
+                                <li>Blood tests</li>
+                                <li>Imaging tests (CT scans, PET scans, bone scans)</li>
+                                <li>Biopsies of suspected metastases</li>
+                                <li>Tumor marker tests</li>
                             </ul>
                         </div>
-                    </div>
 
-                    <div class="treatment-goals">
-                        <h3>Treatment Goals</h3>
-                        <ul>
-                            <li>Extend life</li>
-                            <li>Maintain quality of life</li>
-                            <li>Manage symptoms</li>
-                            <li>Slow cancer growth</li>
-                        </ul>
-                    </div>
-                </section>
-
-                <section id="quality" class="metastatic-content">
-                    <h2>Quality of Life</h2>
-                    <div class="quality-grid">
-                        <div class="quality-card">
-                            <h3>Pain Management</h3>
-                            <p>Options include medications, radiation therapy, and complementary therapies.</p>
-                        </div>
-                        <div class="quality-card">
-                            <h3>Emotional Well-being</h3>
-                            <p>Support through counseling, support groups, and stress management techniques.</p>
-                        </div>
-                        <div class="quality-card">
-                            <h3>Daily Activities</h3>
-                            <p>Tips for maintaining independence and managing daily tasks.</p>
-                        </div>
-                        <div class="quality-card">
-                            <h3>Nutrition</h3>
-                            <p>Dietary recommendations and managing treatment-related side effects.</p>
-                        </div>
-                    </div>
-                </section>
-
-                <section id="support" class="metastatic-content">
-                    <h2>Support and Resources</h2>
-                    <div class="support-content">
-                        <div class="support-card">
-                            <h3>Support Services</h3>
+                        <div class="monitoring-info">
+                            <h3>Monitoring Treatment Response</h3>
+                            <p>Your healthcare team will regularly monitor your response to treatment through:</p>
                             <ul>
-                                <li>Patient navigators</li>
-                                <li>Support groups</li>
-                                <li>Counseling services</li>
-                                <li>Financial assistance programs</li>
+                                <li>Physical exams</li>
+                                <li>Blood tests</li>
+                                <li>Imaging scans</li>
+                                <li>Symptom assessment</li>
                             </ul>
                         </div>
-                        <div class="support-card">
-                            <h3>Local Resources</h3>
-                            <ul>
-                                <li>Support group meetings in Bellevue</li>
-                                <li>Transportation assistance</li>
-                                <li>Home care services</li>
-                                <li>Palliative care teams</li>
-                            </ul>
-                        </div>
-                    </div>
-                </section>
+                    </section>
 
-                <section id="research" class="metastatic-content">
-                    <h2>Clinical Trials and Research</h2>
-                    <div class="research-content">
-                        <div class="trials-info">
-                            <h3>Understanding Clinical Trials</h3>
-                            <p>Clinical trials offer access to new treatments and contribute to research that helps future patients. Talk to your healthcare team about whether a clinical trial might be right for you.</p>
+                    <section id="treatment" class="metastatic-content content-section">
+                        <h2>Treatment Options</h2>
+                        <div class="treatment-options">
+                            <div class="treatment-card">
+                                <h3>Systemic Treatments</h3>
+                                <ul>
+                                    <li>Hormone therapy</li>
+                                    <li>Chemotherapy</li>
+                                    <li>Targeted therapy</li>
+                                    <li>Immunotherapy</li>
+                                </ul>
+                            </div>
+                            <div class="treatment-card">
+                                <h3>Local Treatments</h3>
+                                <ul>
+                                    <li>Surgery</li>
+                                    <li>Radiation therapy</li>
+                                    <li>Ablation</li>
+                                </ul>
+                            </div>
                         </div>
-                        <div class="research-updates">
-                            <h3>Latest Research</h3>
+
+                        <div class="treatment-goals">
+                            <h3>Treatment Goals</h3>
                             <ul>
-                                <li>New targeted therapies</li>
-                                <li>Immunotherapy advances</li>
-                                <li>Quality of life studies</li>
-                                <li>Biomarker research</li>
+                                <li>Extend life</li>
+                                <li>Maintain quality of life</li>
+                                <li>Manage symptoms</li>
+                                <li>Slow cancer growth</li>
                             </ul>
                         </div>
-                    </div>
-                </section>
+                    </section>
+
+                    <section id="quality" class="metastatic-content content-section">
+                        <h2>Quality of Life</h2>
+                        <div class="quality-grid">
+                            <div class="quality-card">
+                                <h3>Pain Management</h3>
+                                <p>Options include medications, radiation therapy, and complementary therapies.</p>
+                            </div>
+                            <div class="quality-card">
+                                <h3>Emotional Well-being</h3>
+                                <p>Support through counseling, support groups, and stress management techniques.</p>
+                            </div>
+                            <div class="quality-card">
+                                <h3>Daily Activities</h3>
+                                <p>Tips for maintaining independence and managing daily tasks.</p>
+                            </div>
+                            <div class="quality-card">
+                                <h3>Nutrition</h3>
+                                <p>Dietary recommendations and managing treatment-related side effects.</p>
+                            </div>
+                        </div>
+                    </section>
+
+                    <section id="support" class="metastatic-content content-section">
+                        <h2>Support and Resources</h2>
+                        <div class="support-content">
+                            <div class="support-card">
+                                <h3>Support Services</h3>
+                                <ul>
+                                    <li>Patient navigators</li>
+                                    <li>Support groups</li>
+                                    <li>Counseling services</li>
+                                    <li>Financial assistance programs</li>
+                                </ul>
+                            </div>
+                            <div class="support-card">
+                                <h3>Local Resources</h3>
+                                <ul>
+                                    <li>Support group meetings in Bellevue</li>
+                                    <li>Transportation assistance</li>
+                                    <li>Home care services</li>
+                                    <li>Palliative care teams</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </section>
+
+                    <section id="research" class="metastatic-content content-section">
+                        <h2>Clinical Trials and Research</h2>
+                        <div class="research-content">
+                            <div class="trials-info">
+                                <h3>Understanding Clinical Trials</h3>
+                                <p>Clinical trials offer access to new treatments and contribute to research that helps future patients. Talk to your healthcare team about whether a clinical trial might be right for you.</p>
+                            </div>
+                            <div class="research-updates">
+                                <h3>Latest Research</h3>
+                                <ul>
+                                    <li>New targeted therapies</li>
+                                    <li>Immunotherapy advances</li>
+                                    <li>Quality of life studies</li>
+                                    <li>Biomarker research</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </section>
+                </div>
             </div>
         </div>
     </main>
 
-    <footer>
-        <!-- Footer content will be included here -->
-    </footer>
+    <!-- Footer will be loaded here -->
+    <footer id="footer"></footer>
 
-    <script src="/js/main.js"></script>
+    <!-- Scripts -->
+    <script id="utils-script" src="js/utils.js"></script>
+    <script id="components-script" src="js/components.js"></script>
+    <script id="main-script" src="js/main.js"></script>
+    <script>
+        // Resolve asset paths based on current page depth
+        function resolveAssetPaths() {
+            const path = window.location.pathname;
+            let depth = 0;
+            
+            // Count directory levels
+            if (path.includes('/pages/')) {
+                depth = path.split('/').length - 2; // Adjust for domain and filename
+            }
+            
+            const basePath = depth === 0 ? '' : '../'.repeat(depth);
+            
+            // Update asset links
+            document.getElementById('favicon-link').href = basePath + 'images/favicon.svg';
+            document.getElementById('styles-link').href = basePath + 'css/styles.css';
+            document.getElementById('theme-link').href = basePath + 'css/komen-theme.css';
+            document.getElementById('utils-script').src = basePath + 'js/utils.js';
+            document.getElementById('components-script').src = basePath + 'js/components.js';
+            document.getElementById('main-script').src = basePath + 'js/main.js';
+            
+            // Update image paths
+            const heroImg = document.getElementById('hero-img');
+            if (heroImg && heroImg.getAttribute('data-src')) {
+                heroImg.src = basePath + heroImg.getAttribute('data-src');
+            }
+            
+            // Update section images
+            const sectionImages = document.querySelectorAll('.section-img[data-src]');
+            sectionImages.forEach(img => {
+                img.src = basePath + img.getAttribute('data-src');
+            });
+            
+            // Update link paths
+            const dynamicLinks = document.querySelectorAll('a[data-href]');
+            dynamicLinks.forEach(link => {
+                link.href = basePath + link.getAttribute('data-href');
+            });
+        }
+        
+        // Execute path resolution immediately
+        resolveAssetPaths();
+        
+        // Initialize components
+        document.addEventListener('DOMContentLoaded', function() {
+            // Load header and footer
+            loadComponent('#header', basePath + 'components/header.html');
+            loadComponent('#footer', basePath + 'components/footer.html');
+            
+            // Load breadcrumb (with configuration)
+            loadBreadcrumb('#breadcrumb-container', [
+                { text: 'Home', url: basePath + 'index.html' },
+                { text: 'About Breast Cancer', url: basePath + 'pages/about-breast-cancer.html' },
+                { text: 'Metastatic Breast Cancer', url: '#' }
+            ]);
+            
+            // Initialize page-specific scripts
+            if (typeof initPage === 'function') {
+                initPage();
+            }
+        });
+
+        // Define basePath for component loading
+        let basePath = '';
+        const path = window.location.pathname;
+        if (path.includes('/pages/')) {
+            const depth = path.split('/').length - 2;
+            basePath = depth === 0 ? '' : '../'.repeat(depth);
+        }
+    </script>
+    <!-- Page-specific scripts -->
+    <script id="page-scripts">
+        // Add smooth scrolling for navigation links
+        document.addEventListener('DOMContentLoaded', function() {
+            const navLinks = document.querySelectorAll('#section-nav-list a');
+            
+            navLinks.forEach(link => {
+                link.addEventListener('click', function(e) {
+                    const targetId = this.getAttribute('href');
+                    if (targetId.startsWith('#')) {
+                        e.preventDefault();
+                        const targetElement = document.querySelector(targetId);
+                        if (targetElement) {
+                            window.scrollTo({
+                                top: targetElement.offsetTop - 100,
+                                behavior: 'smooth'
+                            });
+                        }
+                    }
+                });
+            });
+        });
+    </script>
 </body>
 </html> 

@@ -3,14 +3,113 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Learn about breast cancer screening tests, mammograms, clinical breast exams, and early detection guidelines in Bellevue, WA.">
-    <meta name="keywords" content="breast cancer screening, mammogram, clinical breast exam, early detection, breast cancer prevention, Bellevue, WA">
+    <meta name="description" content="Learn about breast cancer screening recommendations, mammograms, and early detection methods in Bellevue, WA.">
+    <meta name="keywords" content="breast cancer screening, mammogram, breast self-exam, early detection, Bellevue, WA">
     <meta name="author" content="Nzoya Foundation">
-    <title>Breast Cancer Screening and Early Detection | Nzoya Foundation</title>
-    <link rel="icon" href="../../../images/favicon.svg" type="image/svg+xml">
-    <link rel="stylesheet" href="../../../css/styles.css">
+    <title>Breast Cancer Screening | Nzoya Foundation</title>
+    <link rel="icon" id="favicon-link" href="images/favicon.svg" type="image/svg+xml">
+    <link rel="stylesheet" id="styles-link" href="/Cancer/css/styles.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+    <style id="page-styles">
+        .screening-types-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+        
+        .screening-type {
+            border: 1px solid #e9e9e9;
+            border-radius: 8px;
+            padding: 1.5rem;
+            background-color: #fff;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        
+        .screening-type:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        .screening-type__image {
+            width: 100%;
+            height: 180px;
+            object-fit: cover;
+            border-radius: 6px;
+            margin-bottom: 1rem;
+        }
+        
+        .screening-type h3 {
+            color: #e46b76;
+            margin-top: 0;
+            margin-bottom: 0.75rem;
+            font-size: 1.25rem;
+        }
+        
+        .self-exam-steps {
+            counter-reset: exam-step;
+            margin: 2rem 0;
+        }
+        
+        .step-item {
+            position: relative;
+            padding-left: 3.5rem;
+            margin-bottom: 2rem;
+        }
+        
+        .step-item__number {
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 2.5rem;
+            height: 2.5rem;
+            background-color: #e46b76;
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 1.25rem;
+        }
+        
+        .guidelines-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin: 1.5rem 0;
+        }
+        
+        .guideline-card {
+            border: 1px solid #e9e9e9;
+            border-radius: 8px;
+            overflow: hidden;
+            background-color: #fff;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+        }
+        
+        .guideline-card__header {
+            background-color: #e46b76;
+            color: white;
+            padding: 0.75rem 1.5rem;
+        }
+        
+        .guideline-card__title {
+            margin: 0;
+            font-size: 1.25rem;
+        }
+        
+        .guideline-card__list {
+            padding: 1.5rem;
+            list-style-position: inside;
+        }
+        
+        .guideline-card__list li {
+            margin-bottom: 0.5rem;
+        }
+    </style>
 </head>
 <body>
     <header id="header"></header>
@@ -18,16 +117,13 @@
     <main class="screening-page">
         <section class="hero-section">
             <div class="container">
-                <div class="hero-image">
-                    <img src="../../../images/content/breast.jpg" alt="Breast Cancer Screening" class="full-width-image">
-                </div>
                 <nav class="breadcrumb">
                     <a href="../../../index.html">Home</a> &gt;
-                    <a href="../../about-breast-cancer.html">About Breast Cancer</a> &gt;
-                    <span>Screening & Early Detection</span>
+                    <a href="../../breast-cancer.html">Breast Cancer</a> &gt;
+                    <span>Screening</span>
                 </nav>
-                <h1>Screening and Early Detection</h1>
-                <p class="lead">Regular screening tests are the most reliable way to find breast cancer early. Learn about different screening methods, when to get screened, and what to do if you find changes in your breasts.</p>
+                <h1>Breast Cancer Screening</h1>
+                <p class="lead">Screening can help find breast cancer early, when it's easier to treat. Learn about different screening options, recommended guidelines by age, and how to perform a breast self-examination.</p>
             </div>
         </section>
 
@@ -37,202 +133,225 @@
                     <nav class="section-nav">
                         <h2>Quick Navigation</h2>
                         <ul>
-                            <li><a href="#screening-recommendations">Screening Recommendations</a>
+                            <li><a href="#guidelines">Screening Guidelines</a></li>
+                            <li><a href="#screening-types">Types of Screening</a>
                                 <ul>
-                                    <li><a href="#average-risk">Average Risk</a></li>
-                                    <li><a href="#high-risk">High Risk</a></li>
+                                    <li><a href="#mammogram">Mammogram</a></li>
+                                    <li><a href="#ultrasound">Ultrasound</a></li>
+                                    <li><a href="#mri">MRI</a></li>
                                 </ul>
                             </li>
-                            <li><a href="#mammography">Mammography</a>
-                                <ul>
-                                    <li><a href="#types">Types of Mammograms</a></li>
-                                    <li><a href="#what-to-expect">What to Expect</a></li>
-                                    <li><a href="#results">Understanding Results</a></li>
-                                </ul>
-                            </li>
-                            <li><a href="#clinical-exam">Clinical Breast Exam</a></li>
-                            <li><a href="#breast-awareness">Breast Self-Awareness</a></li>
-                            <li><a href="#finding-facilities">Finding Screening Facilities</a></li>
-                            <li><a href="#financial-assistance">Financial Assistance</a></li>
+                            <li><a href="#breast-exam">Breast Self-Examination</a></li>
+                            <li><a href="#high-risk">High-Risk Screening</a></li>
+                            <li><a href="#what-to-expect">What to Expect</a></li>
+                            <li><a href="#faq">Common Questions</a></li>
                         </ul>
                     </nav>
                 </aside>
 
                 <div class="main-content">
-                    <section id="screening-recommendations">
-                        <h2>Screening Recommendations</h2>
+                    <section id="why-screen">
+                        <h2>Why Screening Matters</h2>
+                        <p>When breast cancer is detected early, the 5-year survival rate is 99%. Screening helps find breast cancer before there are symptoms, when it may be easier to treat. Regular screening is one of the most important things you can do for your breast health.</p>
+                    </section>
+
+                    <section id="guidelines">
+                        <h2>Screening Guidelines</h2>
+                        <p>Different organizations have slightly different recommendations for breast cancer screening. The following are general guidelines, but your healthcare provider may recommend a different screening schedule based on your personal risk factors.</p>
                         
-                        <div id="average-risk" class="screening-content">
-                            <h3>For Women at Average Risk</h3>
-                            <div class="recommendation-card">
-                                <h4>Ages 40-74</h4>
-                                <ul>
-                                    <li>Have a mammogram every 1-2 years</li>
-                                    <li>Clinical breast exams every 1-3 years</li>
-                                    <li>Be familiar with how your breasts normally look and feel</li>
+                        <div class="guidelines-grid">
+                            <div class="guideline-card">
+                                <div class="guideline-card__header">
+                                    <h3 class="guideline-card__title">Ages 20-39</h3>
+                                </div>
+                                <ul class="guideline-card__list">
+                                    <li>Monthly breast self-examination</li>
+                                    <li>Clinical breast examination every 1-3 years</li>
+                                    <li>Risk assessment with healthcare provider</li>
+                                    <li>No routine mammograms unless high risk</li>
                                 </ul>
                             </div>
-                            <div class="recommendation-card">
-                                <h4>Ages 75 and Older</h4>
-                                <ul>
-                                    <li>Discuss with your healthcare provider</li>
-                                    <li>Consider your overall health and life expectancy</li>
-                                    <li>Continue screening as long as you're in good health</li>
+                            
+                            <div class="guideline-card">
+                                <div class="guideline-card__header">
+                                    <h3 class="guideline-card__title">Ages 40-49</h3>
+                                </div>
+                                <ul class="guideline-card__list">
+                                    <li>Monthly breast self-examination</li>
+                                    <li>Annual clinical breast examination</li>
+                                    <li>Annual mammogram (recommended by some organizations, optional by others)</li>
+                                    <li>Risk assessment with healthcare provider</li>
+                                </ul>
+                            </div>
+                            
+                            <div class="guideline-card">
+                                <div class="guideline-card__header">
+                                    <h3 class="guideline-card__title">Ages 50-74</h3>
+                                </div>
+                                <ul class="guideline-card__list">
+                                    <li>Monthly breast self-examination</li>
+                                    <li>Annual clinical breast examination</li>
+                                    <li>Annual or biennial mammogram (every 1-2 years)</li>
+                                    <li>Additional screening based on risk factors</li>
+                                </ul>
+                            </div>
+                            
+                            <div class="guideline-card">
+                                <div class="guideline-card__header">
+                                    <h3 class="guideline-card__title">Ages 75+</h3>
+                                </div>
+                                <ul class="guideline-card__list">
+                                    <li>Continue screening as long as in good health</li>
+                                    <li>Discuss benefits and limitations with healthcare provider</li>
+                                    <li>Consider life expectancy and treatment preferences</li>
                                 </ul>
                             </div>
                         </div>
-
-                        <div id="high-risk" class="screening-content">
-                            <h3>For Women at Higher Risk</h3>
-                            <div class="recommendation-card">
-                                <ul>
-                                    <li>Start screening at a younger age</li>
-                                    <li>Get screened more often</li>
-                                    <li>Use additional screening tests like MRI</li>
-                                    <li>Consider genetic counseling and testing</li>
-                                </ul>
-                                <p><strong>Note:</strong> Talk to your healthcare provider about your personal risk factors and the screening plan that's right for you.</p>
-                            </div>
-                        </div>
-                    </section>
-
-                    <section id="mammography" class="content-section">
-                        <div class="section-image">
-                            <img src="../../../images/content/medical-5051144_1280.jpg" alt="Mammography Screening" class="section-img">
-                        </div>
-                        <h2>Mammography</h2>
                         
-                        <div id="types" class="mammogram-types">
-                            <h3>Types of Mammograms</h3>
-                            <div class="type-grid">
-                                <div class="type-card">
-                                    <h4>Screening Mammogram</h4>
-                                    <p>Regular check for breast cancer in women who have no signs or symptoms.</p>
-                                </div>
-                                <div class="type-card">
-                                    <h4>Diagnostic Mammogram</h4>
-                                    <p>Used to check for breast cancer after a lump or other sign or symptom has been found.</p>
-                                </div>
-                                <div class="type-card">
-                                    <h4>3D Mammogram</h4>
-                                    <p>Creates a three-dimensional picture of the breast using X-rays.</p>
-                                </div>
-                            </div>
-                        </div>
+                        <p>Remember, these are general guidelines. Your healthcare provider may recommend a different screening schedule based on your personal risk factors. Talk to your doctor about what's right for you.</p>
+                    </section>
 
-                        <div id="what-to-expect">
-                            <h3>What to Expect During a Mammogram</h3>
-                            <ol>
-                                <li>You'll need to undress from the waist up</li>
-                                <li>A technologist will position your breast on a special platform</li>
-                                <li>Your breast will be compressed between two plates</li>
-                                <li>The technologist will take multiple images from different angles</li>
-                                <li>The entire process takes about 20-30 minutes</li>
-                            </ol>
-                            <div class="tips-box">
-                                <h4>Tips for Your Mammogram</h4>
-                                <ul>
-                                    <li>Don't wear deodorant, perfume, or powder on the day of your exam</li>
-                                    <li>Schedule your mammogram when your breasts are least tender</li>
-                                    <li>Wear a two-piece outfit for easy undressing</li>
-                                    <li>Bring your previous mammogram images if you're going to a new facility</li>
-                                </ul>
+                    <section id="screening-types">
+                        <h2>Types of Breast Cancer Screening</h2>
+                        <div class="screening-types-grid">
+                            <div class="screening-type" id="mammogram">
+                                <img src="../../../images/screening/mammogram.jpg" alt="Mammogram" class="screening-type__image">
+                                <h3>Mammogram</h3>
+                                <p>An X-ray picture of the breast. Mammograms can find tumors that are too small to feel. They can also find ductal carcinoma in situ (DCIS), abnormal cells in the lining of a breast duct that may become invasive cancer.</p>
+                                <p><strong>How often:</strong> Annually or biennially (every 2 years) depending on age and risk factors.</p>
                             </div>
-                        </div>
-
-                        <div id="results">
-                            <h3>Understanding Your Results</h3>
-                            <div class="results-grid">
-                                <div class="result-card">
-                                    <h4>Normal Result</h4>
-                                    <p>No signs of breast cancer found. Continue regular screening as recommended.</p>
-                                </div>
-                                <div class="result-card">
-                                    <h4>Need Additional Imaging</h4>
-                                    <p>Additional views or other tests needed to make a complete evaluation.</p>
-                                </div>
-                                <div class="result-card">
-                                    <h4>Suspicious Finding</h4>
-                                    <p>An area that needs to be checked with a biopsy.</p>
-                                </div>
+                            
+                            <div class="screening-type" id="ultrasound">
+                                <img src="../../../images/screening/ultrasound.jpg" alt="Ultrasound" class="screening-type__image">
+                                <h3>Breast Ultrasound</h3>
+                                <p>Uses sound waves to create pictures of the inside of the breast. Often used as a follow-up test after an abnormal finding on a mammogram or for women with dense breast tissue.</p>
+                                <p><strong>How often:</strong> As needed based on other screening results or risk factors.</p>
+                            </div>
+                            
+                            <div class="screening-type" id="mri">
+                                <img src="../../../images/screening/mri.jpg" alt="MRI" class="screening-type__image">
+                                <h3>Breast MRI</h3>
+                                <p>Uses magnets and radio waves to take pictures of the breast. Usually reserved for women at high risk of breast cancer or to help diagnose breast problems.</p>
+                                <p><strong>How often:</strong> Annually for high-risk women, or as needed for diagnosis.</p>
                             </div>
                         </div>
                     </section>
 
-                    <section id="clinical-exam" class="content-section">
-                        <div class="section-image">
-                            <img src="../../../images/content/doctor-650534_1280.jpg" alt="Clinical Breast Exam" class="section-img">
-                        </div>
-                        <h2>Clinical Breast Exam</h2>
-                        <p>A clinical breast exam is a physical exam done by a healthcare provider to check for breast problems or abnormalities.</p>
-                        <div class="exam-content">
-                            <h3>What to Expect</h3>
-                            <ul>
-                                <li>Visual inspection of your breasts</li>
-                                <li>Physical examination of your breast tissue</li>
-                                <li>Check for changes in size, shape, or texture</li>
-                                <li>Examination of your underarm area</li>
-                            </ul>
-                        </div>
-                    </section>
-
-                    <section id="breast-awareness">
-                        <h2>Breast Self-Awareness</h2>
-                        <div class="awareness-content">
-                            <p>Being breast aware means knowing how your breasts normally look and feel and reporting any changes to your healthcare provider.</p>
-                            <h3>Know Your Normal</h3>
-                            <ul>
-                                <li>Size and shape</li>
-                                <li>Skin texture</li>
-                                <li>The look and feel of your nipples</li>
-                                <li>Any usual tenderness or pain</li>
-                            </ul>
-                            <div class="warning-signs">
-                                <h3>Report These Changes</h3>
-                                <ul>
-                                    <li>A lump or thickening in or near the breast or underarm</li>
-                                    <li>Changes in breast size or shape</li>
-                                    <li>Dimpling or puckering of the skin</li>
-                                    <li>Nipple discharge (other than breast milk)</li>
-                                    <li>Nipple inversion or other nipple changes</li>
-                                </ul>
+                    <section id="breast-exam">
+                        <h2>Breast Self-Examination</h2>
+                        <p>While breast self-exams are not a substitute for mammograms or clinical breast exams, they help you become familiar with how your breasts look and feel so you can report any changes to your healthcare provider.</p>
+                        
+                        <div class="self-exam-steps">
+                            <div class="step-item">
+                                <div class="step-item__number">1</div>
+                                <h3>Visual Inspection</h3>
+                                <p>Stand in front of a mirror with your arms at your sides. Look for any changes in breast size, shape, skin texture (dimpling, puckering, or bulging), or nipple appearance. Repeat with arms raised overhead and hands on hips, pressing firmly to flex chest muscles.</p>
+                            </div>
+                            
+                            <div class="step-item">
+                                <div class="step-item__number">2</div>
+                                <h3>Lying Down Examination</h3>
+                                <p>Lie down and place a pillow under your right shoulder. Use your left hand to examine your right breast using the flat pads of your fingers. Move in a circular pattern from the outside to the center, covering the entire breast and armpit. Repeat on the left breast.</p>
+                            </div>
+                            
+                            <div class="step-item">
+                                <div class="step-item__number">3</div>
+                                <h3>Shower Examination</h3>
+                                <p>Check your breasts while showering. Wet skin makes it easier to feel changes. Use the same circular motion as the lying down exam.</p>
+                            </div>
+                            
+                            <div class="step-item">
+                                <div class="step-item__number">4</div>
+                                <h3>Nipple Check</h3>
+                                <p>Gently squeeze each nipple to check for discharge. Look for any changes in nipple appearance or direction.</p>
                             </div>
                         </div>
+                        
+                        <div class="alert alert-info">
+                            <p><strong>Important:</strong> If you find a lump or notice any changes, don't panic. Most breast changes are not cancer, but you should contact your healthcare provider for an evaluation.</p>
+                        </div>
                     </section>
 
-                    <section id="finding-facilities" class="content-section">
-                        <div class="section-image">
-                            <img src="../../../images/content/operation-1807543_1280.jpg" alt="Screening Facilities" class="section-img">
-                        </div>
-                        <h2>Finding Screening Facilities in Bellevue</h2>
-                        <div class="facilities-content">
-                            <p>Several accredited mammography facilities are available in the Bellevue area. Our team can help you find the most convenient location for you.</p>
-                            <div class="facility-search">
-                                <h3>Local Screening Centers</h3>
-                                <ul>
-                                    <li>Overlake Medical Center Breast Health</li>
-                                    <li>Swedish Cancer Institute Bellevue</li>
-                                    <li>Pacific Medical Centers Bellevue</li>
-                                    <li>UW Medicine Breast Center at Bellevue Clinic</li>
-                                </ul>
-                                <a href="../support/index.html" class="btn-secondary">Find a Facility Near You</a>
+                    <section id="high-risk">
+                        <h2>Screening for High-Risk Women</h2>
+                        <p>Women at high risk for breast cancer may need to start screening earlier and may benefit from additional screening tests. You may be at high risk if you have:</p>
+                        <ul>
+                            <li>A known BRCA1 or BRCA2 gene mutation</li>
+                            <li>A first-degree relative (parent, sibling, or child) with a BRCA mutation</li>
+                            <li>A personal history of breast cancer, DCIS, LCIS, or precancerous breast changes</li>
+                            <li>A strong family history of breast or ovarian cancer</li>
+                            <li>Had radiation therapy to the chest between ages 10-30</li>
+                            <li>Certain genetic syndromes like Li-Fraumeni or Cowden syndrome</li>
+                        </ul>
+                        
+                        <p>If you are at high risk, your healthcare provider may recommend:</p>
+                        <ul>
+                            <li>Starting mammograms earlier (often at age 30)</li>
+                            <li>Having breast MRIs in addition to mammograms</li>
+                            <li>More frequent clinical breast exams</li>
+                            <li>Genetic counseling and possible testing</li>
+                            <li>Medications or surgery to reduce risk</li>
+                        </ul>
+                    </section>
+
+                    <section id="what-to-expect">
+                        <h2>What to Expect During Screening</h2>
+                        <h3>Preparing for a Mammogram</h3>
+                        <ul>
+                            <li>Schedule your mammogram for the week after your period when your breasts are less tender</li>
+                            <li>Don't wear deodorant, perfume, lotion, or powder under your arms or on your breasts on the day of the exam</li>
+                            <li>Wear a two-piece outfit so you only need to remove your top</li>
+                            <li>Bring previous mammogram records if you're going to a new facility</li>
+                        </ul>
+                        
+                        <h3>During the Mammogram</h3>
+                        <p>During a mammogram, your breast is placed on a flat support plate and compressed with a parallel plate. Compression is necessary to spread the breast tissue for better images and to reduce radiation exposure. You'll be asked to hold your breath for a few seconds while the X-ray is taken. The entire procedure takes about 20 minutes.</p>
+                        
+                        <h3>After the Mammogram</h3>
+                        <p>You can resume normal activities immediately after your mammogram. You will usually receive results within a few days to a week. If there are any concerning findings, you may need additional imaging or a biopsy.</p>
+                    </section>
+
+                    <section id="faq">
+                        <h2>Frequently Asked Questions</h2>
+                        <div class="accordion">
+                            <div class="accordion-item">
+                                <button class="accordion-button">
+                                    Are mammograms painful?
+                                    <span class="accordion-icon"></span>
+                                </button>
+                                <div class="accordion-content">
+                                    <p>Mammograms can be uncomfortable due to the compression of the breast tissue, but the discomfort is brief. Some women report more discomfort if they have the exam just before or during their period when breasts may be more sensitive. Taking an over-the-counter pain reliever about an hour before the exam may help.</p>
+                                </div>
                             </div>
-                        </div>
-                    </section>
-
-                    <section id="financial-assistance">
-                        <h2>Financial Assistance</h2>
-                        <div class="assistance-content">
-                            <p>Don't let cost prevent you from getting screened. Several programs are available to help cover the cost of breast cancer screening.</p>
-                            <div class="assistance-options">
-                                <h3>Available Programs</h3>
-                                <ul>
-                                    <li>Medicare and Medicaid coverage</li>
-                                    <li>Washington Breast, Cervical, and Colon Health Program</li>
-                                    <li>Susan G. Komen financial assistance</li>
-                                    <li>Hospital and clinic sliding scale programs</li>
-                                </ul>
-                                <a href="../financial-assistance/index.html" class="btn-secondary">Learn About Financial Aid</a>
+                            
+                            <div class="accordion-item">
+                                <button class="accordion-button">
+                                    Is there radiation risk from mammograms?
+                                    <span class="accordion-icon"></span>
+                                </button>
+                                <div class="accordion-content">
+                                    <p>The dose of radiation from a mammogram is very low. For most women, the benefits of mammography in detecting cancer early outweigh the small risks from radiation exposure. Modern mammography equipment uses the lowest radiation dose possible while still producing quality images.</p>
+                                </div>
+                            </div>
+                            
+                            <div class="accordion-item">
+                                <button class="accordion-button">
+                                    What if I have dense breasts?
+                                    <span class="accordion-icon"></span>
+                                </button>
+                                <div class="accordion-content">
+                                    <p>Dense breasts have more glandular and fibrous tissue than fatty tissue. Dense breast tissue can make it harder to see cancer on a mammogram. If you have dense breasts, your doctor may recommend additional screening tests such as ultrasound or MRI. Talk to your healthcare provider about your breast density and whether additional screening tests would be beneficial.</p>
+                                </div>
+                            </div>
+                            
+                            <div class="accordion-item">
+                                <button class="accordion-button">
+                                    At what age should I stop getting mammograms?
+                                    <span class="accordion-icon"></span>
+                                </button>
+                                <div class="accordion-content">
+                                    <p>There is no specific age at which mammograms should stop. The decision should be based on your overall health, life expectancy, and personal preferences. Many guidelines suggest continuing mammograms as long as a woman is in good health and would be a candidate for breast cancer treatment. Talk with your healthcare provider about what's right for you.</p>
+                                </div>
                             </div>
                         </div>
                     </section>
@@ -243,6 +362,27 @@
 
     <footer id="footer"></footer>
 
+    <script src="../../../js/utils.js"></script>
+    <script src="../../../js/components.js"></script>
     <script src="../../../js/main.js"></script>
+    <script>
+        // Initialize accordion functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            const accordionButtons = document.querySelectorAll('.accordion-button');
+            
+            accordionButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    this.classList.toggle('active');
+                    const content = this.nextElementSibling;
+                    
+                    if (content.style.maxHeight) {
+                        content.style.maxHeight = null;
+                    } else {
+                        content.style.maxHeight = content.scrollHeight + "px";
+                    }
+                });
+            });
+        });
+    </script>
 </body>
 </html> 

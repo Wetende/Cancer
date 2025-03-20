@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>FAQ - Breast Cancer Screening</title>
     <meta name="description" content="Find answers to frequently asked questions about breast cancer screening, mammograms, and early detection.">
-    <link rel="stylesheet" href="../css/main.min.css">
+    <link rel="stylesheet" id="styles-link" href="/Cancer/css/styles.css">
 </head>
 <body>
     <!-- Header will be loaded via JavaScript -->
@@ -233,8 +233,23 @@
     <footer id="footer" class="footer"></footer>
 
     <!-- Scripts -->
+    <script id="utils-script" src="../js/utils.js"></script>
+    <script id="components-script" src="../js/components.js"></script>
+    <script id="main-script" src="../js/main.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/js/all.min.js" crossorigin="anonymous"></script>
-    <script src="../js/main.js"></script>
-    <script src="../js/faq.js"></script>
+    <script id="faq-script" src="../js/faq.js"></script>
+    <script>
+        // Initialize components after DOM is loaded
+        document.addEventListener('DOMContentLoaded', function() {
+            // Load header and footer
+            loadComponent('#header', 'header.html');
+            loadComponent('#footer', 'footer.html');
+            
+            // Initialize page-specific scripts
+            if (typeof initPage === 'function') {
+                initPage();
+            }
+        });
+    </script>
 </body>
 </html> 

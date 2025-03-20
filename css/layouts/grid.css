@@ -1,0 +1,151 @@
+/* 
+ * Grid System
+ * A responsive grid system inspired by Komen.org
+ */
+
+.grid {
+    display: grid;
+    gap: var(--spacing-4);
+}
+
+/* Grid column templates */
+.grid-cols-1 {
+    grid-template-columns: 1fr;
+}
+
+.grid-cols-2 {
+    grid-template-columns: repeat(1, 1fr);
+}
+
+.grid-cols-3 {
+    grid-template-columns: repeat(1, 1fr);
+}
+
+.grid-cols-4 {
+    grid-template-columns: repeat(1, 1fr);
+}
+
+/* Medium screens (tablets) */
+@media (min-width: 768px) {
+    .grid-cols-2 {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
+    .grid-cols-3 {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
+    .grid-cols-4 {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+/* Large screens (desktops) */
+@media (min-width: 1024px) {
+    .grid-cols-3 {
+        grid-template-columns: repeat(3, 1fr);
+    }
+    
+    .grid-cols-4 {
+        grid-template-columns: repeat(4, 1fr);
+    }
+}
+
+/* Grid gap utilities */
+.gap-0 {
+    gap: 0;
+}
+
+.gap-1 {
+    gap: var(--spacing-1);
+}
+
+.gap-2 {
+    gap: var(--spacing-2);
+}
+
+.gap-4 {
+    gap: var(--spacing-4);
+}
+
+.gap-6 {
+    gap: var(--spacing-6);
+}
+
+.gap-8 {
+    gap: var(--spacing-8);
+}
+
+/* Grid column span utilities */
+.col-span-1 {
+    grid-column: span 1;
+}
+
+.col-span-2 {
+    grid-column: span 1;
+}
+
+.col-span-3 {
+    grid-column: span 1;
+}
+
+.col-span-4 {
+    grid-column: span 1;
+}
+
+/* Medium screens (tablets) */
+@media (min-width: 768px) {
+    .col-span-2 {
+        grid-column: span 2;
+    }
+    
+    .md-col-span-1 {
+        grid-column: span 1;
+    }
+    
+    .md-col-span-2 {
+        grid-column: span 2;
+    }
+}
+
+/* Large screens (desktops) */
+@media (min-width: 1024px) {
+    .col-span-3 {
+        grid-column: span 3;
+    }
+    
+    .col-span-4 {
+        grid-column: span 4;
+    }
+    
+    .lg-col-span-1 {
+        grid-column: span 1;
+    }
+    
+    .lg-col-span-2 {
+        grid-column: span 2;
+    }
+    
+    .lg-col-span-3 {
+        grid-column: span 3;
+    }
+}
+
+/* Resources grid specifically for the resources section */
+.resources-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--spacing-6);
+}
+
+@media (min-width: 768px) {
+    .resources-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (min-width: 1024px) {
+    .resources-grid {
+        grid-template-columns: repeat(4, 1fr);
+    }
+} 

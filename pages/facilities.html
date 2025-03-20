@@ -7,11 +7,7 @@
     <meta name="description" content="Find breast cancer screening facilities near you. Locate mammogram centers, hospitals and clinics offering breast cancer screening services.">
     
     <!-- Stylesheets -->
-    <link rel="stylesheet" href="../css/main.min.css">
-    
-    <!-- Scripts -->
-    <script src="../js/main.js"></script>
-    <script src="../js/facilities-map.js"></script>
+    <link rel="stylesheet" id="styles-link" href="/Cancer/css/styles.css">
 </head>
 <body>
     <!-- Header will be loaded via JavaScript -->
@@ -212,9 +208,24 @@
     <footer id="footer" class="footer"></footer>
 
     <!-- Scripts -->
-    <script src="../js/main.js"></script>
+    <script id="utils-script" src="../js/utils.js"></script>
+    <script id="components-script" src="../js/components.js"></script>
+    <script id="main-script" src="../js/main.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/js/all.min.js" crossorigin="anonymous"></script>
     <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&libraries=places&callback=initMap" async defer></script>
-    <script src="../js/facilities-map.js"></script>
+    <script id="facilities-script" src="../js/facilities-map.js"></script>
+    <script>
+        // Initialize components after DOM is loaded
+        document.addEventListener('DOMContentLoaded', function() {
+            // Load header and footer
+            loadComponent('#header', 'header.html');
+            loadComponent('#footer', 'footer.html');
+            
+            // Initialize page-specific scripts
+            if (typeof initPage === 'function') {
+                initPage();
+            }
+        });
+    </script>
 </body>
 </html> 

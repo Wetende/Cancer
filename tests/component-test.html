@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Component Testing Page">
+    <meta name="keywords" content="test, components">
+    <meta name="author" content="Nzoya Foundation">
+    <title>Component Test | Nzoya Foundation</title>
+    <link rel="icon" href="../images/favicon.svg" type="image/svg+xml">
+    <link rel="stylesheet" id="styles-link" href="/Cancer/css/styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        .test-section {
+            margin: 2rem 0;
+            padding: 1rem;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+        .test-section h2 {
+            margin-top: 0;
+            padding-bottom: 0.5rem;
+            border-bottom: 1px solid #eee;
+        }
+        .component-container {
+            margin: 1rem 0;
+            padding: 1rem;
+            background-color: #f9f9f9;
+            border-radius: 3px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Component Test Page</h1>
+        <p>This page tests the loading and functionality of all components.</p>
+        
+        <div class="test-section">
+            <h2>Header Component</h2>
+            <div class="component-container">
+                <header id="header-test"></header>
+            </div>
+        </div>
+        
+        <div class="test-section">
+            <h2>Footer Component</h2>
+            <div class="component-container">
+                <footer id="footer-test"></footer>
+            </div>
+        </div>
+        
+        <div class="test-section">
+            <h2>Hero Component</h2>
+            <div class="component-container" id="hero-container"></div>
+        </div>
+        
+        <div class="test-section">
+            <h2>Breadcrumb Component</h2>
+            <div class="component-container" id="breadcrumb-container"></div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="../js/utils.js"></script>
+    <script src="../js/components.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Load header component
+            loadComponent('#header-test', 'header.html');
+            
+            // Load footer component
+            loadComponent('#footer-test', 'footer.html');
+            
+            // Load hero component with configuration
+            loadHero('#hero-container', {
+                title: 'Test Hero Title',
+                description: 'This is a test description for the hero component',
+                ctaText: 'Test CTA',
+                ctaUrl: '#',
+                imageSrc: '../images/content/womanstanding.jpg',
+                imageAlt: 'Test Hero Image'
+            });
+            
+            // Load breadcrumb with configuration
+            loadBreadcrumb('#breadcrumb-container', 'Test Page', 'Parent Page', '#');
+        });
+    </script>
+</body>
+</html> 

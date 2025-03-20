@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Path Resolution Test</title>
+    <link rel="stylesheet" id="styles-link" href="/Cancer/css/styles.css">
+</head>
+<body>
+    <div id="header"></div>
+    
+    <div class="container">
+        <h1>Path Resolution Test</h1>
+        <p>This page tests that CSS and component paths are resolved correctly.</p>
+        
+        <div id="path-info"></div>
+    </div>
+    
+    <div id="footer"></div>
+    
+    <script src="/Cancer/js/utils.js"></script>
+    <script src="/Cancer/js/components.js"></script>
+    <script>
+        // Load components
+        loadHeader();
+        loadFooter();
+        
+        // Display path information
+        const pathInfo = document.getElementById('path-info');
+        if (pathInfo) {
+            pathInfo.innerHTML = `
+                <h2>Path Resolution Information</h2>
+                <p><strong>Current Path:</strong> ${window.location.pathname}</p>
+                <p><strong>getBasePath() Result:</strong> ${getBasePath()}</p>
+                <p><strong>CSS Path:</strong> ${document.getElementById('styles-link').href}</p>
+            `;
+        }
+    </script>
+</body>
+</html> 

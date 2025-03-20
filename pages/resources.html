@@ -3,457 +3,416 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Resources - Nzoya Foundation | Breast Cancer Screening</title>
     <meta name="description" content="Access educational materials, support groups, financial assistance programs, and screening facilities in Bellevue and Seattle areas for breast cancer awareness and prevention.">
-    <link rel="stylesheet" href="../css/main.min.css">
+    <meta name="keywords" content="breast cancer resources, financial assistance, support groups, educational materials, screening facilities, Bellevue">
+    <meta name="author" content="Nzoya Foundation">
+    <title>Resources | Nzoya Foundation</title>
+    <!-- Dynamic asset path resolution will be handled by JavaScript -->
+    <link rel="icon" id="favicon-link" href="images/favicon.svg" type="image/svg+xml">
+    <link rel="stylesheet" id="styles-link" href="/Cancer/css/styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+    <!-- Page-specific styles -->
+    <style id="page-styles">
+        .resources-content {
+            margin-bottom: 2.5rem;
+        }
+        
+        .organizations-grid, .resources-grid, .downloads-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+            margin: 1.5rem 0;
+        }
+        
+        .organization-card, .resource-card, .download-item {
+            background-color: #f8f9fa;
+            border-radius: 8px;
+            padding: 1.5rem;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+        }
+        
+        .organization-card:hover, .resource-card:hover, .download-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        .organization-card__logo {
+            height: 80px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1rem;
+        }
+        
+        .organization-card__logo img {
+            max-height: 100%;
+            max-width: 100%;
+            object-fit: contain;
+        }
+        
+        .organization-card__links {
+            list-style: none;
+            padding: 0;
+            margin: 1rem 0;
+        }
+        
+        .organization-card__links li {
+            margin-bottom: 0.5rem;
+        }
+        
+        .resource-card__icon, .download-item__icon {
+            font-size: 2rem;
+            color: #d43f8d;
+            margin-bottom: 1rem;
+        }
+        
+        .btn-primary {
+            display: inline-block;
+            padding: 0.75rem 1.5rem;
+            background-color: #d43f8d;
+            color: white;
+            text-decoration: none;
+            border-radius: 4px;
+            transition: background-color 0.3s ease;
+        }
+        
+        .btn-primary:hover {
+            background-color: #c03579;
+        }
+        
+        .btn-outline-primary {
+            display: inline-block;
+            padding: 0.75rem 1.5rem;
+            border: 2px solid #d43f8d;
+            color: #d43f8d;
+            text-decoration: none;
+            border-radius: 4px;
+            transition: all 0.3s ease;
+        }
+        
+        .btn-outline-primary:hover {
+            background-color: #d43f8d;
+            color: white;
+        }
+        
+        .disclaimer {
+            background-color: #f0f7fd;
+            border-left: 4px solid #007bff;
+            padding: 1.5rem;
+            margin-top: 2rem;
+            border-radius: 0 8px 8px 0;
+        }
+        
+        .resource-navigation {
+            background-color: #f8f9fa;
+            padding: 1rem 0;
+            margin-bottom: 2rem;
+        }
+        
+        .resource-nav {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            justify-content: center;
+        }
+        
+        .resource-nav__item {
+            padding: 0.5rem 1rem;
+            color: #333;
+            text-decoration: none;
+            border-radius: 4px;
+            transition: background-color 0.3s ease;
+        }
+        
+        .resource-nav__item:hover {
+            background-color: #e9ecef;
+        }
+        
+        /* Color-coded cards for different resource types */
+        .organization-card {
+            border-top: 4px solid #d43f8d;
+        }
+        
+        .resource-card {
+            border-top: 4px solid #28a745;
+        }
+        
+        .download-item {
+            border-top: 4px solid #007bff;
+        }
+        
+        .section-image {
+            margin-bottom: 1.5rem;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+        
+        .section-image img {
+            width: 100%;
+            height: auto;
+            transition: transform 0.3s ease;
+        }
+        
+        .section-image img:hover {
+            transform: scale(1.03);
+        }
+        
+        @media (max-width: 768px) {
+            .resource-nav {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .organizations-grid, .resources-grid, .downloads-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
 </head>
 <body>
-    <!-- Header will be loaded via JavaScript -->
-    <header id="header" class="header"></header>
+    <!-- Header will be loaded here -->
+    <header id="header"></header>
 
-    <!-- Resources Hero Section -->
-    <section class="resources-hero">
-        <div class="hero-background" style="background-image: url('../images/content/educativematerial.jpg');"></div>
-        <div class="container">
-            <div class="hero-text">
-                <h1>Resources</h1>
-                <p class="lead">Supporting Your Journey to Better Health in Bellevue and Beyond</p>
+    <!-- Main content -->
+    <main id="main-content" class="resources-page">
+        <!-- Hero section -->
+        <section class="hero-section">
+            <div class="container">
+                <div class="hero-image">
+                    <img src="" alt="Resources and Support" class="full-width-image" id="hero-img" data-src="images/content/educativematerial.jpg">
+                </div>
+                <div id="breadcrumb-container"></div>
+                <h1 id="page-title">Resources</h1>
+                <p class="lead" id="page-description">Supporting Your Journey to Better Health in Bellevue and Beyond</p>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <!-- Resource Navigation -->
-    <section class="resource-navigation">
-        <div class="container">
-            <div class="resource-nav">
-                <a href="#national-organizations" class="resource-nav__item">National Organizations</a>
-                <a href="#research" class="resource-nav__item">Research & Clinical Trials</a>
-                <a href="#support" class="resource-nav__item">Support & Community</a>
-                <a href="#financial" class="resource-nav__item">Financial Assistance</a>
-                <a href="#international" class="resource-nav__item">International Resources</a>
-                <a href="#educational" class="resource-nav__item">Educational Materials</a>
-                <a href="#facilities" class="resource-nav__item">Screening Facilities</a>
+        <!-- Resource Navigation -->
+        <section class="resource-navigation">
+            <div class="container">
+                <div class="resource-nav">
+                    <a href="#national-organizations" class="resource-nav__item">National Organizations</a>
+                    <a href="#research" class="resource-nav__item">Research & Clinical Trials</a>
+                    <a href="#support" class="resource-nav__item">Support & Community</a>
+                    <a href="#financial" class="resource-nav__item">Financial Assistance</a>
+                    <a href="#international" class="resource-nav__item">International Resources</a>
+                    <a href="#educational" class="resource-nav__item">Educational Materials</a>
+                    <a href="#facilities" class="resource-nav__item">Screening Facilities</a>
+                </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <!-- National Organizations Section -->
-    <section id="national-organizations" class="organizations-section">
+        <!-- Content section -->
         <div class="container">
-            <div class="section-image">
-                <img src="../images/content/breast-cancer-2773774_1920.jpg" alt="National Organizations" class="section-img">
-            </div>
-            <h2 class="section-title">National Cancer Organizations</h2>
-            <p class="section-description">Connect with these trusted national organizations for comprehensive information about breast cancer screening, prevention, and treatment.</p>
-            
-            <div class="organizations-grid">
-                <div class="organization-card">
-                    <div class="organization-card__logo">
-                        <img src="../images/resources/american-cancer-society.png" alt="American Cancer Society">
-                    </div>
-                    <h3 class="organization-card__title">American Cancer Society</h3>
-                    <p class="organization-card__text">Leading nationwide voluntary health organization dedicated to eliminating cancer through research, education, advocacy, and service.</p>
-                    <ul class="organization-card__links">
-                        <li><a href="https://www.cancer.org/cancer/breast-cancer.html" target="_blank">Breast Cancer Information</a></li>
-                        <li><a href="https://www.cancer.org/cancer/breast-cancer/screening-tests-and-early-detection.html" target="_blank">Screening Guidelines</a></li>
-                        <li><a href="https://www.cancer.org/cancer/breast-cancer/risk-and-prevention.html" target="_blank">Risk and Prevention</a></li>
-                    </ul>
-                    <a href="https://www.cancer.org" class="btn btn-primary" target="_blank">Visit Website</a>
-                </div>
+            <div class="content-grid">
+                <!-- Sidebar -->
+                <aside class="sidebar" id="sidebar">
+                    <nav class="section-nav">
+                        <h2>Quick Navigation</h2>
+                        <ul id="section-nav-list">
+                            <li><a href="#national-organizations">National Organizations</a></li>
+                            <li><a href="#research">Research & Clinical Trials</a></li>
+                            <li><a href="#support">Support & Community</a></li>
+                            <li><a href="#financial">Financial Assistance</a></li>
+                            <li><a href="#international">International Resources</a></li>
+                            <li><a href="#educational">Educational Materials</a></li>
+                            <li><a href="#facilities">Screening Facilities</a></li>
+                            <li><a href="#downloads">Downloadable Resources</a></li>
+                        </ul>
+                    </nav>
+                </aside>
 
-                <div class="organization-card">
-                    <div class="organization-card__logo">
-                        <img src="../images/resources/national-cancer-institute.jpg" alt="National Cancer Institute">
-                    </div>
-                    <h3 class="organization-card__title">National Cancer Institute (NCI)</h3>
-                    <p class="organization-card__text">Federal agency for cancer research and training, providing accurate, up-to-date information for patients, caregivers, and healthcare professionals.</p>
-                    <ul class="organization-card__links">
-                        <li><a href="https://www.cancer.gov/types/breast" target="_blank">Breast Cancer Information</a></li>
-                        <li><a href="https://www.cancer.gov/publications/dictionaries/cancer-terms" target="_blank">Cancer Terms Dictionary</a></li>
-                        <li><a href="https://www.cancer.gov/publications/pdq" target="_blank">PDQ® Cancer Information</a></li>
-                    </ul>
-                    <a href="https://www.cancer.gov" class="btn btn-primary" target="_blank">Visit Website</a>
-                </div>
-
-                <div class="organization-card">
-                    <div class="organization-card__logo">
-                        <img src="../images/resources/susankomen.jpg" alt="Susan G. Komen Foundation">
-                    </div>
-                    <h3 class="organization-card__title">Susan G. Komen Foundation</h3>
-                    <p class="organization-card__text">Organization dedicated to saving lives by investing in breakthrough research and ensuring quality care for all people affected by breast cancer.</p>
-                    <ul class="organization-card__links">
-                        <li><a href="https://www.komen.org/breast-cancer/" target="_blank">Breast Cancer Education</a></li>
-                        <li><a href="https://www.komen.org/treatment-assistance-program/" target="_blank">Treatment Assistance</a></li>
-                        <li><a href="https://www.komen.org/breast-care-helpline/" target="_blank">Breast Care Helpline</a></li>
-                    </ul>
-                    <a href="https://www.komen.org" class="btn btn-primary" target="_blank">Visit Website</a>
-                </div>
-
-                <div class="organization-card">
-                    <div class="organization-card__logo">
-                        <img src="../images/resources/nbcf.jpg" alt="National Breast Cancer Foundation">
-                    </div>
-                    <h3 class="organization-card__title">National Breast Cancer Foundation</h3>
-                    <p class="organization-card__text">Organization providing early detection screenings, education, and support services to those affected by breast cancer.</p>
-                    <ul class="organization-card__links">
-                        <li><a href="https://www.nationalbreastcancer.org/early-detection-program" target="_blank">Early Detection Program</a></li>
-                        <li><a href="https://www.nationalbreastcancer.org/patient-navigator-program" target="_blank">Patient Navigator Program</a></li>
-                        <li><a href="https://www.nationalbreastcancer.org/breast-health-education" target="_blank">Breast Health Education</a></li>
-                    </ul>
-                    <a href="https://www.nationalbreastcancer.org/" class="btn btn-primary" target="_blank">Visit Website</a>
-                </div>
-
-                <div class="organization-card">
-                    <div class="organization-card__logo">
-                        <img src="../images/resources/cdc.jpg" alt="CDC">
+                <!-- Main content area -->
+                <div class="main-content" id="content-area">
+                    <!-- National Organizations Section -->
+                    <section id="national-organizations" class="resources-content content-section">
+                        <div class="section-image">
+                            <img src="" alt="National Organizations" class="section-img" id="national-img" data-src="images/content/breast-cancer-2773774_1920.jpg">
                         </div>
-                        <h3 class="organization-card__title">CDC Breast Cancer Resources</h3>
-                    <p class="organization-card__text">Federal agency providing comprehensive information about breast cancer prevention, screening, treatment, and survivorship.</p>
-                    <ul class="organization-card__links">
-                        <li><a href="https://www.cdc.gov/cancer/nbccedp/" target="_blank">National Screening Program</a></li>
-                        <li><a href="https://www.cdc.gov/cancer/breast/basic_info/awareness_materials.htm" target="_blank">Awareness Resources</a></li>
-                        <li><a href="https://www.cdc.gov/cancer/breast/basic_info/prevention.htm" target="_blank">Prevention Information</a></li>
-                    </ul>
-                    <a href="https://www.cdc.gov/cancer/breast/" class="btn btn-primary" target="_blank">Visit Website</a>
+                        <h2>National Cancer Organizations</h2>
+                        <p>Connect with these trusted national organizations for comprehensive information about breast cancer screening, prevention, and treatment.</p>
+                        <div class="organizations-grid">
+                            <!-- Organization cards will be dynamically loaded -->
+                        </div>
+                    </section>
+
+                    <!-- Research and Clinical Trials Section -->
+                    <section id="research" class="resources-content content-section">
+                        <div class="section-image">
+                            <img src="" alt="Research and Clinical Trials" class="section-img" id="research-img" data-src="images/content/medical-5051144_1280.jpg">
+                        </div>
+                        <h2>Research and Clinical Trials</h2>
+                        <p>Learn about the latest research initiatives and find clinical trials that may be relevant to your situation.</p>
+                        <div class="organizations-grid">
+                            <!-- Research organization cards will be dynamically loaded -->
+                        </div>
+                    </section>
+
+                    <!-- Support and Community Section -->
+                    <section id="support" class="resources-content content-section">
+                        <div class="section-image">
+                            <img src="" alt="Support and Community" class="section-img" id="support-img" data-src="images/content/group of women.jpg">
+                        </div>
+                        <h2>Support & Community Resources</h2>
+                        <p>Connect with others through support groups and community resources both in the Bellevue area and online.</p>
+                        <div class="organizations-grid">
+                            <!-- Support organization cards will be dynamically loaded -->
+                        </div>
+                    </section>
+
+                    <!-- Financial Assistance Section -->
+                    <section id="financial" class="resources-content content-section">
+                        <div class="section-image">
+                            <img src="" alt="Financial Assistance" class="section-img" id="financial-img" data-src="images/content/doctor-650534_1280.jpg">
+                        </div>
+                        <h2>Financial Assistance Programs</h2>
+                        <p>Discover resources that can help with medical expenses, insurance questions, and other financial concerns related to breast cancer care.</p>
+                        <div class="organizations-grid">
+                            <!-- Financial assistance organization cards will be dynamically loaded -->
+                        </div>
+                    </section>
+
+                    <!-- International Resources Section -->
+                    <section id="international" class="resources-content content-section">
+                        <h2>International Resources</h2>
+                        <p>Global organizations providing information and support for breast cancer awareness, education, and research.</p>
+                        <div class="organizations-grid">
+                            <!-- International organization cards will be dynamically loaded -->
+                        </div>
+                    </section>
+
+                    <!-- Educational Materials Section -->
+                    <section id="educational" class="resources-content content-section">
+                        <h2>Educational Materials</h2>
+                        <div class="resources-grid">
+                            <div class="resource-card">
+                                <div class="resource-card__icon">
+                                    <i class="fas fa-book-medical"></i>
+                                </div>
+                                <h3>Understanding Breast Cancer</h3>
+                                <p>Comprehensive guide to breast cancer types, stages, and treatment options.</p>
+                                <a href="#" class="btn-primary" data-href="pages/educational/understanding-breast-cancer.html">Learn More</a>
+                            </div>
+                            <div class="resource-card">
+                                <div class="resource-card__icon">
+                                    <i class="fas fa-video"></i>
+                                </div>
+                                <h3>Video Resources</h3>
+                                <p>Educational videos about breast health and screening procedures.</p>
+                                <a href="#" class="btn-primary" data-href="pages/educational/videos.html">Watch Videos</a>
+                            </div>
+                            <div class="resource-card">
+                                <div class="resource-card__icon">
+                                    <i class="fas fa-file-pdf"></i>
+                                </div>
+                                <h3>Downloadable Guides</h3>
+                                <p>PDF guides and fact sheets about breast cancer prevention.</p>
+                                <a href="#" class="btn-primary" data-href="pages/educational/guides.html">Download</a>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- Screening Facilities Section -->
+                    <section id="facilities" class="resources-content content-section">
+                        <h2>Screening Facilities</h2>
+                        <p>Find breast cancer screening facilities in the Bellevue area and beyond.</p>
+                        <div class="facilities-cta">
+                            <p>Use our interactive facilities finder to locate screening centers near you.</p>
+                            <a href="#" class="btn-primary" data-href="pages/facilities.html">Find Facilities</a>
+                        </div>
+                    </section>
+
+                    <!-- Downloadable Resources Section -->
+                    <section id="downloads" class="resources-content content-section">
+                        <h2>Downloadable Resources</h2>
+                        <div class="downloads-grid">
+                            <div class="download-item">
+                                <div class="download-item__icon">
+                                    <i class="fas fa-file-pdf"></i>
+                                </div>
+                                <h3>Self-Examination Guide</h3>
+                                <p>Step-by-step guide for breast self-examination</p>
+                                <a href="#" class="btn-outline-primary" data-href="downloads/self-examination-guide.pdf">Download PDF</a>
+                            </div>
+                            <div class="download-item">
+                                <div class="download-item__icon">
+                                    <i class="fas fa-file-alt"></i>
+                                </div>
+                                <h3>Risk Assessment Form</h3>
+                                <p>Printable risk assessment questionnaire</p>
+                                <a href="#" class="btn-outline-primary" data-href="downloads/risk-assessment-form.pdf">Download PDF</a>
+                            </div>
+                            <div class="download-item">
+                                <div class="download-item__icon">
+                                    <i class="fas fa-calendar-alt"></i>
+                                </div>
+                                <h3>Screening Schedule</h3>
+                                <p>Recommended screening timeline by age</p>
+                                <a href="#" class="btn-outline-primary" data-href="downloads/screening-schedule.pdf">Download PDF</a>
+                            </div>
+                            <div class="download-item">
+                                <div class="download-item__icon">
+                                    <i class="fas fa-book"></i>
+                                </div>
+                                <h3>Information Booklet</h3>
+                                <p>Comprehensive guide to breast health</p>
+                                <a href="#" class="btn-outline-primary" data-href="downloads/information-booklet.pdf">Download PDF</a>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- Disclaimer Section -->
+                    <section class="disclaimer-section">
+                        <div class="disclaimer">
+                            <h3>Important Information</h3>
+                            <p><strong>External Resources Disclaimer:</strong> The links to external websites are provided as a convenience and for informational purposes only. Nzoya Foundation does not endorse or control these external sites and is not responsible for their content.</p>
+                            <p><strong>Medical Disclaimer:</strong> This website provides general information about breast cancer screening and related resources. This information is not medical advice and should not replace consultation with qualified healthcare professionals.</p>
+                        </div>
+                    </section>
                 </div>
             </div>
         </div>
-    </section>
+    </main>
 
-    <!-- Research and Clinical Trials Section -->
-    <section id="research" class="research-section">
-        <div class="container">
-            <div class="section-image">
-                <img src="../images/content/medical-5051144_1280.jpg" alt="Research and Clinical Trials" class="section-img">
-            </div>
-            <h2 class="section-title">Research and Clinical Trials</h2>
-            <p class="section-description">Learn about the latest research initiatives and find clinical trials that may be relevant to your situation.</p>
-            
-            <div class="organizations-grid">
-                <div class="organization-card">
-                    <div class="organization-card__logo">
-                        <img src="../img/resources/clinicaltrials-logo.png" alt="ClinicalTrials.gov Logo">
-                    </div>
-                    <h3 class="organization-card__title">ClinicalTrials.gov</h3>
-                    <p class="organization-card__text">Database of privately and publicly funded clinical studies conducted worldwide, providing information about trial purpose, participation eligibility, and locations.</p>
-                    <ul class="organization-card__links">
-                        <li><a href="https://clinicaltrials.gov/ct2/results?cond=Breast+Cancer" target="_blank">Breast Cancer Clinical Trials</a></li>
-                        <li><a href="https://clinicaltrials.gov/ct2/about-studies/learn" target="_blank">Understanding Clinical Trials</a></li>
-                    </ul>
-                    <a href="https://clinicaltrials.gov/" class="btn btn-primary" target="_blank">Visit Website</a>
-                </div>
-
-                <div class="organization-card">
-                    <div class="organization-card__logo">
-                        <img src="../img/resources/bcrf-logo.png" alt="Breast Cancer Research Foundation Logo">
-                    </div>
-                    <h3 class="organization-card__title">Breast Cancer Research Foundation</h3>
-                    <p class="organization-card__text">Organization dedicated to preventing and curing breast cancer by advancing the world's most promising research.</p>
-                    <ul class="organization-card__links">
-                        <li><a href="https://www.bcrf.org/research/" target="_blank">Current Research Projects</a></li>
-                        <li><a href="https://www.bcrf.org/blog/" target="_blank">Research Progress Updates</a></li>
-                        <li><a href="https://www.bcrf.org/researchers/" target="_blank">Researcher Spotlights</a></li>
-                    </ul>
-                    <a href="https://www.bcrf.org/" class="btn btn-primary" target="_blank">Visit Website</a>
-                </div>
-
-                <div class="organization-card">
-                    <div class="organization-card__logo">
-                        <img src="../img/resources/metavivor-logo.png" alt="METAvivor Logo">
-                    </div>
-                    <h3 class="organization-card__title">METAvivor</h3>
-                    <p class="organization-card__text">Organization dedicated to increasing awareness of advanced breast cancer and equity in research and patient support.</p>
-                    <ul class="organization-card__links">
-                        <li><a href="https://www.metavivor.org/research/" target="_blank">Research Programs</a></li>
-                        <li><a href="https://www.metavivor.org/mbc-info/" target="_blank">Metastatic Breast Cancer Info</a></li>
-                        <li><a href="https://www.metavivor.org/clinical-trials/" target="_blank">Clinical Trial Matching</a></li>
-                    </ul>
-                    <a href="https://www.metavivor.org/" class="btn btn-primary" target="_blank">Visit Website</a>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Support and Community Resources Section -->
-    <section id="support" class="support-groups-section">
-        <div class="container">
-            <div class="section-image">
-                <img src="../images/content/group of women.jpg" alt="Support and Community" class="section-img">
-            </div>
-            <h2 class="section-title">Support & Community Resources</h2>
-            <p class="section-description">Connect with others through support groups and community resources both in the Bellevue area and online.</p>
-            
-            <div class="organizations-grid">
-                <div class="organization-card">
-                    <div class="organization-card__logo">
-                        <img src="../img/resources/lbbc-logo.png" alt="Living Beyond Breast Cancer Logo">
-                    </div>
-                    <h3 class="organization-card__title">Living Beyond Breast Cancer</h3>
-                    <p class="organization-card__text">National organization providing information, community, and support for those affected by breast cancer.</p>
-                    <ul class="organization-card__links">
-                        <li><a href="https://www.lbbc.org/programs-services/breast-cancer-helpline" target="_blank">Breast Cancer Helpline</a></li>
-                        <li><a href="https://www.lbbc.org/programs-services/support-groups" target="_blank">Support Groups Directory</a></li>
-                        <li><a href="https://www.lbbc.org/learn" target="_blank">Educational Resources</a></li>
-                    </ul>
-                    <a href="https://www.lbbc.org/" class="btn btn-primary" target="_blank">Visit Website</a>
-                </div>
-
-                <div class="organization-card">
-                    <div class="organization-card__logo">
-                        <img src="../img/resources/csc-logo.png" alt="Cancer Support Community Logo">
-                    </div>
-                    <h3 class="organization-card__title">Cancer Support Community</h3>
-                    <p class="organization-card__text">Organization providing support, education, and hope to people affected by cancer through community-based centers and digital resources.</p>
-                    <ul class="organization-card__links">
-                        <li><a href="https://www.cancersupportcommunity.org/cancer-support-helpline" target="_blank">Cancer Support Helpline</a></li>
-                        <li><a href="https://www.cancersupportcommunity.org/mylifeline" target="_blank">Online Support Communities</a></li>
-                        <li><a href="https://www.cancersupportcommunity.org/living-cancer" target="_blank">Education and Resources</a></li>
-                    </ul>
-                    <a href="https://www.cancersupportcommunity.org/" class="btn btn-primary" target="_blank">Visit Website</a>
-                </div>
-
-                <div class="organization-card">
-                    <div class="organization-card__logo">
-                        <img src="../img/resources/ysc-logo.png" alt="Young Survival Coalition Logo">
-                    </div>
-                    <h3 class="organization-card__title">Young Survival Coalition</h3>
-                    <p class="organization-card__text">Organization dedicated to supporting young adults affected by breast cancer, providing resources, connections, and outreach.</p>
-                    <ul class="organization-card__links">
-                        <li><a href="https://www.youngsurvival.org/learn" target="_blank">Resources for Young Women</a></li>
-                        <li><a href="https://www.youngsurvival.org/connect" target="_blank">Support Groups</a></li>
-                        <li><a href="https://www.youngsurvival.org/learn/educational-materials" target="_blank">Educational Materials</a></li>
-                    </ul>
-                    <a href="https://www.youngsurvival.org/" class="btn btn-primary" target="_blank">Visit Website</a>
-                </div>
-
-                <div class="organization-card bellevue-focus">
-                    <div class="organization-card__logo">
-                        <img src="../img/resources/bellevue-support-logo.png" alt="Bellevue Support Group Logo">
-                    </div>
-                    <h3 class="organization-card__title">Bellevue Breast Cancer Support Group</h3>
-                    <p class="organization-card__text">Local support group specifically for Bellevue residents affected by breast cancer, offering in-person meetings and community resources.</p>
-                    <ul class="organization-card__links">
-                        <li><a href="#" target="_blank">Meeting Schedule</a></li>
-                        <li><a href="#" target="_blank">Local Resources</a></li>
-                        <li><a href="#" target="_blank">Community Events</a></li>
-                    </ul>
-                    <a href="#" class="btn btn-primary" target="_blank">Contact Group</a>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Financial Assistance Section -->
-    <section id="financial" class="financial-section">
-        <div class="container">
-            <div class="section-image">
-                <img src="../images/content/doctor-650534_1280.jpg" alt="Financial Assistance" class="section-img">
-            </div>
-            <h2 class="section-title">Financial Assistance Programs</h2>
-            <p class="section-description">Discover resources that can help with medical expenses, insurance questions, and other financial concerns related to breast cancer care.</p>
-            
-            <div class="organizations-grid">
-                <div class="organization-card">
-                    <div class="organization-card__logo">
-                        <img src="../img/resources/cancercare-logo.png" alt="CancerCare Logo">
-                    </div>
-                    <h3 class="organization-card__title">CancerCare</h3>
-                    <p class="organization-card__text">National organization providing free, professional support services to anyone affected by cancer, including financial assistance programs.</p>
-                    <ul class="organization-card__links">
-                        <li><a href="https://www.cancercare.org/financial" target="_blank">Financial Assistance Programs</a></li>
-                        <li><a href="https://www.cancercare.org/copayfoundation" target="_blank">Co-Payment Assistance</a></li>
-                        <li><a href="https://www.cancercare.org/practical-help" target="_blank">Transportation Assistance</a></li>
-                    </ul>
-                    <a href="https://www.cancercare.org/" class="btn btn-primary" target="_blank">Visit Website</a>
-                </div>
-
-                <div class="organization-card">
-                    <div class="organization-card__logo">
-                        <img src="../img/resources/paf-logo.png" alt="Patient Advocate Foundation Logo">
-                    </div>
-                    <h3 class="organization-card__title">Patient Advocate Foundation</h3>
-                    <p class="organization-card__text">National organization providing case management services and financial aid to patients with chronic, life-threatening, and debilitating diseases.</p>
-                    <ul class="organization-card__links">
-                        <li><a href="https://www.patientadvocate.org/connect-with-services/copay-relief/" target="_blank">Co-Pay Relief Program</a></li>
-                        <li><a href="https://www.patientadvocate.org/explore-our-resources/national-financial-resource-directory/" target="_blank">Financial Resource Directory</a></li>
-                        <li><a href="https://www.patientadvocate.org/explore-our-resources/insurance-access/" target="_blank">Insurance Access Issues</a></li>
-                    </ul>
-                    <a href="https://www.patientadvocate.org/" class="btn btn-primary" target="_blank">Visit Website</a>
-                </div>
-
-                <div class="organization-card">
-                    <div class="organization-card__logo">
-                        <img src="../img/resources/panfoundation-logo.png" alt="PAN Foundation Logo">
-                    </div>
-                    <h3 class="organization-card__title">Patient Access Network Foundation</h3>
-                    <p class="organization-card__text">Organization helping federally and commercially insured people with chronic or rare diseases with out-of-pocket costs for prescribed medications.</p>
-                    <ul class="organization-card__links">
-                        <li><a href="https://www.panfoundation.org/disease-funds/breast-cancer/" target="_blank">Breast Cancer Financial Assistance</a></li>
-                        <li><a href="https://fundfinder.panfoundation.org/" target="_blank">FundFinder Tool</a></li>
-                        <li><a href="https://www.panfoundation.org/am-i-eligible/" target="_blank">Eligibility Checker</a></li>
-                    </ul>
-                    <a href="https://www.panfoundation.org/" class="btn btn-primary" target="_blank">Visit Website</a>
-                </div>
-
-                <div class="organization-card">
-                    <div class="organization-card__logo">
-                        <img src="../img/resources/healthcare-logo.png" alt="Healthcare.gov Logo">
-                    </div>
-                    <h3 class="organization-card__title">Healthcare.gov</h3>
-                    <p class="organization-card__text">Official website of the Health Insurance Marketplace, providing information on health coverage options and assistance programs.</p>
-                    <ul class="organization-card__links">
-                        <li><a href="https://www.healthcare.gov/get-coverage/" target="_blank">Health Insurance Marketplace</a></li>
-                        <li><a href="https://www.healthcare.gov/coverage/pre-existing-conditions/" target="_blank">Pre-existing Conditions Coverage</a></li>
-                        <li><a href="https://www.healthcare.gov/preventive-care-women/" target="_blank">Preventive Services Coverage</a></li>
-                    </ul>
-                    <a href="https://www.healthcare.gov/" class="btn btn-primary" target="_blank">Visit Website</a>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- International Resources Section -->
-    <section id="international" class="international-section">
-        <div class="container">
-            <h2 class="section-title">International Resources</h2>
-            <p class="section-description">Global organizations providing information and support for breast cancer awareness, education, and research.</p>
-            
-            <div class="organizations-grid">
-                <div class="organization-card">
-                    <div class="organization-card__logo">
-                        <img src="../img/resources/who-logo.png" alt="WHO Logo">
-                    </div>
-                    <h3 class="organization-card__title">World Health Organization (WHO)</h3>
-                    <p class="organization-card__text">United Nations agency responsible for international public health, providing guidance on breast cancer prevention and control.</p>
-                    <ul class="organization-card__links">
-                        <li><a href="https://www.who.int/cancer/prevention/diagnosis-screening/breast-cancer/en/" target="_blank">Breast Cancer Prevention</a></li>
-                        <li><a href="https://www.who.int/initiatives/the-global-breast-cancer-initiative" target="_blank">Global Breast Cancer Initiative</a></li>
-                        <li><a href="https://www.who.int/cancer/country-profiles/en/" target="_blank">Cancer Country Profiles</a></li>
-                    </ul>
-                    <a href="https://www.who.int/health-topics/cancer" class="btn btn-primary" target="_blank">Visit Website</a>
-                </div>
-
-                <div class="organization-card">
-                    <div class="organization-card__logo">
-                        <img src="../img/resources/uicc-logo.png" alt="UICC Logo">
-                    </div>
-                    <h3 class="organization-card__title">Union for International Cancer Control</h3>
-                    <p class="organization-card__text">Organization dedicated to uniting the cancer community to reduce the global cancer burden, promote greater equity, and ensure cancer control remains a priority in the world health agenda.</p>
-                    <ul class="organization-card__links">
-                        <li><a href="https://www.uicc.org/what-we-do/convening/breast-cancer" target="_blank">Breast Cancer Resources</a></li>
-                        <li><a href="https://www.uicc.org/resources" target="_blank">Global Resource Hub</a></li>
-                        <li><a href="https://www.worldcancerday.org/" target="_blank">World Cancer Day</a></li>
-                    </ul>
-                    <a href="https://www.uicc.org/" class="btn btn-primary" target="_blank">Visit Website</a>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Educational Materials Section -->
-    <section id="educational" class="educational-section">
-        <div class="container">
-            <h2 class="section-title">Educational Materials</h2>
-            <div class="resources-grid">
-                <div class="resource-card">
-                    <div class="resource-card__icon">
-                        <i class="fas fa-book-medical"></i>
-                    </div>
-                    <h3 class="resource-card__title">Understanding Breast Cancer</h3>
-                    <p class="resource-card__text">Comprehensive guide to breast cancer types, stages, and treatment options.</p>
-                    <a href="#" class="btn btn-primary">Learn More</a>
-                </div>
-                <div class="resource-card">
-                    <div class="resource-card__icon">
-                        <i class="fas fa-video"></i>
-                    </div>
-                    <h3 class="resource-card__title">Video Resources</h3>
-                    <p class="resource-card__text">Educational videos about breast health and screening procedures.</p>
-                    <a href="#" class="btn btn-primary">Watch Videos</a>
-                </div>
-                <div class="resource-card">
-                    <div class="resource-card__icon">
-                        <i class="fas fa-file-pdf"></i>
-                    </div>
-                    <h3 class="resource-card__title">Downloadable Guides</h3>
-                    <p class="resource-card__text">PDF guides and fact sheets about breast cancer prevention.</p>
-                    <a href="#" class="btn btn-primary">Download</a>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Screening Facilities Section -->
-    <section id="facilities" class="facilities-section">
-        <div class="container">
-            <h2 class="section-title">Screening Facilities</h2>
-            <p class="section-description">Find breast cancer screening facilities in the Bellevue area and beyond.</p>
-            <div class="facilities-cta">
-                <p>Use our interactive facilities finder to locate screening centers near you.</p>
-                <a href="../pages/facilities.html" class="btn btn-primary">Find Facilities</a>
-            </div>
-        </div>
-    </section>
-
-    <!-- Downloadable Resources Section -->
-    <section class="downloads-section">
-        <div class="container">
-            <h2 class="section-title">Downloadable Resources</h2>
-            <div class="downloads-grid">
-                <div class="download-item">
-                    <div class="download-item__icon">
-                        <i class="fas fa-file-pdf"></i>
-                    </div>
-                    <h3 class="download-item__title">Self-Examination Guide</h3>
-                    <p class="download-item__text">Step-by-step guide for breast self-examination</p>
-                    <a href="#" class="btn btn-outline-primary">Download PDF</a>
-                </div>
-                <div class="download-item">
-                    <div class="download-item__icon">
-                        <i class="fas fa-file-alt"></i>
-                    </div>
-                    <h3 class="download-item__title">Risk Assessment Form</h3>
-                    <p class="download-item__text">Printable risk assessment questionnaire</p>
-                    <a href="#" class="btn btn-outline-primary">Download PDF</a>
-                </div>
-                <div class="download-item">
-                    <div class="download-item__icon">
-                        <i class="fas fa-calendar-alt"></i>
-                    </div>
-                    <h3 class="download-item__title">Screening Schedule</h3>
-                    <p class="download-item__text">Recommended screening timeline by age</p>
-                    <a href="#" class="btn btn-outline-primary">Download PDF</a>
-                </div>
-                <div class="download-item">
-                    <div class="download-item__icon">
-                        <i class="fas fa-book"></i>
-                    </div>
-                    <h3 class="download-item__title">Information Booklet</h3>
-                    <p class="download-item__text">Comprehensive guide to breast health</p>
-                    <a href="#" class="btn btn-outline-primary">Download PDF</a>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Disclaimer Section -->
-    <section class="disclaimer-section">
-        <div class="container">
-            <div class="disclaimer">
-                <h3 class="disclaimer__title">Important Information</h3>
-                <p class="disclaimer__text"><strong>External Resources Disclaimer:</strong> The links to external websites are provided as a convenience and for informational purposes only. Nzoya Foundation does not endorse or control these external sites and is not responsible for their content.</p>
-                <p class="disclaimer__text"><strong>Medical Disclaimer:</strong> This website provides general information about breast cancer screening and related resources. This information is not medical advice and should not replace consultation with qualified healthcare professionals.</p>
-            </div>
-        </div>
-    </section>
-
-    <!-- Footer will be loaded via JavaScript -->
-    <footer id="footer" class="footer"></footer>
+    <!-- Footer will be loaded here -->
+    <footer id="footer"></footer>
 
     <!-- Scripts -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/js/all.min.js" crossorigin="anonymous"></script>
-    <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY"></script>
-    <script src="../js/main.js"></script>
-    <script src="../js/resources.js"></script>
+    <script id="utils-script" src="../js/utils.js"></script>
+    <script id="components-script" src="../js/components.js"></script>
+    <script id="main-script" src="../js/main.js"></script>
+    <script>
+        // Initialize components after DOM is loaded
+        document.addEventListener('DOMContentLoaded', function() {
+            // Load header and footer
+            loadComponent('#header', 'header.html');
+            loadComponent('#footer', 'footer.html');
+            
+            // Initialize page-specific scripts
+            if (typeof initPage === 'function') {
+                initPage();
+            }
+
+            // Add smooth scrolling for navigation links
+            const navLinks = document.querySelectorAll('#section-nav-list a, .resource-nav__item');
+            navLinks.forEach(link => {
+                link.addEventListener('click', function(e) {
+                    const targetId = this.getAttribute('href');
+                    if (targetId.startsWith('#')) {
+                        e.preventDefault();
+                        const targetElement = document.querySelector(targetId);
+                        if (targetElement) {
+                            window.scrollTo({
+                                top: targetElement.offsetTop - 100,
+                                behavior: 'smooth'
+                            });
+                        }
+                    }
+                });
+            });
+        });
+    </script>
 </body>
 </html> 

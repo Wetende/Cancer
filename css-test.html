@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSS Test Page</title>
+    <link rel="stylesheet" href="/Cancer/css/styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <div class="top-bar">
+            <div class="top-bar-container">
+                <div class="top-bar-contact">
+                    <a href="tel:4255551234"><i class="fas fa-phone"></i> (425) 555-1234</a>
+                    <a href="mailto:info@nzoyafoundation.org"><i class="fas fa-envelope"></i> info@nzoyafoundation.org</a>
+                </div>
+                <a href="#donate" class="donate-button">Donate Now</a>
+            </div>
+        </div>
+        <nav class="navbar">
+            <div class="navbar-container">
+                <a href="index.html" class="navbar-brand">
+                    <h1>Nzoya Foundation</h1>
+                </a>
+                <button class="navbar-toggle" aria-label="Toggle navigation">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+                <ul class="navbar-menu">
+                    <li><a href="index.html" class="active">Home</a></li>
+                    <li><a href="#">About</a></li>
+                    <li><a href="#">Services</a></li>
+                    <li><a href="#">Contact</a></li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <section class="container container-py">
+            <h1>CSS Test Page</h1>
+            <p class="lead">This page tests all the components from our Komen-inspired CSS.</p>
+            
+            <div class="section-header">
+                <h2>Typography</h2>
+                <p class="section-subheading">Testing typography styles</p>
+            </div>
+            
+            <h1>Heading 1</h1>
+            <h2>Heading 2</h2>
+            <h3>Heading 3</h3>
+            <h4>Heading 4</h4>
+            <h5>Heading 5</h5>
+            <h6>Heading 6</h6>
+            
+            <p>This is a regular paragraph with <a href="#">a link</a> inside it.</p>
+            
+            <ul class="styled-list">
+                <li>List item 1</li>
+                <li>List item 2</li>
+                <li>List item 3</li>
+            </ul>
+            
+            <div class="section-header">
+                <h2>Buttons</h2>
+                <p class="section-subheading">Testing button styles</p>
+            </div>
+            
+            <div class="mb-4">
+                <button class="btn-primary">Primary Button</button>
+                <button class="btn-secondary">Secondary Button</button>
+                <button class="btn-outline">Outline Button</button>
+                <button class="btn-outline-white" style="background-color: var(--color-grey-600); padding: 10px;">White Outline</button>
+            </div>
+            
+            <div class="mb-4">
+                <button class="btn-primary btn-sm">Small Button</button>
+                <button class="btn-primary">Regular Button</button>
+                <button class="btn-primary btn-lg">Large Button</button>
+            </div>
+            
+            <div class="section-header">
+                <h2>Cards</h2>
+                <p class="section-subheading">Testing card styles</p>
+            </div>
+            
+            <div class="card-grid">
+                <div class="card">
+                    <div class="card-image">
+                        <img src="images/content/womanstanding.jpg" alt="Card image">
+                    </div>
+                    <div class="card-content">
+                        <h3>Card Title</h3>
+                        <p>This is a card with an image and some content. Hover to see the animation effect.</p>
+                    </div>
+                    <div class="card-footer">
+                        <button class="btn-primary">Learn More</button>
+                    </div>
+                </div>
+                
+                <div class="card">
+                    <div class="card-content">
+                        <h3>Card Without Image</h3>
+                        <p>This is a card without an image. The content takes up the entire card.</p>
+                        <p>Cards have a consistent style with shadow effects and hover states.</p>
+                    </div>
+                    <div class="card-footer">
+                        <button class="btn-outline">See Details</button>
+                    </div>
+                </div>
+                
+                <div class="card">
+                    <div class="card-image">
+                        <img src="images/content/survivor.jpg" alt="Card image">
+                    </div>
+                    <div class="card-content">
+                        <h3>Another Card</h3>
+                        <p>Cards support different content lengths and will expand to match the tallest card in the grid.</p>
+                    </div>
+                    <div class="card-footer">
+                        <button class="btn-secondary">View</button>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="section-header">
+                <h2>Form Elements</h2>
+                <p class="section-subheading">Testing form styles</p>
+            </div>
+            
+            <form class="contact-form">
+                <h3>Contact Form</h3>
+                <div class="form-group">
+                    <label for="name">Name</label>
+                    <input type="text" id="name" class="form-control" placeholder="Your name">
+                </div>
+                
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" class="form-control" placeholder="Your email">
+                </div>
+                
+                <div class="form-group">
+                    <label for="message">Message</label>
+                    <textarea id="message" class="form-control" placeholder="Your message"></textarea>
+                </div>
+                
+                <div class="form-group">
+                    <div class="form-check">
+                        <input type="checkbox" id="newsletter" class="form-check-input">
+                        <label for="newsletter" class="form-check-label">Subscribe to newsletter</label>
+                    </div>
+                </div>
+                
+                <div class="form-actions">
+                    <button type="submit" class="btn-primary">Send Message</button>
+                    <button type="reset" class="btn-outline">Reset</button>
+                </div>
+            </form>
+        </section>
+        
+        <section class="section-primary">
+            <div class="container container-py">
+                <div class="section-header">
+                    <h2>Colored Section</h2>
+                    <p class="section-subheading">This is a section with a primary color background</p>
+                </div>
+                
+                <p>Text in this section should be readable against the background color. Headings and text automatically adjust their color for contrast.</p>
+                
+                <div class="mt-4">
+                    <button class="btn-outline-white">Outline Button</button>
+                </div>
+            </div>
+        </section>
+        
+        <section class="container container-py">
+            <div class="section-header">
+                <h2>Grid System</h2>
+                <p class="section-subheading">Testing the grid layout system</p>
+            </div>
+            
+            <div class="grid grid-cols-3 gap-4">
+                <div style="background-color: var(--color-grey-200); padding: 20px; border-radius: var(--border-radius-md);">Grid Item 1</div>
+                <div style="background-color: var(--color-grey-200); padding: 20px; border-radius: var(--border-radius-md);">Grid Item 2</div>
+                <div style="background-color: var(--color-grey-200); padding: 20px; border-radius: var(--border-radius-md);">Grid Item 3</div>
+                <div style="background-color: var(--color-grey-200); padding: 20px; border-radius: var(--border-radius-md);">Grid Item 4</div>
+                <div style="background-color: var(--color-grey-200); padding: 20px; border-radius: var(--border-radius-md);">Grid Item 5</div>
+                <div style="background-color: var(--color-grey-200); padding: 20px; border-radius: var(--border-radius-md);">Grid Item 6</div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-logo">
+                <h3>Nzoya Foundation</h3>
+                <p>Providing resources for early detection and prevention in Bellevue, WA and surrounding communities.</p>
+            </div>
+            <div class="footer-links">
+                <h4>Quick Links</h4>
+                <ul>
+                    <li><a href="#about">About Screening</a></li>
+                    <li><a href="#schedule">Schedule</a></li>
+                    <li><a href="#resources">Resources</a></li>
+                    <li><a href="#faq">FAQ</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </div>
+            <div class="footer-social">
+                <h4>Connect With Us</h4>
+                <div class="social-icons">
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-youtube"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 Nzoya Foundation. All rights reserved.</p>
+            <p>This website is for informational purposes only and does not provide medical advice.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Simple toggle for mobile menu
+        document.querySelector('.navbar-toggle').addEventListener('click', function() {
+            document.querySelector('.navbar-menu').classList.toggle('active');
+            this.classList.toggle('active');
+        });
+        
+        // Log CSS loading
+        console.log('CSS file path: ' + document.querySelector('link[href$="styles.css"]').getAttribute('href'));
+        
+        // Check if CSS variables are accessible
+        const computedStyle = getComputedStyle(document.documentElement);
+        const primaryColor = computedStyle.getPropertyValue('--color-primary');
+        console.log('Primary color variable: ' + primaryColor);
+    </script>
+</body>
+</html> 

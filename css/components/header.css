@@ -1,0 +1,182 @@
+/* 
+ * Header
+ * Header component styles inspired by Komen.org
+ */
+
+/* Top bar - Contact info and donate button */
+.top-bar {
+    background-color: var(--color-grey-600);
+    color: var(--color-white);
+    padding: var(--spacing-2) 0;
+    font-size: var(--font-size-sm);
+}
+
+.top-bar-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    padding-right: var(--spacing-4);
+    padding-left: var(--spacing-4);
+    margin-right: auto;
+    margin-left: auto;
+    max-width: var(--container-xl);
+}
+
+.top-bar-contact {
+    display: flex;
+    gap: var(--spacing-4);
+}
+
+.top-bar-contact a {
+    color: var(--color-white);
+    text-decoration: none;
+    transition: var(--transition-base);
+}
+
+.top-bar-contact a:hover,
+.top-bar-contact a:focus {
+    color: var(--color-grey-300);
+    text-decoration: none;
+}
+
+.top-bar-contact i {
+    margin-right: var(--spacing-1);
+}
+
+/* Main navbar */
+.navbar {
+    background-color: var(--color-white);
+    box-shadow: var(--shadow-sm);
+    position: relative;
+    z-index: var(--z-index-sticky);
+}
+
+.navbar-container {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    padding: var(--spacing-3) var(--spacing-4);
+    width: 100%;
+    max-width: var(--container-xl);
+    margin: 0 auto;
+}
+
+.navbar-brand {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+}
+
+.navbar-brand h1 {
+    font-size: var(--font-size-xl);
+    font-weight: var(--font-weight-bold);
+    color: var(--color-primary);
+    margin: 0;
+}
+
+/* Mobile menu toggle button */
+.navbar-toggle {
+    display: block;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: var(--spacing-2);
+}
+
+.navbar-toggle span {
+    display: block;
+    width: 24px;
+    height: 2px;
+    background-color: var(--color-grey-600);
+    margin: 5px 0;
+    transition: var(--transition-base);
+}
+
+.navbar-toggle.active span:nth-child(1) {
+    transform: rotate(45deg) translate(5px, 5px);
+}
+
+.navbar-toggle.active span:nth-child(2) {
+    opacity: 0;
+}
+
+.navbar-toggle.active span:nth-child(3) {
+    transform: rotate(-45deg) translate(5px, -5px);
+}
+
+/* Navigation menu */
+.navbar-menu {
+    display: none;
+    width: 100%;
+    margin-top: var(--spacing-4);
+}
+
+.navbar-menu.active {
+    display: block;
+}
+
+.navbar-menu li {
+    margin-bottom: var(--spacing-2);
+}
+
+.navbar-menu a {
+    display: block;
+    padding: var(--spacing-2);
+    font-family: var(--font-primary);
+    font-weight: var(--font-weight-semibold);
+    color: var(--color-grey-600);
+    text-decoration: none;
+    transition: var(--transition-base);
+}
+
+.navbar-menu a:hover,
+.navbar-menu a:focus,
+.navbar-menu a.active {
+    color: var(--color-primary);
+}
+
+/* Desktop navigation */
+@media (min-width: 992px) {
+    .navbar-container {
+        flex-wrap: nowrap;
+        padding: var(--spacing-4);
+    }
+    
+    .navbar-toggle {
+        display: none;
+    }
+    
+    .navbar-menu {
+        display: flex;
+        align-items: center;
+        width: auto;
+        margin-top: 0;
+    }
+    
+    .navbar-menu li {
+        margin-bottom: 0;
+        margin-left: var(--spacing-4);
+    }
+    
+    .navbar-menu a {
+        padding: 0;
+    }
+    
+    .navbar-menu a::after {
+        content: '';
+        display: block;
+        width: 0;
+        height: 2px;
+        background-color: var(--color-primary);
+        transition: width 0.3s;
+        margin-top: 4px;
+    }
+    
+    .navbar-menu a:hover::after,
+    .navbar-menu a:focus::after,
+    .navbar-menu a.active::after {
+        width: 100%;
+    }
+} 

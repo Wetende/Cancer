@@ -6,6 +6,7 @@
     <title>Breast Cancer Screening Guidelines & Information</title>
     <meta name="description" content="Learn about breast cancer screening guidelines, types of screening, risk factors, and self-examination techniques.">
     <link rel="stylesheet" href="../css/main.min.css">
+    <link rel="stylesheet" id="styles-link" href="/Cancer/css/styles.css">
 </head>
 <body>
     <!-- Header will be loaded via JavaScript -->
@@ -202,6 +203,21 @@
 
     <!-- Scripts -->
     <script src="https://kit.fontawesome.com/your-kit-code.js" crossorigin="anonymous"></script>
-    <script src="../js/main.js"></script>
+    <script id="utils-script" src="../js/utils.js"></script>
+    <script id="components-script" src="../js/components.js"></script>
+    <script id="main-script" src="../js/main.js"></script>
+    <script>
+        // Initialize components after DOM is loaded
+        document.addEventListener('DOMContentLoaded', function() {
+            // Load header and footer
+            loadComponent('#header', 'header.html');
+            loadComponent('#footer', 'footer.html');
+            
+            // Initialize page-specific scripts
+            if (typeof initPage === 'function') {
+                initPage();
+            }
+        });
+    </script>
 </body>
 </html> 

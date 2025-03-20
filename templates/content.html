@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="keywords" content="">
+    <meta name="author" content="Nzoya Foundation">
+    <title>Page Title | Nzoya Foundation</title>
+    <!-- Dynamic asset path resolution will be handled by JavaScript -->
+    <link rel="icon" id="favicon-link" href="images/favicon.svg" type="image/svg+xml">
+    <link rel="stylesheet" id="styles-link" href="/Cancer/css/styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+    <!-- Page-specific styles -->
+    <style id="page-styles">
+        /* Page-specific styles will be injected here */
+    </style>
+</head>
+<body>
+    <!-- Header will be loaded here -->
+    <header id="header"></header>
+
+    <!-- Main content -->
+    <main id="main-content">
+        <!-- Hero section -->
+        <section class="hero-section">
+            <div class="container">
+                <div class="hero-image">
+                    <img src="" alt="Hero Image" class="full-width-image" id="hero-img">
+                </div>
+                <div id="breadcrumb-container"></div>
+                <h1 id="page-title">Page Title</h1>
+                <p class="lead" id="page-description">Page description goes here.</p>
+            </div>
+        </section>
+
+        <!-- Content section -->
+        <div class="container">
+            <div class="content-grid">
+                <!-- Sidebar (optional) -->
+                <aside class="sidebar" id="sidebar">
+                    <nav class="section-nav">
+                        <h2>Quick Navigation</h2>
+                        <ul id="section-nav-list">
+                            <!-- Navigation items will be injected here -->
+                        </ul>
+                    </nav>
+                </aside>
+
+                <!-- Main content area -->
+                <div class="main-content" id="content-area">
+                    <!-- Content sections will be injected here -->
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer will be loaded here -->
+    <footer id="footer"></footer>
+
+    <!-- Scripts -->
+    <script id="utils-script" src="js/utils.js"></script>
+    <script id="components-script" src="js/components.js"></script>
+    <script id="main-script" src="js/main.js"></script>
+    <script>
+        // Resolve asset paths based on current page depth
+        function resolveAssetPaths() {
+            const path = window.location.pathname;
+            let depth = 0;
+            
+            // Count directory levels
+            if (path.includes('/pages/')) {
+                depth = path.split('/').length - 2; // Adjust for domain and filename
+            }
+            
+            const basePath = depth === 0 ? '' : '../'.repeat(depth);
+            
+            // Update asset links
+            document.getElementById('favicon-link').href = basePath + 'images/favicon.svg';
+            document.getElementById('styles-link').href = basePath + 'css/styles.css';
+            document.getElementById('utils-script').src = basePath + 'js/utils.js';
+            document.getElementById('components-script').src = basePath + 'js/components.js';
+            document.getElementById('main-script').src = basePath + 'js/main.js';
+            
+            // Update hero image path if needed
+            const heroImg = document.getElementById('hero-img');
+            if (heroImg && !heroImg.src) {
+                heroImg.src = basePath + 'images/content/placeholder.jpg';
+            }
+        }
+        
+        // Execute path resolution immediately
+        resolveAssetPaths();
+        
+        // Initialize components
+        document.addEventListener('DOMContentLoaded', function() {
+            // Load header and footer
+            loadComponent('#header', 'header.html');
+            loadComponent('#footer', 'footer.html');
+            
+            // Load breadcrumb (with configuration)
+            loadBreadcrumb('#breadcrumb-container', 'Page Title');
+            
+            // Initialize page-specific scripts
+            if (typeof initPage === 'function') {
+                initPage();
+            }
+        });
+    </script>
+    <!-- Page-specific scripts -->
+    <script id="page-scripts">
+        // Page-specific scripts will be injected here
+    </script>
+</body>
+</html> 
