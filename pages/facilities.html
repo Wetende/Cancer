@@ -8,101 +8,320 @@
     <meta name="author" content="Nzoya Foundation">
     <title>Facilities | Nzoya Foundation</title>
     
-    <link rel="icon" href="../images/favicon.svg" type="image/svg+xml">
-    <link rel="stylesheet" href="../css/styles.css">
+    <link rel="icon" id="favicon-link" href="/Cancer/images/favicon.svg" type="image/svg+xml">
+    <link rel="stylesheet" id="styles-link" href="/Cancer/css/styles.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
     
     <!-- Leaflet CSS -->
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" />
     
+    <!-- Google Maps API -->
+    <script>
+        // Fallback map initialization for demo
+        function initMapFallback() {
+            console.log('Initializing fallback map');
+            const mapElement = document.getElementById('map');
+            if (mapElement) {
+                // Create a fallback display when no API key is available
+                mapElement.innerHTML = `
+                    <div style="background-color: #f0f0f0; height: 100%; display: flex; flex-direction: column; justify-content: center; align-items: center; border-radius: 8px; padding: 20px; text-align: center;">
+                        <h3 style="margin-bottom: 15px;">Map Preview Unavailable</h3>
+                        <p>This is a demonstration version. In a production environment, this would display an interactive map of our facilities.</p>
+                        <p style="margin-top: 15px;">For demonstration purposes, please refer to the featured centers listed below.</p>
+                    </div>
+                `;
+            }
+        }
+        
+        // Check if Google Maps is available, otherwise use fallback
+        window.addEventListener('load', function() {
+            if (typeof google === 'undefined' || typeof google.maps === 'undefined') {
+                initMapFallback();
+            }
+        });
+    </script>
+    
     <style>
-        .info-card {
-            border-radius: 10px;
-            overflow: hidden;
-            box-shadow: 0 8px 15px rgba(0,0,0,0.1);
-            transition: all 0.3s ease;
-            background-color: #fff;
-            position: relative;
-            z-index: 1;
-            padding: 1.75rem;
-            border-top: 4px solid #d43f8d;
+        /* Core Layout Styles */
+        .section {
+            padding: 4rem 0;
         }
-        
-        .info-card:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 14px 28px rgba(0,0,0,0.2);
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1rem;
         }
-        
-        .info-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(135deg, rgba(212, 63, 141, 0.08) 0%, rgba(255, 255, 255, 0) 60%);
-            z-index: -1;
+
+        /* Search Panel Styles */
+        .search-panel {
+            background: #fff;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            padding: 2rem;
+            margin-bottom: 3rem;
+            transition: transform 0.3s ease;
         }
-        
-        .info-card__icon {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            width: 60px;
-            height: 60px;
-            border-radius: 50%;
-            background-color: #fce4f1;
-            margin-bottom: 1.25rem;
+
+        .search-panel:hover {
+            transform: translateY(-5px);
         }
-        
-        .info-card__icon i {
-            font-size: 1.75rem;
-            color: #d43f8d;
-        }
-        
-        .info-card__title {
-            margin-bottom: 1rem;
-            font-size: 1.35rem;
+
+        .search-panel__title {
             color: #333;
+            font-size: 1.8rem;
+            margin-bottom: 1.5rem;
             position: relative;
-            padding-bottom: 0.75rem;
+            padding-bottom: 0.5rem;
         }
-        
-        .info-card__title::after {
+
+        .search-panel__title::after {
             content: '';
             position: absolute;
             bottom: 0;
             left: 0;
-            width: 50px;
+            width: 60px;
             height: 3px;
-            background-color: #d43f8d;
+            background: linear-gradient(to right, #d43f8d, #0250c5);
         }
-        
-        .info-grid {
+
+        .form-row {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group {
+            margin-bottom: 1rem;
+        }
+
+        .form-label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: #555;
+            font-weight: 500;
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 0.75rem 1rem;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+        }
+
+        .form-control:focus {
+            border-color: #d43f8d;
+            box-shadow: 0 0 0 2px rgba(212, 63, 141, 0.1);
+            outline: none;
+        }
+
+        /* Filter Options */
+        .filter-options {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+            padding: 1rem;
+            background: #f8f9fa;
+            border-radius: 8px;
+        }
+
+        .form-check {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        /* Search Actions */
+        .search-actions {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        /* Map Section */
+        .facilities-map {
+            background: #f8f9fa;
+            padding: 2rem 0;
+        }
+
+        .map-container {
+            height: 600px;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        /* Facilities List */
+        .facilities-list {
+            background: #fff;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            height: 600px;
+            overflow-y: auto;
+        }
+
+        .facilities-list__header {
+            padding: 1.5rem;
+            border-bottom: 1px solid #eee;
+            position: sticky;
+            top: 0;
+            background: #fff;
+            z-index: 10;
+        }
+
+        .facility-item {
+            padding: 1.5rem;
+            border-bottom: 1px solid #eee;
+            transition: background-color 0.3s ease;
+        }
+
+        .facility-item:hover {
+            background-color: #f8f9fa;
+        }
+
+        .facility-name {
+            font-size: 1.1rem;
+            color: #333;
+            margin-bottom: 0.5rem;
+        }
+
+        .facility-address,
+        .facility-phone,
+        .facility-type {
+            font-size: 0.9rem;
+            color: #666;
+            margin-bottom: 0.3rem;
+        }
+
+        /* Featured Centers */
+        .centers-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 2rem;
-            margin: 2rem 0;
+            margin-top: 2rem;
         }
-        
-        .section-cta {
-            background-color: #f8f9fa;
-            border-radius: 10px;
+
+        .center-card {
+            background: #fff;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .center-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .center-image {
+            height: 200px;
+            overflow: hidden;
+        }
+
+        .center-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+
+        .center-card:hover .center-image img {
+            transform: scale(1.1);
+        }
+
+        .center-content {
+            padding: 1.5rem;
+        }
+
+        /* Services Grid */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .service-item {
+            background: #fff;
+            border-radius: 15px;
             padding: 2rem;
-            text-align: center;
-            margin-top: 2.5rem;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
         }
-        
-        .section-cta p {
-            font-size: 1.2rem;
-            margin-bottom: 1.25rem;
+
+        .service-item:hover {
+            transform: translateY(-5px);
         }
-        
+
+        .service-icon {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, #d43f8d, #0250c5);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1.5rem;
+        }
+
+        .service-icon i {
+            font-size: 1.5rem;
+            color: #fff;
+        }
+
+        /* Contact Section */
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 3rem;
+            margin-top: 2rem;
+        }
+
+        .contact-methods {
+            display: grid;
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .contact-method {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            padding: 1.5rem;
+            background: #f8f9fa;
+            border-radius: 10px;
+            transition: transform 0.3s ease;
+        }
+
+        .contact-method:hover {
+            transform: translateX(10px);
+        }
+
+        .contact-method i {
+            font-size: 1.5rem;
+            color: #d43f8d;
+        }
+
+        /* Responsive Adjustments */
         @media (max-width: 768px) {
-            .info-grid {
+            .search-panel {
+                padding: 1.5rem;
+            }
+
+            .form-row {
                 grid-template-columns: 1fr;
+            }
+
+            .map-container {
+                height: 400px;
+            }
+
+            .facilities-list {
+                height: 400px;
             }
         }
     </style>
@@ -316,35 +535,256 @@
                 </div>
             </div>
         </section>
+
+        <!-- Main Content -->
+        <main id="main" class="main-content">
+            
+            <!-- Facilities Map Section -->
+            <section id="facilities-map" class="map-section">
+                <div class="container">
+                    <h2>Find Our Cancer Treatment Centers</h2>
+                    <p class="section-description">Locate our state-of-the-art treatment facilities across the country. Click on a marker to view details about each location.</p>
+                    <div id="map" class="facilities-map"></div>
+                    <div class="map-legend">
+                        <div class="legend-item">
+                            <span class="legend-marker comprehensive"></span>
+                            <span>Comprehensive Cancer Center</span>
+                        </div>
+                        <div class="legend-item">
+                            <span class="legend-marker specialty"></span>
+                            <span>Specialty Treatment Center</span>
+                        </div>
+                        <div class="legend-item">
+                            <span class="legend-marker screening"></span>
+                            <span>Screening Location</span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Featured Centers Section -->
+            <section id="featured-centers" class="featured-centers">
+                <div class="container">
+                    <h2>Our Featured Treatment Centers</h2>
+                    <p class="section-description">Learn about our world-class cancer treatment facilities that combine cutting-edge technology with compassionate care.</p>
+                    
+                    <div class="centers-grid">
+                        <!-- Featured Center 1 -->
+                        <div class="center-card">
+                            <div class="center-image">
+                                <img src="/Cancer/images/content/hospital-1802679_1280.jpg" alt="Memorial Cancer Institute">
+                            </div>
+                            <div class="center-content">
+                                <h3>Memorial Cancer Institute</h3>
+                                <p class="center-location">Boston, Massachusetts</p>
+                                <p class="center-description">Our flagship comprehensive cancer center offering the full spectrum of cancer treatments, including advanced surgical options, radiation therapy, and clinical trials.</p>
+                                <div class="center-features">
+                                    <span class="feature">✓ Proton Therapy</span>
+                                    <span class="feature">✓ Robotic Surgery</span>
+                                    <span class="feature">✓ Immunotherapy</span>
+                                </div>
+                                <a href="#" class="btn btn-primary">View Details</a>
+                            </div>
+                        </div>
+                        
+                        <!-- Featured Center 2 -->
+                        <div class="center-card">
+                            <div class="center-image">
+                                <img src="/Cancer/images/content/surgery-79578_1280.jpg" alt="Pacific Oncology Center">
+                            </div>
+                            <div class="center-content">
+                                <h3>Pacific Oncology Center</h3>
+                                <p class="center-location">San Francisco, California</p>
+                                <p class="center-description">Specializing in precision medicine and targeted therapies, our center offers personalized treatment plans based on genetic profiling of tumors.</p>
+                                <div class="center-features">
+                                    <span class="feature">✓ Genetic Testing</span>
+                                    <span class="feature">✓ Targeted Therapy</span>
+                                    <span class="feature">✓ Clinical Trials</span>
+                                </div>
+                                <a href="#" class="btn btn-primary">View Details</a>
+                            </div>
+                        </div>
+                        
+                        <!-- Featured Center 3 -->
+                        <div class="center-card">
+                            <div class="center-image">
+                                <img src="/Cancer/images/content/hospital-1822460_1280.jpg" alt="Midwest Cancer Treatment Network">
+                            </div>
+                            <div class="center-content">
+                                <h3>Midwest Cancer Treatment Network</h3>
+                                <p class="center-location">Chicago, Illinois</p>
+                                <p class="center-description">Our network of connected facilities ensures patients across the Midwest can access quality cancer care without traveling far from home.</p>
+                                <div class="center-features">
+                                    <span class="feature">✓ Telehealth Options</span>
+                                    <span class="feature">✓ Home Care Support</span>
+                                    <span class="feature">✓ Transportation Assistance</span>
+                                </div>
+                                <a href="#" class="btn btn-primary">View Details</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            
+            <!-- Services Section -->
+            <section id="services" class="services-section">
+                <div class="container">
+                    <h2>Services Available at Our Facilities</h2>
+                    <p class="section-description">Our cancer centers offer comprehensive services to address all aspects of cancer care.</p>
+                    
+                    <div class="services-grid">
+                        <div class="service-item">
+                            <div class="service-icon">
+                                <i class="fas fa-stethoscope"></i>
+                            </div>
+                            <h3>Diagnostic Services</h3>
+                            <ul>
+                                <li>Mammography (2D and 3D)</li>
+                                <li>MRI and CT Scans</li>
+                                <li>Ultrasound-guided Biopsies</li>
+                                <li>Genetic Testing</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="service-item">
+                            <div class="service-icon">
+                                <i class="fas fa-syringe"></i>
+                            </div>
+                            <h3>Treatment Options</h3>
+                            <ul>
+                                <li>Chemotherapy</li>
+                                <li>Radiation Therapy</li>
+                                <li>Immunotherapy</li>
+                                <li>Surgical Oncology</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="service-item">
+                            <div class="service-icon">
+                                <i class="fas fa-user-md"></i>
+                            </div>
+                            <h3>Support Services</h3>
+                            <ul>
+                                <li>Nutritional Counseling</li>
+                                <li>Support Groups</li>
+                                <li>Psychological Services</li>
+                                <li>Pain Management</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="service-item">
+                            <div class="service-icon">
+                                <i class="fas fa-flask"></i>
+                            </div>
+                            <h3>Research & Trials</h3>
+                            <ul>
+                                <li>Clinical Trials</li>
+                                <li>Research Partnerships</li>
+                                <li>Experimental Treatments</li>
+                                <li>Biomarker Testing</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Contact & Appointments Section -->
+            <section id="contact" class="contact-section">
+                <div class="container">
+                    <div class="contact-grid">
+                        <div class="contact-info">
+                            <h2>Schedule an Appointment</h2>
+                            <p>Our team is ready to help you find the right facility and specialist for your needs.</p>
+                            <div class="contact-methods">
+                                <div class="contact-method">
+                                    <i class="fas fa-phone"></i>
+                                    <div>
+                                        <h3>Call Us</h3>
+                                        <p>1-800-CANCER-HELP<br>(1-800-226-237-4357)</p>
+                                        <p class="hours">Available 24/7</p>
+                                    </div>
+                                </div>
+                                <div class="contact-method">
+                                    <i class="fas fa-envelope"></i>
+                                    <div>
+                                        <h3>Email Us</h3>
+                                        <p>appointments@cancercare.org</p>
+                                        <p class="hours">Response within 24 hours</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="appointment-form">
+                            <h3>Request Information</h3>
+                            <form id="appointment-request">
+                                <div class="form-group">
+                                    <label for="name">Full Name</label>
+                                    <input type="text" id="name" name="name" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="email">Email Address</label>
+                                    <input type="email" id="email" name="email" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="phone">Phone Number</label>
+                                    <input type="tel" id="phone" name="phone">
+                                </div>
+                                <div class="form-group">
+                                    <label for="location">Preferred Location</label>
+                                    <select id="location" name="location">
+                                        <option value="">Select a location</option>
+                                        <option value="boston">Boston, MA</option>
+                                        <option value="sanfrancisco">San Francisco, CA</option>
+                                        <option value="chicago">Chicago, IL</option>
+                                        <option value="newyork">New York, NY</option>
+                                        <option value="dallas">Dallas, TX</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label for="message">Additional Information</label>
+                                    <textarea id="message" name="message" rows="4"></textarea>
+                                </div>
+                                <button type="submit" class="btn btn-primary">Submit Request</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
     </main>
 
     <!-- Footer will be loaded via JavaScript -->
     <footer id="footer" class="footer"></footer>
 
     <!-- Scripts -->
-    <script src="../js/utils.js"></script>
-    <script src="../js/components.js"></script>
-    <script src="../js/hero.js"></script>
+    <script id="utils-script" src="/Cancer/js/utils.js"></script>
+    <script id="components-script" src="/Cancer/js/components.js"></script>
+    <script id="hero-script" src="/Cancer/js/hero.js"></script>
     
     <!-- Leaflet JS -->
     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
     
     <!-- Facilities Map Script -->
-    <script src="../js/facilities-map.js"></script>
+    <script src="/Cancer/js/facilities-map.js"></script>
     
     <script>
+        // Define basePath for component loading
+        const basePath = '/Cancer/';
+        
         document.addEventListener('DOMContentLoaded', function() {
             console.log('[Debug] Facilities page loaded');
             
             // Load header and footer
-            if (typeof loadHeader === 'function') {
-                loadHeader();
-            }
-            if (typeof loadFooter === 'function') {
-                loadFooter();
-            }
+            loadComponent('#header', 'header.html');
+            loadComponent('#footer', 'footer.html');
             
-            // Hero is initialized by hero.js
+            // Load hero with overlay
+            loadHeroWithOverlay('#hero-container', {
+                title: 'Find Screening Facilities',
+                description: 'Locate breast cancer screening and diagnostic centers near you in the Bellevue, WA area.',
+                backgroundImage: basePath + 'images/content/breast-cancer-2773774_1920.jpg',
+                overlayOpacity: 0.6
+            });
             
             // Initialize page-specific scripts
             if (typeof initPage === 'function') {

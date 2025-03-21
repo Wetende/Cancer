@@ -8,9 +8,9 @@
     <meta name="author" content="Nzoya Foundation">
     <title>Treating Breast Cancer | Nzoya Foundation</title>
     <!-- Dynamic asset path resolution will be handled by JavaScript -->
-    <link rel="icon" id="favicon-link" href="images/favicon.svg" type="image/svg+xml">
-    <link rel="stylesheet" href="../../css/styles.css">
-    <link rel="stylesheet" id="theme-link" href="css/komen-theme.css">
+    <link rel="icon" id="favicon-link" href="/Cancer/images/favicon.svg" type="image/svg+xml">
+    <link rel="stylesheet" id="styles-link" href="/Cancer/css/styles.css">
+    <link rel="stylesheet" id="theme-link" href="/Cancer/css/komen-theme.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
     <!-- Page-specific styles -->
@@ -99,19 +99,19 @@
         }
     </style>
 </head>
-<body>
+<body class="theme-komen">
     <header id="header"></header>
 
-    <main class="treatment-page">
+    <main id="main-content" class="treatment-page">
+        <!-- Hero section -->
         <section class="hero-section">
             <div class="container">
-                <nav class="breadcrumb">
-                    <a href="../../../index.html">Home</a> &gt;
-                    <a href="../../breast-cancer.html">Breast Cancer</a> &gt;
-                    <span>Treatment</span>
-                </nav>
-                <h1>Treating Breast Cancer</h1>
-                <p class="lead">Learn about the various treatment options available for breast cancer, including surgery, radiation therapy, chemotherapy, hormone therapy, and targeted therapies. Understand how treatment decisions are made, potential side effects, and the importance of clinical trials.</p>
+                <div class="hero-image">
+                    <img src="/Cancer/images/content/operation-1807543_1280.jpg" alt="Breast Cancer Treatment" class="full-width-image" id="hero-img">
+                </div>
+                <div id="breadcrumb-container"></div>
+                <h1 id="page-title">Breast Cancer Treatment</h1>
+                <p class="lead" id="page-description">Learn about the various treatment options for breast cancer, including surgery, radiation therapy, chemotherapy, hormone therapy, and targeted therapies. Understanding your options can help you make informed decisions with your healthcare team.</p>
             </div>
         </section>
 
@@ -325,8 +325,31 @@
 
     <footer id="footer"></footer>
 
-    <script src="../../../js/utils.js"></script>
-    <script src="../../../js/components.js"></script>
-    <script src="../../../js/hero.js"></script>
+    <script id="utils-script" src="/Cancer/js/utils.js"></script>
+    <script id="components-script" src="/Cancer/js/components.js"></script>
+    <script id="hero-script" src="/Cancer/js/hero.js"></script>
+    <script>
+        // Define basePath for component loading
+        const basePath = '/Cancer/';
+        
+        // Initialize components
+        document.addEventListener('DOMContentLoaded', function() {
+            // Load header and footer
+            loadComponent('#header', 'header.html');
+            loadComponent('#footer', 'footer.html');
+            
+            // Load breadcrumb (with configuration)
+            loadBreadcrumb('#breadcrumb-container', [
+                { text: 'Home', url: basePath + 'index.html' },
+                { text: 'About Breast Cancer', url: basePath + 'pages/about-breast-cancer.html' },
+                { text: 'Treatment', url: '#' }
+            ]);
+            
+            // Initialize page-specific scripts
+            if (typeof initPage === 'function') {
+                initPage();
+            }
+        });
+    </script>
 </body>
 </html> 

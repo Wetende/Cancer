@@ -3,149 +3,334 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Learn about breast cancer screening options, early detection methods, and our comprehensive screening programs at Nzoya Foundation.">
-    <meta name="keywords" content="breast cancer screening, early detection, mammogram, breast MRI, clinical breast exam, screening guidelines">
-    <meta name="author" content="Nzoya Foundation">
-    <title>About Screening | Nzoya Foundation</title>
+    <meta name="description" content="Learn about the Cancer Care Initiative, our mission, history, and team dedicated to providing compassionate cancer care, advancing research, and supporting patients and families.">
+    <meta name="keywords" content="cancer care, cancer research, oncology services, cancer treatment center, cancer support">
+    <meta name="author" content="Cancer Care Initiative">
+    <title>About Us | Cancer Care Initiative</title>
     
-    <link rel="icon" href="../images/favicon.svg" type="image/svg+xml">
-    <link rel="stylesheet" href="../css/styles.css">
+    <link rel="icon" id="favicon-link" href="/Cancer/images/favicon.svg" type="image/svg+xml">
+    <link rel="stylesheet" id="styles-link" href="/Cancer/css/styles.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
     
     <!-- Page-specific styles -->
     <style id="page-styles">
-        .about-content {
-            margin-bottom: 2.5rem;
+        /* Core Layout */
+        .about-page {
+            background-color: #fff;
         }
-        
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1rem;
+        }
+
+        .content-grid {
+            display: grid;
+            grid-template-columns: 250px 1fr;
+            gap: 3rem;
+            margin: 3rem 0;
+        }
+
+        /* Sidebar Styles */
+        .sidebar {
+            position: sticky;
+            top: 2rem;
+            height: fit-content;
+            padding: 1.5rem;
+            background: #fff;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+
+        .section-nav h2 {
+            font-size: 1.2rem;
+            color: #333;
+            margin-bottom: 1rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid #d43f8d;
+        }
+
+        .section-nav ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .section-nav li {
+            margin-bottom: 0.5rem;
+        }
+
+        .section-nav a {
+            display: block;
+            padding: 0.5rem;
+            color: #666;
+            text-decoration: none;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+        }
+
+        .section-nav a:hover,
+        .section-nav a.active {
+            background: #f8f9fa;
+            color: #d43f8d;
+            transform: translateX(5px);
+        }
+
+        /* Content Sections */
+        .content-section {
+            margin-bottom: 4rem;
+            animation: fadeIn 0.5s ease-out;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .content-section h2 {
+            font-size: 2rem;
+            color: #333;
+            margin-bottom: 1.5rem;
+            position: relative;
+            padding-bottom: 0.75rem;
+        }
+
+        .content-section h2::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 60px;
+            height: 3px;
+            background: linear-gradient(to right, #d43f8d, #0250c5);
+        }
+
         .content-columns {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
+            gap: 2.5rem;
             margin: 2rem 0;
         }
-        
+
+        .col {
+            background: #fff;
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .col:hover {
+            transform: translateY(-5px);
+        }
+
+        /* Benefits List */
         .benefits-list {
             list-style: none;
             padding: 0;
             margin: 1rem 0;
         }
-        
+
         .benefits-list li {
             position: relative;
-            padding-left: 1.5rem;
-            margin-bottom: 0.75rem;
+            padding: 1rem 1rem 1rem 3rem;
+            margin-bottom: 1rem;
+            background: #f8f9fa;
+            border-radius: 8px;
+            transition: transform 0.3s ease;
         }
-        
+
+        .benefits-list li:hover {
+            transform: translateX(5px);
+        }
+
         .benefits-list li::before {
             content: '✓';
             position: absolute;
-            left: 0;
-            color: #28a745;
+            left: 1rem;
+            color: #d43f8d;
             font-weight: bold;
+            font-size: 1.2rem;
         }
-        
+
+        /* Screening Cards */
         .screening-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 1.5rem;
-            margin: 2rem 0;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin: 2.5rem 0;
         }
-        
+
         .screening-card {
-            background-color: #f8f9fa;
-            border-radius: 8px;
-            padding: 1.5rem;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-            transition: transform 0.3s ease;
-            border-top: 4px solid #d43f8d;
+            background: #fff;
+            border-radius: 15px;
+            padding: 2rem;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
         }
-        
+
+        .screening-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(to right, #d43f8d, #0250c5);
+        }
+
         .screening-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transform: translateY(-10px);
         }
-        
+
         .screening-card__icon {
-            font-size: 2.5rem;
-            color: #d43f8d;
-            margin-bottom: 1rem;
-            text-align: center;
+            width: 80px;
+            height: 80px;
+            margin: 0 auto 1.5rem;
+            background: linear-gradient(135deg, #fce4f1, #e4f1fc);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
-        
+
+        .screening-card__icon i {
+            font-size: 2rem;
+            background: linear-gradient(to right, #d43f8d, #0250c5);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
         .screening-card h3 {
             color: #333;
             margin-bottom: 1rem;
             text-align: center;
+            font-size: 1.4rem;
         }
-        
+
+        /* Guidelines Section */
         .guidelines-content {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 1.5rem;
-            margin: 2rem 0;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin: 2.5rem 0;
         }
-        
+
         .guideline-item {
-            background-color: #f8f9fa;
-            border-radius: 8px;
-            padding: 1.5rem;
-            border-left: 4px solid #007bff;
-        }
-        
-        .guideline-item h3 {
-            color: #007bff;
-            margin-bottom: 0.75rem;
-        }
-        
-        .section-image {
-            margin-bottom: 1.5rem;
-            border-radius: 8px;
+            background: #fff;
+            border-radius: 15px;
+            padding: 2rem;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+            position: relative;
             overflow: hidden;
         }
-        
+
+        .guideline-item::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 4px;
+            height: 100%;
+            background: linear-gradient(to bottom, #d43f8d, #0250c5);
+        }
+
+        .guideline-item:hover {
+            transform: translateX(10px);
+        }
+
+        .guideline-item h3 {
+            color: #333;
+            margin-bottom: 1rem;
+            font-size: 1.3rem;
+        }
+
+        /* Images */
+        .section-image {
+            margin: 2rem 0;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+
         .section-image img {
             width: 100%;
             height: auto;
-            transition: transform 0.3s ease;
+            transition: transform 0.5s ease;
+            display: block;
         }
-        
-        .section-image img:hover {
-            transform: scale(1.03);
+
+        .section-image:hover img {
+            transform: scale(1.05);
         }
-        
+
+        /* CTA Section */
         .cta-section {
-            background-color: #f8f9fa;
-            padding: 3rem 0;
-            margin-top: 2rem;
+            background: linear-gradient(135deg, #fce4f1, #e4f1fc);
+            padding: 4rem 0;
+            margin-top: 3rem;
             text-align: center;
+            border-radius: 15px;
         }
-        
+
+        .cta-section h2 {
+            color: #333;
+            margin-bottom: 1.5rem;
+        }
+
         .cta-button {
             display: inline-block;
-            padding: 1rem 2rem;
-            background-color: #d43f8d;
+            padding: 1rem 2.5rem;
+            background: linear-gradient(to right, #d43f8d, #0250c5);
             color: white;
             text-decoration: none;
-            border-radius: 4px;
-            transition: background-color 0.3s ease;
-            margin-top: 1rem;
+            border-radius: 50px;
+            transition: all 0.3s ease;
+            font-weight: 600;
+            box-shadow: 0 5px 15px rgba(212, 63, 141, 0.3);
         }
-        
+
         .cta-button:hover {
-            background-color: #c03579;
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(212, 63, 141, 0.4);
         }
-        
+
+        /* Responsive Design */
+        @media (max-width: 992px) {
+            .content-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .sidebar {
+                position: relative;
+                top: 0;
+                margin-bottom: 2rem;
+            }
+        }
+
         @media (max-width: 768px) {
             .content-columns,
             .screening-grid,
             .guidelines-content {
                 grid-template-columns: 1fr;
             }
-            
+
+            .content-section h2 {
+                font-size: 1.75rem;
+            }
+
             .guideline-item {
                 margin-bottom: 1rem;
+            }
+
+            .col,
+            .screening-card,
+            .guideline-item {
+                padding: 1.5rem;
             }
         }
     </style>
@@ -229,18 +414,242 @@
                     <!-- Guidelines Section -->
                     <section id="guidelines" class="about-content content-section">
                         <h2>Screening Guidelines</h2>
+                        <div class="section-image">
+                            <img src="/Cancer/images/content/breast-cancer-2773775_1280.jpg" alt="Breast Cancer Screening Guidelines" class="full-width-image">
+                        </div>
+                        <p>There are different guidelines for breast cancer screening based on your age, risk factors, and personal health history. We recommend following these general guidelines, but always consult with your healthcare provider about what's right for you.</p>
                         <div class="guidelines-content">
                             <div class="guideline-item">
-                                <h3>Ages 40-74</h3>
-                                <p>Mammogram every 1-2 years, depending on personal risk factors and doctor recommendations.</p>
+                                <h3>Ages 40-44</h3>
+                                <p>Women have the option to start annual mammograms. Talk to your doctor about when to start based on your personal risk factors.</p>
+                            </div>
+                            <div class="guideline-item">
+                                <h3>Ages 45-54</h3>
+                                <p>Women should get a mammogram every year. 3D mammography (tomosynthesis) is recommended when available.</p>
+                            </div>
+                            <div class="guideline-item">
+                                <h3>Ages 55 and older</h3>
+                                <p>Women can switch to mammograms every 2 years, or continue annual screening, depending on personal preferences and risk factors.</p>
                             </div>
                             <div class="guideline-item">
                                 <h3>High Risk Individuals</h3>
-                                <p>May need to start screening earlier or have more frequent screenings. Consult with your healthcare provider.</p>
+                                <p>May need to start screening earlier (before age 40) and include breast MRI. This includes women with:</p>
+                                <ul>
+                                    <li>Known BRCA1 or BRCA2 gene mutations</li>
+                                    <li>First-degree relatives with these mutations</li>
+                                    <li>History of chest radiation between ages 10-30</li>
+                                    <li>Strong family history of breast cancer</li>
+                                </ul>
                             </div>
                             <div class="guideline-item">
                                 <h3>Risk Assessment</h3>
-                                <p>Take our <a href="risk-calculator.html" class="text-primary">risk assessment quiz</a> to understand your personal risk factors.</p>
+                                <p>Take our <a href="risk-calculator.html" class="text-primary">risk assessment quiz</a> to understand your personal risk factors and get tailored screening recommendations.</p>
+                            </div>
+                        </div>
+                        <div class="info-box">
+                            <h3>What about breast self-exams?</h3>
+                            <p>Breast self-awareness is important. While formal breast self-exams are no longer universally recommended, being familiar with how your breasts normally look and feel can help you recognize changes that should be reported to your healthcare provider.</p>
+                        </div>
+                    </section>
+
+                    <!-- Mission Section -->
+                    <section id="mission" class="about-content content-section">
+                        <h2>Our Mission</h2>
+                        <div class="mission-statement">
+                            <p>We are dedicated to providing compassionate, evidence-based cancer care, advancing research, and supporting patients and families throughout their cancer journey.</p>
+                        </div>
+                        <div class="values-grid">
+                            <div class="value-card">
+                                <div class="value-icon">
+                                    <i class="fas fa-heartbeat"></i>
+                                </div>
+                                <h3>Patient-Centered Care</h3>
+                                <p>We put patients at the center of everything we do, ensuring personalized care that addresses both medical needs and quality of life.</p>
+                            </div>
+                            <div class="value-card">
+                                <div class="value-icon">
+                                    <i class="fas fa-microscope"></i>
+                                </div>
+                                <h3>Research Excellence</h3>
+                                <p>We are committed to advancing cancer research, developing new treatments, and improving outcomes for cancer patients worldwide.</p>
+                            </div>
+                            <div class="value-card">
+                                <div class="value-icon">
+                                    <i class="fas fa-users"></i>
+                                </div>
+                                <h3>Community Support</h3>
+                                <p>We believe in empowering communities through education, prevention programs, and accessible screening services.</p>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- History Section -->
+                    <section id="history" class="about-content content-section">
+                        <h2>Our History</h2>
+                        <p>The Cancer Care Initiative has evolved over decades to become a leader in cancer treatment, research, and patient support.</p>
+                        <div class="timeline">
+                            <div class="timeline-item">
+                                <div class="timeline-content">
+                                    <span class="timeline-year">1985</span>
+                                    <h3>Foundation</h3>
+                                    <p>The Cancer Care Initiative was established by a group of oncologists and researchers committed to improving cancer treatment outcomes.</p>
+                                </div>
+                            </div>
+                            <div class="timeline-item">
+                                <div class="timeline-content">
+                                    <span class="timeline-year">1992</span>
+                                    <h3>First Research Center</h3>
+                                    <p>Opened our first dedicated research facility in Boston, focusing on innovative treatment approaches for breast and lung cancers.</p>
+                                </div>
+                            </div>
+                            <div class="timeline-item">
+                                <div class="timeline-content">
+                                    <span class="timeline-year">2001</span>
+                                    <h3>Expansion</h3>
+                                    <p>Expanded our network to include treatment centers in five major cities across the United States, making quality cancer care more accessible.</p>
+                                </div>
+                            </div>
+                            <div class="timeline-item">
+                                <div class="timeline-content">
+                                    <span class="timeline-year">2010</span>
+                                    <h3>Precision Medicine</h3>
+                                    <p>Pioneered personalized treatment protocols based on genetic profiling, significantly improving treatment efficacy for many cancer types.</p>
+                                </div>
+                            </div>
+                            <div class="timeline-item">
+                                <div class="timeline-content">
+                                    <span class="timeline-year">2018</span>
+                                    <h3>Global Initiatives</h3>
+                                    <p>Launched international collaboration programs to share knowledge and resources with cancer centers in developing countries.</p>
+                                </div>
+                            </div>
+                            <div class="timeline-item">
+                                <div class="timeline-content">
+                                    <span class="timeline-year">Today</span>
+                                    <h3>Continuing the Mission</h3>
+                                    <p>Today, we operate a network of comprehensive cancer centers, continue groundbreaking research, and provide support to thousands of patients annually.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- Team Section -->
+                    <section id="team" class="about-content content-section">
+                        <h2>Our Leadership Team</h2>
+                        <p>Meet the dedicated professionals leading our organization's mission to provide exceptional cancer care and advance research.</p>
+                        <div class="team-grid">
+                            <div class="team-member">
+                                <div class="member-image">
+                                    <img src="/Cancer/images/content/doctor-1149149_1280.jpg" alt="Dr. Sarah Johnson">
+                                </div>
+                                <div class="member-info">
+                                    <h3>Dr. Sarah Johnson</h3>
+                                    <p class="member-title">Chief Executive Officer</p>
+                                    <p class="member-bio">With over 25 years of experience in oncology and healthcare management, Dr. Johnson leads our organization with a focus on patient-centered care and innovation.</p>
+                                    <div class="social-links">
+                                        <a href="#" class="social-link"><i class="fab fa-linkedin"></i></a>
+                                        <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="team-member">
+                                <div class="member-image">
+                                    <img src="/Cancer/images/content/doctor-6701410_1280.jpg" alt="Dr. Michael Chen">
+                                </div>
+                                <div class="member-info">
+                                    <h3>Dr. Michael Chen</h3>
+                                    <p class="member-title">Chief Medical Officer</p>
+                                    <p class="member-bio">A renowned oncologist specializing in precision medicine, Dr. Chen oversees our clinical programs and ensures the highest standards of medical care.</p>
+                                    <div class="social-links">
+                                        <a href="#" class="social-link"><i class="fab fa-linkedin"></i></a>
+                                        <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="team-member">
+                                <div class="member-image">
+                                    <img src="/Cancer/images/content/woman-1594711_1280.jpg" alt="Dr. Elena Rodriguez">
+                                </div>
+                                <div class="member-info">
+                                    <h3>Dr. Elena Rodriguez</h3>
+                                    <p class="member-title">Director of Research</p>
+                                    <p class="member-bio">Leading our research initiatives, Dr. Rodriguez has published over 100 papers on cancer therapies and is dedicated to translating scientific discoveries into treatments.</p>
+                                    <div class="social-links">
+                                        <a href="#" class="social-link"><i class="fab fa-linkedin"></i></a>
+                                        <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="team-member">
+                                <div class="member-image">
+                                    <img src="/Cancer/images/content/african-american-1180847_1280.jpg" alt="James Williams">
+                                </div>
+                                <div class="member-info">
+                                    <h3>James Williams</h3>
+                                    <p class="member-title">Chief Operations Officer</p>
+                                    <p class="member-bio">With a background in healthcare administration, James oversees the operational excellence of our centers, ensuring efficient and accessible care for all patients.</p>
+                                    <div class="social-links">
+                                        <a href="#" class="social-link"><i class="fab fa-linkedin"></i></a>
+                                        <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- Contact Section -->
+                    <section id="contact" class="about-content content-section contact-section">
+                        <h2>Contact Us</h2>
+                        <div class="contact-grid">
+                            <div class="contact-info">
+                                <p>We're here to answer your questions and provide information about our services, research, and patient support programs.</p>
+                                <div class="contact-methods">
+                                    <div class="contact-method">
+                                        <i class="fas fa-map-marker-alt"></i>
+                                        <div class="contact-method-details">
+                                            <h3>Main Office</h3>
+                                            <p>100 Medical Center Boulevard<br>Boston, MA 02215</p>
+                                        </div>
+                                    </div>
+                                    <div class="contact-method">
+                                        <i class="fas fa-phone"></i>
+                                        <div class="contact-method-details">
+                                            <h3>Phone</h3>
+                                            <p>General Inquiries: (800) 555-1234</p>
+                                            <p>Patient Support: (800) 555-5678</p>
+                                        </div>
+                                    </div>
+                                    <div class="contact-method">
+                                        <i class="fas fa-envelope"></i>
+                                        <div class="contact-method-details">
+                                            <h3>Email</h3>
+                                            <p>info@cancercareinitiative.org</p>
+                                            <p>support@cancercareinitiative.org</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="contact-form">
+                                <h3>Send Us a Message</h3>
+                                <form id="contact-form">
+                                    <div class="form-group">
+                                        <label for="name">Your Name</label>
+                                        <input type="text" id="name" name="name" class="form-control" required>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="email">Email Address</label>
+                                        <input type="email" id="email" name="email" class="form-control" required>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="subject">Subject</label>
+                                        <input type="text" id="subject" name="subject" class="form-control" required>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="message">Message</label>
+                                        <textarea id="message" name="message" class="form-control" rows="5" required></textarea>
+                                    </div>
+                                    <button type="submit" class="btn-submit">Send Message</button>
+                                </form>
                             </div>
                         </div>
                     </section>
@@ -262,68 +671,46 @@
     <footer id="footer"></footer>
 
     <!-- Scripts -->
-    <script src="../js/utils.js"></script>
-    <script src="../js/components.js"></script>
-    <script src="../js/hero.js"></script>
+    <script id="utils-script" src="/Cancer/js/utils.js"></script>
+    <script id="components-script" src="/Cancer/js/components.js"></script>
+    <script id="hero-script" src="/Cancer/js/hero.js"></script>
     <script>
+        // Define basePath for component loading
+        const basePath = '/Cancer/';
+        
         document.addEventListener('DOMContentLoaded', function() {
             console.log('[Debug] About page loaded');
             
             // Load header and footer components
-            if (typeof loadHeader === 'function') {
-                loadHeader();
-            }
-            if (typeof loadFooter === 'function') {
-                loadFooter();
-            }
+            loadComponent('#header', 'header.html');
+            loadComponent('#footer', 'footer.html');
             
-            // Hero is initialized by hero.js
+            // Load hero with overlay
+            loadHeroWithOverlay('#hero-container', {
+                title: 'About Screening',
+                description: 'Learn why screening is important and the different options available for early breast cancer detection.',
+                backgroundImage: basePath + 'images/content/medical-5051144_1280.jpg',
+                overlayOpacity: 0.6
+            });
             
-            // Timeline animation
-            const timelineItems = document.querySelectorAll('.timeline-item');
+            // Add smooth scrolling for navigation links
+            const navLinks = document.querySelectorAll('#section-nav-list a');
             
-            // Function to check if an element is in viewport
-            function isInViewport(element) {
-                const rect = element.getBoundingClientRect();
-                return (
-                    rect.top >= 0 &&
-                    rect.left >= 0 &&
-                    rect.bottom <= (window.innerHeight || document.documentElement.clientHeight) &&
-                    rect.right <= (window.innerWidth || document.documentElement.clientWidth)
-                );
-            }
-            
-            // Function to handle scroll event
-            function handleScroll() {
-                timelineItems.forEach(item => {
-                    if (isInViewport(item)) {
-                        item.classList.add('visible');
+            navLinks.forEach(link => {
+                link.addEventListener('click', function(e) {
+                    const targetId = this.getAttribute('href');
+                    if (targetId.startsWith('#')) {
+                        e.preventDefault();
+                        const targetElement = document.querySelector(targetId);
+                        if (targetElement) {
+                            window.scrollTo({
+                                top: targetElement.offsetTop - 100,
+                                behavior: 'smooth'
+                            });
+                        }
                     }
                 });
-            }
-            
-            // Initial check for items in viewport
-            handleScroll();
-            
-            // Add scroll event listener
-            window.addEventListener('scroll', handleScroll);
-            
-            // Add scroll event for mission-vision section
-            const missionVisionItems = document.querySelectorAll('.mission-vision-item');
-            
-            function handleMissionVisionScroll() {
-                missionVisionItems.forEach(item => {
-                    if (isInViewport(item)) {
-                        item.classList.add('visible');
-                    }
-                });
-            }
-            
-            // Initial check
-            handleMissionVisionScroll();
-            
-            // Add scroll event listener
-            window.addEventListener('scroll', handleMissionVisionScroll);
+            });
         });
     </script>
     <!-- Page-specific scripts -->

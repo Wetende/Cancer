@@ -8,9 +8,9 @@
     <meta name="author" content="Nzoya Foundation">
     <title>Breast Cancer Survivorship | Life After Treatment</title>
     <!-- Dynamic asset path resolution will be handled by JavaScript -->
-    <link rel="icon" id="favicon-link" href="images/favicon.svg" type="image/svg+xml">
-    <link rel="stylesheet" href="../../css/styles.css">
-    <link rel="stylesheet" id="theme-link" href="css/komen-theme.css">
+    <link rel="icon" id="favicon-link" href="/Cancer/images/favicon.svg" type="image/svg+xml">
+    <link rel="stylesheet" id="styles-link" href="/Cancer/css/styles.css">
+    <link rel="stylesheet" id="theme-link" href="/Cancer/css/komen-theme.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
     <!-- Page-specific styles -->
@@ -127,7 +127,7 @@
         }
     </style>
 </head>
-<body>
+<body class="theme-komen">
     <!-- Header will be loaded here -->
     <header id="header"></header>
 
@@ -137,7 +137,7 @@
         <section class="hero-section">
             <div class="container">
                 <div class="hero-image">
-                    <img src="" alt="Breast Cancer Survivorship" class="full-width-image" id="hero-img" data-src="images/content/survivor.jpg">
+                    <img src="/Cancer/images/content/survivor.jpg" alt="Breast Cancer Survivorship" class="full-width-image" id="hero-img">
                 </div>
                 <div id="breadcrumb-container"></div>
                 <h1 id="page-title">Life After Breast Cancer Treatment</h1>
@@ -168,7 +168,7 @@
                 <div class="main-content" id="content-area">
                     <section id="follow-up" class="content-section">
                         <div class="section-image">
-                            <img src="" alt="Follow-up Care" class="section-img" id="followup-img" data-src="images/content/doctor-650534_1280.jpg">
+                            <img src="/Cancer/images/content/doctor-650534_1280.jpg" alt="Follow-up Care" class="section-img" id="followup-img">
                         </div>
                         <h2>Follow-up Care</h2>
                         <div class="care-plan">
@@ -223,7 +223,7 @@
 
                     <section id="emotional" class="content-section">
                         <div class="section-image">
-                            <img src="" alt="Emotional Well-being" class="section-img" id="emotional-img" data-src="images/content/womansmiling.jpg">
+                            <img src="/Cancer/images/content/womansmiling.jpg" alt="Emotional Well-being" class="section-img" id="emotional-img">
                         </div>
                         <h2>Emotional Well-being</h2>
                         <div class="emotional-content">
@@ -251,7 +251,7 @@
 
                     <section id="healthy-living" class="content-section">
                         <div class="section-image">
-                            <img src="" alt="Healthy Living After Treatment" class="section-img" id="healthy-img" data-src="images/content/womenlying.jpg">
+                            <img src="/Cancer/images/content/womenlying.jpg" alt="Healthy Living After Treatment" class="section-img" id="healthy-img">
                         </div>
                         <h2>Healthy Living After Treatment</h2>
                         <div class="lifestyle-grid">
@@ -340,7 +340,7 @@
 
                     <section id="support" class="content-section">
                         <div class="section-image">
-                            <img src="" alt="Support Resources" class="section-img" id="support-img" data-src="images/content/group of women.jpg">
+                            <img src="/Cancer/images/content/group of women.jpg" alt="Support Resources" class="section-img" id="support-img">
                         </div>
                         <h2>Support Resources</h2>
                         <div class="support-content">
@@ -380,9 +380,9 @@
     <footer id="footer"></footer>
 
     <!-- Scripts -->
-    <script id="utils-script" src="../../../js/utils.js"></script>
-    <script id="components-script" src="../../../js/components.js"></script>
-    <script id="hero-script" src="../../../js/hero.js"></script>
+    <script id="utils-script" src="/Cancer/js/utils.js"></script>
+    <script id="components-script" src="/Cancer/js/components.js"></script>
+    <script id="hero-script" src="/Cancer/js/hero.js"></script>
     <script>
         // Resolve asset paths based on current page depth
         function resolveAssetPaths() {
@@ -448,10 +448,13 @@
         resolveAssetPaths();
         
         // Initialize components
+        // Define basePath for component loading
+        let basePath = '/Cancer/';
+
         document.addEventListener('DOMContentLoaded', function() {
             // Load header and footer
-            loadComponent('#header', basePath + 'components/header.html');
-            loadComponent('#footer', basePath + 'components/footer.html');
+            loadComponent('#header', 'header.html');
+            loadComponent('#footer', 'footer.html');
             
             // Load breadcrumb (with configuration)
             loadBreadcrumb('#breadcrumb-container', [
@@ -466,13 +469,7 @@
             }
         });
 
-        // Define basePath for component loading
-        let basePath = '';
-        const path = window.location.pathname;
-        if (path.includes('/pages/')) {
-            const depth = path.split('/').length - 2;
-            basePath = depth === 0 ? '' : '../'.repeat(depth);
-        }
+        
     </script>
     <!-- Page-specific scripts -->
     <script id="page-scripts">

@@ -64,8 +64,10 @@ function initializeFacilitiesUI() {
             facilitiesList.innerHTML = '<div class="loading-indicator">Loading facilities...</div>';
         }
         
-        // Fetch facilities data - adjust path based on environment
-        const dataPath = window.location.pathname.includes('/pages/') ? '../data/facilities.json' : 'data/facilities.json';
+        // Determine the correct path to data file based on basePath (if defined) or use absolute path
+        const dataPath = typeof basePath !== 'undefined' 
+            ? basePath + 'data/facilities.json'
+            : '/Cancer/data/facilities.json';
         
         fetch(dataPath)
             .then(response => {
@@ -384,6 +386,11 @@ function addMarkersToMap(map, facilities) {
     // Create an info window for marker popups
     const infoWindow = new google.maps.InfoWindow();
     
+    // Determine the correct path for marker icons
+    const markerPath = typeof basePath !== 'undefined' 
+        ? basePath + 'images/'
+        : '/Cancer/images/';
+    
     // Add markers for each facility
     facilities.forEach(facility => {
         // Parse coordinates from address or use geocoding in production
@@ -397,8 +404,8 @@ function addMarkersToMap(map, facilities) {
             title: facility.name,
             icon: {
                 url: facility.address.includes('Bellevue') 
-                    ? '../images/marker-primary.svg' 
-                    : '../images/marker-secondary.svg',
+                    ? markerPath + 'marker-primary.svg' 
+                    : markerPath + 'marker-secondary.svg',
                 scaledSize: new google.maps.Size(32, 32)
             },
             animation: google.maps.Animation.DROP

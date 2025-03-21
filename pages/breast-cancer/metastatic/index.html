@@ -3,14 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Learn about metastatic breast cancer, its symptoms, treatment options, and support resources.">
-    <meta name="keywords" content="metastatic breast cancer, stage 4 breast cancer, advanced breast cancer, breast cancer treatment">
+    <meta name="description" content="Learn about metastatic breast cancer (stage IV), treatment options, and finding support in Bellevue, WA.">
+    <meta name="keywords" content="metastatic breast cancer, stage IV breast cancer, advanced breast cancer, treatment options, Bellevue, WA">
     <meta name="author" content="Nzoya Foundation">
-    <title>Metastatic Breast Cancer | Understanding Stage IV Breast Cancer</title>
+    <title>Metastatic Breast Cancer | Nzoya Foundation</title>
     <!-- Dynamic asset path resolution will be handled by JavaScript -->
-    <link rel="icon" id="favicon-link" href="images/favicon.svg" type="image/svg+xml">
-    <link rel="stylesheet" href="../../css/styles.css">
-    <link rel="stylesheet" id="theme-link" href="css/komen-theme.css">
+    <link rel="icon" id="favicon-link" href="/Cancer/images/favicon.svg" type="image/svg+xml">
+    <link rel="stylesheet" id="styles-link" href="/Cancer/css/styles.css">
+    <link rel="stylesheet" id="theme-link" href="/Cancer/css/komen-theme.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
     <!-- Page-specific styles -->
@@ -106,7 +106,7 @@
         }
     </style>
 </head>
-<body>
+<body class="theme-komen">
     <!-- Header will be loaded here -->
     <header id="header"></header>
 
@@ -116,7 +116,7 @@
         <section class="hero-section">
             <div class="container">
                 <div class="hero-image">
-                    <img src="" alt="Metastatic Breast Cancer" class="full-width-image" id="hero-img" data-src="images/content/treatment-4099432_1280.jpg">
+                    <img src="/Cancer/images/content/treatment-4099432_1280.jpg" alt="Metastatic Breast Cancer" class="full-width-image" id="hero-img">
                 </div>
                 <div id="breadcrumb-container"></div>
                 <h1 id="page-title">Understanding Metastatic Breast Cancer</h1>
@@ -336,22 +336,15 @@
     <footer id="footer"></footer>
 
     <!-- Scripts -->
-    <script id="utils-script" src="../../../js/utils.js"></script>
-    <script id="components-script" src="../../../js/components.js"></script>
-    <script id="hero-script" src="../../../js/hero.js"></script>
+    <script id="utils-script" src="/Cancer/js/utils.js"></script>
+    <script id="components-script" src="/Cancer/js/components.js"></script>
+    <script id="hero-script" src="/Cancer/js/hero.js"></script>
     <script>
-        // Resolve asset paths based on current page depth
+        // Define basePath for component loading
+        const basePath = '/Cancer/';
+        
+        // Resolve asset paths using absolute paths
         function resolveAssetPaths() {
-            const path = window.location.pathname;
-            let depth = 0;
-            
-            // Count directory levels
-            if (path.includes('/pages/')) {
-                depth = path.split('/').length - 2; // Adjust for domain and filename
-            }
-            
-            const basePath = depth === 0 ? '' : '../'.repeat(depth);
-            
             // Update asset links
             document.getElementById('favicon-link').href = basePath + 'images/favicon.svg';
             document.getElementById('styles-link').href = basePath + 'css/styles.css';
@@ -385,8 +378,8 @@
         // Initialize components
         document.addEventListener('DOMContentLoaded', function() {
             // Load header and footer
-            loadComponent('#header', basePath + 'components/header.html');
-            loadComponent('#footer', basePath + 'components/footer.html');
+            loadComponent('#header', 'header.html');
+            loadComponent('#footer', 'footer.html');
             
             // Load breadcrumb (with configuration)
             loadBreadcrumb('#breadcrumb-container', [
@@ -400,14 +393,6 @@
                 initPage();
             }
         });
-
-        // Define basePath for component loading
-        let basePath = '';
-        const path = window.location.pathname;
-        if (path.includes('/pages/')) {
-            const depth = path.split('/').length - 2;
-            basePath = depth === 0 ? '' : '../'.repeat(depth);
-        }
     </script>
     <!-- Page-specific scripts -->
     <script id="page-scripts">
