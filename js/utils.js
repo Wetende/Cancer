@@ -6,24 +6,34 @@
 const utils = {
     // Get the base path relative to the current page for asset loading
     getBasePath: function() {
-        // Always return absolute path for consistent asset loading
-        return '/Cancer/';
+        // For GitHub Pages, we need to handle the repository name in the URL
+        const isProduction = window.location.hostname !== 'localhost' && 
+                             window.location.hostname !== '127.0.0.1';
         
-        /* Original implementation
-        const path = window.location.pathname;
-        let depth = 0;
-        
-        // Count directory levels
-        if (path.includes('/pages/')) {
-            depth = 1;
+        if (isProduction) {
+            const path = window.location.pathname;
+            // If we're in the pages directory or deeper
+            if (path.includes('/Cancer/pages/')) {
+                return '/Cancer/';
+            } else {
+                return '/Cancer/';
+            }
+        } else {
+            // Local development
+            const path = window.location.pathname;
+            let depth = 0;
             
-            // Check for subdirectories
-            const segments = path.split('/');
-            depth = segments.length - 2; // Adjust for domain and filename
+            // Count directory levels
+            if (path.includes('/pages/')) {
+                depth = 1;
+                
+                // Check for subdirectories
+                const segments = path.split('/');
+                depth = segments.length - 2; // Adjust for domain and filename
+            }
+            
+            return depth === 0 ? '' : '../'.repeat(depth);
         }
-        
-        return depth === 0 ? '' : '../'.repeat(depth);
-        */
     },
     
     // Resolve a path relative to the current page
