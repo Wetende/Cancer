@@ -31,6 +31,9 @@ function initializeRiskCalculator(calculatorElement) {
     // Show the first step
     showStep(currentStep);
     
+    // Add floating labels to form inputs
+    setupDynamicInputs();
+    
     // Add event listeners to previous buttons
     prevButtons.forEach(button => {
         button.addEventListener('click', (e) => {
@@ -39,6 +42,9 @@ function initializeRiskCalculator(calculatorElement) {
                 currentStep--;
                 showStep(currentStep);
                 updateProgress();
+                
+                // Scroll to top of calculator
+                smoothScrollTo(calculatorElement);
             }
         });
     });
@@ -53,6 +59,9 @@ function initializeRiskCalculator(calculatorElement) {
                 currentStep++;
                 showStep(currentStep);
                 updateProgress();
+                
+                // Scroll to top of calculator
+                smoothScrollTo(calculatorElement);
             }
         });
     });
@@ -65,7 +74,76 @@ function initializeRiskCalculator(calculatorElement) {
             // Validate final step
             if (validateStep(steps[currentStep])) {
                 calculateRisk();
+                
+                // Scroll to top of results
+                setTimeout(() => {
+                    const results = calculatorElement.querySelector('.risk-results');
+                    if (results) {
+                        smoothScrollTo(results);
+                    }
+                }, 100);
             }
+        });
+    }
+    
+    /**
+     * Smooth scroll to an element
+     * @param {HTMLElement} element - The element to scroll to
+     */
+    function smoothScrollTo(element) {
+        if (!element) return;
+        
+        const rect = element.getBoundingClientRect();
+        const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+        
+        // Scroll to element with offset for header
+        window.scrollTo({
+            top: rect.top + scrollTop - 100,
+            behavior: 'smooth'
+        });
+    }
+    
+    /**
+     * Setup dynamic input effects
+     */
+    function setupDynamicInputs() {
+        const inputs = calculatorElement.querySelectorAll('.form-control');
+        
+        inputs.forEach(input => {
+            // Add focus and blur event listeners
+            input.addEventListener('focus', () => {
+                const formGroup = input.closest('.form-group');
+                if (formGroup) {
+                    formGroup.classList.add('focused');
+                }
+            });
+            
+            input.addEventListener('blur', () => {
+                const formGroup = input.closest('.form-group');
+                if (formGroup) {
+                    formGroup.classList.remove('focused');
+                }
+            });
+            
+            // Set initial state if input has value
+            if (input.value) {
+                const formGroup = input.closest('.form-group');
+                if (formGroup) {
+                    formGroup.classList.add('has-value');
+                }
+            }
+            
+            // Update state when value changes
+            input.addEventListener('input', () => {
+                const formGroup = input.closest('.form-group');
+                if (formGroup) {
+                    if (input.value) {
+                        formGroup.classList.add('has-value');
+                    } else {
+                        formGroup.classList.remove('has-value');
+                    }
+                }
+            });
         });
     }
     
@@ -75,7 +153,16 @@ function initializeRiskCalculator(calculatorElement) {
      */
     function showStep(stepIndex) {
         steps.forEach((step, index) => {
-            step.style.display = index === stepIndex ? 'block' : 'none';
+            if (index === stepIndex) {
+                step.style.display = 'block';
+                // Use setTimeout to trigger animation after display change
+                setTimeout(() => {
+                    step.classList.add('active');
+                }, 10);
+            } else {
+                step.classList.remove('active');
+                step.style.display = 'none';
+            }
         });
     }
     
@@ -87,6 +174,21 @@ function initializeRiskCalculator(calculatorElement) {
             const progressPercentage = (currentStep / (steps.length - 1)) * 100;
             progressBar.style.width = `${progressPercentage}%`;
             progressBar.setAttribute('aria-valuenow', progressPercentage);
+            
+            // Update progress text for accessibility
+            const progressText = calculatorElement.querySelector('.calculator-progress-text');
+            if (progressText) {
+                progressText.textContent = `Step ${currentStep + 1} of ${steps.length}`;
+            } else {
+                // Create progress text if it doesn't exist
+                const progressContainer = calculatorElement.querySelector('.calculator-progress');
+                if (progressContainer) {
+                    const textElement = document.createElement('div');
+                    textElement.className = 'calculator-progress-text';
+                    textElement.textContent = `Step ${currentStep + 1} of ${steps.length}`;
+                    progressContainer.appendChild(textElement);
+                }
+            }
         }
     }
     
@@ -256,8 +358,12 @@ function initializeRiskCalculator(calculatorElement) {
             // Update risk score display
             const scoreElement = resultsSection.querySelector('.risk-score');
             if (scoreElement) {
-                scoreElement.textContent = `${Math.round(riskPercentage)}%`;
+                // Animate counting up to the percentage
+                animateCounter(scoreElement, Math.round(riskPercentage));
             }
+            
+            // Animate the risk meter pointer
+            animateRiskMeter(riskPercentage);
             
             // Update risk category
             const categoryElement = resultsSection.querySelector('.risk-category');
@@ -319,6 +425,63 @@ function initializeRiskCalculator(calculatorElement) {
                 });
             }
         }
+    }
+    
+    /**
+     * Animate counting up to a target number
+     * @param {HTMLElement} element - The element to update
+     * @param {number} target - The target number to count to
+     */
+    function animateCounter(element, target) {
+        let start = 0;
+        const duration = 1500; // ms
+        const startTime = performance.now();
+        
+        // Use requestAnimationFrame for smooth animation
+        function updateCounter(currentTime) {
+            const elapsedTime = currentTime - startTime;
+            const progress = Math.min(elapsedTime / duration, 1);
+            
+            // Use easeOutQuart easing function for natural slowdown
+            const easeProgress = 1 - Math.pow(1 - progress, 4);
+            const current = Math.floor(easeProgress * target);
+            
+            element.textContent = `${current}%`;
+            
+            if (progress < 1) {
+                requestAnimationFrame(updateCounter);
+            } else {
+                element.textContent = `${target}%`;
+            }
+        }
+        
+        requestAnimationFrame(updateCounter);
+    }
+    
+    /**
+     * Animate the risk meter with a pointer
+     * @param {number} percentage - The percentage to point to
+     */
+    function animateRiskMeter(percentage) {
+        const meter = calculatorElement.querySelector('.risk-meter');
+        if (!meter) return;
+        
+        // Add or update pointer element
+        let pointer = meter.querySelector('.risk-meter-pointer');
+        if (!pointer) {
+            pointer = document.createElement('div');
+            pointer.className = 'risk-meter-pointer';
+            meter.appendChild(pointer);
+        }
+        
+        // Calculate rotation angle based on percentage
+        // 0% = -135 degrees, 100% = 135 degrees (270 degree range)
+        const angle = -135 + (percentage / 100 * 270);
+        
+        // Animate the pointer rotation
+        setTimeout(() => {
+            pointer.style.transform = `rotate(${angle}deg)`;
+        }, 300);
     }
     
     /**

@@ -71,9 +71,10 @@
                         <div id="riskCalculator" class="calculator-wrapper">
                             <!-- Progress Bar -->
                             <div class="calculator-progress">
-                                <div class="progress">
-                                    <div class="progress-bar" role="progressbar" style="width: 0%" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
+                                <div class="progress" role="progressbar" aria-valuemin="0" aria-valuemax="100">
+                                    <div class="progress-bar" aria-valuenow="0" style="width: 0%"></div>
                                 </div>
+                                <div class="calculator-progress-text" aria-live="polite">Step 1 of 5</div>
                             </div>
 
                             <!-- Calculator Form -->
@@ -288,11 +289,12 @@
                             <div class="risk-results" style="display: none;">
                                 <h3 class="results-title">Your Risk Assessment Results</h3>
                                 
+                                <!-- Risk Score Display -->
                                 <div class="risk-score-display">
-                                    <div class="risk-meter">
-                                        <div class="risk-score"></div>
+                                    <div class="risk-meter" role="img" aria-label="Risk meter showing your risk level">
+                                        <div class="risk-score" aria-live="polite"></div>
                                     </div>
-                                    <div class="risk-category"></div>
+                                    <div class="risk-category" aria-live="polite"></div>
                                 </div>
                                 
                                 <div class="risk-recommendations">
