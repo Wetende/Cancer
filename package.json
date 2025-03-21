@@ -31,5 +31,8 @@
     "postcss-cli": "^10.1.0",
     "puppeteer": "^24.4.0",
     "sass": "^1.62.1"
+  },
+  "dependencies": {
+    "glob": "^11.0.1"
   }
 }
