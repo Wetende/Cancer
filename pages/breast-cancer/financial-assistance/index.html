@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Find financial assistance resources for breast cancer patients, including help with medical expenses, prescriptions, transportation, and more.">
+    <meta name="keywords" content="breast cancer financial assistance, medical expense help, prescription assistance, cancer support resources">
+    <title>Financial Assistance | Breast Cancer Support</title>
+    
+    <link rel="icon" href="/Cancer/images/favicon.svg" type="image/svg+xml">
+    <link rel="stylesheet" href="/Cancer/css/styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
+    <style>
+        /* Page-specific styles */
+        .assistance-card {
+            background: #fff;
+            border-radius: 15px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .assistance-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .assistance-card h3 {
+            color: #d43f8d;
+            margin-bottom: 1rem;
+            font-size: 1.4rem;
+        }
+
+        .assistance-list {
+            list-style: none;
+            padding: 0;
+        }
+
+        .assistance-list li {
+            padding: 1rem;
+            margin-bottom: 1rem;
+            background: #f8f9fa;
+            border-radius: 8px;
+            position: relative;
+            padding-left: 2.5rem;
+        }
+
+        .assistance-list li:before {
+            content: '\f058';
+            font-family: 'Font Awesome 5 Free';
+            font-weight: 900;
+            color: #d43f8d;
+            position: absolute;
+            left: 1rem;
+        }
+
+        .resource-link {
+            display: inline-block;
+            margin-top: 1rem;
+            color: #d43f8d;
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        .resource-link:hover {
+            text-decoration: underline;
+        }
+
+        .contact-info {
+            background: linear-gradient(135deg, #fce4f1, #e4f1fc);
+            padding: 2rem;
+            border-radius: 15px;
+            margin-top: 2rem;
+        }
+
+        .contact-info h3 {
+            color: #333;
+            margin-bottom: 1rem;
+        }
+
+        .contact-method {
+            display: flex;
+            align-items: center;
+            margin-bottom: 1rem;
+        }
+
+        .contact-method i {
+            color: #d43f8d;
+            margin-right: 1rem;
+            font-size: 1.2rem;
+        }
+    </style>
+</head>
+<body class="theme-komen">
+    <header id="header"></header>
+
+    <main id="main-content" class="financial-assistance-page">
+        <!-- Hero section -->
+        <section class="hero-section">
+            <div class="container">
+                <div class="hero-image">
+                    <img src="/Cancer/images/content/pink-1821381_1280.jpg" alt="Financial Assistance" class="full-width-image" id="hero-img">
+                </div>
+                <div id="breadcrumb-container"></div>
+                <h1 id="page-title">Financial Assistance</h1>
+                <p class="lead" id="page-description">Find resources and support for managing the financial aspects of breast cancer treatment, including help with medical expenses, prescriptions, transportation, and daily living costs.</p>
+            </div>
+        </section>
+
+        <div class="container">
+            <div class="content-grid">
+                <!-- Sidebar -->
+                <aside class="sidebar">
+                    <nav class="section-nav">
+                        <h2>Quick Navigation</h2>
+                        <ul>
+                            <li><a href="#medical">Medical Expenses</a></li>
+                            <li><a href="#prescriptions">Prescription Assistance</a></li>
+                            <li><a href="#transportation">Transportation & Lodging</a></li>
+                            <li><a href="#daily-expenses">Daily Living Expenses</a></li>
+                            <li><a href="#insurance">Insurance Navigation</a></li>
+                            <li><a href="#resources">Additional Resources</a></li>
+                        </ul>
+                    </nav>
+                </aside>
+
+                <!-- Main content -->
+                <div class="main-content">
+                    <section id="medical" class="content-section">
+                        <h2>Medical Expense Assistance</h2>
+                        <div class="assistance-card">
+                            <h3>Hospital & Treatment Costs</h3>
+                            <ul class="assistance-list">
+                                <li>Financial counseling services to help understand and manage medical bills</li>
+                                <li>Payment plan options and financial assistance programs</li>
+                                <li>Grants and charitable organizations that help cover medical costs</li>
+                                <li>Assistance with insurance claims and appeals</li>
+                            </ul>
+                            <a href="#" class="resource-link">Learn More About Medical Cost Assistance →</a>
+                        </div>
+                    </section>
+
+                    <section id="prescriptions" class="content-section">
+                        <h2>Prescription Assistance</h2>
+                        <div class="assistance-card">
+                            <h3>Medication Support Programs</h3>
+                            <ul class="assistance-list">
+                                <li>Prescription drug assistance programs</li>
+                                <li>Manufacturer discount programs and copay cards</li>
+                                <li>State and federal prescription assistance</li>
+                                <li>Pharmacy discount programs</li>
+                            </ul>
+                            <a href="#" class="resource-link">Find Prescription Assistance Programs →</a>
+                        </div>
+                    </section>
+
+                    <section id="transportation" class="content-section">
+                        <h2>Transportation & Lodging</h2>
+                        <div class="assistance-card">
+                            <h3>Getting to Treatment</h3>
+                            <ul class="assistance-list">
+                                <li>Free transportation services to medical appointments</li>
+                                <li>Gas cards and mileage reimbursement programs</li>
+                                <li>Lodging assistance for out-of-town treatment</li>
+                                <li>Coordination with local volunteer drivers</li>
+                            </ul>
+                            <a href="#" class="resource-link">Access Transportation Services →</a>
+                        </div>
+                    </section>
+
+                    <section id="daily-expenses" class="content-section">
+                        <h2>Daily Living Expenses</h2>
+                        <div class="assistance-card">
+                            <h3>Household Support</h3>
+                            <ul class="assistance-list">
+                                <li>Assistance with rent or mortgage payments</li>
+                                <li>Utility bill assistance programs</li>
+                                <li>Food assistance and meal delivery services</li>
+                                <li>Child care and elder care support</li>
+                            </ul>
+                            <a href="#" class="resource-link">Find Daily Living Support →</a>
+                        </div>
+                    </section>
+
+                    <section id="insurance" class="content-section">
+                        <h2>Insurance Navigation</h2>
+                        <div class="assistance-card">
+                            <h3>Insurance Support</h3>
+                            <ul class="assistance-list">
+                                <li>Help understanding insurance coverage and benefits</li>
+                                <li>Assistance with prior authorizations</li>
+                                <li>Guidance on appealing insurance denials</li>
+                                <li>Information about Medicare and Medicaid</li>
+                            </ul>
+                            <a href="#" class="resource-link">Get Insurance Navigation Help →</a>
+                        </div>
+                    </section>
+
+                    <section id="resources" class="content-section">
+                        <h2>Additional Resources</h2>
+                        <div class="assistance-card">
+                            <h3>Other Support Programs</h3>
+                            <ul class="assistance-list">
+                                <li>Legal assistance for insurance and disability claims</li>
+                                <li>Employment rights and disability benefits</li>
+                                <li>Financial planning services</li>
+                                <li>Local support organizations and programs</li>
+                            </ul>
+                        </div>
+
+                        <div class="contact-info">
+                            <h3>Need Help? Contact Our Financial Navigator</h3>
+                            <div class="contact-method">
+                                <i class="fas fa-phone"></i>
+                                <p>Call: (800) 555-1234</p>
+                            </div>
+                            <div class="contact-method">
+                                <i class="fas fa-envelope"></i>
+                                <p>Email: financial.support@cancercareinitiative.org</p>
+                            </div>
+                            <div class="contact-method">
+                                <i class="fas fa-clock"></i>
+                                <p>Available Monday-Friday, 9am-5pm EST</p>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer id="footer"></footer>
+
+    <!-- Scripts -->
+    <script src="/Cancer/js/utils.js"></script>
+    <script src="/Cancer/js/components.js"></script>
+    <script src="/Cancer/js/hero.js"></script>
+    <script>
+        // Define basePath for component loading
+        const basePath = '/Cancer/';
+        
+        document.addEventListener('DOMContentLoaded', function() {
+            // Load header and footer
+            loadComponent('#header', 'header.html');
+            loadComponent('#footer', 'footer.html');
+            
+            // Load breadcrumb
+            loadBreadcrumb('#breadcrumb-container', [
+                { text: 'Home', url: basePath + 'index.html' },
+                { text: 'About Breast Cancer', url: basePath + 'pages/about-breast-cancer.html' },
+                { text: 'Financial Assistance', url: '#' }
+            ]);
+        });
+    </script>
+</body>
+</html> 

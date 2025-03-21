@@ -333,6 +333,192 @@
                 padding: 1.5rem;
             }
         }
+
+        /* Contact Section Styles */
+        .contact-section {
+            background: #fff;
+            border-radius: 15px;
+            padding: 3rem;
+            margin: 3rem auto;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            max-width: 1200px;
+        }
+
+        .contact-intro {
+            max-width: 600px;
+            margin-bottom: 3rem;
+        }
+
+        .contact-content {
+            display: flex;
+            flex-direction: column;
+            gap: 3rem;
+        }
+
+        .contact-info {
+            width: 100%;
+        }
+
+        .contact-methods {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .contact-method {
+            background: #f8f9fa;
+            padding: 2rem;
+            border-radius: 12px;
+            text-align: center;
+            transition: transform 0.3s ease;
+        }
+
+        .contact-method:hover {
+            transform: translateY(-5px);
+        }
+
+        .contact-method i {
+            font-size: 2rem;
+            color: #d43f8d;
+            margin-bottom: 1.5rem;
+        }
+
+        .contact-method-details h3 {
+            font-size: 1.2rem;
+            color: #333;
+            margin-bottom: 1rem;
+        }
+
+        .contact-method-details p {
+            color: #666;
+            font-size: 1rem;
+            line-height: 1.6;
+        }
+
+        /* Contact Form Styles */
+        .contact-form {
+            background: #f8f9fa;
+            padding: 2.5rem;
+            border-radius: 15px;
+            margin-top: 2rem;
+        }
+
+        .contact-form h3 {
+            color: #333;
+            margin-bottom: 2rem;
+            font-size: 1.8rem;
+            position: relative;
+            padding-bottom: 1rem;
+        }
+
+        .contact-form h3::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 60px;
+            height: 3px;
+            background: linear-gradient(to right, #d43f8d, #0250c5);
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.75rem;
+            color: #555;
+            font-weight: 500;
+            font-size: 1rem;
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 1rem;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+            font-size: 1rem;
+            background: #fff;
+        }
+
+        .form-control:focus {
+            border-color: #d43f8d;
+            box-shadow: 0 0 0 2px rgba(212, 63, 141, 0.1);
+            outline: none;
+        }
+
+        textarea.form-control {
+            resize: vertical;
+            min-height: 150px;
+        }
+
+        .btn-submit {
+            display: inline-block;
+            padding: 1rem 2.5rem;
+            background: linear-gradient(to right, #d43f8d, #c03579);
+            color: white;
+            border: none;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            width: 100%;
+            text-align: center;
+        }
+
+        .btn-submit:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(212, 63, 141, 0.4);
+            background: linear-gradient(to right, #c03579, #d43f8d);
+        }
+
+        /* Responsive Adjustments */
+        @media (max-width: 992px) {
+            .contact-section {
+                padding: 2rem;
+            }
+
+            .contact-methods {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 1.5rem;
+            }
+
+            .contact-method {
+                padding: 1.5rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .contact-section {
+                padding: 1.5rem;
+                margin: 1.5rem;
+            }
+
+            .contact-methods {
+                grid-template-columns: 1fr;
+            }
+
+            .contact-form {
+                padding: 1.5rem;
+            }
+
+            .contact-method {
+                text-align: left;
+                display: flex;
+                align-items: center;
+                gap: 1.5rem;
+                padding: 1.5rem;
+            }
+
+            .contact-method i {
+                margin-bottom: 0;
+                font-size: 1.5rem;
+            }
+        }
     </style>
 </head>
 <body>
@@ -600,9 +786,11 @@
                     <!-- Contact Section -->
                     <section id="contact" class="about-content content-section contact-section">
                         <h2>Contact Us</h2>
-                        <div class="contact-grid">
+                        <div class="contact-content">
                             <div class="contact-info">
-                                <p>We're here to answer your questions and provide information about our services, research, and patient support programs.</p>
+                                <div class="contact-intro">
+                                    <p>We're here to answer your questions and provide information about our services, research, and patient support programs.</p>
+                                </div>
                                 <div class="contact-methods">
                                     <div class="contact-method">
                                         <i class="fas fa-map-marker-alt"></i>
@@ -615,20 +803,19 @@
                                         <i class="fas fa-phone"></i>
                                         <div class="contact-method-details">
                                             <h3>Phone</h3>
-                                            <p>General Inquiries: (800) 555-1234</p>
-                                            <p>Patient Support: (800) 555-5678</p>
+                                            <p>General Inquiries:<br>(800) 555-1234<br>Patient Support:<br>(800) 555-5678</p>
                                         </div>
                                     </div>
                                     <div class="contact-method">
                                         <i class="fas fa-envelope"></i>
                                         <div class="contact-method-details">
                                             <h3>Email</h3>
-                                            <p>info@cancercareinitiative.org</p>
-                                            <p>support@cancercareinitiative.org</p>
+                                            <p>info@cancercareinitiative.org<br>support@cancercareinitiative.org</p>
                                         </div>
                                     </div>
                                 </div>
                             </div>
+                            
                             <div class="contact-form">
                                 <h3>Send Us a Message</h3>
                                 <form id="contact-form">
@@ -659,7 +846,7 @@
                         <div class="container">
                             <h2>Ready to Schedule Your Screening?</h2>
                             <p>Find a screening facility near you and take the first step towards breast health.</p>
-                            <a href="facilities.html" class="cta-button">Find a Facility</a>
+                            <a href="/Cancer/pages/contact.html" class="btn btn-primary">Get in Touch</a>
                         </div>
                     </section>
                 </div>

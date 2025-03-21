@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Learn about male breast cancer, including risk factors, symptoms, diagnosis, and treatment options specific to men.">
+    <meta name="keywords" content="male breast cancer, men breast cancer, breast cancer in men, male breast cancer symptoms, male breast cancer treatment">
+    <title>Male Breast Cancer | Types of Breast Cancer</title>
+    <link rel="icon" href="/Cancer/images/favicon.svg" type="image/svg+xml">
+    <link rel="stylesheet" href="/Cancer/css/styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        .myth-fact {
+            background: #fff;
+            border-radius: 10px;
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+
+        .myth-fact h3 {
+            color: #d43f8d;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+        }
+
+        .myth-fact h3 i {
+            margin-right: 0.5rem;
+        }
+
+        .myth {
+            border-left: 4px solid #dc3545;
+        }
+
+        .fact {
+            border-left: 4px solid #28a745;
+        }
+
+        .symptom-list {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .symptom-list li {
+            padding-left: 1.5rem;
+            position: relative;
+            margin-bottom: 0.5rem;
+        }
+
+        .symptom-list li:before {
+            content: '\f0da';
+            font-family: 'Font Awesome 5 Free';
+            font-weight: 900;
+            position: absolute;
+            left: 0;
+            color: #d43f8d;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+            margin: 1.5rem 0;
+        }
+
+        .stat-card {
+            background: #fff;
+            padding: 1.5rem;
+            border-radius: 8px;
+            text-align: center;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .stat-card h3 {
+            color: #d43f8d;
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .risk-factors {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin-top: 1.5rem;
+        }
+
+        .risk-card {
+            background: #f8f9fa;
+            border-radius: 8px;
+            padding: 1.5rem;
+            border-left: 4px solid #d43f8d;
+        }
+
+        .risk-card h3 {
+            color: #d43f8d;
+            margin-bottom: 1rem;
+        }
+
+        .treatment-options {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin-top: 1.5rem;
+        }
+
+        .treatment-card {
+            background: #f8f9fa;
+            border-radius: 8px;
+            padding: 1.5rem;
+            border-left: 4px solid #d43f8d;
+        }
+
+        /* CTA Section styles */
+        .cta-section {
+            background: linear-gradient(135deg, #fce4f1, #e4f1fc);
+            padding: 3rem 2rem;
+            border-radius: 15px;
+            text-align: center;
+            margin-top: 3rem;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .cta-section h3 {
+            color: #333;
+            margin-bottom: 1rem;
+            font-size: 1.8rem;
+        }
+
+        .cta-section p {
+            color: #666;
+            margin-bottom: 2rem;
+            font-size: 1.1rem;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #d43f8d, #c03579);
+            color: white;
+            padding: 1rem 2.5rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            display: inline-block;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border: none;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(212, 63, 141, 0.4);
+        }
+    </style>
+</head>
+<body class="theme-komen">
+    <header id="header"></header>
+
+    <main id="main-content" class="male-cancer-page">
+        <!-- Hero section -->
+        <section class="hero-section">
+            <div class="container">
+                <div class="hero-image">
+                    <img src="/Cancer/images/content/medical-5051144_1280.jpg" alt="Male Breast Cancer" class="full-width-image" id="hero-img">
+                </div>
+                <div id="breadcrumb-container"></div>
+                <h1 id="page-title">Male Breast Cancer</h1>
+                <p class="lead" id="page-description">While breast cancer is often thought of as a women's disease, men can develop it too. Learn about the unique aspects of male breast cancer, including risk factors, symptoms, and treatment options.</p>
+            </div>
+        </section>
+
+        <!-- Content section -->
+        <div class="container">
+            <div class="content-grid">
+                <!-- Sidebar -->
+                <aside class="sidebar">
+                    <nav class="section-nav">
+                        <h2>Quick Navigation</h2>
+                        <ul>
+                            <li><a href="#overview">Overview</a></li>
+                            <li><a href="#myths">Myths & Facts</a></li>
+                            <li><a href="#risk-factors">Risk Factors</a></li>
+                            <li><a href="#symptoms">Signs and Symptoms</a></li>
+                            <li><a href="#diagnosis">Diagnosis</a></li>
+                            <li><a href="#treatment">Treatment Options</a></li>
+                            <li><a href="#support">Support and Resources</a></li>
+                        </ul>
+                    </nav>
+                </aside>
+
+                <!-- Main content -->
+                <div class="main-content">
+                    <section id="overview" class="content-section">
+                        <h2>Overview</h2>
+                        <p>Male breast cancer is a rare disease that forms in the breast tissue of men. Although men don't have breasts like women, they do have a small amount of breast tissue that can develop cancer.</p>
+
+                        <div class="stats-grid">
+                            <div class="stat-card">
+                                <h3>1%</h3>
+                                <p>of all breast cancer cases</p>
+                            </div>
+                            <div class="stat-card">
+                                <h3>60+</h3>
+                                <p>Most common age at diagnosis</p>
+                            </div>
+                            <div class="stat-card">
+                                <h3>2,700</h3>
+                                <p>New cases per year in the US</p>
+                            </div>
+                        </div>
+                    </section>
+
+                    <section id="myths" class="content-section">
+                        <h2>Common Myths and Facts</h2>
+                        
+                        <div class="myth-fact myth">
+                            <h3><i class="fas fa-times"></i> Myth</h3>
+                            <p>Only women can get breast cancer.</p>
+                        </div>
+                        <div class="myth-fact fact">
+                            <h3><i class="fas fa-check"></i> Fact</h3>
+                            <p>Men have breast tissue and can develop breast cancer, though it's less common than in women.</p>
+                        </div>
+
+                        <div class="myth-fact myth">
+                            <h3><i class="fas fa-times"></i> Myth</h3>
+                            <p>Male breast cancer only affects older men.</p>
+                        </div>
+                        <div class="myth-fact fact">
+                            <h3><i class="fas fa-check"></i> Fact</h3>
+                            <p>While more common in older men, breast cancer can affect men of any age.</p>
+                        </div>
+                    </section>
+
+                    <section id="risk-factors" class="content-section">
+                        <h2>Risk Factors</h2>
+                        <p>Several factors can increase a man's risk of developing breast cancer:</p>
+                        
+                        <div class="risk-factors">
+                            <div class="risk-card">
+                                <h3>Genetic Factors</h3>
+                                <ul class="symptom-list">
+                                    <li>BRCA1 or BRCA2 gene mutations</li>
+                                    <li>Family history of breast cancer</li>
+                                    <li>Klinefelter syndrome</li>
+                                </ul>
+                            </div>
+
+                            <div class="risk-card">
+                                <h3>Hormonal Factors</h3>
+                                <ul class="symptom-list">
+                                    <li>Elevated estrogen levels</li>
+                                    <li>Hormone therapy for prostate cancer</li>
+                                    <li>Liver disease</li>
+                                </ul>
+                            </div>
+
+                            <div class="risk-card">
+                                <h3>Lifestyle Factors</h3>
+                                <ul class="symptom-list">
+                                    <li>Obesity</li>
+                                    <li>Heavy alcohol consumption</li>
+                                    <li>Lack of exercise</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </section>
+
+                    <section id="symptoms" class="content-section">
+                        <h2>Signs and Symptoms</h2>
+                        <p>Common symptoms of male breast cancer include:</p>
+                        <ul class="symptom-list">
+                            <li>A painless lump or thickening in breast tissue</li>
+                            <li>Changes in the skin covering the breast</li>
+                            <li>Changes in the nipple, including redness or scaling</li>
+                            <li>Nipple discharge</li>
+                            <li>Nipple retraction (turning inward)</li>
+                            <li>Swollen lymph nodes under the arm</li>
+                        </ul>
+                    </section>
+
+                    <section id="diagnosis" class="content-section">
+                        <h2>Diagnosis</h2>
+                        <p>Diagnosing male breast cancer typically involves:</p>
+                        <ul class="symptom-list">
+                            <li>Clinical breast examination</li>
+                            <li>Diagnostic mammogram</li>
+                            <li>Breast ultrasound</li>
+                            <li>Biopsy</li>
+                            <li>Genetic testing (if appropriate)</li>
+                        </ul>
+                    </section>
+
+                    <section id="treatment" class="content-section">
+                        <h2>Treatment Options</h2>
+                        <p>Treatment for male breast cancer may include:</p>
+                        
+                        <div class="treatment-options">
+                            <div class="treatment-card">
+                                <h3>Surgery</h3>
+                                <p>Usually modified radical mastectomy due to the small amount of male breast tissue.</p>
+                            </div>
+
+                            <div class="treatment-card">
+                                <h3>Radiation</h3>
+                                <p>Often used after surgery to reduce the risk of recurrence.</p>
+                            </div>
+
+                            <div class="treatment-card">
+                                <h3>Chemotherapy</h3>
+                                <p>May be recommended before or after surgery, depending on the cancer stage.</p>
+                            </div>
+
+                            <div class="treatment-card">
+                                <h3>Hormone Therapy</h3>
+                                <p>Often used as most male breast cancers are hormone receptor-positive.</p>
+                            </div>
+                        </div>
+                    </section>
+
+                    <section id="support" class="content-section">
+                        <h2>Support and Resources</h2>
+                        <p>Being diagnosed with male breast cancer can be particularly challenging due to its rarity and the misconception that it's only a women's disease. We offer specialized support services and resources for men with breast cancer.</p>
+                        
+                        <div class="cta-section">
+                            <h3>Questions About Male Breast Cancer?</h3>
+                            <p>Our team understands the unique challenges men face with breast cancer diagnosis and treatment.</p>
+                            <a href="/Cancer/pages/contact.html" class="btn btn-primary">Questions About Male Breast Cancer? Contact Us</a>
+                        </div>
+                    </section>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer id="footer"></footer>
+
+    <!-- Scripts -->
+    <script src="/Cancer/js/utils.js"></script>
+    <script src="/Cancer/js/components.js"></script>
+    <script src="/Cancer/js/hero.js"></script>
+    <script>
+        // Define basePath for component loading
+        const basePath = '/Cancer/';
+        
+        document.addEventListener('DOMContentLoaded', function() {
+            // Load header and footer
+            loadComponent('#header', 'header.html');
+            loadComponent('#footer', 'footer.html');
+            
+            // Load breadcrumb
+            loadBreadcrumb('#breadcrumb-container', [
+                { text: 'Home', url: basePath + 'index.html' },
+                { text: 'About Breast Cancer', url: basePath + 'pages/about-breast-cancer.html' },
+                { text: 'Types', url: basePath + 'pages/breast-cancer/facts-statistics.html#breast-cancer-types' },
+                { text: 'Male Breast Cancer', url: '#' }
+            ]);
+        });
+    </script>
+</body>
+</html> 

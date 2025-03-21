@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Learn about breast cancer survival rates, trends, and factors that influence survival outcomes. Find detailed statistics and information about breast cancer prognosis.">
+    <meta name="keywords" content="breast cancer survival rates, breast cancer prognosis, breast cancer survival statistics, breast cancer survival by stage, breast cancer outcomes">
+    <title>Breast Cancer Survival Statistics | Cancer Statistics</title>
+    <link rel="icon" href="/Cancer/images/favicon.svg" type="image/svg+xml">
+    <link rel="stylesheet" href="/Cancer/css/styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin: 1.5rem 0;
+        }
+
+        .stat-card {
+            background: #fff;
+            padding: 1.5rem;
+            border-radius: 8px;
+            text-align: center;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .stat-card h3 {
+            color: #d43f8d;
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .survival-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1.5rem 0;
+            background: #fff;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .survival-table th,
+        .survival-table td {
+            padding: 1rem;
+            text-align: left;
+            border-bottom: 1px solid #e9ecef;
+        }
+
+        .survival-table th {
+            background: #f8f9fa;
+            color: #d43f8d;
+            font-weight: 600;
+        }
+
+        .survival-table tr:last-child td {
+            border-bottom: none;
+        }
+
+        .survival-table tr:hover {
+            background: #f8f9fa;
+        }
+
+        .factor-card {
+            background: #fff;
+            border-radius: 8px;
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .factor-card h3 {
+            color: #d43f8d;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+        }
+
+        .factor-card h3 i {
+            margin-right: 0.5rem;
+        }
+
+        .trend-chart {
+            background: #fff;
+            border-radius: 8px;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .trend-chart img {
+            width: 100%;
+            height: auto;
+            margin: 1rem 0;
+        }
+
+        .info-list {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .info-list li {
+            padding-left: 1.5rem;
+            position: relative;
+            margin-bottom: 0.5rem;
+        }
+
+        .info-list li:before {
+            content: '\f0da';
+            font-family: 'Font Awesome 5 Free';
+            font-weight: 900;
+            position: absolute;
+            left: 0;
+            color: #d43f8d;
+        }
+
+        /* CTA Section styles */
+        .cta-section {
+            background: linear-gradient(135deg, #fce4f1, #e4f1fc);
+            padding: 3rem 2rem;
+            border-radius: 15px;
+            text-align: center;
+            margin-top: 3rem;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .cta-section h3 {
+            color: #333;
+            margin-bottom: 1rem;
+            font-size: 1.8rem;
+        }
+
+        .cta-section p {
+            color: #666;
+            margin-bottom: 2rem;
+            font-size: 1.1rem;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #d43f8d, #c03579);
+            color: white;
+            padding: 1rem 2.5rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            display: inline-block;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border: none;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(212, 63, 141, 0.4);
+        }
+    </style>
+</head>
+<body class="theme-komen">
+    <header id="header"></header>
+
+    <main id="main-content" class="survival-stats-page">
+        <!-- Hero section -->
+        <section class="hero-section">
+            <div class="container">
+                <div class="hero-image">
+                    <img src="/Cancer/images/content/medical-5051144_1280.jpg" alt="Breast Cancer Survival Statistics" class="full-width-image" id="hero-img">
+                </div>
+                <div id="breadcrumb-container"></div>
+                <h1 id="page-title">Breast Cancer Survival Statistics</h1>
+                <p class="lead" id="page-description">Understanding breast cancer survival rates and the factors that influence them can help patients and healthcare providers make informed decisions about treatment and care.</p>
+            </div>
+        </section>
+
+        <!-- Content section -->
+        <div class="container">
+            <div class="content-grid">
+                <!-- Sidebar -->
+                <aside class="sidebar">
+                    <nav class="section-nav">
+                        <h2>Quick Navigation</h2>
+                        <ul>
+                            <li><a href="#overview">Overview</a></li>
+                            <li><a href="#survival-rates">Survival Rates by Stage</a></li>
+                            <li><a href="#trends">Survival Trends</a></li>
+                            <li><a href="#factors">Factors Affecting Survival</a></li>
+                            <li><a href="#demographics">Demographics</a></li>
+                            <li><a href="#resources">Resources</a></li>
+                        </ul>
+                    </nav>
+                </aside>
+
+                <!-- Main content -->
+                <div class="main-content">
+                    <section id="overview" class="content-section">
+                        <h2>Overview</h2>
+                        <p>Breast cancer survival rates have improved significantly over the past few decades due to earlier detection and advances in treatment. Here are some key statistics:</p>
+
+                        <div class="stats-grid">
+                            <div class="stat-card">
+                                <h3>90%</h3>
+                                <p>5-year relative survival rate for all stages combined</p>
+                            </div>
+                            <div class="stat-card">
+                                <h3>99%</h3>
+                                <p>5-year survival rate for localized breast cancer</p>
+                            </div>
+                            <div class="stat-card">
+                                <h3>3.8M</h3>
+                                <p>Breast cancer survivors in the United States</p>
+                            </div>
+                        </div>
+                    </section>
+
+                    <section id="survival-rates" class="content-section">
+                        <h2>Survival Rates by Stage</h2>
+                        <p>Survival rates vary significantly depending on the stage at diagnosis:</p>
+
+                        <table class="survival-table">
+                            <thead>
+                                <tr>
+                                    <th>Stage</th>
+                                    <th>5-Year Relative Survival Rate</th>
+                                    <th>Description</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Stage 0 (DCIS)</td>
+                                    <td>Nearly 100%</td>
+                                    <td>Non-invasive, contained within the milk ducts</td>
+                                </tr>
+                                <tr>
+                                    <td>Stage I</td>
+                                    <td>99%</td>
+                                    <td>Early-stage invasive cancer</td>
+                                </tr>
+                                <tr>
+                                    <td>Stage II</td>
+                                    <td>85%</td>
+                                    <td>Cancer has grown but remains localized</td>
+                                </tr>
+                                <tr>
+                                    <td>Stage III</td>
+                                    <td>70%</td>
+                                    <td>Locally advanced cancer</td>
+                                </tr>
+                                <tr>
+                                    <td>Stage IV</td>
+                                    <td>28%</td>
+                                    <td>Metastatic cancer that has spread to other parts of the body</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </section>
+
+                    <section id="trends" class="content-section">
+                        <h2>Survival Trends</h2>
+                        <p>Breast cancer survival rates have been improving over time due to several factors:</p>
+
+                        <div class="trend-chart">
+                            <h3>Key Improvements</h3>
+                            <ul class="info-list">
+                                <li>Death rates have dropped 43% from 1989 to 2020</li>
+                                <li>Earlier detection through regular screening</li>
+                                <li>More effective treatments</li>
+                                <li>Better understanding of different breast cancer types</li>
+                                <li>Improved targeted therapies</li>
+                            </ul>
+                        </div>
+                    </section>
+
+                    <section id="factors" class="content-section">
+                        <h2>Factors Affecting Survival</h2>
+                        <p>Several factors can influence breast cancer survival rates:</p>
+
+                        <div class="factor-card">
+                            <h3><i class="fas fa-microscope"></i> Biological Factors</h3>
+                            <ul class="info-list">
+                                <li>Cancer stage at diagnosis</li>
+                                <li>Tumor grade and size</li>
+                                <li>Hormone receptor status</li>
+                                <li>HER2 status</li>
+                                <li>Rate of cell growth</li>
+                            </ul>
+                        </div>
+
+                        <div class="factor-card">
+                            <h3><i class="fas fa-user-md"></i> Treatment Factors</h3>
+                            <ul class="info-list">
+                                <li>Type of treatment received</li>
+                                <li>Response to treatment</li>
+                                <li>Access to quality healthcare</li>
+                                <li>Adherence to treatment plan</li>
+                            </ul>
+                        </div>
+
+                        <div class="factor-card">
+                            <h3><i class="fas fa-user"></i> Personal Factors</h3>
+                            <ul class="info-list">
+                                <li>Age at diagnosis</li>
+                                <li>Overall health status</li>
+                                <li>Lifestyle factors</li>
+                                <li>Support system</li>
+                            </ul>
+                        </div>
+                    </section>
+
+                    <section id="demographics" class="content-section">
+                        <h2>Demographics and Survival</h2>
+                        <p>Survival rates can vary among different demographic groups:</p>
+
+                        <div class="factor-card">
+                            <h3><i class="fas fa-chart-bar"></i> Key Demographic Trends</h3>
+                            <ul class="info-list">
+                                <li>Higher survival rates in women diagnosed at younger ages</li>
+                                <li>Variations in survival rates among different racial and ethnic groups</li>
+                                <li>Geographic differences in survival rates</li>
+                                <li>Socioeconomic factors affecting access to care and outcomes</li>
+                            </ul>
+                        </div>
+                    </section>
+
+                    <section id="resources" class="content-section">
+                        <h2>Resources and Support</h2>
+                        <p>Understanding survival statistics can be overwhelming. We're here to help you interpret these numbers and provide support throughout your journey.</p>
+
+                        <div class="cta-section">
+                            <h3>Questions About Survival Statistics?</h3>
+                            <p>Our team can help you understand what these numbers mean for your specific situation.</p>
+                            <a href="/Cancer/pages/contact.html" class="btn btn-primary">Questions About Survival Rates? Contact Us</a>
+                        </div>
+                    </section>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer id="footer"></footer>
+
+    <!-- Scripts -->
+    <script src="/Cancer/js/utils.js"></script>
+    <script src="/Cancer/js/components.js"></script>
+    <script src="/Cancer/js/hero.js"></script>
+    <script>
+        // Define basePath for component loading
+        const basePath = '/Cancer/';
+        
+        document.addEventListener('DOMContentLoaded', function() {
+            // Load header and footer
+            loadComponent('#header', 'header.html');
+            loadComponent('#footer', 'footer.html');
+            
+            // Load breadcrumb
+            loadBreadcrumb('#breadcrumb-container', [
+                { text: 'Home', url: basePath + 'index.html' },
+                { text: 'About Breast Cancer', url: basePath + 'pages/about-breast-cancer.html' },
+                { text: 'Statistics', url: basePath + 'pages/breast-cancer/facts-statistics.html' },
+                { text: 'Survival Statistics', url: '#' }
+            ]);
+        });
+    </script>
+</body>
+</html> 

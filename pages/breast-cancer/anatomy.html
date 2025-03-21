@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Learn about breast anatomy, including the structure and function of different parts of the breast. Understanding breast anatomy is crucial for breast health awareness.">
+    <meta name="keywords" content="breast anatomy, breast structure, breast tissue, milk ducts, lobules, lymph nodes, breast health">
+    <title>Breast Anatomy | Understanding Breast Cancer</title>
+    <link rel="icon" href="/Cancer/images/favicon.svg" type="image/svg+xml">
+    <link rel="stylesheet" href="/Cancer/css/styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        .anatomy-section {
+            background: #fff;
+            border-radius: 10px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+
+        .anatomy-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+
+        .anatomy-card {
+            background: #f8f9fa;
+            border-radius: 8px;
+            padding: 1.5rem;
+            border-left: 4px solid #d43f8d;
+        }
+
+        .anatomy-card h3 {
+            color: #d43f8d;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+        }
+
+        .anatomy-card h3 i {
+            margin-right: 0.5rem;
+        }
+
+        .anatomy-image {
+            width: 100%;
+            max-width: 600px;
+            height: auto;
+            margin: 2rem auto;
+            display: block;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+
+        .info-list {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .info-list li {
+            padding-left: 1.5rem;
+            position: relative;
+            margin-bottom: 0.5rem;
+        }
+
+        .info-list li:before {
+            content: '\f0da';
+            font-family: 'Font Awesome 5 Free';
+            font-weight: 900;
+            position: absolute;
+            left: 0;
+            color: #d43f8d;
+        }
+
+        .function-card {
+            background: #fff;
+            border-radius: 8px;
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .function-card h3 {
+            color: #d43f8d;
+            margin-bottom: 1rem;
+        }
+
+        .function-card p {
+            margin-bottom: 1rem;
+        }
+
+        /* CTA Section styles */
+        .cta-section {
+            background: linear-gradient(135deg, #fce4f1, #e4f1fc);
+            padding: 3rem 2rem;
+            border-radius: 15px;
+            text-align: center;
+            margin-top: 3rem;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .cta-section h3 {
+            color: #333;
+            margin-bottom: 1rem;
+            font-size: 1.8rem;
+        }
+
+        .cta-section p {
+            color: #666;
+            margin-bottom: 2rem;
+            font-size: 1.1rem;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #d43f8d, #c03579);
+            color: white;
+            padding: 1rem 2.5rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            display: inline-block;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border: none;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(212, 63, 141, 0.4);
+        }
+
+        .highlight-box {
+            background: #fdf2f7;
+            border-left: 4px solid #d43f8d;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+            border-radius: 0 8px 8px 0;
+        }
+
+        .highlight-box h3 {
+            color: #d43f8d;
+            margin-bottom: 1rem;
+        }
+    </style>
+</head>
+<body class="theme-komen">
+    <header id="header"></header>
+
+    <main id="main-content" class="anatomy-page">
+        <!-- Hero section -->
+        <section class="hero-section">
+            <div class="container">
+                <div class="hero-image">
+                    <img src="/Cancer/images/content/medical-5051144_1280.jpg" alt="Breast Anatomy" class="full-width-image" id="hero-img">
+                </div>
+                <div id="breadcrumb-container"></div>
+                <h1 id="page-title">Understanding Breast Anatomy</h1>
+                <p class="lead" id="page-description">Learn about the structure and function of the breast, including its various components and their roles in breast health.</p>
+            </div>
+        </section>
+
+        <!-- Content section -->
+        <div class="container">
+            <div class="content-grid">
+                <!-- Sidebar -->
+                <aside class="sidebar">
+                    <nav class="section-nav">
+                        <h2>Quick Navigation</h2>
+                        <ul>
+                            <li><a href="#overview">Overview</a></li>
+                            <li><a href="#structure">Basic Structure</a></li>
+                            <li><a href="#components">Key Components</a></li>
+                            <li><a href="#function">Function</a></li>
+                            <li><a href="#changes">Normal Changes</a></li>
+                            <li><a href="#health">Breast Health</a></li>
+                        </ul>
+                    </nav>
+                </aside>
+
+                <!-- Main content -->
+                <div class="main-content">
+                    <section id="overview" class="content-section">
+                        <h2>Overview</h2>
+                        <p>The breast is a complex organ made up of different types of tissue. Understanding breast anatomy is crucial for breast health awareness and early detection of any changes that might indicate health concerns.</p>
+
+                        <div class="highlight-box">
+                            <h3>Did You Know?</h3>
+                            <p>Breasts come in many shapes and sizes, and it's normal for a person's breasts to be slightly different from each other. The anatomy remains largely the same regardless of size or shape.</p>
+                        </div>
+                    </section>
+
+                    <section id="structure" class="content-section">
+                        <h2>Basic Structure</h2>
+                        <p>The breast is primarily composed of three types of tissue:</p>
+
+                        <div class="anatomy-grid">
+                            <div class="anatomy-card">
+                                <h3><i class="fas fa-circle"></i> Glandular Tissue</h3>
+                                <p>Contains the milk-producing glands (lobules) and milk ducts</p>
+                            </div>
+
+                            <div class="anatomy-card">
+                                <h3><i class="fas fa-circle"></i> Fibrous Tissue</h3>
+                                <p>Provides support and structure to the breast</p>
+                            </div>
+
+                            <div class="anatomy-card">
+                                <h3><i class="fas fa-circle"></i> Fatty Tissue</h3>
+                                <p>Fills the spaces between glandular and fibrous tissue</p>
+                            </div>
+                        </div>
+                    </section>
+
+                    <section id="components" class="content-section">
+                        <h2>Key Components</h2>
+                        <p>The breast contains several important components:</p>
+
+                        <div class="anatomy-section">
+                            <h3>Lobules (Milk Glands)</h3>
+                            <ul class="info-list">
+                                <li>Grape-like clusters of cells that produce milk</li>
+                                <li>Grouped into lobes (15-20 in each breast)</li>
+                                <li>Connected to the nipple by milk ducts</li>
+                            </ul>
+                        </div>
+
+                        <div class="anatomy-section">
+                            <h3>Ducts</h3>
+                            <ul class="info-list">
+                                <li>Tiny tubes that carry milk from lobules to the nipple</li>
+                                <li>Branch throughout the breast like tree branches</li>
+                                <li>Most breast cancers begin in the ducts</li>
+                            </ul>
+                        </div>
+
+                        <div class="anatomy-section">
+                            <h3>Nipple and Areola</h3>
+                            <ul class="info-list">
+                                <li>Nipple contains openings for milk ducts</li>
+                                <li>Areola is the darker area surrounding the nipple</li>
+                                <li>Contains small glands that lubricate during breastfeeding</li>
+                            </ul>
+                        </div>
+
+                        <div class="anatomy-section">
+                            <h3>Lymph System</h3>
+                            <ul class="info-list">
+                                <li>Network of nodes and vessels that help fight infection</li>
+                                <li>Main clusters of nodes near the armpit</li>
+                                <li>Important in the spread and staging of breast cancer</li>
+                            </ul>
+                        </div>
+                    </section>
+
+                    <section id="function" class="content-section">
+                        <h2>Function</h2>
+                        <p>The breast serves several important functions:</p>
+
+                        <div class="function-card">
+                            <h3>Milk Production and Breastfeeding</h3>
+                            <p>The primary biological function of the breast is to produce and deliver milk for infant nutrition.</p>
+                            <ul class="info-list">
+                                <li>Milk production occurs in the lobules</li>
+                                <li>Milk travels through ducts to the nipple</li>
+                                <li>Hormones regulate milk production</li>
+                            </ul>
+                        </div>
+
+                        <div class="function-card">
+                            <h3>Hormone Response</h3>
+                            <p>Breast tissue responds to various hormones throughout life:</p>
+                            <ul class="info-list">
+                                <li>Changes during puberty</li>
+                                <li>Monthly changes with menstrual cycle</li>
+                                <li>Changes during pregnancy and lactation</li>
+                                <li>Changes during menopause</li>
+                            </ul>
+                        </div>
+                    </section>
+
+                    <section id="changes" class="content-section">
+                        <h2>Normal Changes</h2>
+                        <p>Breasts naturally change throughout life in response to:</p>
+
+                        <div class="anatomy-grid">
+                            <div class="anatomy-card">
+                                <h3><i class="fas fa-clock"></i> Age</h3>
+                                <ul class="info-list">
+                                    <li>Development during puberty</li>
+                                    <li>Changes in size and density over time</li>
+                                    <li>Changes during menopause</li>
+                                </ul>
+                            </div>
+
+                            <div class="anatomy-card">
+                                <h3><i class="fas fa-calendar"></i> Menstrual Cycle</h3>
+                                <ul class="info-list">
+                                    <li>Monthly hormonal changes</li>
+                                    <li>Temporary swelling</li>
+                                    <li>Changes in tenderness</li>
+                                </ul>
+                            </div>
+
+                            <div class="anatomy-card">
+                                <h3><i class="fas fa-baby"></i> Pregnancy</h3>
+                                <ul class="info-list">
+                                    <li>Increased size and fullness</li>
+                                    <li>Development of milk-producing tissue</li>
+                                    <li>Changes post-pregnancy</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </section>
+
+                    <section id="health" class="content-section">
+                        <h2>Breast Health</h2>
+                        <p>Understanding breast anatomy helps in maintaining breast health and detecting potential problems early.</p>
+
+                        <div class="highlight-box">
+                            <h3>Important for Early Detection</h3>
+                            <ul class="info-list">
+                                <li>Know your normal breast appearance and feel</li>
+                                <li>Be aware of common changes throughout life</li>
+                                <li>Report unusual changes to your healthcare provider</li>
+                                <li>Follow recommended screening guidelines</li>
+                            </ul>
+                        </div>
+                    </section>
+                </div>
+            </div>
+            <a href="/Cancer/pages/contact.html" class="btn btn-primary">Questions About Breast Anatomy? Contact Us</a>
+        </div>
+    </main>
+
+    <footer id="footer"></footer>
+
+    <!-- Scripts -->
+    <script src="/Cancer/js/utils.js"></script>
+    <script src="/Cancer/js/components.js"></script>
+    <script src="/Cancer/js/hero.js"></script>
+    <script>
+        // Define basePath for component loading
+        const basePath = '/Cancer/';
+        
+        document.addEventListener('DOMContentLoaded', function() {
+            // Load header and footer
+            loadComponent('#header', 'header.html');
+            loadComponent('#footer', 'footer.html');
+            
+            // Load breadcrumb
+            loadBreadcrumb('#breadcrumb-container', [
+                { text: 'Home', url: basePath + 'index.html' },
+                { text: 'About Breast Cancer', url: basePath + 'pages/about-breast-cancer.html' },
+                { text: 'Breast Anatomy', url: '#' }
+            ]);
+        });
+    </script>
+</body>
+</html> 
