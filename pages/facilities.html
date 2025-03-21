@@ -3,11 +3,19 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Screening Facilities | Breast Cancer Screening</title>
-    <meta name="description" content="Find breast cancer screening facilities near you. Locate mammogram centers, hospitals and clinics offering breast cancer screening services.">
+    <meta name="description" content="Find breast cancer screening and diagnostic facilities near you. Locate hospitals, clinics, imaging centers, and mobile screening units in the Bellevue and Seattle areas.">
+    <meta name="keywords" content="breast cancer screening facilities, mammogram locations, diagnostic centers, mobile screening units, Bellevue, Seattle">
+    <meta name="author" content="Nzoya Foundation">
+    <title>Facilities | Nzoya Foundation</title>
     
-    <!-- Stylesheets -->
-    <link rel="stylesheet" id="styles-link" href="/Cancer/css/styles.css">
+    <link rel="icon" href="../images/favicon.svg" type="image/svg+xml">
+    <link rel="stylesheet" href="../css/styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Leaflet CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" />
+    
     <style>
         .info-card {
             border-radius: 10px;
@@ -314,12 +322,16 @@
     <footer id="footer" class="footer"></footer>
 
     <!-- Scripts -->
-    <script id="utils-script" src="../js/utils.js"></script>
-    <script id="components-script" src="../js/components.js"></script>
+    <script src="../js/utils.js"></script>
+    <script src="../js/components.js"></script>
     <script src="../js/hero.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/js/all.min.js" crossorigin="anonymous"></script>
-    <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&libraries=places&callback=initMap" async defer></script>
-    <script id="facilities-script" src="../js/facilities-map.js"></script>
+    
+    <!-- Leaflet JS -->
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+    
+    <!-- Facilities Map Script -->
+    <script src="../js/facilities-map.js"></script>
+    
     <script>
         document.addEventListener('DOMContentLoaded', function() {
             console.log('[Debug] Facilities page loaded');

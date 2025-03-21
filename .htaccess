@@ -7,6 +7,14 @@ ErrorDocument 500 /404.html
   AddOutputFilterByType DEFLATE text/html text/plain text/xml text/css text/javascript application/javascript application/x-javascript application/json
 </IfModule>
 
+# Set correct MIME types
+<IfModule mod_mime.c>
+  AddType text/css .css
+  AddType application/javascript .js
+  AddType application/json .json
+  AddType image/svg+xml .svg
+</IfModule>
+
 # Cache control
 <IfModule mod_expires.c>
   ExpiresActive On

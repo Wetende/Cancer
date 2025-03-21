@@ -8,8 +8,8 @@
     <meta name="author" content="Nzoya Foundation">
     <title>{{page_title}} | Nzoya Foundation</title>
     
-    <link rel="icon" href="/Cancer/images/favicon.svg" type="image/svg+xml">
-    <link rel="stylesheet" href="/Cancer/css/styles.css">
+    <link rel="icon" href="images/favicon.svg" type="image/svg+xml">
+    <link rel="stylesheet" href="css/styles.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
     
@@ -39,9 +39,9 @@
     <footer id="footer"></footer>
 
     <!-- Scripts -->
-    <script src="/Cancer/js/utils.js"></script>
-    <script src="/Cancer/js/components.js"></script>
-    <script src="/Cancer/js/hero.js"></script>
+    <script src="js/utils.js"></script>
+    <script src="js/components.js"></script>
+    <script src="js/hero.js"></script>
     <script>
         document.addEventListener('DOMContentLoaded', function() {
             console.log('[Debug] Template page loaded');
@@ -72,7 +72,7 @@
             if (heroContainer) {
                 const breadcrumb = document.createElement('nav');
                 breadcrumb.className = 'breadcrumb container';
-                breadcrumb.innerHTML = '<a href="/Cancer/index.html">Home</a> &gt; <span>{{page_title}}</span>';
+                breadcrumb.innerHTML = '<a href="index.html">Home</a> &gt; <span>{{page_title}}</span>';
                 
                 // Insert after hero section
                 heroContainer.parentNode.insertBefore(breadcrumb, heroContainer.nextSibling);
