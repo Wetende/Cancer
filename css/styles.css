@@ -1,0 +1,166 @@
+/*
+ * Main Stylesheet
+ * Inspired by Komen.org design
+ */
+
+/* Base Styles */
+@import 'base/variables.css';
+@import 'base/reset.css';
+@import 'base/typography.css';
+
+/* Layout Styles */
+@import 'layouts/containers.css';
+@import 'layouts/grid.css';
+@import 'layouts/sections.css';
+
+/* Component Styles */
+@import 'components/header.css';
+@import 'components/footer.css';
+@import 'components/hero.css';
+@import 'components/breadcrumb.css';
+@import 'components/buttons.css';
+@import 'components/cards.css';
+@import 'components/forms.css';
+
+/* Page-specific Styles */
+@import 'pages/home.css';
+
+/* Utility Classes */
+.text-center {
+    text-align: center;
+}
+
+.text-right {
+    text-align: right;
+}
+
+.text-left {
+    text-align: left;
+}
+
+.mb-0 {
+    margin-bottom: 0 !important;
+}
+
+.mb-1 {
+    margin-bottom: var(--spacing-1) !important;
+}
+
+.mb-2 {
+    margin-bottom: var(--spacing-2) !important;
+}
+
+.mb-3 {
+    margin-bottom: var(--spacing-3) !important;
+}
+
+.mb-4 {
+    margin-bottom: var(--spacing-4) !important;
+}
+
+.mb-5 {
+    margin-bottom: var(--spacing-5) !important;
+}
+
+.mb-6 {
+    margin-bottom: var(--spacing-6) !important;
+}
+
+.mt-0 {
+    margin-top: 0 !important;
+}
+
+.mt-1 {
+    margin-top: var(--spacing-1) !important;
+}
+
+.mt-2 {
+    margin-top: var(--spacing-2) !important;
+}
+
+.mt-3 {
+    margin-top: var(--spacing-3) !important;
+}
+
+.mt-4 {
+    margin-top: var(--spacing-4) !important;
+}
+
+.mt-5 {
+    margin-top: var(--spacing-5) !important;
+}
+
+.mt-6 {
+    margin-top: var(--spacing-6) !important;
+}
+
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border-width: 0;
+}
+
+/* FAQ Accordion Styles */
+.accordion {
+    border-radius: var(--border-radius-lg);
+    overflow: hidden;
+    box-shadow: var(--shadow-sm);
+}
+
+.accordion-item {
+    border-bottom: 1px solid var(--color-grey-200);
+}
+
+.accordion-header {
+    display: block;
+    width: 100%;
+    padding: var(--spacing-4);
+    background-color: var(--color-white);
+    border: none;
+    text-align: left;
+    font-family: var(--font-primary);
+    font-weight: var(--font-weight-semibold);
+    font-size: var(--font-size-md);
+    color: var(--color-grey-600);
+    cursor: pointer;
+    position: relative;
+    transition: var(--transition-base);
+}
+
+.accordion-header:hover,
+.accordion-header:focus {
+    background-color: var(--color-grey-100);
+}
+
+.accordion-header::after {
+    content: '+';
+    position: absolute;
+    right: var(--spacing-4);
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: var(--font-size-xl);
+    color: var(--color-primary);
+}
+
+.accordion-header.active::after {
+    content: '−';
+}
+
+.accordion-content {
+    max-height: 0;
+    overflow: hidden;
+    padding: 0 var(--spacing-4);
+    background-color: var(--color-white);
+    transition: max-height 0.3s ease, padding 0.3s ease;
+}
+
+.accordion-content.active {
+    max-height: 1000px;
+    padding: 0 var(--spacing-4) var(--spacing-4);
+} 
