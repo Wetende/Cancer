@@ -8,8 +8,8 @@
     <meta name="author" content="Nzoya Foundation">
     <title>Page Title | Nzoya Foundation</title>
     <!-- Dynamic asset path resolution will be handled by JavaScript -->
-    <link rel="icon" id="favicon-link" href="images/favicon.svg" type="image/svg+xml">
-    <link rel="stylesheet" href="css/styles.css">
+    <link rel="icon" id="favicon-link" href="../images/favicon.svg" type="image/svg+xml">
+    <link rel="stylesheet" href="../css/styles.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
     <!-- Page-specific styles -->
@@ -35,23 +35,11 @@
             </div>
         </section>
 
-        <!-- Content section -->
+        <!-- Content container -->
         <div class="container">
-            <div class="content-grid">
-                <!-- Sidebar (optional) -->
-                <aside class="sidebar" id="sidebar">
-                    <nav class="section-nav">
-                        <h2>Quick Navigation</h2>
-                        <ul id="section-nav-list">
-                            <!-- Navigation items will be injected here -->
-                        </ul>
-                    </nav>
-                </aside>
-
-                <!-- Main content area -->
-                <div class="main-content" id="content-area">
-                    <!-- Content sections will be injected here -->
-                </div>
+            <div class="content">
+                <!-- Placeholder for page-specific content -->
+                <p>Page content will go here.</p>
             </div>
         </div>
     </main>
@@ -60,9 +48,9 @@
     <footer id="footer"></footer>
 
     <!-- Scripts -->
-    <script id="utils-script" src="js/utils.js"></script>
-    <script id="components-script" src="js/components.js"></script>
-    <script id="hero-script" src="js/hero.js"></script>
+    <script id="utils-script" src="../js/utils.js"></script>
+    <script id="components-script" src="../js/components.js"></script>
+    <script id="hero-script" src="../js/hero.js"></script>
     <script>
         // Resolve asset paths based on current page depth
         function resolveAssetPaths() {
@@ -97,21 +85,20 @@
         // Initialize components
         document.addEventListener('DOMContentLoaded', function() {
             // Load header and footer
-            loadComponent('#header', 'header.html');
-            loadComponent('#footer', 'footer.html');
+            loadComponent('#header', basePath + 'components/header.html');
+            loadComponent('#footer', basePath + 'components/footer.html');
             
             // Load breadcrumb (with configuration)
-            loadBreadcrumb('#breadcrumb-container', 'Page Title');
+            loadBreadcrumb('#breadcrumb-container', [
+                { text: 'Home', url: basePath + 'index.html' },
+                { text: 'Page Title', url: '#' }
+            ]);
             
             // Initialize page-specific scripts
             if (typeof initPage === 'function') {
                 initPage();
             }
         });
-    </script>
-    <!-- Page-specific scripts -->
-    <script id="page-scripts">
-        // Page-specific scripts will be injected here
     </script>
 </body>
 </html> 
