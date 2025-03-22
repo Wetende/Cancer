@@ -349,6 +349,9 @@ if (googleForm) {
 window.initHeroSlider = initHeroSlider;
 
 function initHeroSlider() {
+    // Temporarily disabled for static hero
+    return;
+    
     const slider = document.querySelector('.hero-slider');
     const slides = document.querySelectorAll('.hero-slide');
     const dotsContainer = document.querySelector('.slider-navigation');

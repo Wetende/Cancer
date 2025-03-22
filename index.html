@@ -15,36 +15,19 @@
         .hero h2 {
             font-family: 'Montserrat', sans-serif;
         }
-        /* Inline critical CSS for hero slider to ensure it works even if CSS files fail to load */
-        .hero-slider {
+        /* Static hero styles */
+        .hero-static {
             position: relative;
             width: 100%;
             height: 80vh;
             min-height: 600px;
-            overflow: hidden;
-        }
-        .hero-slide {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
             background-size: cover;
             background-position: center;
             display: flex;
             align-items: center;
             justify-content: center;
-            opacity: 0;
-            visibility: hidden;
-            transition: opacity 0.8s ease, visibility 0.8s ease;
-            z-index: 0;
         }
-        .hero-slide.active {
-            opacity: 1;
-            visibility: visible;
-            z-index: 1;
-        }
-        .hero-slide::before {
+        .hero-static::before {
             content: '';
             position: absolute;
             top: 0;
@@ -53,7 +36,7 @@
             height: 100%;
             background-color: rgba(0, 0, 0, 0.4);
         }
-        .hero-slide .hero-content {
+        .hero-static .hero-content {
             position: relative;
             z-index: 2;
             color: white;
@@ -65,67 +48,15 @@
             flex-direction: column;
             align-items: center;
         }
-        .hero-slide h2 {
+        .hero-static h2 {
             font-size: 2.5rem;
             margin-bottom: 1rem;
             color: white;
         }
-        .hero-slide p {
+        .hero-static p {
             font-size: 1.2rem;
             margin-bottom: 2rem;
             max-width: 600px;
-        }
-        .slider-navigation {
-            position: absolute;
-            bottom: 30px;
-            left: 0;
-            right: 0;
-            display: flex;
-            justify-content: center;
-            gap: 10px;
-            z-index: 10;
-        }
-        .slider-dot {
-            width: 12px;
-            height: 12px;
-            border-radius: 50%;
-            background-color: rgba(255, 255, 255, 0.5);
-            cursor: pointer;
-            transition: all 0.3s ease;
-        }
-        .slider-dot.active {
-            background-color: #e84c93;
-            transform: scale(1.2);
-        }
-        .slider-arrow {
-            position: absolute;
-            top: 50%;
-            transform: translateY(-50%);
-            width: 50px;
-            height: 50px;
-            background-color: rgba(255, 255, 255, 0.7);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            cursor: pointer;
-            z-index: 10;
-            transition: all 0.3s ease;
-            opacity: 0.7;
-        }
-        .slider-arrow:hover {
-            background-color: white;
-            opacity: 1;
-        }
-        .slider-arrow-left {
-            left: 30px;
-        }
-        .slider-arrow-right {
-            right: 30px;
-        }
-        .slider-arrow i {
-            color: #333;
-            font-size: 1.2rem;
         }
         .btn-primary {
             display: inline-block;
@@ -145,14 +76,14 @@
             transform: translateY(-2px);
         }
         @media (max-width: 768px) {
-            .hero-slider {
+            .hero-static {
                 height: 70vh;
                 min-height: 500px;
             }
-            .hero-slide h2 {
+            .hero-static h2 {
                 font-size: 2rem;
             }
-            .hero-slide p {
+            .hero-static p {
                 font-size: 1rem;
             }
             .btn-primary {
@@ -169,35 +100,12 @@
     <!-- Main content -->
     <main>
         <section class="hero">
-            <div class="hero-slider">
-                <div class="hero-slide active" style="background-image: url('images/content/womanstanding.jpg');">
-                    <div class="hero-content">
-                        <h2>Early Detection Saves Lives</h2>
-                        <p>Nzoya Foundation is dedicated to breast cancer awareness and early detection in the Bellevue, WA community. Learn about screening options and schedule your mammogram today.</p>
-                        <a href="#schedule-form" class="btn-primary">Schedule a Screening</a>
-                    </div>
+            <div class="hero-static" style="background-image: url('images/sliders/background.jpg');">
+                <div class="hero-content">
+                    <h2>Early Detection Saves Lives</h2>
+                    <p>Nzoya Foundation is dedicated to breast cancer awareness and early detection in the Bellevue, WA community. Learn about screening options and schedule your mammogram today.</p>
+                    <a href="#schedule-form" class="btn-primary">Schedule a Screening</a>
                 </div>
-                <div class="hero-slide" style="background-image: url('images/content/group of women.jpg');">
-                    <div class="hero-content">
-                        <h2>Supporting Our Community</h2>
-                        <p>Join us in our mission to support breast cancer patients and survivors. Together, we can make a difference in our community.</p>
-                        <a href="#resources" class="btn-primary">Find Resources</a>
-                    </div>
-                </div>
-                <div class="hero-slide" style="background-image: url('images/content/education.jpg');">
-                    <div class="hero-content">
-                        <h2>Education & Awareness</h2>
-                        <p>Our programs are designed to educate and raise awareness about breast cancer prevention and early detection strategies.</p>
-                        <a href="#about" class="btn-primary">Learn More</a>
-                    </div>
-                </div>
-            </div>
-            <div class="slider-navigation"></div>
-            <div class="slider-arrow slider-arrow-left">
-                <i class="fas fa-chevron-left"></i>
-            </div>
-            <div class="slider-arrow slider-arrow-right">
-                <i class="fas fa-chevron-right"></i>
             </div>
         </section>
 

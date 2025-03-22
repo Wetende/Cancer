@@ -67,6 +67,7 @@
     display: flex;
     align-items: center;
     text-decoration: none;
+    color: inherit;
 }
 
 .navbar-brand h1 {
@@ -74,6 +75,12 @@
     font-weight: var(--font-weight-bold);
     color: var(--color-primary);
     margin: 0;
+}
+
+.navbar-logo {
+    width: 250px;
+    height: 77px;
+    object-fit: contain;
 }
 
 /* Mobile menu toggle button */
