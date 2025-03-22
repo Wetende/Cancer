@@ -43,3 +43,58 @@ ErrorDocument 500 /404.html
 
 # Prevent directory listing
 Options -Indexes 
+
+# Enable rewriting
+RewriteEngine On
+
+# Base directory
+RewriteBase /
+
+# If the request is for a real file or directory, skip the rules
+RewriteCond %{REQUEST_FILENAME} -f [OR]  
+RewriteCond %{REQUEST_FILENAME} -d  
+RewriteRule ^ - [L]
+
+# Add CORS headers for component loading
+<FilesMatch "\.(html|htm)$">
+    <IfModule mod_headers.c>
+        Header set Access-Control-Allow-Origin "*"
+        Header set Access-Control-Allow-Methods "GET, POST, OPTIONS"
+        Header set Access-Control-Allow-Headers "Origin, X-Requested-With, Content-Type, Accept"
+    </IfModule>
+</FilesMatch>
+
+# Set correct MIME types for JavaScript and CSS
+<IfModule mod_mime.c>
+    AddType application/javascript .js
+    AddType text/css .css
+</IfModule>
+
+# Enable browser caching for components
+<IfModule mod_expires.c>
+    ExpiresActive On
+    ExpiresByType text/html "access plus 1 hour"
+    ExpiresByType application/javascript "access plus 1 week"
+    ExpiresByType text/css "access plus 1 week"
+    ExpiresByType image/jpeg "access plus 1 month"
+    ExpiresByType image/png "access plus 1 month"
+    ExpiresByType image/svg+xml "access plus 1 month"
+</IfModule>
+
+# Handle component paths specially
+<IfModule mod_rewrite.c>
+    # Check if the component file exists in /components/
+    RewriteCond %{REQUEST_URI} ^/components/(.*)$
+    RewriteCond %{DOCUMENT_ROOT}/components/%1 !-f
+    RewriteCond %{DOCUMENT_ROOT}/Cancer/components/%1 -f
+    RewriteRule ^components/(.*)$ /Cancer/components/$1 [L]
+
+    # Check for /Cancer/components/ paths
+    RewriteCond %{REQUEST_URI} ^/Cancer/components/(.*)$
+    RewriteCond %{DOCUMENT_ROOT}/Cancer/components/%1 !-f
+    RewriteCond %{DOCUMENT_ROOT}/components/%1 -f
+    RewriteRule ^Cancer/components/(.*)$ /components/$1 [L]
+</IfModule>
+
+# Provide fallback for 404 errors on component files
+ErrorDocument 404 /Cancer/components/error-component.html 

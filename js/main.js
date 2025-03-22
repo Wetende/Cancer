@@ -59,6 +59,38 @@ function initComponents() {
     
     // Initialize search functionality
     initSearch();
+    
+    // Initialize any breadcrumb containers
+    const breadcrumbContainer = document.querySelector('#breadcrumb-container');
+    if (breadcrumbContainer && typeof loadBreadcrumb === 'function') {
+        console.log('[Main] Loading breadcrumb component');
+        // Default to current page title if not specified
+        const pageTitle = breadcrumbContainer.getAttribute('data-title') || document.title;
+        loadBreadcrumb('#breadcrumb-container', pageTitle);
+    }
+    
+    // Set a fallback timer to check if components loaded correctly
+    setTimeout(() => {
+        console.log('[Main] Checking if components loaded correctly');
+        const header = document.querySelector('#header');
+        const footer = document.querySelector('#footer');
+        
+        // Check header loading status
+        if (header && (!header.innerHTML || header.innerHTML.includes('error-message'))) {
+            console.warn('[Main] Header failed to load, attempting fix');
+            if (typeof loadComponentFallback === 'function') {
+                loadComponentFallback('header', 'header.html');
+            }
+        }
+        
+        // Check footer loading status
+        if (footer && (!footer.innerHTML || footer.innerHTML.includes('error-message'))) {
+            console.warn('[Main] Footer failed to load, attempting fix');
+            if (typeof loadComponentFallback === 'function') {
+                loadComponentFallback('footer', 'footer.html');
+            }
+        }
+    }, 1000); // Wait 1 second to check
 }
 
 // Initialize page-specific functionality

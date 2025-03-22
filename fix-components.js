@@ -3,6 +3,9 @@
  * This script attempts to fix component loading issues by trying different paths.
  */
 
+// Make loadComponentFallback available globally
+window.loadComponentFallback = loadComponentFallback;
+
 document.addEventListener('DOMContentLoaded', function() {
     console.log('[Fix] Components fix script initialized');
     

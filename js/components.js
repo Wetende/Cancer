@@ -12,58 +12,49 @@ async function loadComponent(selector, componentPath, callback) {
     }
 
     try {
-        // Use absolute path for component loading
+        // Define possible paths to try
         const basePath = getBasePath();
-        let fullPath = basePath + 'components/' + componentPath;
+        const paths = [
+            // Try the standard path first
+            basePath + 'components/' + componentPath,
+            // Fallback paths if the standard one fails
+            `/Cancer/components/${componentPath}`,
+            `./components/${componentPath}`,
+            `../components/${componentPath}`,
+            `components/${componentPath}`,
+            `/components/${componentPath}`,
+            `${window.location.origin}/Cancer/components/${componentPath}`,
+            `${window.location.origin}/components/${componentPath}`
+        ];
         
-        console.log(`[Component] Loading component from: ${fullPath}`);
-        console.log(`[Component] Current location: ${window.location.href}`);
-        console.log(`[Component] Base path: ${basePath}`);
+        console.log(`[Component] Attempting to load ${componentPath} from multiple paths`);
         
-        // Try to fetch the component
-        let response = await fetch(fullPath);
+        // Try each path until one works
+        let content = null;
+        let successPath = null;
         
-        // If that fails, try alternative paths
-        if (!response.ok) {
-            console.warn(`[Component] Failed to load from ${fullPath}, trying alternatives...`);
-            
-            // Define alternative paths to try
-            const alternativePaths = [
-                `/Cancer/components/${componentPath}`,
-                `./components/${componentPath}`,
-                `../components/${componentPath}`,
-                `components/${componentPath}`,
-                `/components/${componentPath}`,
-                `${window.location.origin}/Cancer/components/${componentPath}`,
-                `${window.location.origin}/components/${componentPath}`
-            ];
-            
-            // Try each alternative path
-            let found = false;
-            for (const altPath of alternativePaths) {
-                if (altPath === fullPath) continue; // Skip if same as original path
+        for (const path of paths) {
+            try {
+                console.log(`[Component] Trying path: ${path}`);
+                const response = await fetch(path);
                 
-                console.log(`[Component] Trying alternative path: ${altPath}`);
-                try {
-                    response = await fetch(altPath);
-                    if (response.ok) {
-                        console.log(`[Component] Successfully loaded from alternative path: ${altPath}`);
-                        found = true;
-                        break;
-                    }
-                } catch (altError) {
-                    console.warn(`[Component] Error with alternative path ${altPath}:`, altError);
+                if (response.ok) {
+                    console.log(`[Component] Successfully loaded ${componentPath} from ${path}`);
+                    content = await response.text();
+                    successPath = path;
+                    break;
                 }
-            }
-            
-            if (!found) {
-                console.error(`[Component] HTTP error! status: ${response.status}, URL: ${fullPath}`);
-                throw new Error(`HTTP error! status: ${response.status}`);
+            } catch (error) {
+                console.warn(`[Component] Error loading from ${path}:`, error);
             }
         }
         
-        let content = await response.text();
-        console.log(`[Component] Successfully loaded content for ${componentPath}`);
+        // If all paths failed
+        if (!content) {
+            throw new Error(`Failed to load component from any path`);
+        }
+        
+        // Set the content and initialize the component
         element.innerHTML = content;
         
         // Update links with correct paths
@@ -88,8 +79,24 @@ async function loadComponent(selector, componentPath, callback) {
 function getBasePath() {
     console.log('[Path Resolution] Determining base path for components...');
     
-    // First, try a direct, absolute path (this should work in most cases)
-    return '/Cancer/';
+    // Check if we're on a specific server or domain based on hostname
+    const hostname = window.location.hostname;
+    
+    // If on localhost/xampp, use the /Cancer/ path
+    if (hostname === 'localhost' || hostname.includes('127.0.0.1') || hostname === '') {
+        console.log('[Path Resolution] Using local development path');
+        return '/Cancer/';
+    }
+    
+    // For live server, try a path relative to document root
+    if (window.location.pathname.includes('/Cancer/')) {
+        console.log('[Path Resolution] On live server with Cancer in path');
+        return '/Cancer/';
+    } else {
+        // For live server without /Cancer/ in the path, components are at root level
+        console.log('[Path Resolution] On live server without Cancer in path');
+        return '/';
+    }
     
     // Original implementation left for reference
     /*

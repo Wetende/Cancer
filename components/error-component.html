@@ -1,0 +1,24 @@
+<div class="error-component">
+    <div style="padding: 20px; background-color: #f8d7da; color: #721c24; border: 1px solid #f5c6cb; border-radius: 4px; margin: 10px 0;">
+        <h3 style="margin-top: 0;">Component Error</h3>
+        <p>The requested component could not be loaded.</p>
+        <p>This could be due to one of the following reasons:</p>
+        <ul>
+            <li>The component file does not exist</li>
+            <li>There was a network error when loading the component</li>
+            <li>The component path was incorrect</li>
+        </ul>
+        <p>Please check the browser console for more details.</p>
+        <script>
+            console.error('[Component] Error component displayed at:', window.location.href);
+            document.addEventListener('DOMContentLoaded', function() {
+                const urlParams = new URLSearchParams(window.location.search);
+                const componentPath = urlParams.get('component');
+                if (componentPath) {
+                    console.error(`[Component] Failed to load component: ${componentPath}`);
+                    document.querySelector('.error-component h3').textContent = `Component Error: ${componentPath}`;
+                }
+            });
+        </script>
+    </div>
+</div> 
