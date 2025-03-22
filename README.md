@@ -154,4 +154,86 @@ This project is licensed under the MIT License - see the LICENSE file for detail
 
 ## Contact
 
-For questions or support, please email [info@nzoyafoundation.org](mailto:info@nzoyafoundation.org) 
+For questions or support, please email [info@nzoyafoundation.org](mailto:info@nzoyafoundation.org)
+
+# Nzoya Foundation Website
+
+This repository contains the source code for the Nzoya Foundation website.
+
+## File Structure
+
+```
+/
+├── css/                   # Stylesheets
+├── js/                    # JavaScript files
+│   ├── components.js      # Handles loading of header & footer
+│   ├── hero.js            # Handles hero section
+│   ├── utils.js           # Utility functions
+│   └── fix-subpage-paths.js # Fixes paths in subpages
+├── images/                # Image assets
+├── components/            # HTML components (header.html, footer.html)
+├── pages/                 # Subpages organized by topic
+│   ├── breast-cancer/     # Breast cancer related pages
+│   │   ├── screening/
+│   │   ├── statistics/
+│   │   └── ...
+│   └── ...                # Other topic areas
+├── templates/             # Template files for new pages
+│   └── subpage-template.html  # Template for subpages
+└── index.html             # Main homepage
+```
+
+## Creating New Pages
+
+### For Main Pages (at root level)
+
+1. Use `index.html` as a reference
+2. Ensure paths to CSS and JS files use the direct path: `css/styles.css` and `js/script.js`
+
+### For Subpages (in /pages/ directory)
+
+1. Copy the template from `templates/subpage-template.html`
+2. Save it in the appropriate subdirectory under `/pages/`
+3. Update the page-specific content, including:
+   - Page title
+   - Meta description and keywords
+   - Main content in the marked sections
+
+### Path Guidelines
+
+- **Main Pages**: Use direct paths: `css/styles.css`, `js/script.js`
+- **Subpages**: Use relative paths: `../css/styles.css`, `../js/script.js`
+
+## Components
+
+The website uses a component-based approach for header and footer:
+
+- Header and footer are loaded dynamically via JavaScript
+- Components are stored in the `/components/` directory
+- Components are loaded using the `loadHeader()` and `loadFooter()` functions in `components.js`
+
+## Automatic Path Fixing
+
+For convenience, the website includes automatic path fixing for subpages:
+
+1. Server-side: Use `update-all-subpages.js` to batch update all pages
+   ```
+   node update-all-subpages.js
+   ```
+
+2. Client-side: `fix-subpage-paths.js` is included in all templates to dynamically fix paths on load
+
+## Creating New Sections
+
+When creating entirely new sections:
+
+1. Create a new directory under `/pages/`
+2. Use the subpage template to create the main section page
+3. Ensure proper relative paths are used (`../css/`, `../js/`, etc.)
+
+## Development Tips
+
+1. Always use relative paths in subpages
+2. Use the `fix-subpage-paths.js` script for legacy pages that might have incorrect paths
+3. Test both locally and on the production server to ensure paths work correctly
+4. Use the component system consistently for header and footer 

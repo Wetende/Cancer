@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Page description here">
+    <meta name="keywords" content="relevant, keywords, here">
+    <meta name="author" content="Nzoya Foundation">
+    <title>Page Title | Nzoya Foundation</title>
+    
+    <!-- Use relative paths for all resources -->
+    <link rel="icon" id="favicon-link" href="../images/favicon.svg" type="image/svg+xml">
+    <link rel="stylesheet" id="styles-link" href="../css/styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Page-specific styles -->
+    <style id="page-styles">
+        /* Add page-specific styles here */
+    </style>
+</head>
+<body>
+    <!-- Header will be loaded here -->
+    <header id="header"></header>
+
+    <!-- Main content -->
+    <main>
+        <!-- Hero section -->
+        <section id="hero-container" class="hero">
+            <!-- Hero content will be loaded by hero.js -->
+        </section>
+        
+        <!-- Add your page-specific content here -->
+        <section class="page-section">
+            <div class="container">
+                <div class="section-header">
+                    <h2>Section Title</h2>
+                    <div class="section-divider"></div>
+                </div>
+                <div class="section-content">
+                    <p>Add your content here.</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer will be loaded here -->
+    <footer id="footer"></footer>
+
+    <!-- Scripts - Use relative paths -->
+    <script src="../js/fix-subpage-paths.js"></script>
+    <script src="../js/utils.js"></script>
+    <script src="../js/components.js"></script>
+    <script src="../js/hero.js"></script>
+    <!-- Add page-specific scripts here -->
+    
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log('[Debug] Page loaded');
+            
+            // Load header and footer components
+            if (typeof loadHeader === 'function') {
+                loadHeader();
+            }
+            if (typeof loadFooter === 'function') {
+                loadFooter();
+            }
+            
+            // Hero is initialized by hero.js
+            
+            // Add page-specific initialization here
+        });
+    </script>
+</body>
+</html> 

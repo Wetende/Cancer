@@ -1,162 +1,82 @@
 /**
- * Fix Subpage Paths Script
- * This script updates all subpages to use absolute paths for CSS and JS
+ * Fix Subpage Paths
+ * This script updates all subpages to use relative paths for components, CSS, and JavaScript
  */
 
-const fs = require('fs');
-const path = require('path');
-const { promisify } = require('util');
-const readFileAsync = promisify(fs.readFile);
-const writeFileAsync = promisify(fs.writeFile);
-
-// Root directory to scan
-const rootDir = './pages';
-
-// Function to recursively find all HTML files
-async function findHtmlFiles(dir) {
-    const files = await fs.promises.readdir(dir);
-    const htmlFiles = [];
+document.addEventListener('DOMContentLoaded', function() {
+    console.log('[Page Fix] Initializing subpage path fix...');
     
-    for (const file of files) {
-        const filePath = path.join(dir, file);
-        const stat = await fs.promises.stat(filePath);
-        
-        if (stat.isDirectory()) {
-            const subFiles = await findHtmlFiles(filePath);
-            htmlFiles.push(...subFiles);
-        } else if (file.endsWith('.html')) {
-            htmlFiles.push(filePath);
-        }
+    // Fix paths if we're on a subpage
+    if (isSubpage()) {
+        fixSubpagePaths();
     }
-    
-    return htmlFiles;
+});
+
+/**
+ * Check if current page is a subpage (in the pages directory)
+ */
+function isSubpage() {
+    const path = window.location.pathname;
+    return path.includes('/pages/') || path.includes('/Cancer/pages/');
 }
 
-// Function to fix paths in HTML files
-async function fixPaths(filePath) {
-    try {
-        let content = await readFileAsync(filePath, 'utf8');
-        let modified = false;
-        
-        // Fix CSS paths
-        if (content.includes('rel="stylesheet"') && !content.includes('href="/Cancer/css/styles.css"')) {
-            console.log(`Fixing CSS paths in ${filePath}`);
-            
-            // Replace relative paths with absolute paths
-            content = content.replace(
-                /<link[^>]*rel="stylesheet"[^>]*href="(?!\/|https?:\/\/)([^"]*css\/styles\.css)"([^>]*)>/g,
-                '<link rel="stylesheet" id="styles-link" href="/Cancer/css/styles.css"$2>'
-            );
-            
-            // Replace relative komen-theme paths
-            content = content.replace(
-                /<link[^>]*rel="stylesheet"[^>]*href="(?!\/|https?:\/\/)([^"]*css\/komen-theme\.css)"([^>]*)>/g,
-                '<link rel="stylesheet" id="theme-link" href="/Cancer/css/komen-theme.css"$2>'
-            );
-            
-            // Fix icon paths
-            content = content.replace(
-                /<link[^>]*rel="icon"[^>]*href="(?!\/|https?:\/\/)([^"]*)"([^>]*)>/g,
-                '<link rel="icon" id="favicon-link" href="/Cancer/images/favicon.svg"$2>'
-            );
-            
-            modified = true;
-        }
-        
-        // Fix JavaScript paths
-        if (content.includes('<script') && !content.includes('src="/Cancer/js/')) {
-            console.log(`Fixing JavaScript paths in ${filePath}`);
-            
-            // Replace relative script paths
-            content = content.replace(
-                /<script[^>]*src="(?!\/|https?:\/\/)([^"]*js\/utils\.js)"([^>]*)>/g,
-                '<script id="utils-script" src="/Cancer/js/utils.js"$2>'
-            );
-            
-            content = content.replace(
-                /<script[^>]*src="(?!\/|https?:\/\/)([^"]*js\/components\.js)"([^>]*)>/g,
-                '<script id="components-script" src="/Cancer/js/components.js"$2>'
-            );
-            
-            content = content.replace(
-                /<script[^>]*src="(?!\/|https?:\/\/)([^"]*js\/hero\.js)"([^>]*)>/g,
-                '<script id="hero-script" src="/Cancer/js/hero.js"$2>'
-            );
-            
-            modified = true;
-        }
-        
-        // Fix path resolution function
-        if (content.includes('function resolveAssetPaths') && !content.includes('const basePath = \'/Cancer/\'')) {
-            console.log(`Fixing path resolution function in ${filePath}`);
-            
-            // Replace relative path resolution with absolute
-            content = content.replace(
-                /function resolveAssetPaths\(\)[^{]*{[^}]*const path = window\.location\.pathname;[^}]*const basePath[^}]*}/s,
-                `function resolveAssetPaths() {
-    // Use absolute paths instead of relative paths
-    const basePath = '/Cancer/';
+/**
+ * Fix all resource paths for subpages
+ */
+function fixSubpagePaths() {
+    console.log('[Page Fix] Fixing paths for subpage');
     
-    // Update asset links
-    document.getElementById('favicon-link').href = basePath + 'images/favicon.svg';
-    document.getElementById('styles-link').href = basePath + 'css/styles.css';
-    if (document.getElementById('theme-link')) {
-        document.getElementById('theme-link').href = basePath + 'css/komen-theme.css';
+    // Fix CSS path
+    const stylesLink = document.getElementById('styles-link');
+    if (stylesLink) {
+        const currentHref = stylesLink.getAttribute('href');
+        if (currentHref.startsWith('/') || currentHref.startsWith('http')) {
+            const newHref = '../css/styles.css';
+            console.log(`[Page Fix] Updating CSS path from ${currentHref} to ${newHref}`);
+            stylesLink.setAttribute('href', newHref);
+        }
     }
-    document.getElementById('utils-script').src = basePath + 'js/utils.js';
-    document.getElementById('components-script').src = basePath + 'js/components.js';
-    document.getElementById('hero-script').src = basePath + 'js/hero.js';
     
-    // Update image paths
-    const heroImg = document.getElementById('hero-img');
-    if (heroImg && heroImg.getAttribute('data-src')) {
-        heroImg.src = basePath + heroImg.getAttribute('data-src');
+    // Fix favicon path
+    const faviconLink = document.getElementById('favicon-link');
+    if (faviconLink) {
+        const currentHref = faviconLink.getAttribute('href');
+        if (currentHref.startsWith('/') || currentHref.startsWith('http')) {
+            const newHref = '../images/favicon.svg';
+            console.log(`[Page Fix] Updating favicon path from ${currentHref} to ${newHref}`);
+            faviconLink.setAttribute('href', newHref);
+        }
     }
-}`
-            );
-            
-            modified = true;
+    
+    // Fix image paths
+    document.querySelectorAll('img[src]').forEach(img => {
+        const src = img.getAttribute('src');
+        if (src.startsWith('/Cancer/images/')) {
+            const newSrc = src.replace('/Cancer/images/', '../images/');
+            console.log(`[Page Fix] Updating image path from ${src} to ${newSrc}`);
+            img.setAttribute('src', newSrc);
         }
-        
-        // Add theme-komen class to body if missing and it's a breast cancer page
-        if (filePath.includes('breast-cancer') && !content.includes('<body class="theme-komen">')) {
-            console.log(`Adding theme class to ${filePath}`);
-            
-            // Add theme class to body
-            content = content.replace(
-                /<body>/,
-                '<body class="theme-komen">'
-            );
-            
-            modified = true;
+    });
+    
+    // Fix link paths
+    document.querySelectorAll('a[href]').forEach(link => {
+        const href = link.getAttribute('href');
+        if (href.startsWith('/Cancer/') && !href.startsWith('/Cancer/pages/')) {
+            const newHref = href.replace('/Cancer/', '../');
+            console.log(`[Page Fix] Updating link path from ${href} to ${newHref}`);
+            link.setAttribute('href', newHref);
+        } else if (href.startsWith('/Cancer/pages/')) {
+            const newHref = href.replace('/Cancer/pages/', './');
+            console.log(`[Page Fix] Updating page link path from ${href} to ${newHref}`);
+            link.setAttribute('href', newHref);
         }
-        
-        // Write changes if modified
-        if (modified) {
-            await writeFileAsync(filePath, content, 'utf8');
-            console.log(`Updated ${filePath}`);
-        }
-    } catch (error) {
-        console.error(`Error processing ${filePath}: ${error.message}`);
+    });
+    
+    // Fix breadcrumb home link
+    const breadcrumbHome = document.querySelector('.breadcrumb a');
+    if (breadcrumbHome && breadcrumbHome.getAttribute('href') === '/Cancer/index.html') {
+        breadcrumbHome.setAttribute('href', '../index.html');
     }
-}
-
-// Main function
-async function main() {
-    try {
-        const htmlFiles = await findHtmlFiles(rootDir);
-        console.log(`Found ${htmlFiles.length} HTML files to process`);
-        
-        // Process each file
-        for (const file of htmlFiles) {
-            await fixPaths(file);
-        }
-        
-        console.log('Finished updating paths');
-    } catch (error) {
-        console.error(`Error: ${error.message}`);
-    }
-}
-
-// Run the script
-main(); 
+    
+    console.log('[Page Fix] Path fixing complete');
+} 

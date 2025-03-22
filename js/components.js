@@ -12,8 +12,17 @@ async function loadComponent(selector, componentPath, callback) {
     }
 
     try {
-        // Use the relative path that's known to work
-        const path = './components/' + componentPath;
+        // Get the correct base path depending on whether we're in a subpage or not
+        let basePath = './';
+        // Check if we're in a subpage
+        if (window.location.pathname.includes('/pages/') || window.location.pathname.includes('/Cancer/pages/')) {
+            basePath = '../';
+            console.log(`[Component] Detected subpage, using base path: ${basePath}`);
+        } else {
+            console.log(`[Component] Using base path: ${basePath}`);
+        }
+        
+        const path = basePath + 'components/' + componentPath;
         
         console.log(`[Component] Loading component from: ${path}`);
         
@@ -30,7 +39,7 @@ async function loadComponent(selector, componentPath, callback) {
         // Update links with correct paths
         const links = element.querySelectorAll('a[data-href]');
         links.forEach(link => {
-            link.href = './' + link.getAttribute('data-href');
+            link.href = basePath + link.getAttribute('data-href');
         });
         
         if (callback) callback();
