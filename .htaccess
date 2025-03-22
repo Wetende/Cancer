@@ -42,18 +42,7 @@ ErrorDocument 500 /404.html
 </IfModule>
 
 # Prevent directory listing
-Options -Indexes 
-
-# Enable rewriting
-RewriteEngine On
-
-# Base directory
-RewriteBase /
-
-# If the request is for a real file or directory, skip the rules
-RewriteCond %{REQUEST_FILENAME} -f [OR]  
-RewriteCond %{REQUEST_FILENAME} -d  
-RewriteRule ^ - [L]
+Options -Indexes
 
 # Add CORS headers for component loading
 <FilesMatch "\.(html|htm)$">
@@ -79,22 +68,4 @@ RewriteRule ^ - [L]
     ExpiresByType image/jpeg "access plus 1 month"
     ExpiresByType image/png "access plus 1 month"
     ExpiresByType image/svg+xml "access plus 1 month"
-</IfModule>
-
-# Handle component paths specially
-<IfModule mod_rewrite.c>
-    # Check if the component file exists in /components/
-    RewriteCond %{REQUEST_URI} ^/components/(.*)$
-    RewriteCond %{DOCUMENT_ROOT}/components/%1 !-f
-    RewriteCond %{DOCUMENT_ROOT}/Cancer/components/%1 -f
-    RewriteRule ^components/(.*)$ /Cancer/components/$1 [L]
-
-    # Check for /Cancer/components/ paths
-    RewriteCond %{REQUEST_URI} ^/Cancer/components/(.*)$
-    RewriteCond %{DOCUMENT_ROOT}/Cancer/components/%1 !-f
-    RewriteCond %{DOCUMENT_ROOT}/components/%1 -f
-    RewriteRule ^Cancer/components/(.*)$ /components/$1 [L]
-</IfModule>
-
-# Provide fallback for 404 errors on component files
-ErrorDocument 404 /Cancer/components/error-component.html 
+</IfModule> 

@@ -31,15 +31,15 @@ document.addEventListener('DOMContentLoaded', () => {
     initHeroSlider();
 });
 
-// Update CSS path to ensure it's using the absolute path
+// Update CSS path to ensure it's using the relative path
 function updateCssPath() {
     const stylesLink = document.getElementById('styles-link');
     if (stylesLink) {
-        // Set absolute path to ensure CSS loads correctly
-        const absolutePath = '/Cancer/css/styles.css';
-        if (stylesLink.getAttribute('href') !== absolutePath) {
-            console.log(`[Main] Updating CSS path to: ${absolutePath}`);
-            stylesLink.setAttribute('href', absolutePath);
+        // Set relative path to ensure CSS loads correctly
+        const relativePath = './css/styles.css';
+        if (stylesLink.getAttribute('href') !== relativePath) {
+            console.log(`[Main] Updating CSS path to: ${relativePath}`);
+            stylesLink.setAttribute('href', relativePath);
         }
     }
 }
@@ -68,29 +68,6 @@ function initComponents() {
         const pageTitle = breadcrumbContainer.getAttribute('data-title') || document.title;
         loadBreadcrumb('#breadcrumb-container', pageTitle);
     }
-    
-    // Set a fallback timer to check if components loaded correctly
-    setTimeout(() => {
-        console.log('[Main] Checking if components loaded correctly');
-        const header = document.querySelector('#header');
-        const footer = document.querySelector('#footer');
-        
-        // Check header loading status
-        if (header && (!header.innerHTML || header.innerHTML.includes('error-message'))) {
-            console.warn('[Main] Header failed to load, attempting fix');
-            if (typeof loadComponentFallback === 'function') {
-                loadComponentFallback('header', 'header.html');
-            }
-        }
-        
-        // Check footer loading status
-        if (footer && (!footer.innerHTML || footer.innerHTML.includes('error-message'))) {
-            console.warn('[Main] Footer failed to load, attempting fix');
-            if (typeof loadComponentFallback === 'function') {
-                loadComponentFallback('footer', 'footer.html');
-            }
-        }
-    }, 1000); // Wait 1 second to check
 }
 
 // Initialize page-specific functionality

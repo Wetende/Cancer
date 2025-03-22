@@ -12,55 +12,25 @@ async function loadComponent(selector, componentPath, callback) {
     }
 
     try {
-        // Define possible paths to try
-        const basePath = getBasePath();
-        const paths = [
-            // Try the standard path first
-            basePath + 'components/' + componentPath,
-            // Fallback paths if the standard one fails
-            `/Cancer/components/${componentPath}`,
-            `./components/${componentPath}`,
-            `../components/${componentPath}`,
-            `components/${componentPath}`,
-            `/components/${componentPath}`,
-            `${window.location.origin}/Cancer/components/${componentPath}`,
-            `${window.location.origin}/components/${componentPath}`
-        ];
+        // Use the relative path that's known to work
+        const path = './components/' + componentPath;
         
-        console.log(`[Component] Attempting to load ${componentPath} from multiple paths`);
+        console.log(`[Component] Loading component from: ${path}`);
         
-        // Try each path until one works
-        let content = null;
-        let successPath = null;
-        
-        for (const path of paths) {
-            try {
-                console.log(`[Component] Trying path: ${path}`);
-                const response = await fetch(path);
-                
-                if (response.ok) {
-                    console.log(`[Component] Successfully loaded ${componentPath} from ${path}`);
-                    content = await response.text();
-                    successPath = path;
-                    break;
-                }
-            } catch (error) {
-                console.warn(`[Component] Error loading from ${path}:`, error);
-            }
+        const response = await fetch(path);
+        if (!response.ok) {
+            console.error(`[Component] HTTP error! status: ${response.status}, URL: ${path}`);
+            throw new Error(`HTTP error! status: ${response.status}`);
         }
         
-        // If all paths failed
-        if (!content) {
-            throw new Error(`Failed to load component from any path`);
-        }
-        
-        // Set the content and initialize the component
+        let content = await response.text();
+        console.log(`[Component] Successfully loaded content for ${componentPath}`);
         element.innerHTML = content;
         
         // Update links with correct paths
         const links = element.querySelectorAll('a[data-href]');
         links.forEach(link => {
-            link.href = basePath + link.getAttribute('data-href');
+            link.href = './' + link.getAttribute('data-href');
         });
         
         if (callback) callback();
@@ -77,65 +47,8 @@ async function loadComponent(selector, componentPath, callback) {
 
 // Function to get the base path relative to the current page
 function getBasePath() {
-    console.log('[Path Resolution] Determining base path for components...');
-    
-    // Check if we're on a specific server or domain based on hostname
-    const hostname = window.location.hostname;
-    
-    // If on localhost/xampp, use the /Cancer/ path
-    if (hostname === 'localhost' || hostname.includes('127.0.0.1') || hostname === '') {
-        console.log('[Path Resolution] Using local development path');
-        return '/Cancer/';
-    }
-    
-    // For live server, try a path relative to document root
-    if (window.location.pathname.includes('/Cancer/')) {
-        console.log('[Path Resolution] On live server with Cancer in path');
-        return '/Cancer/';
-    } else {
-        // For live server without /Cancer/ in the path, components are at root level
-        console.log('[Path Resolution] On live server without Cancer in path');
-        return '/';
-    }
-    
-    // Original implementation left for reference
-    /*
-    // If we're using file:// protocol, return empty string
-    if (window.location.protocol === 'file:') {
-        console.log('[Path Resolution] Using file protocol, returning root path');
-        return '/';
-    }
-
-    // Get the pathname
-    const path = window.location.pathname;
-    console.log(`[Path Resolution] Current pathname: ${path}`);
-    
-    // If we're at domain root or Cancer root, return /Cancer/
-    if (path === '/' || path === '/Cancer/' || path === '/Cancer/index.html') {
-        console.log('[Path Resolution] At root, returning /Cancer/');
-        return '/Cancer/';
-    }
-    
-    // For other pages, calculate relative path
-    const segments = path.split('/').filter(Boolean);
-    console.log(`[Path Resolution] Path segments:`, segments);
-    
-    // Remove 'Cancer' from the segments if it exists
-    const cancerIndex = segments.indexOf('Cancer');
-    if (cancerIndex !== -1) {
-        segments.splice(0, cancerIndex + 1);
-    }
-    
-    // Calculate depth based on remaining segments
-    let depth = segments.length;
-    if (path.endsWith('/') || path.endsWith('.html')) {
-        depth--;
-    }
-    
-    const basePath = depth === 0 ? '/Cancer/' : '../'.repeat(depth);
-    console.log(`[Path Resolution] Final base path: ${basePath}`);
-    return basePath;
-    */
+    console.log('[Path Resolution] Using relative path for components');
+    return './';
 }
 
 // Load header component
@@ -179,13 +92,9 @@ function updateActiveMenuItem() {
         const href = item.getAttribute('href');
         console.log(`[Navigation] Checking menu item: ${href}`);
         
-        // Get the base path and combine with href for comparison
-        const basePath = getBasePath();
-        const fullHref = basePath + href;
-        
+        // Use simple path matching with relative paths
         if (currentPath.endsWith(href) || 
-            (href === 'index.html' && (currentPath.endsWith('/') || currentPath.endsWith('/index.html'))) ||
-            currentPath.endsWith(fullHref)) {
+            (href === 'index.html' && (currentPath.endsWith('/') || currentPath.endsWith('/index.html')))) {
             console.log(`[Navigation] Setting active menu item: ${href}`);
             item.classList.add('active');
         }
@@ -217,8 +126,8 @@ function loadBreadcrumb(container, current, parent = null, parentUrl = null) {
         }
         
         if (homeElement) {
-            // Update home link based on current page depth
-            homeElement.setAttribute('href', `${getBasePath()}index.html`);
+            // Update home link with relative path
+            homeElement.setAttribute('href', './index.html');
         }
     });
 }
