@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Component Debug Tool</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 20px;
+            background-color: #f5f5f5;
+        }
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            background-color: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+        h1, h2 {
+            color: #333;
+        }
+        pre {
+            background-color: #f1f1f1;
+            padding: 15px;
+            border-radius: 4px;
+            overflow-x: auto;
+        }
+        .debug-result {
+            margin-bottom: 20px;
+            border: 1px solid #ddd;
+            padding: 15px;
+            border-radius: 4px;
+        }
+        .action-button {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin: 4px 2px;
+            cursor: pointer;
+            border-radius: 4px;
+        }
+        .code {
+            font-family: monospace;
+        }
+        .error {
+            color: red;
+            font-weight: bold;
+        }
+        .success {
+            color: green;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Component Debug Tool</h1>
+        <p>This tool helps diagnose issues with the component loading system.</p>
+        
+        <div class="debug-result">
+            <h2>Environment Information</h2>
+            <div id="env-info">Loading...</div>
+        </div>
+        
+        <div class="debug-result">
+            <h2>Component Path Test</h2>
+            <div id="path-test-result">Loading...</div>
+        </div>
+        
+        <div class="debug-result">
+            <h2>Component Fetch Test</h2>
+            <div>
+                <button class="action-button" id="fetch-header">Test Header</button>
+                <button class="action-button" id="fetch-footer">Test Footer</button>
+            </div>
+            <div id="fetch-test-result">Click a button to test fetching a component</div>
+        </div>
+        
+        <div class="debug-result">
+            <h2>Manual Component Injection</h2>
+            <div>
+                <button class="action-button" id="inject-header">Inject Header</button>
+                <button class="action-button" id="inject-footer">Inject Footer</button>
+            </div>
+            <div id="component-container"></div>
+        </div>
+    </div>
+    
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Display environment information
+            const envInfo = document.getElementById('env-info');
+            envInfo.innerHTML = `
+                <p><strong>Location:</strong> <span class="code">${window.location.href}</span></p>
+                <p><strong>Protocol:</strong> <span class="code">${window.location.protocol}</span></p>
+                <p><strong>Hostname:</strong> <span class="code">${window.location.hostname}</span></p>
+                <p><strong>Pathname:</strong> <span class="code">${window.location.pathname}</span></p>
+                <p><strong>Base URL:</strong> <span class="code">${document.baseURI}</span></p>
+            `;
+            
+            // Test different path options
+            const pathTestResult = document.getElementById('path-test-result');
+            const pathOptions = [
+                '/Cancer/components/header.html',
+                './components/header.html',
+                '../components/header.html',
+                'components/header.html',
+                '/components/header.html',
+                window.location.origin + '/Cancer/components/header.html',
+                window.location.origin + '/components/header.html'
+            ];
+            
+            let pathTestHTML = '<h3>Testing paths:</h3><ul>';
+            
+            // Test all paths and show results
+            Promise.all(pathOptions.map(path => {
+                return fetch(path)
+                    .then(response => ({ path, status: response.status, ok: response.ok }))
+                    .catch(error => ({ path, error: error.message, ok: false }));
+            }))
+            .then(results => {
+                results.forEach(result => {
+                    const statusClass = result.ok ? 'success' : 'error';
+                    pathTestHTML += `
+                        <li>
+                            <span class="code">${result.path}</span>: 
+                            <span class="${statusClass}">
+                                ${result.ok ? 'SUCCESS' : 'FAILED'} 
+                                ${result.status ? `(Status: ${result.status})` : ''}
+                                ${result.error ? `(Error: ${result.error})` : ''}
+                            </span>
+                        </li>
+                    `;
+                });
+                
+                pathTestHTML += '</ul>';
+                pathTestResult.innerHTML = pathTestHTML;
+            });
+            
+            // Fetch test buttons
+            document.getElementById('fetch-header').addEventListener('click', function() {
+                testFetchComponent('header.html');
+            });
+            
+            document.getElementById('fetch-footer').addEventListener('click', function() {
+                testFetchComponent('footer.html');
+            });
+            
+            // Inject component buttons
+            document.getElementById('inject-header').addEventListener('click', function() {
+                injectComponent('header.html');
+            });
+            
+            document.getElementById('inject-footer').addEventListener('click', function() {
+                injectComponent('footer.html');
+            });
+            
+            // Test fetching a component
+            function testFetchComponent(componentName) {
+                const fetchTestResult = document.getElementById('fetch-test-result');
+                fetchTestResult.innerHTML = `<p>Attempting to fetch ${componentName}...</p>`;
+                
+                // Try multiple possible paths
+                const possiblePaths = [
+                    `/Cancer/components/${componentName}`,
+                    `./components/${componentName}`,
+                    `components/${componentName}`,
+                    `/components/${componentName}`,
+                    `${window.location.origin}/Cancer/components/${componentName}`,
+                    `${window.location.origin}/components/${componentName}`
+                ];
+                
+                let successPath = null;
+                
+                // Try each path
+                (async function() {
+                    for (const path of possiblePaths) {
+                        try {
+                            const response = await fetch(path);
+                            if (response.ok) {
+                                successPath = path;
+                                const content = await response.text();
+                                fetchTestResult.innerHTML = `
+                                    <p class="success">Successfully fetched ${componentName} from: <span class="code">${path}</span></p>
+                                    <p>Content length: ${content.length} bytes</p>
+                                    <p>First 100 characters:</p>
+                                    <pre>${content.substring(0, 100)}...</pre>
+                                `;
+                                break;
+                            }
+                        } catch (error) {
+                            console.log(`Error fetching from ${path}:`, error);
+                        }
+                    }
+                    
+                    if (!successPath) {
+                        fetchTestResult.innerHTML = `
+                            <p class="error">Failed to fetch ${componentName} from any path.</p>
+                            <p>Tried:</p>
+                            <ul>
+                                ${possiblePaths.map(p => `<li class="code">${p}</li>`).join('')}
+                            </ul>
+                        `;
+                    }
+                })();
+            }
+            
+            // Inject a component directly
+            function injectComponent(componentName) {
+                const container = document.getElementById('component-container');
+                container.innerHTML = '<p>Loading component...</p>';
+                
+                // Try multiple possible paths
+                const possiblePaths = [
+                    `/Cancer/components/${componentName}`,
+                    `./components/${componentName}`,
+                    `components/${componentName}`,
+                    `/components/${componentName}`,
+                    `${window.location.origin}/Cancer/components/${componentName}`,
+                    `${window.location.origin}/components/${componentName}`
+                ];
+                
+                (async function() {
+                    for (const path of possiblePaths) {
+                        try {
+                            const response = await fetch(path);
+                            if (response.ok) {
+                                const content = await response.text();
+                                container.innerHTML = `
+                                    <p class="success">Component loaded from: ${path}</p>
+                                    <div class="injected-component">${content}</div>
+                                `;
+                                return;
+                            }
+                        } catch (error) {
+                            console.log(`Error injecting from ${path}:`, error);
+                        }
+                    }
+                    
+                    container.innerHTML = `
+                        <p class="error">Failed to inject ${componentName}.</p>
+                        <p>Check the console for more details.</p>
+                    `;
+                })();
+            }
+        });
+    </script>
+</body>
+</html> 

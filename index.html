@@ -332,8 +332,16 @@
     <!-- Scripts -->
     <script src="js/utils.js"></script>
     <script src="js/components.js"></script>
+    <script src="fix-components.js"></script>
     <script src="js/hero.js"></script>
     <script>
+        console.log('Page loaded. Checking for component loading issues...');
+        
+        // Log errors in a more visible way
+        window.addEventListener('error', function(event) {
+            console.error('Global error:', event.message, 'at', event.filename, ':', event.lineno);
+        });
+        
         document.addEventListener('DOMContentLoaded', function() {
             console.log('[Debug] Home page loaded');
             

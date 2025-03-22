@@ -6,19 +6,64 @@
 // Load component
 async function loadComponent(selector, componentPath, callback) {
     const element = document.querySelector(selector);
-    if (!element) return;
+    if (!element) {
+        console.error(`[Component] Element with selector ${selector} not found`);
+        return;
+    }
 
     try {
         // Use absolute path for component loading
         const basePath = getBasePath();
-        const fullPath = basePath + 'components/' + componentPath;
+        let fullPath = basePath + 'components/' + componentPath;
         
         console.log(`[Component] Loading component from: ${fullPath}`);
+        console.log(`[Component] Current location: ${window.location.href}`);
+        console.log(`[Component] Base path: ${basePath}`);
         
-        const response = await fetch(fullPath);
-        if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
+        // Try to fetch the component
+        let response = await fetch(fullPath);
+        
+        // If that fails, try alternative paths
+        if (!response.ok) {
+            console.warn(`[Component] Failed to load from ${fullPath}, trying alternatives...`);
+            
+            // Define alternative paths to try
+            const alternativePaths = [
+                `/Cancer/components/${componentPath}`,
+                `./components/${componentPath}`,
+                `../components/${componentPath}`,
+                `components/${componentPath}`,
+                `/components/${componentPath}`,
+                `${window.location.origin}/Cancer/components/${componentPath}`,
+                `${window.location.origin}/components/${componentPath}`
+            ];
+            
+            // Try each alternative path
+            let found = false;
+            for (const altPath of alternativePaths) {
+                if (altPath === fullPath) continue; // Skip if same as original path
+                
+                console.log(`[Component] Trying alternative path: ${altPath}`);
+                try {
+                    response = await fetch(altPath);
+                    if (response.ok) {
+                        console.log(`[Component] Successfully loaded from alternative path: ${altPath}`);
+                        found = true;
+                        break;
+                    }
+                } catch (altError) {
+                    console.warn(`[Component] Error with alternative path ${altPath}:`, altError);
+                }
+            }
+            
+            if (!found) {
+                console.error(`[Component] HTTP error! status: ${response.status}, URL: ${fullPath}`);
+                throw new Error(`HTTP error! status: ${response.status}`);
+            }
+        }
         
         let content = await response.text();
+        console.log(`[Component] Successfully loaded content for ${componentPath}`);
         element.innerHTML = content;
         
         // Update links with correct paths
@@ -28,9 +73,10 @@ async function loadComponent(selector, componentPath, callback) {
         });
         
         if (callback) callback();
+        console.log(`[Component] Component ${componentPath} fully initialized`);
         
     } catch (error) {
-        console.error('Error loading component:', error);
+        console.error(`[Component] Error loading component ${componentPath}:`, error);
         element.innerHTML = `<div class="error-message">
             Error loading component
             <small>${error.message}</small>
@@ -40,7 +86,9 @@ async function loadComponent(selector, componentPath, callback) {
 
 // Function to get the base path relative to the current page
 function getBasePath() {
-    // Always return the absolute path to ensure consistent asset loading
+    console.log('[Path Resolution] Determining base path for components...');
+    
+    // First, try a direct, absolute path (this should work in most cases)
     return '/Cancer/';
     
     // Original implementation left for reference
