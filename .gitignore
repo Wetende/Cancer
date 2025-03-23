@@ -34,11 +34,7 @@ yarn-error.log
 package-lock.json
 yarn.lock
 
-# Compiled CSS files
-/css/*.css
-/css/*.css.map
-/css/*.min.css
-/css/*.min.css.map
+
 
 # Temporary files and logs
 *.tmp

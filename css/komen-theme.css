@@ -1,0 +1,78 @@
+/**
+ * Komen Theme for Breast Cancer Pages
+ * This theme applies specific styling to breast cancer related pages
+ */
+
+:root {
+    --komen-pink: #e84c93;
+    --komen-dark-pink: #d43a81;
+    --komen-light-pink: #f5a9d0;
+    --komen-accent: #0075c9;
+    --komen-dark-accent: #005e9c;
+    --komen-light-accent: #76bdff;
+    --komen-gray: #5b5b5b;
+    --komen-light-gray: #f8f9fa;
+}
+
+/* Header styling */
+.theme-komen .site-header {
+    border-bottom: 3px solid var(--komen-pink);
+}
+
+/* Hero section */
+.theme-komen .hero {
+    background-color: var(--komen-light-pink);
+}
+
+.theme-komen .hero-content h2 {
+    color: var(--komen-dark-pink);
+}
+
+/* Typography */
+.theme-komen h2 {
+    color: var(--komen-pink);
+}
+
+.theme-komen h3 {
+    color: var(--komen-accent);
+}
+
+.theme-komen .section-divider {
+    background-color: var(--komen-pink);
+}
+
+/* Buttons */
+.theme-komen .btn-primary {
+    background-color: var(--komen-pink);
+    color: white;
+}
+
+.theme-komen .btn-primary:hover {
+    background-color: var(--komen-dark-pink);
+}
+
+.theme-komen .btn-secondary {
+    border: 2px solid var(--komen-pink);
+    color: var(--komen-pink);
+}
+
+.theme-komen .btn-secondary:hover {
+    background-color: var(--komen-pink);
+    color: white;
+}
+
+/* Cards */
+.theme-komen .card {
+    border-top: 3px solid var(--komen-pink);
+}
+
+.theme-komen .factor-card, 
+.theme-komen .strategy-card, 
+.theme-komen .resource-card {
+    border-left: 3px solid var(--komen-pink);
+}
+
+/* Footer */
+.theme-komen .site-footer {
+    border-top: 3px solid var(--komen-pink);
+} 

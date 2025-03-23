@@ -100,23 +100,4 @@
     border-radius: var(--border-radius-full);
 }
 
-/* Donate button used in the header */
-.donate-button {
-    display: inline-block;
-    padding: var(--spacing-2) var(--spacing-4);
-    background-color: var(--color-primary);
-    color: var(--color-white);
-    font-family: var(--font-primary);
-    font-weight: var(--font-weight-bold);
-    text-transform: uppercase;
-    font-size: var(--font-size-sm);
-    border-radius: var(--border-radius-md);
-    transition: var(--transition-base);
-}
-
-.donate-button:hover,
-.donate-button:focus {
-    background-color: var(--color-primary-dark);
-    color: var(--color-white);
-    text-decoration: none;
-} 
+/* Add any additional button styles below */ 

@@ -1,0 +1,917 @@
+/* Risk Calculator Styling */
+
+/* Calculator Wrapper */
+.calculator-wrapper {
+    background-color: #fff;
+    border-radius: 16px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.12);
+    padding: 35px;
+    margin-bottom: 40px;
+    position: relative;
+    border: 1px solid rgba(232, 62, 140, 0.1);
+    overflow: hidden;
+}
+
+.calculator-wrapper::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 150px;
+    height: 150px;
+    background: radial-gradient(circle, rgba(232, 62, 140, 0.1) 0%, rgba(255, 255, 255, 0) 70%);
+    border-radius: 0 0 0 100%;
+    z-index: 0;
+}
+
+/* Progress Bar */
+.calculator-progress {
+    margin-bottom: 35px;
+    position: relative;
+}
+
+.calculator-progress-text {
+    text-align: center;
+    margin-top: 10px;
+    font-size: 0.9rem;
+    color: #777;
+    font-weight: 500;
+}
+
+.progress {
+    height: 10px;
+    background-color: #f5f5f5;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.progress-bar {
+    background: linear-gradient(90deg, #e83e8c, #ff7eb3);
+    transition: width 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 0 2px 5px rgba(232, 62, 140, 0.3);
+}
+
+/* Step Styling */
+.calc-step {
+    display: none;
+    opacity: 0;
+    transform: translateY(20px);
+    position: relative;
+    z-index: 2;
+}
+
+.calc-step.active {
+    animation: fadeIn 0.6s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.step-title {
+    color: #333;
+    font-size: 1.7rem;
+    margin-bottom: 25px;
+    position: relative;
+    padding-bottom: 12px;
+    font-weight: 600;
+}
+
+.step-title:after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 70px;
+    height: 4px;
+    background: linear-gradient(90deg, #e83e8c, #ff7eb3);
+    border-radius: 10px;
+}
+
+/* Form Elements */
+.form-group {
+    margin-bottom: 28px;
+    position: relative;
+}
+
+/* Dynamic Form Styling */
+.form-group.focused .form-label {
+    color: #e83e8c;
+    transform: translateY(-2px);
+}
+
+.form-group.has-value .form-label {
+    color: #444;
+}
+
+.form-label {
+    display: block;
+    margin-bottom: 10px;
+    font-weight: 500;
+    color: #333;
+    font-size: 1.05rem;
+    transition: all 0.3s ease;
+}
+
+.form-control {
+    width: 100%;
+    padding: 14px 18px;
+    border: 2px solid #e0e0e0;
+    border-radius: 10px;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+    background-color: #fafafa;
+}
+
+.form-control:hover {
+    border-color: #ccc;
+    background-color: #fff;
+}
+
+.form-control:focus {
+    border-color: #e83e8c;
+    box-shadow: 0 0 0 4px rgba(232, 62, 140, 0.15);
+    outline: none;
+    background-color: #fff;
+}
+
+.form-group:focus-within .form-label {
+    color: #e83e8c;
+}
+
+.form-control.error {
+    border-color: #dc3545;
+    background-color: rgba(220, 53, 69, 0.05);
+}
+
+.error-message {
+    color: #dc3545;
+    font-size: 0.85rem;
+    margin-top: 8px;
+    animation: fadeIn 0.3s ease;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.error-message::before {
+    content: '⚠️';
+    font-size: 0.9rem;
+}
+
+.form-text {
+    color: #6c757d;
+    font-size: 0.85rem;
+    margin-top: 8px;
+    display: block;
+}
+
+/* Radio & Checkbox Groups */
+.radio-group {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    margin-top: 12px;
+}
+
+.form-check {
+    display: flex;
+    align-items: center;
+    margin-right: 20px;
+    padding: 8px 16px;
+    background-color: #f8f8f8;
+    border-radius: 8px;
+    transition: all 0.2s ease;
+    cursor: pointer;
+    user-select: none;
+    border: 1px solid transparent;
+}
+
+.form-check:hover {
+    background-color: #f0f0f0;
+    border-color: #ddd;
+}
+
+.form-check input[type="radio"]:checked + .form-check-label,
+.form-check input[type="checkbox"]:checked + .form-check-label {
+    color: #e83e8c;
+    font-weight: 500;
+}
+
+.form-check:has(input:checked) {
+    background-color: rgba(232, 62, 140, 0.08);
+    border-color: rgba(232, 62, 140, 0.2);
+}
+
+.form-check-input {
+    margin-right: 8px;
+    cursor: pointer;
+    accent-color: #e83e8c;
+    width: 18px;
+    height: 18px;
+}
+
+.form-check-label {
+    cursor: pointer;
+    font-size: 1rem;
+}
+
+/* Custom select styling */
+select.form-control {
+    appearance: none;
+    background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23777' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
+    background-repeat: no-repeat;
+    background-position: right 15px center;
+    background-size: 15px;
+    padding-right: 45px;
+}
+
+/* Navigation Buttons */
+.step-navigation {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 35px;
+    position: relative;
+}
+
+.btn {
+    padding: 12px 28px;
+    border-radius: 50px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-size: 1rem;
+    border: none;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    letter-spacing: 0.5px;
+}
+
+.btn-primary {
+    background-color: #e83e8c;
+    color: white;
+    border: 2px solid #e83e8c;
+    box-shadow: 0 6px 15px rgba(232, 62, 140, 0.25);
+}
+
+.btn-primary:hover {
+    background-color: #d5307b;
+    border-color: #d5307b;
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(232, 62, 140, 0.3);
+}
+
+.btn-primary:active {
+    transform: translateY(-1px);
+}
+
+.btn-outline-primary {
+    background-color: transparent;
+    color: #e83e8c;
+    border: 2px solid #e83e8c;
+}
+
+.btn-outline-primary:hover {
+    background-color: rgba(232, 62, 140, 0.08);
+    transform: translateY(-3px);
+    box-shadow: 0 4px 10px rgba(232, 62, 140, 0.15);
+}
+
+.btn-outline-primary:active {
+    transform: translateY(-1px);
+}
+
+.btn:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    transform: none !important;
+    box-shadow: none !important;
+}
+
+/* Next button with arrow */
+.btn-next::after {
+    content: '→';
+    font-size: 1.2rem;
+    margin-left: 5px;
+}
+
+/* Previous button with arrow */
+.btn-prev::before {
+    content: '←';
+    font-size: 1.2rem;
+    margin-right: 5px;
+}
+
+/* Results Section */
+.risk-results {
+    animation: fadeIn 0.7s cubic-bezier(0.4, 0, 0.2, 1);
+    padding: 30px;
+    border-radius: 16px;
+    background-color: #fff;
+    position: relative;
+    overflow: hidden;
+}
+
+.risk-results::before {
+    content: '';
+    position: absolute;
+    top: -50px;
+    right: -50px;
+    width: 200px;
+    height: 200px;
+    background: radial-gradient(circle, rgba(232, 62, 140, 0.08) 0%, rgba(255, 255, 255, 0) 70%);
+    border-radius: 100%;
+    z-index: 0;
+}
+
+.results-title {
+    text-align: center;
+    color: #333;
+    margin-bottom: 35px;
+    font-size: 2rem;
+    font-weight: 700;
+    background: linear-gradient(45deg, #e83e8c, #ff7eb3);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    text-fill-color: transparent;
+}
+
+/* Risk Score Display */
+.risk-score-display {
+    text-align: center;
+    padding: 30px;
+    margin-bottom: 40px;
+    position: relative;
+    background-color: #fcfcfc;
+    border-radius: 16px;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
+}
+
+.risk-meter {
+    width: 220px;
+    height: 220px;
+    border-radius: 50%;
+    margin: 0 auto 25px;
+    background: conic-gradient(
+        #5cb85c 0% 25%,
+        #f0ad4e 25% 50%,
+        #d9534f 50% 75%,
+        #8a1538 75% 100%
+    );
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+    transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    animation: pulseScale 1s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+@keyframes pulseScale {
+    0% { transform: scale(0.8); opacity: 0; }
+    50% { transform: scale(1.05); }
+    100% { transform: scale(1); opacity: 1; }
+}
+
+.risk-meter:hover {
+    transform: scale(1.02);
+}
+
+.risk-meter::before {
+    content: '';
+    position: absolute;
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    background-color: white;
+    box-shadow: inset 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.risk-score {
+    position: relative;
+    font-size: 2.8rem;
+    font-weight: 800;
+    color: #333;
+    z-index: 1;
+    text-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+    animation: fadeNumberIn 1.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+@keyframes fadeNumberIn {
+    0% { opacity: 0; transform: scale(0.7); }
+    70% { opacity: 1; transform: scale(1.1); }
+    100% { transform: scale(1); }
+}
+
+.risk-category {
+    font-size: 1.5rem;
+    font-weight: 600;
+    padding: 12px 25px;
+    border-radius: 50px;
+    display: inline-block;
+    margin-top: 20px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+    animation: slideInUp 0.5s 0.3s both cubic-bezier(0.4, 0, 0.2, 1);
+    transition: all 0.3s ease;
+}
+
+@keyframes slideInUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.risk-category.low {
+    background: linear-gradient(45deg, rgba(92, 184, 92, 0.8), rgba(92, 184, 92, 0.9));
+    color: white;
+}
+
+.risk-category.moderate {
+    background: linear-gradient(45deg, rgba(240, 173, 78, 0.8), rgba(240, 173, 78, 0.9));
+    color: white;
+}
+
+.risk-category.high {
+    background: linear-gradient(45deg, rgba(217, 83, 79, 0.8), rgba(217, 83, 79, 0.9));
+    color: white;
+}
+
+.risk-category.very-high {
+    background: linear-gradient(45deg, rgba(138, 21, 56, 0.8), rgba(138, 21, 56, 0.9));
+    color: white;
+}
+
+/* Risk Recommendations */
+.risk-recommendations {
+    background-color: #fcfcfc;
+    border-radius: 12px;
+    padding: 30px;
+    margin-bottom: 30px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+    border: 1px solid #f2f2f2;
+    animation: fadeIn 0.5s 0.4s both;
+}
+
+.risk-recommendations h4 {
+    color: #333;
+    margin-bottom: 20px;
+    font-weight: 600;
+    font-size: 1.4rem;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.risk-recommendations h4::before {
+    content: '✓';
+    font-size: 1.2rem;
+    color: #e83e8c;
+    background-color: rgba(232, 62, 140, 0.1);
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.risk-recommendations ul {
+    padding-left: 25px;
+    margin-bottom: 25px;
+}
+
+.risk-recommendations li {
+    margin-bottom: 12px;
+    line-height: 1.6;
+    position: relative;
+    padding-left: 5px;
+}
+
+.risk-recommendations li::marker {
+    color: #e83e8c;
+    font-size: 1.1em;
+}
+
+.next-steps {
+    background-color: #f0f8ff;
+    border-left: 4px solid #007bff;
+    padding: 20px;
+    border-radius: 0 12px 12px 0;
+    margin-top: 25px;
+    box-shadow: 0 3px 10px rgba(0, 123, 255, 0.1);
+}
+
+.next-steps h4 {
+    color: #007bff;
+    margin-bottom: 12px;
+}
+
+.next-steps h4::before {
+    background-color: rgba(0, 123, 255, 0.1);
+    color: #007bff;
+    content: '→';
+}
+
+.next-steps-buttons {
+    display: flex;
+    gap: 15px;
+    margin-top: 20px;
+    flex-wrap: wrap;
+}
+
+/* Disclaimer */
+.risk-disclaimer {
+    background-color: #fff8f8;
+    border-radius: 12px;
+    padding: 20px;
+    margin-bottom: 30px;
+    border: 1px solid #ffe0e0;
+    box-shadow: 0 4px 12px rgba(232, 62, 140, 0.06);
+    position: relative;
+    animation: fadeIn 0.5s 0.5s both;
+}
+
+.risk-disclaimer h4 {
+    color: #e83e8c;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 1.2rem;
+    margin-bottom: 12px;
+    font-weight: 600;
+}
+
+.risk-disclaimer h4 i {
+    background-color: rgba(232, 62, 140, 0.15);
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.9rem;
+}
+
+.risk-disclaimer p {
+    margin-bottom: 0;
+    color: #555;
+    font-size: 0.95rem;
+    line-height: 1.6;
+}
+
+.results-actions {
+    text-align: center;
+    margin-top: 30px;
+    animation: fadeIn 0.5s 0.6s both;
+}
+
+.results-actions .btn {
+    min-width: 180px;
+}
+
+/* BMI Calculator Modal */
+.modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.6);
+    z-index: 1000;
+    justify-content: center;
+    align-items: center;
+    backdrop-filter: blur(3px);
+    -webkit-backdrop-filter: blur(3px);
+    transition: all 0.3s ease;
+}
+
+.modal.active {
+    display: flex;
+    animation: modalFadeIn 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.modal-dialog {
+    background-color: white;
+    border-radius: 16px;
+    width: 95%;
+    max-width: 500px;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+    animation: modalScaleIn 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    overflow: hidden;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+@keyframes modalFadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes modalScaleIn {
+    from { opacity: 0; transform: scale(0.9); }
+    to { opacity: 1; transform: scale(1); }
+}
+
+.modal-header {
+    padding: 20px 25px;
+    border-bottom: 1px solid #eee;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #fcfcfc;
+}
+
+.modal-title {
+    font-weight: 700;
+    color: #333;
+    margin: 0;
+    font-size: 1.3rem;
+}
+
+.close-modal {
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    cursor: pointer;
+    color: #999;
+    transition: all 0.2s ease;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.close-modal:hover {
+    color: #e83e8c;
+    background-color: rgba(232, 62, 140, 0.08);
+    transform: rotate(90deg);
+}
+
+.modal-body {
+    padding: 25px;
+}
+
+.modal-body .form-group {
+    margin-bottom: 20px;
+}
+
+.modal-body label {
+    font-weight: 500;
+    color: #555;
+    margin-bottom: 8px;
+    display: block;
+}
+
+.input-group {
+    display: flex;
+    gap: 15px;
+}
+
+.input-group .form-control {
+    flex: 1;
+    min-width: 0;
+}
+
+#bmiResult {
+    background-color: #f8f9fa;
+    border-radius: 12px;
+    padding: 20px;
+    margin-top: 25px;
+    text-align: center;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+    border: 1px solid #eee;
+    animation: fadeIn 0.5s ease;
+}
+
+#bmiValue {
+    font-weight: 700;
+    color: #e83e8c;
+    font-size: 1.8rem;
+    display: inline-block;
+    margin-bottom: 5px;
+}
+
+#bmiCategory {
+    margin-bottom: 20px;
+    color: #555;
+    font-size: 1.1rem;
+}
+
+#useBmiValue {
+    min-width: 180px;
+}
+
+/* Info Cards in More Information Section */
+.info-card {
+    background-color: #fff;
+    border-radius: 16px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.06);
+    padding: 30px;
+    height: 100%;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border: 1px solid #f0f0f0;
+}
+
+.info-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+}
+
+.info-card__title {
+    color: #e83e8c;
+    margin-bottom: 20px;
+    font-weight: 700;
+    position: relative;
+    padding-bottom: 12px;
+    font-size: 1.4rem;
+}
+
+.info-card__title:after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 50px;
+    height: 4px;
+    background: linear-gradient(90deg, #e83e8c, #ff7eb3);
+    border-radius: 10px;
+}
+
+.info-card__list {
+    padding-left: 20px;
+}
+
+.info-card__list li {
+    margin-bottom: 12px;
+    line-height: 1.6;
+    position: relative;
+}
+
+.info-card__list li::marker {
+    color: #e83e8c;
+}
+
+.section-cta {
+    text-align: center;
+    margin-top: 50px;
+    padding: 30px;
+    background-color: #fcfcfc;
+    border-radius: 16px;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.05);
+    border: 1px solid #f0f0f0;
+}
+
+.section-cta p {
+    font-size: 1.1rem;
+    max-width: 800px;
+    margin: 0 auto 25px;
+    line-height: 1.6;
+}
+
+.section-cta .btn {
+    min-width: 220px;
+    padding: 15px 30px;
+    font-size: 1.1rem;
+    box-shadow: 0 8px 20px rgba(232, 62, 140, 0.2);
+}
+
+/* Print Styles */
+@media print {
+    body * {
+        visibility: hidden;
+    }
+    
+    .risk-results, .risk-results * {
+        visibility: visible;
+    }
+    
+    .risk-results {
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 100%;
+        box-shadow: none;
+        padding: 20px;
+    }
+    
+    .results-actions, .next-steps-buttons .btn:not(.btn-print) {
+        display: none;
+    }
+    
+    .risk-category {
+        print-color-adjust: exact;
+        -webkit-print-color-adjust: exact;
+    }
+    
+    .risk-meter {
+        page-break-inside: avoid;
+    }
+    
+    .risk-recommendations {
+        page-break-inside: avoid;
+    }
+    
+    .risk-disclaimer {
+        page-break-inside: avoid;
+    }
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+    .calculator-wrapper {
+        padding: 25px 20px;
+    }
+    
+    .step-navigation {
+        flex-direction: column;
+        gap: 15px;
+    }
+    
+    .btn {
+        width: 100%;
+    }
+    
+    .risk-meter {
+        width: 180px;
+        height: 180px;
+    }
+    
+    .risk-meter::before {
+        width: 120px;
+        height: 120px;
+    }
+    
+    .risk-score {
+        font-size: 2.3rem;
+    }
+    
+    .risk-category {
+        font-size: 1.3rem;
+        padding: 10px 20px;
+    }
+    
+    .next-steps-buttons {
+        flex-direction: column;
+    }
+    
+    .input-group {
+        flex-direction: column;
+    }
+    
+    .results-title {
+        font-size: 1.7rem;
+    }
+    
+    .risk-recommendations h4, 
+    .risk-disclaimer h4,
+    .next-steps h4 {
+        font-size: 1.2rem;
+    }
+    
+    .modal-dialog {
+        width: 95%;
+        margin: 0 10px;
+    }
+    
+    .info-card {
+        margin-bottom: 20px;
+    }
+    
+    .section-cta .btn {
+        width: 100%;
+    }
+}
+
+/* Risk Meter Pointer */
+.risk-meter-pointer {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 95px;
+    height: 4px;
+    background-color: #333;
+    transform-origin: left center;
+    transform: rotate(-135deg); /* Start at min position */
+    z-index: 2;
+    transition: transform 1.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+    border-radius: 4px;
+}
+
+.risk-meter-pointer::after {
+    content: '';
+    position: absolute;
+    right: -10px;
+    top: -5px;
+    width: 14px;
+    height: 14px;
+    background-color: #333;
+    border-radius: 50%;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+} 
