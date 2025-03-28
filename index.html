@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Nzoya Foundation provides comprehensive information about breast cancer screening in Bellevue, WA, including mammograms, MRIs, and breast exams. Schedule your screening today.">
-    <meta name="keywords" content="Nzoya Foundation, breast cancer, screening, mammogram, breast MRI, breast health, cancer prevention, Bellevue, WA, Seattle">
+    <meta name="description" content="Nzoya Foundation provides comprehensive information about breast cancer screening in the Pacific North West, including mammograms, MRIs, and breast exams. Schedule your screening today.">
+    <meta name="keywords" content="Nzoya Foundation, breast cancer, screening, mammogram, breast MRI, breast health, cancer prevention, Pacific North West, Seattle">
     <meta name="author" content="Nzoya Foundation">
     <title>Breast Cancer Screening Information | Nzoya Foundation</title>
     <link rel="icon" id="favicon-link" href="images/favicon.svg" type="image/svg+xml">
@@ -75,6 +75,44 @@
             background-color: #d43a81;
             transform: translateY(-2px);
         }
+        
+        /* Map Container Styles */
+        .map-container {
+            position: relative;
+            width: 100%;
+            height: 300px;
+            overflow: hidden;
+            border-radius: 10px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+            margin-bottom: 20px;
+            background: #f5f5f5;
+        }
+        
+        .map-container iframe {
+            width: 100%;
+            height: 100%;
+            border: 0;
+        }
+        
+        .map-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            background: linear-gradient(to top, rgba(0,0,0,0.7), rgba(0,0,0,0.2), rgba(0,0,0,0));
+            padding: 15px;
+            color: white;
+            text-align: center;
+            z-index: 10;
+        }
+        
+        .map-overlay p {
+            margin: 0;
+            font-size: 1.1rem;
+            font-weight: 600;
+            text-shadow: 1px 1px 3px rgba(0,0,0,0.8);
+        }
+        
         @media (max-width: 768px) {
             .hero-static {
                 height: 70vh;
@@ -90,6 +128,9 @@
                 padding: 12px 24px;
                 font-size: 1rem;
             }
+            .map-container {
+                height: 250px;
+            }
         }
     </style>
 </head>
@@ -103,7 +144,7 @@
             <div class="hero-static" style="background-image: url('images/sliders/background.jpg');">
                 <div class="hero-content">
                     <h2>Early Detection Saves Lives</h2>
-                    <p>Nzoya Foundation is dedicated to breast cancer awareness and early detection in the Bellevue, WA community. Learn about screening options and schedule your mammogram today.</p>
+                    <p>Nzoya Foundation is dedicated to breast cancer awareness and early detection in the Pacific North West. Learn about screening options and schedule your mammogram today.</p>
                     <a href="#schedule-form" class="btn-primary">Schedule a Screening</a>
                 </div>
             </div>
@@ -187,14 +228,21 @@
                 <div class="content-columns">
                     <div class="col">
                         <div class="schedule-content-box">
-                            <h3>Locations 📍</h3>
-                            <ul class="locations-list">
-                                <li>📍 Bellevue Main Center - 1200 Bellevue Way NE</li>
-                                <li>📍 Overlake Medical Pavilion - 1231 116th Ave NE</li>
-                                <li>📍 Factoria Screening Center - 3707 Factoria Blvd SE</li>
-                                <li>📍 Crossroads Bellevue - 15600 NE 8th St</li>
-                                <li>📍 Mobile Mammogram Van (various Bellevue locations)</li>
-                            </ul>
+                            <h3>Our Service Region 📍</h3>
+                            <div class="map-container">
+                                <iframe 
+                                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d5472291.775433163!2d-129.28064700599056!3d47.42317616323944!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x5485e5ffe7c3b0f9%3A0x944278686c5ff3ba!2sPacific%20Northwest!5e0!3m2!1sen!2sus!4v1690996834462!5m2!1sen!2sus" 
+                                    width="100%" 
+                                    height="100%" 
+                                    style="border:0;" 
+                                    allowfullscreen="" 
+                                    loading="lazy" 
+                                    referrerpolicy="no-referrer-when-downgrade">
+                                </iframe>
+                                <div class="map-overlay">
+                                    <p>Serving the entire Pacific Northwest region</p>
+                                </div>
+                            </div>
                             <div class="contact-info-box">
                                 <i class="fas fa-phone-alt"></i>
                                 <p>Call <a href="tel:4255551234">425.555.1234</a> to request a screening mammogram or breast MRI.</p>
@@ -311,7 +359,7 @@
                     <div class="contact-method">
                         <img src="images/content/image3.jpg" alt="Visit Us" class="contact-image">
                         <h3>Visit Us</h3>
-                        <p>Nzoya Foundation<br>12345 NE 10th St<br>Bellevue, WA 98004</p>
+                        <p>Nzoya Foundation<br>12345 NE 10th St<br>Pacific Center, WA 98004</p>
                     </div>
                 </div>
             </div>
