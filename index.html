@@ -219,32 +219,39 @@
                 </div>
                 <div class="accordion">
                     <div class="accordion-item">
-                        <button class="accordion-header">What is 3D mammography?</button>
+                        <button class="accordion-button">
+                            What is 3D mammography?
+                            <span class="accordion-icon"></span>
+                        </button>
                         <div class="accordion-content">
                             <p>3D mammography is a way to take many pictures of your breast at once so physicians can see your breast tissue in detail. This improves the odds of finding true cancers early. It also leads to fewer false alarms.</p>
                             <p>2D mammography takes one image of your breast from above and one from the side. 3D mammography takes many images from both angles, creating a stack of thin layers for radiologists to examine.</p>
                         </div>
                     </div>
                     <div class="accordion-item">
-                        <button class="accordion-header">Does breast density matter?</button>
+                        <button class="accordion-button">
+                            Does breast density matter?
+                            <span class="accordion-icon"></span>
+                        </button>
                         <div class="accordion-content">
                             <p>Breast density refers to the amount of normal, non-fatty tissue seen in a mammogram. Dense breasts (higher levels of non-fatty tissue) can make cancer harder to see in mammograms and have been linked to a slightly higher risk of breast cancer.</p>
                             <p>About half of patients who get a screening mammogram have dense breasts. If you have dense breasts, breast health specialists will talk with you about what it means for you.</p>
                         </div>
                     </div>
                     <div class="accordion-item">
-                        <button class="accordion-header">What are the risks of mammograms?</button>
+                        <button class="accordion-button">
+                            What are the risks of mammograms?
+                            <span class="accordion-icon"></span>
+                        </button>
                         <div class="accordion-content">
-                            <p>For most patients, the benefits of getting a mammogram outweigh the risks. Potential concerns include:</p>
-                            <ul>
-                                <li>Some breast cancers may not be visible on mammograms</li>
-                                <li>False alarms can occur, showing a possible problem that turns out not to be cancer</li>
-                                <li>Mammograms require a small amount of radiation, though the level is very safe</li>
-                            </ul>
+                            <p> For most patients, the benefits of getting a mammogram outweigh the risks. Potential risk include: Cancers may not be visible on mammograms, false alarms, and mammograms require a small amount of radiation, though the level is very safe.</p>
                         </div>
                     </div>
                     <div class="accordion-item">
-                        <button class="accordion-header">When should I start getting mammograms?</button>
+                        <button class="accordion-button">
+                            When should I start getting mammograms?
+                            <span class="accordion-icon"></span>
+                        </button>
                         <div class="accordion-content">
                             <p>We recommend women 40 or older have a screening mammogram every year if they are at average risk for breast cancer. If you are at higher-than-average risk, you may need screenings earlier and more often.</p>
                             <p>Different organizations have different recommendations. What's important is to have screenings regularly on a schedule that matches your risk and preferences.</p>
@@ -262,37 +269,22 @@
                 </div>
                 <div class="resources-grid">
                     <div class="resource-card">
-                        <img src="images/content/educativematerial.jpg" alt="Multilingual Resources" class="resource-image">
-                        <h3>Multilingual Resources</h3>
-                        <p>Information about screening mammograms available in multiple languages:</p>
-                        <ul class="resource-list">
-                            <li><a href="#">Arabic</a></li>
-                            <li><a href="#">Chinese</a></li>
-                            <li><a href="#">Korean</a></li>
-                            <li><a href="#">Russian</a></li>
-                            <li><a href="#">Somali</a></li>
-                            <li><a href="#">Spanish</a></li>
-                            <li><a href="#">Swahili</a></li>
-                            <li><a href="#">Vietnamese</a></li>
-                        </ul>
-                    </div>
-                    <div class="resource-card">
                         <img src="images/content/women.jpg" alt="Risk Assessment" class="resource-image">
                         <h3>Risk Assessment</h3>
                         <p>Understanding your personal risk factors can help determine the best screening schedule for you.</p>
                         <a href="pages/risk-calculator.html" class="btn-secondary">Take Risk Assessment Quiz</a>
                     </div>
                     <div class="resource-card">
-                        <img src="images/content/womenlying.jpg" alt="Find Screening Facilities" class="resource-image">
-                        <h3>Find Screening Facilities</h3>
-                        <p>Locate breast cancer screening facilities near you, including mammogram centers and clinics.</p>
-                        <a href="pages/facilities.html" class="btn-secondary">Find Screening Facilities</a>
-                    </div>
-                    <div class="resource-card">
                         <img src="images/content/survivor.jpg" alt="Support Services" class="resource-image">
                         <h3>Support Services</h3>
                         <p>Find information about support groups, counseling services, and financial assistance programs.</p>
                         <a href="#" class="btn-secondary">View Support Services</a>
+                    </div>
+                    <div class="resource-card">
+                        <img src="images/content/educativematerial1.jpg" alt="Educational Resources" class="resource-image">
+                        <h3>Educational Resources</h3>
+                        <p>Access comprehensive guides, videos, and articles about breast cancer screening and prevention.</p>
+                        <a href="#" class="btn-secondary">Browse Resources</a>
                     </div>
                 </div>
             </div>
@@ -347,6 +339,45 @@
             if (typeof loadFooter === 'function') {
                 loadFooter();
             }
+            
+            // Initialize accordion functionality
+            const accordionButtons = document.querySelectorAll('.accordion-button');
+            
+            // Function to set content height
+            function setContentHeight(content, isActive) {
+                if (isActive) {
+                    content.style.maxHeight = content.scrollHeight + "px";
+                } else {
+                    content.style.maxHeight = "0";
+                }
+            }
+            
+            // Set initial state for first item
+            const firstButton = accordionButtons[0];
+            if (firstButton) {
+                firstButton.classList.add('active');
+                const firstContent = firstButton.nextElementSibling;
+                setContentHeight(firstContent, true);
+            }
+            
+            accordionButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    const isActive = this.classList.contains('active');
+                    const content = this.nextElementSibling;
+                    
+                    // Close all accordions
+                    accordionButtons.forEach(otherButton => {
+                        if (otherButton !== this) {
+                            otherButton.classList.remove('active');
+                            setContentHeight(otherButton.nextElementSibling, false);
+                        }
+                    });
+                    
+                    // Toggle current accordion
+                    this.classList.toggle('active');
+                    setContentHeight(content, !isActive);
+                });
+            });
             
             // Hero is initialized by hero.js
         });

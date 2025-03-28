@@ -160,22 +160,28 @@ function initAccordion() {
     const hasActiveItem = document.querySelector('.accordion-item.active');
     if (!hasActiveItem && accordionHeaders.length > 0) {
         accordionHeaders[0].parentElement.classList.add('active');
+        const content = accordionHeaders[0].nextElementSibling;
+        content.style.maxHeight = content.scrollHeight + "px";
     }
     
     accordionHeaders.forEach(header => {
         header.addEventListener('click', function() {
             // Toggle active class on the current item
             const accordionItem = this.parentElement;
+            const content = this.nextElementSibling;
             const isActive = accordionItem.classList.contains('active');
             
             // Close all accordion items
             document.querySelectorAll('.accordion-item').forEach(item => {
                 item.classList.remove('active');
+                const itemContent = item.querySelector('.accordion-content');
+                itemContent.style.maxHeight = null;
             });
             
             // If the clicked item wasn't active, activate it
             if (!isActive) {
                 accordionItem.classList.add('active');
+                content.style.maxHeight = content.scrollHeight + "px";
             }
         });
     });
@@ -243,67 +249,41 @@ function highlightActiveNavItem() {
 
 // Mobile navigation toggle
 function initMobileNav() {
-    const hamburgerIcon = document.createElement('div');
-    hamburgerIcon.className = 'hamburger-icon';
-    hamburgerIcon.innerHTML = '<span></span><span></span><span></span>';
+    const navbarToggle = document.querySelector('.navbar-toggle');
+    const navbarMenu = document.querySelector('.navbar-menu');
     
-    const nav = document.querySelector('.main-nav');
-    const navUl = document.querySelector('.nav-list');
-    
-    // Only proceed if nav elements are found
-    if (!nav || !navUl) {
-        console.warn('Navigation elements not found. Mobile navigation not initialized.');
+    if (!navbarToggle || !navbarMenu) {
+        console.warn('[Navigation] Mobile nav elements not found');
         return;
     }
-    
-    // Add click handlers for dropdowns
-    const dropdownLinks = document.querySelectorAll('.has-dropdown > a');
-    dropdownLinks.forEach(link => {
-        link.addEventListener('click', function(e) {
-            if (window.innerWidth <= 768) {
-                e.preventDefault();
-                const dropdownParent = this.parentElement;
-                dropdownParent.classList.toggle('active');
-            }
-        });
+
+    navbarToggle.addEventListener('click', () => {
+        navbarToggle.classList.toggle('active');
+        navbarMenu.classList.toggle('active');
+        
+        // Accessibility
+        const isExpanded = navbarToggle.classList.contains('active');
+        navbarToggle.setAttribute('aria-expanded', isExpanded);
+        
+        // Prevent body scroll when menu is open
+        document.body.style.overflow = isExpanded ? 'hidden' : '';
     });
-    
-    // Only add mobile nav functionality if screen width is below 768px
-    if (window.innerWidth <= 768) {
-        nav.prepend(hamburgerIcon);
-        
-        hamburgerIcon.addEventListener('click', function() {
-            navUl.classList.toggle('mobile-active');
-            hamburgerIcon.classList.toggle('active');
-            
-            // Close all dropdowns when closing mobile menu
-            if (!navUl.classList.contains('mobile-active')) {
-                document.querySelectorAll('.has-dropdown').forEach(dropdown => {
-                    dropdown.classList.remove('active');
-                });
-            }
-        });
-    }
-    
-    // Update mobile nav on window resize
-    window.addEventListener('resize', function() {
-        if (!nav) return; // Safety check
-        
-        if (window.innerWidth > 768) {
-            // Remove mobile-specific classes and elements
-            navUl.classList.remove('mobile-active');
-            const hamburger = nav.querySelector('.hamburger-icon');
-            if (hamburger) {
-                hamburger.remove();
-            }
-            
-            // Remove active states from dropdowns
-            document.querySelectorAll('.has-dropdown').forEach(dropdown => {
-                dropdown.classList.remove('active');
-            });
-        } else if (!nav.querySelector('.hamburger-icon')) {
-            // Re-add hamburger icon if needed
-            nav.prepend(hamburgerIcon);
+
+    // Close menu when clicking outside
+    document.addEventListener('click', (e) => {
+        if (!navbarToggle.contains(e.target) && !navbarMenu.contains(e.target)) {
+            navbarToggle.classList.remove('active');
+            navbarMenu.classList.remove('active');
+            document.body.style.overflow = '';
+        }
+    });
+
+    // Close menu when window is resized to desktop size
+    window.addEventListener('resize', () => {
+        if (window.innerWidth >= 992) {
+            navbarToggle.classList.remove('active');
+            navbarMenu.classList.remove('active');
+            document.body.style.overflow = '';
         }
     });
 }
@@ -584,11 +564,11 @@ function initSubpageHero() {
             ctaUrl: '#facilities',
             backgroundImage: '/Cancer/images/content/medical-5051144_1280.jpg'
         },
-        'Facilities': {
-            description: 'Locate breast cancer screening facilities near you',
-            ctaText: 'Schedule an Appointment',
-            ctaUrl: '#schedule',
-            backgroundImage: '/Cancer/images/content/operation-1807543_1280.jpg'
+        'Support': {
+            description: 'Find support through your cancer journey',
+            ctaText: 'Get Support',
+            ctaUrl: '#support',
+            backgroundImage: '/Cancer/images/content/womanstanding.jpg'
         },
         'Resources': {
             description: 'Access helpful resources and support services',

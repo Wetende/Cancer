@@ -6,18 +6,11 @@
 // Configuration for page-specific heroes
 const heroConfigs = {
     'Breast Cancer': {
-        title: 'Breast Cancer',
+        title: 'Learn About Breast Cancer',
         description: 'Learn about breast cancer, symptoms, and treatment options',
         ctaText: 'Get in Touch',
         ctaUrl: '/Cancer/pages/contact.html',
         backgroundImage: '/Cancer/images/backgrounds/breast-cancer-2773774_1920.jpg'
-    },
-    'Screening Facilities': {
-        title: 'Find Screening Facilities',
-        description: 'Locate breast cancer screening facilities near you',
-        ctaText: 'Contact Us',
-        ctaUrl: '/Cancer/pages/contact.html',
-        backgroundImage: '/Cancer/images/backgrounds/womenlying.jpg'
     },
     'Resources': {
         title: 'Resources',

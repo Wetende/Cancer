@@ -253,208 +253,211 @@
     </style>
 </head>
 <body>
-    <!-- Header will be loaded via JavaScript -->
-    <header id="header" class="header"></header>
+    <!-- Header will be loaded here -->
+    <header id="header"></header>
 
-    <!-- Hero section with overlay -->
-    <section class="hero-section" id="hero-container">
-        <!-- Hero content will be loaded by the loadHeroWithOverlay function -->
-    </section>
+    <!-- Main content -->
+    <main id="main-content" class="faq-page">
+        <!-- Hero section with overlay -->
+        <section class="hero-section" id="hero-container">
+            <!-- Hero content will be loaded by the loadHeroWithOverlay function -->
+        </section>
 
-    <!-- FAQ Search Section -->
-    <section class="faq-search-section">
-        <div class="container">
-            <div class="faq-search">
-                <input type="text" placeholder="Search questions..." class="faq-search__input">
-                <button class="faq-search__button"><i class="fas fa-search"></i></button>
+        <!-- FAQ Search Section -->
+        <section class="faq-search-section">
+            <div class="container">
+                <div class="faq-search">
+                    <input type="text" placeholder="Search questions..." class="faq-search__input">
+                    <button class="faq-search__button"><i class="fas fa-search"></i></button>
+                </div>
+                <div class="faq-categories">
+                    <button class="faq-category active">All</button>
+                    <button class="faq-category">General</button>
+                    <button class="faq-category">Screening Process</button>
+                    <button class="faq-category">Risk Factors</button>
+                    <button class="faq-category">After Screening</button>
+                </div>
             </div>
-            <div class="faq-categories">
-                <button class="faq-category active">All</button>
-                <button class="faq-category">General</button>
-                <button class="faq-category">Screening Process</button>
-                <button class="faq-category">Risk Factors</button>
-                <button class="faq-category">After Screening</button>
-            </div>
-        </div>
-    </section>
+        </section>
 
-    <!-- FAQ Content Section -->
-    <section class="faq-content-section">
-        <div class="container">
-            <!-- General Questions -->
-            <div class="faq-category-section">
-                <h2 class="section-title">General Questions</h2>
-                <div class="accordion">
-                    <div class="accordion-item">
-                        <button class="accordion-button">
-                            What is breast cancer screening?
-                            <span class="accordion-icon"></span>
-                        </button>
-                        <div class="accordion-content">
-                            <p>Breast cancer screening is the process of checking a woman's breasts for cancer before there are signs or symptoms of the disease. This usually involves mammography, clinical breast examinations, and self-examinations.</p>
+        <!-- FAQ Content Section -->
+        <section class="faq-content-section">
+            <div class="container">
+                <!-- General Questions -->
+                <div class="faq-category-section">
+                    <h2 class="section-title">General Questions</h2>
+                    <div class="accordion">
+                        <div class="accordion-item">
+                            <button class="accordion-button">
+                                What is breast cancer screening?
+                                <span class="accordion-icon"></span>
+                            </button>
+                            <div class="accordion-content">
+                                <p>Breast cancer screening is the process of checking a woman's breasts for cancer before there are signs or symptoms of the disease. This usually involves mammography, clinical breast examinations, and self-examinations.</p>
+                            </div>
+                        </div>
+                        <div class="accordion-item">
+                            <button class="accordion-button">
+                                When should I start getting screened?
+                                <span class="accordion-icon"></span>
+                            </button>
+                            <div class="accordion-content">
+                                <p>Most medical organizations recommend women begin regular mammogram screening at age 40. However, women with higher risk factors may need to start earlier. Consult with your healthcare provider about the right screening schedule for you.</p>
+                            </div>
+                        </div>
+                        <div class="accordion-item">
+                            <button class="accordion-button">
+                                How often should I get screened?
+                                <span class="accordion-icon"></span>
+                            </button>
+                            <div class="accordion-content">
+                                <p>For women 40 and older with average risk, annual mammograms are recommended. Women 55 and older can switch to biennial screening or continue yearly screening, based on their doctor's recommendation.</p>
+                            </div>
                         </div>
                     </div>
-                    <div class="accordion-item">
-                        <button class="accordion-button">
-                            When should I start getting screened?
-                            <span class="accordion-icon"></span>
-                        </button>
-                        <div class="accordion-content">
-                            <p>Most medical organizations recommend women begin regular mammogram screening at age 40. However, women with higher risk factors may need to start earlier. Consult with your healthcare provider about the right screening schedule for you.</p>
+                </div>
+
+                <!-- Screening Process -->
+                <div class="faq-category-section">
+                    <h2 class="section-title">Screening Process</h2>
+                    <div class="accordion">
+                        <div class="accordion-item">
+                            <button class="accordion-button">
+                                What happens during a mammogram?
+                                <span class="accordion-icon"></span>
+                            </button>
+                            <div class="accordion-content">
+                                <p>During a mammogram, your breast is placed on a special platform and compressed with a paddle. X-ray images are taken from different angles. The compression is necessary to get clear images and typically lasts just a few seconds per image.</p>
+                            </div>
+                        </div>
+                        <div class="accordion-item">
+                            <button class="accordion-button">
+                                How should I prepare for a mammogram?
+                                <span class="accordion-icon"></span>
+                            </button>
+                            <div class="accordion-content">
+                                <p>On the day of your mammogram:
+                                    <ul>
+                                        <li>Don't wear deodorant, perfume, or powder</li>
+                                        <li>Wear a two-piece outfit</li>
+                                        <li>Bring previous mammogram images if available</li>
+                                        <li>Schedule for when your breasts are least tender</li>
+                                    </ul>
+                                </p>
+                            </div>
+                        </div>
+                        <div class="accordion-item">
+                            <button class="accordion-button">
+                                How long does a mammogram take?
+                                <span class="accordion-icon"></span>
+                            </button>
+                            <div class="accordion-content">
+                                <p>The entire mammogram process typically takes about 20-30 minutes. The actual breast compression and X-ray imaging only takes a few minutes per breast.</p>
+                            </div>
                         </div>
                     </div>
-                    <div class="accordion-item">
-                        <button class="accordion-button">
-                            How often should I get screened?
-                            <span class="accordion-icon"></span>
-                        </button>
-                        <div class="accordion-content">
-                            <p>For women 40 and older with average risk, annual mammograms are recommended. Women 55 and older can switch to biennial screening or continue yearly screening, based on their doctor's recommendation.</p>
+                </div>
+
+                <!-- Risk Factors -->
+                <div class="faq-category-section">
+                    <h2 class="section-title">Risk Factors</h2>
+                    <div class="accordion">
+                        <div class="accordion-item">
+                            <button class="accordion-button">
+                                What are the main risk factors for breast cancer?
+                                <span class="accordion-icon"></span>
+                            </button>
+                            <div class="accordion-content">
+                                <p>Major risk factors include:
+                                    <ul>
+                                        <li>Age (risk increases with age)</li>
+                                        <li>Family history of breast cancer</li>
+                                        <li>Genetic mutations (BRCA1 and BRCA2)</li>
+                                        <li>Personal history of breast conditions</li>
+                                        <li>Radiation exposure to chest area</li>
+                                        <li>Obesity and physical inactivity</li>
+                                    </ul>
+                                </p>
+                            </div>
+                        </div>
+                        <div class="accordion-item">
+                            <button class="accordion-button">
+                                How can I reduce my risk?
+                                <span class="accordion-icon"></span>
+                            </button>
+                            <div class="accordion-content">
+                                <p>You can reduce your risk through:
+                                    <ul>
+                                        <li>Regular physical activity</li>
+                                        <li>Maintaining a healthy weight</li>
+                                        <li>Limiting alcohol consumption</li>
+                                        <li>Regular screening</li>
+                                        <li>Breastfeeding if possible</li>
+                                        <li>Avoiding hormone replacement therapy</li>
+                                    </ul>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- After Screening -->
+                <div class="faq-category-section">
+                    <h2 class="section-title">After Screening</h2>
+                    <div class="accordion">
+                        <div class="accordion-item">
+                            <button class="accordion-button">
+                                When will I get my results?
+                                <span class="accordion-icon"></span>
+                            </button>
+                            <div class="accordion-content">
+                                <p>You should receive your mammogram results within 10-14 days. If there are any concerns, you'll be contacted sooner. Some facilities provide same-day results.</p>
+                            </div>
+                        </div>
+                        <div class="accordion-item">
+                            <button class="accordion-button">
+                                What if they find something suspicious?
+                                <span class="accordion-icon"></span>
+                            </button>
+                            <div class="accordion-content">
+                                <p>If something suspicious is found, you may need additional imaging or a biopsy. This doesn't necessarily mean you have cancer - most suspicious findings turn out to be non-cancerous.</p>
+                            </div>
+                        </div>
+                        <div class="accordion-item">
+                            <button class="accordion-button">
+                                What should I do between screenings?
+                                <span class="accordion-icon"></span>
+                            </button>
+                            <div class="accordion-content">
+                                <p>Between screenings:
+                                    <ul>
+                                        <li>Perform monthly breast self-exams</li>
+                                        <li>Report any changes to your doctor</li>
+                                        <li>Maintain a healthy lifestyle</li>
+                                        <li>Keep track of your next screening date</li>
+                                    </ul>
+                                </p>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
+        </section>
 
-            <!-- Screening Process -->
-            <div class="faq-category-section">
-                <h2 class="section-title">Screening Process</h2>
-                <div class="accordion">
-                    <div class="accordion-item">
-                        <button class="accordion-button">
-                            What happens during a mammogram?
-                            <span class="accordion-icon"></span>
-                        </button>
-                        <div class="accordion-content">
-                            <p>During a mammogram, your breast is placed on a special platform and compressed with a paddle. X-ray images are taken from different angles. The compression is necessary to get clear images and typically lasts just a few seconds per image.</p>
-                        </div>
-                    </div>
-                    <div class="accordion-item">
-                        <button class="accordion-button">
-                            How should I prepare for a mammogram?
-                            <span class="accordion-icon"></span>
-                        </button>
-                        <div class="accordion-content">
-                            <p>On the day of your mammogram:
-                                <ul>
-                                    <li>Don't wear deodorant, perfume, or powder</li>
-                                    <li>Wear a two-piece outfit</li>
-                                    <li>Bring previous mammogram images if available</li>
-                                    <li>Schedule for when your breasts are least tender</li>
-                                </ul>
-                            </p>
-                        </div>
-                    </div>
-                    <div class="accordion-item">
-                        <button class="accordion-button">
-                            How long does a mammogram take?
-                            <span class="accordion-icon"></span>
-                        </button>
-                        <div class="accordion-content">
-                            <p>The entire mammogram process typically takes about 20-30 minutes. The actual breast compression and X-ray imaging only takes a few minutes per breast.</p>
-                        </div>
+        <!-- Still Have Questions Section -->
+        <section class="questions-section">
+            <div class="container">
+                <div class="questions-card">
+                    <h2 class="questions-card__title">Still Have Questions?</h2>
+                    <p class="questions-card__text">Can't find what you're looking for? We're here to help.</p>
+                    <div class="questions-card__buttons">
+                        <a href="contact.html" class="btn btn-primary">Contact Us</a>
+                        <a href="resources.html" class="btn btn-outline-primary">View Resources</a>
                     </div>
                 </div>
             </div>
-
-            <!-- Risk Factors -->
-            <div class="faq-category-section">
-                <h2 class="section-title">Risk Factors</h2>
-                <div class="accordion">
-                    <div class="accordion-item">
-                        <button class="accordion-button">
-                            What are the main risk factors for breast cancer?
-                            <span class="accordion-icon"></span>
-                        </button>
-                        <div class="accordion-content">
-                            <p>Major risk factors include:
-                                <ul>
-                                    <li>Age (risk increases with age)</li>
-                                    <li>Family history of breast cancer</li>
-                                    <li>Genetic mutations (BRCA1 and BRCA2)</li>
-                                    <li>Personal history of breast conditions</li>
-                                    <li>Radiation exposure to chest area</li>
-                                    <li>Obesity and physical inactivity</li>
-                                </ul>
-                            </p>
-                        </div>
-                    </div>
-                    <div class="accordion-item">
-                        <button class="accordion-button">
-                            How can I reduce my risk?
-                            <span class="accordion-icon"></span>
-                        </button>
-                        <div class="accordion-content">
-                            <p>You can reduce your risk through:
-                                <ul>
-                                    <li>Regular physical activity</li>
-                                    <li>Maintaining a healthy weight</li>
-                                    <li>Limiting alcohol consumption</li>
-                                    <li>Regular screening</li>
-                                    <li>Breastfeeding if possible</li>
-                                    <li>Avoiding hormone replacement therapy</li>
-                                </ul>
-                            </p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- After Screening -->
-            <div class="faq-category-section">
-                <h2 class="section-title">After Screening</h2>
-                <div class="accordion">
-                    <div class="accordion-item">
-                        <button class="accordion-button">
-                            When will I get my results?
-                            <span class="accordion-icon"></span>
-                        </button>
-                        <div class="accordion-content">
-                            <p>You should receive your mammogram results within 10-14 days. If there are any concerns, you'll be contacted sooner. Some facilities provide same-day results.</p>
-                        </div>
-                    </div>
-                    <div class="accordion-item">
-                        <button class="accordion-button">
-                            What if they find something suspicious?
-                            <span class="accordion-icon"></span>
-                        </button>
-                        <div class="accordion-content">
-                            <p>If something suspicious is found, you may need additional imaging or a biopsy. This doesn't necessarily mean you have cancer - most suspicious findings turn out to be non-cancerous.</p>
-                        </div>
-                    </div>
-                    <div class="accordion-item">
-                        <button class="accordion-button">
-                            What should I do between screenings?
-                            <span class="accordion-icon"></span>
-                        </button>
-                        <div class="accordion-content">
-                            <p>Between screenings:
-                                <ul>
-                                    <li>Perform monthly breast self-exams</li>
-                                    <li>Report any changes to your doctor</li>
-                                    <li>Maintain a healthy lifestyle</li>
-                                    <li>Keep track of your next screening date</li>
-                                </ul>
-                            </p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Still Have Questions Section -->
-    <section class="questions-section">
-        <div class="container">
-            <div class="questions-card">
-                <h2 class="questions-card__title">Still Have Questions?</h2>
-                <p class="questions-card__text">Can't find what you're looking for? We're here to help.</p>
-                <div class="questions-card__buttons">
-                    <a href="contact.html" class="btn btn-primary">Contact Us</a>
-                    <a href="resources.html" class="btn btn-outline-primary">View Resources</a>
-                </div>
-            </div>
-        </div>
-    </section>
+        </section>
+    </main>
 
     <!-- Footer will be loaded via JavaScript -->
     <footer id="footer" class="footer"></footer>
