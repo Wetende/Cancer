@@ -54,6 +54,20 @@ const heroConfigs = {
         ctaUrl: '/Cancer/pages/contact.html', 
         backgroundImage: '../images/backgrounds/shower.jpg'
     },
+    'Screening': {
+        title: 'Breast Cancer Screening',
+        description: 'Learn about screening methods and recommendations',
+        ctaText: 'Schedule Screening', 
+        ctaUrl: '/Cancer/pages/contact.html', 
+        backgroundImage: '../images/backgrounds/bg2.jpg'
+    },
+    'About Breast Cancer': {
+        title: 'Understanding Breast Cancer',
+        description: 'Learn about types, symptoms, and treatments',
+        ctaText: 'Learn More', 
+        ctaUrl: '/Cancer/pages/breast-cancer.html', 
+        backgroundImage: '../images/backgrounds/bg3.jpg'
+    },
     'default': {
         title: 'Nzoya Foundation',
         description: 'Supporting your breast health journey',
