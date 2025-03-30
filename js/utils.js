@@ -6,40 +6,54 @@
 const utils = {
     // Get the base path relative to the current page for asset loading
     getBasePath: function() {
-        // For GitHub Pages, we need to handle the repository name in the URL
-        const isProduction = window.location.hostname !== 'localhost' && 
-                             window.location.hostname !== '127.0.0.1';
-        
-        if (isProduction) {
-            const path = window.location.pathname;
-            // If we're in the pages directory or deeper
-            if (path.includes('/Cancer/pages/')) {
-                return '/Cancer/';
-            } else {
-                return '/Cancer/';
-            }
-        } else {
-            // Local development
-            const path = window.location.pathname;
-            let depth = 0;
-            
-            // Count directory levels
-            if (path.includes('/pages/')) {
-                depth = 1;
-                
-                // Check for subdirectories
-                const segments = path.split('/');
-                depth = segments.length - 2; // Adjust for domain and filename
-            }
-            
-            return depth === 0 ? '' : '../'.repeat(depth);
+        // If path-utils.js is loaded, use its functions
+        if (window.getBasePath && typeof window.getBasePath === 'function') {
+            return window.getBasePath();
         }
+
+        const path = window.location.pathname;
+        
+        // Split the path into segments and calculate the depth
+        const segments = path.split('/').filter(Boolean);
+        
+        // Find the index of "Cancer" in the path if it exists
+        const cancerIndex = segments.findIndex(segment => segment.toLowerCase() === 'cancer');
+        
+        // Calculate depth relative to the root of the project
+        let depth = 0;
+        if (cancerIndex !== -1) {
+            // If "Cancer" is in the path, measure depth from there
+            depth = segments.length - cancerIndex - 1;
+        } else {
+            // Otherwise just use the number of segments
+            depth = segments.length;
+        }
+        
+        // Generate the appropriate number of "../" based on depth
+        return depth > 0 ? '../'.repeat(depth) : './';
     },
     
     // Resolve a path relative to the current page
     resolvePath: function(path) {
+        // If path-utils.js is loaded, use its functions
+        if (window.resolveRelativePath && typeof window.resolveRelativePath === 'function') {
+            return window.resolveRelativePath(path);
+        }
+
+        let cleanPath = path;
+        
+        // Remove leading slash if present
+        if (cleanPath.startsWith('/')) {
+            cleanPath = cleanPath.substring(1);
+        }
+        
+        // Remove "Cancer/" prefix if present
+        if (cleanPath.startsWith('Cancer/')) {
+            cleanPath = cleanPath.substring(7);
+        }
+        
         const basePath = this.getBasePath();
-        return `${basePath}${path}`;
+        return `${basePath}${cleanPath}`;
     },
     
     // Get URL parameters as an object
@@ -104,8 +118,46 @@ const utils = {
                 behavior: 'smooth'
             });
         }
+    },
+    
+    // Update all absolute paths in the document to relative paths
+    updatePaths: function() {
+        // If path-utils.js is loaded, use its functions
+        if (window.updateAllPaths && typeof window.updateAllPaths === 'function') {
+            window.updateAllPaths();
+            return;
+        }
+
+        // Update all href attributes that start with /Cancer/
+        document.querySelectorAll('a[href^="/Cancer/"]').forEach(link => {
+            const href = link.getAttribute('href');
+            link.setAttribute('href', this.resolvePath(href));
+        });
+        
+        // Update all src attributes that start with /Cancer/
+        document.querySelectorAll('[src^="/Cancer/"]').forEach(element => {
+            const src = element.getAttribute('src');
+            element.setAttribute('src', this.resolvePath(src));
+        });
+        
+        // Update all background images in inline styles
+        document.querySelectorAll('[style*="/Cancer/"]').forEach(element => {
+            const style = element.getAttribute('style');
+            if (style) {
+                // Replace all occurrences of /Cancer/ in the style with the relative path
+                const newStyle = style.replace(/\/Cancer\//g, this.getBasePath());
+                element.setAttribute('style', newStyle);
+            }
+        });
+        
+        console.log('Path conversion completed - all absolute paths converted to relative');
     }
 };
 
 // Export utils for use in other scripts
-window.utils = utils; 
+window.utils = utils;
+
+// Automatically update paths when the document is fully loaded
+document.addEventListener('DOMContentLoaded', function() {
+    utils.updatePaths();
+}); 

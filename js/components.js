@@ -12,14 +12,30 @@ async function loadComponent(selector, componentPath, callback) {
     }
 
     try {
-        // Get the correct base path depending on whether we're in a subpage or not
-        let basePath = './';
-        // Check if we're in a subpage
-        if (window.location.pathname.includes('/pages/') || window.location.pathname.includes('/Cancer/pages/')) {
-            basePath = '../';
-            console.log(`[Component] Detected subpage, using base path: ${basePath}`);
+        // Get the correct base path using utils if available, or calculate it
+        let basePath;
+        
+        if (window.utils && typeof window.utils.getBasePath === 'function') {
+            basePath = window.utils.getBasePath();
+            console.log(`[Component] Using utils.getBasePath(): ${basePath}`);
         } else {
-            console.log(`[Component] Using base path: ${basePath}`);
+            // Fallback method to calculate relative path
+            const pathname = window.location.pathname;
+            
+            // Count directory levels from the root
+            const segments = pathname.split('/').filter(Boolean);
+            
+            // Calculate the appropriate path depth
+            let depth = segments.length;
+            
+            // Handle subdirectories properly
+            if (depth > 0) {
+                basePath = '../'.repeat(depth);
+            } else {
+                basePath = './';
+            }
+            
+            console.log(`[Component] Calculated basePath: ${basePath}`);
         }
         
         const path = basePath + 'components/' + componentPath;
@@ -39,7 +55,12 @@ async function loadComponent(selector, componentPath, callback) {
         // Update links with correct paths
         const links = element.querySelectorAll('a[data-href]');
         links.forEach(link => {
-            link.href = basePath + link.getAttribute('data-href');
+            const dataHref = link.getAttribute('data-href');
+            if (window.utils && typeof window.utils.resolvePath === 'function') {
+                link.href = window.utils.resolvePath(dataHref);
+            } else {
+                link.href = basePath + dataHref;
+            }
         });
         
         if (callback) callback();
@@ -52,12 +73,6 @@ async function loadComponent(selector, componentPath, callback) {
             <small>${error.message}</small>
         </div>`;
     }
-}
-
-// Function to get the base path relative to the current page
-function getBasePath() {
-    console.log('[Path Resolution] Using relative path for components');
-    return './';
 }
 
 // Load header component
@@ -99,13 +114,26 @@ function updateActiveMenuItem() {
     
     menuItems.forEach(item => {
         const href = item.getAttribute('href');
-        console.log(`[Navigation] Checking menu item: ${href}`);
+        const dataHref = item.getAttribute('data-href');
+        console.log(`[Navigation] Checking menu item: ${dataHref || href}`);
         
-        // Use simple path matching with relative paths
-        if (currentPath.endsWith(href) || 
-            (href === 'index.html' && (currentPath.endsWith('/') || currentPath.endsWith('/index.html')))) {
-            console.log(`[Navigation] Setting active menu item: ${href}`);
-            item.classList.add('active');
+        if (dataHref) {
+            // Extract the page name from the current path and data-href
+            const currentPage = currentPath.split('/').pop();
+            const dataPage = dataHref.split('/').pop();
+            
+            if (currentPage === dataPage || 
+                (dataPage === 'index.html' && (currentPath.endsWith('/') || currentPath.endsWith('/index.html')))) {
+                console.log(`[Navigation] Setting active menu item: ${dataHref}`);
+                item.classList.add('active');
+            }
+        } else if (href) {
+            // Use simple path matching with relative paths
+            if (currentPath.endsWith(href) || 
+                (href === 'index.html' && (currentPath.endsWith('/') || currentPath.endsWith('/index.html')))) {
+                console.log(`[Navigation] Setting active menu item: ${href}`);
+                item.classList.add('active');
+            }
         }
     });
 }
@@ -136,9 +164,23 @@ function loadBreadcrumb(container, current, parent = null, parentUrl = null) {
         
         if (homeElement) {
             // Update home link with relative path
-            homeElement.setAttribute('href', './index.html');
+            if (window.utils && typeof window.utils.resolvePath === 'function') {
+                homeElement.setAttribute('href', window.utils.resolvePath('index.html'));
+            } else {
+                const basePath = getBasePath();
+                homeElement.setAttribute('href', basePath + 'index.html');
+            }
         }
     });
+}
+
+// Function to get the base path relative to the current page
+function getBasePath() {
+    // Calculate relative path
+    const pathname = window.location.pathname;
+    const segments = pathname.split('/').filter(Boolean);
+    const depth = segments.length;
+    return depth > 0 ? '../'.repeat(depth) : './';
 }
 
 // Load hero component and configure it
@@ -161,7 +203,14 @@ function loadHero(container, options = {}) {
             const ctaElement = document.getElementById('hero-cta');
             if (ctaElement) {
                 ctaElement.textContent = ctaText;
-                if (ctaUrl) ctaElement.setAttribute('href', ctaUrl);
+                if (ctaUrl) {
+                    // Resolve path if needed
+                    if (window.utils && typeof window.utils.resolvePath === 'function' && ctaUrl.startsWith('/')) {
+                        ctaElement.setAttribute('href', window.utils.resolvePath(ctaUrl));
+                    } else {
+                        ctaElement.setAttribute('href', ctaUrl);
+                    }
+                }
             }
         } else {
             // Remove CTA if not needed
@@ -172,7 +221,12 @@ function loadHero(container, options = {}) {
         // Configure the background image for static hero
         const heroStatic = document.querySelector('.hero-static');
         if (heroStatic && imageSrc) {
-            heroStatic.style.backgroundImage = `url('${imageSrc}')`;
+            // Resolve path if needed
+            let resolvedImageSrc = imageSrc;
+            if (window.utils && typeof window.utils.resolvePath === 'function' && imageSrc.startsWith('/')) {
+                resolvedImageSrc = window.utils.resolvePath(imageSrc);
+            }
+            heroStatic.style.backgroundImage = `url('${resolvedImageSrc}')`;
         }
     });
 }
@@ -197,7 +251,14 @@ function loadHeroWithOverlay(container, options = {}) {
             const ctaElement = document.getElementById('hero-cta');
             if (ctaElement) {
                 ctaElement.textContent = ctaText;
-                if (ctaUrl) ctaElement.setAttribute('href', ctaUrl);
+                if (ctaUrl) {
+                    // Resolve path if needed
+                    if (window.utils && typeof window.utils.resolvePath === 'function' && ctaUrl.startsWith('/')) {
+                        ctaElement.setAttribute('href', window.utils.resolvePath(ctaUrl));
+                    } else {
+                        ctaElement.setAttribute('href', ctaUrl);
+                    }
+                }
             }
         } else {
             // Remove CTA if not needed
@@ -209,7 +270,12 @@ function loadHeroWithOverlay(container, options = {}) {
         const heroStatic = document.querySelector('.hero-static');
         if (heroStatic && backgroundImage) {
             console.log('[Hero] Setting background image:', backgroundImage);
-            heroStatic.style.backgroundImage = `url('${backgroundImage}')`;
+            // Resolve path if needed
+            let resolvedBackgroundImage = backgroundImage;
+            if (window.utils && typeof window.utils.resolvePath === 'function' && backgroundImage.startsWith('/')) {
+                resolvedBackgroundImage = window.utils.resolvePath(backgroundImage);
+            }
+            heroStatic.style.backgroundImage = `url('${resolvedBackgroundImage}')`;
         }
     });
 }
