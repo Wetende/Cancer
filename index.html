@@ -132,6 +132,52 @@
                 height: 250px;
             }
         }
+        
+        /* Cancer Types Section Styles */
+        .cancer-types-section {
+            background-color: #f9f0f6;
+            padding: 60px 0;
+        }
+        
+        .cancer-types-highlights {
+            background: white;
+            border-radius: 10px;
+            padding: 30px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .highlight-list {
+            list-style: none;
+            padding: 0;
+            margin-bottom: 25px;
+        }
+        
+        .highlight-list li {
+            margin-bottom: 15px;
+            padding-left: 30px;
+            position: relative;
+        }
+        
+        .highlight-list li i {
+            position: absolute;
+            left: 0;
+            top: 3px;
+            color: #e84c93;
+        }
+        
+        .cancer-types-highlights .btn-primary {
+            margin-top: auto;
+            align-self: flex-start;
+        }
+        
+        @media (max-width: 768px) {
+            .cancer-types-highlights {
+                margin-top: 20px;
+            }
+        }
     </style>
 </head>
 <body>
@@ -213,6 +259,36 @@
                         <div class="expandable">
                             <h4>Self-examination tips</h4>
                             <p>We encourage you to regularly inspect and feel your breasts so you know what is normal for you and what is new or different. Seek medical attention if you feel a new lump or notice changes in the appearance of your breasts.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="cancer-types" class="cancer-types-section">
+            <div class="container">
+                <div class="section-header">
+                    <h2>Types of Breast Cancer</h2>
+                    <div class="section-divider"></div>
+                </div>
+                <div class="content-columns">
+                    <div class="col">
+                        <div class="about-content-box">
+                            <h3>Understanding Breast Cancer Types</h3>
+                            <p>Breast cancer is not a single disease, but includes several different types that can vary in their growth patterns, appearance, and response to treatments. Knowledge about these different types is crucial for early detection and effective treatment.</p>
+                            <p>The main types include non-invasive cancers like Ductal Carcinoma In Situ (DCIS), invasive cancers that have spread beyond their origin, and rarer forms such as inflammatory breast cancer and Paget's disease.</p>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="cancer-types-highlights">
+                            <ul class="highlight-list">
+                                <li><i class="fas fa-circle-check"></i> <strong>DCIS:</strong> Cancer cells contained in milk ducts</li>
+                                <li><i class="fas fa-circle-check"></i> <strong>Invasive:</strong> Cancer that has spread to surrounding tissues</li>
+                                <li><i class="fas fa-circle-check"></i> <strong>Inflammatory:</strong> Rare, aggressive form causing redness and swelling</li>
+                                <li><i class="fas fa-circle-check"></i> <strong>Male breast cancer:</strong> Affects less than 1% of all cases</li>
+                                <li><i class="fas fa-circle-check"></i> <strong>Metaplastic:</strong> Rare form with cells that change appearance</li>
+                            </ul>
+                            <a href="pages/breast-cancer/types/index.html" class="btn-primary">Learn About Breast Cancer Types</a>
                         </div>
                     </div>
                 </div>
@@ -370,7 +446,7 @@
     <footer id="footer"></footer>
 
     <!-- Scripts -->
-    <script src="./js/fix-subpage-paths.js"></script>
+    <script src="./js/path-utils.js"></script>
     <script src="./js/utils.js"></script>
     <script src="./js/components.js"></script>
     <script src="./js/hero.js"></script>

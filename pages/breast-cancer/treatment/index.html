@@ -7,113 +7,31 @@
     <meta name="keywords" content="breast cancer treatment, chemotherapy, radiation therapy, surgery, clinical trials, Bellevue, WA">
     <meta name="author" content="Nzoya Foundation">
     <title>Treating Breast Cancer | Nzoya Foundation</title>
-    <!-- Dynamic asset path resolution will be handled by JavaScript -->
-    <link rel="icon" id="favicon-link" href="../images/favicon.svg" type="image/svg+xml">
-    <link rel="stylesheet" id="styles-link" href="../css/styles.css">
-    <link rel="stylesheet" id="theme-link" href="../css/komen-theme.css">
+    <link rel="icon" id="favicon-link" href="../../../images/favicon.svg" type="image/svg+xml">
+    <link rel="stylesheet" id="styles-link" href="../../../css/styles.css">
+    <link rel="stylesheet" id="breast-cancer-styles" href="../../../css/breast-cancer.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
-    <!-- Page-specific styles -->
-    <style id="page-styles">
-        .planning-content, .surgery-content, .treatment-content, 
-        .trials-content, .side-effects-content, .quality-content {
-            margin-bottom: 2rem;
-        }
-        
-        .treatment-types-grid, .side-effects-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-            gap: 1.5rem;
-            margin: 1.5rem 0;
-        }
-        
-        .treatment-type, .side-effect-card {
-            border: 1px solid #e9e9e9;
-            border-radius: 8px;
-            padding: 1.5rem;
-            background-color: #fff;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
-            transition: transform 0.3s, box-shadow 0.3s;
-        }
-        
-        .treatment-type:hover, .side-effect-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-        }
-        
-        .treatment-type h3, .side-effect-card h3 {
-            color: #e46b76;
-            margin-top: 0;
-            margin-bottom: 0.75rem;
-            font-size: 1.25rem;
-        }
-        
-        .clinical-trial-steps {
-            counter-reset: trial-step;
-            margin: 2rem 0;
-        }
-        
-        .trial-step {
-            position: relative;
-            padding-left: 3.5rem;
-            margin-bottom: 2rem;
-        }
-        
-        .trial-step:before {
-            counter-increment: trial-step;
-            content: counter(trial-step);
-            position: absolute;
-            left: 0;
-            top: 0;
-            width: 2.5rem;
-            height: 2.5rem;
-            background-color: #e46b76;
-            color: white;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-weight: bold;
-            font-size: 1.25rem;
-        }
-        
-        .quality-care-checklist {
-            list-style: none;
-            padding-left: 0;
-        }
-        
-        .quality-care-checklist li {
-            padding-left: 2rem;
-            position: relative;
-            margin-bottom: 1rem;
-        }
-        
-        .quality-care-checklist li:before {
-            content: '\f00c';
-            font-family: 'Font Awesome 5 Free';
-            font-weight: 900;
-            position: absolute;
-            left: 0;
-            top: 0;
-            color: #e46b76;
-        }
-    </style>
+    <!-- Inline styles removed as they're now in breast-cancer.css -->
 </head>
 <body class="theme-komen">
     <header id="header"></header>
 
     <main id="main-content" class="treatment-page">
         <!-- Hero section -->
-        <section class="hero-section">
-            <div class="container">
-                <div class="hero-image">
-                    <img src="../images/content/operation-1807543_1280.jpg" alt="Breast Cancer Treatment" class="full-width-image" id="hero-img">
-                </div>
-                <div id="breadcrumb-container"></div>
-                <h1 id="page-title">Breast Cancer Treatment</h1>
-                <p class="lead" id="page-description">Learn about the various treatment options for breast cancer, including surgery, radiation therapy, chemotherapy, hormone therapy, and targeted therapies. Understanding your options can help you make informed decisions with your healthcare team.</p>
-            </div>
+        <section class="hero-section" id="hero-container">
+            <!-- Hero content will be loaded by hero.js -->
         </section>
+        
+        <div class="breadcrumb-container">
+            <div class="container">
+                <nav class="breadcrumb">
+                    <a href="../../../index.html">Home</a> &gt;
+                    <a href="../../breast-cancer.html">Breast Cancer</a> &gt;
+                    <span>Treatment</span>
+                </nav>
+            </div>
+        </div>
 
         <div class="container">
             <div class="content-grid">
@@ -146,11 +64,12 @@
                 </aside>
 
                 <div class="main-content">
-                    <section id="planning">
+                    <section id="planning" class="content-section">
                         <h2>Treatment Planning</h2>
-                        <div class="planning-content">
+                        <div class="card">
+                            <h3>Your Treatment Plan</h3>
                             <p>Your treatment plan will be based on multiple factors, including:</p>
-                            <ul>
+                            <ul class="enhanced-list">
                                 <li>The type and stage of breast cancer</li>
                                 <li>Whether the cancer cells have hormone receptors or HER2 protein</li>
                                 <li>Your overall health and personal preferences</li>
@@ -161,151 +80,171 @@
                         </div>
                     </section>
 
-                    <section id="surgery">
+                    <section id="surgery" class="content-section">
                         <h2>Surgery</h2>
-                        <div class="surgery-content">
-                            <p>Surgery is usually the first line of attack against breast cancer. The type of surgery recommended will depend on various factors, including the size and stage of the cancer, the type of breast cancer, and your personal preferences.</p>
-                            
-                            <div id="lumpectomy">
-                                <h3>Lumpectomy (Breast-Conserving Surgery)</h3>
-                                <p>This surgery removes only the tumor and a small amount of surrounding normal tissue. Lumpectomy is typically followed by radiation therapy to reduce the risk of recurrence. Most women with early-stage breast cancer are candidates for lumpectomy.</p>
-                            </div>
-                            
-                            <div id="mastectomy">
-                                <h3>Mastectomy</h3>
-                                <p>Mastectomy involves removing all breast tissue. There are several types of mastectomy:</p>
-                                <ul>
-                                    <li><strong>Total (Simple) Mastectomy:</strong> Removes the entire breast but not the lymph nodes or muscle tissue.</li>
-                                    <li><strong>Modified Radical Mastectomy:</strong> Removes the entire breast and some lymph nodes.</li>
-                                    <li><strong>Skin-Sparing Mastectomy:</strong> Preserves the skin over the breast for reconstruction.</li>
-                                    <li><strong>Nipple-Sparing Mastectomy:</strong> Preserves the skin, nipple, and areola for reconstruction.</li>
-                                </ul>
-                            </div>
-                            
-                            <div id="lymph-nodes">
-                                <h3>Lymph Node Surgery</h3>
-                                <p>To determine if cancer has spread to lymph nodes, one of these procedures may be performed:</p>
-                                <ul>
-                                    <li><strong>Sentinel Lymph Node Biopsy:</strong> Identifies and removes the first lymph node(s) most likely to be affected.</li>
-                                    <li><strong>Axillary Lymph Node Dissection:</strong> Removes multiple lymph nodes in the armpit if cancer is found in the sentinel nodes.</li>
-                                </ul>
-                            </div>
+                        <p>Surgery is usually the first line of attack against breast cancer. The type of surgery recommended will depend on various factors, including the size and stage of the cancer, the type of breast cancer, and your personal preferences.</p>
+                        
+                        <div id="lumpectomy" class="card">
+                            <h3>Lumpectomy (Breast-Conserving Surgery)</h3>
+                            <p>This surgery removes only the tumor and a small amount of surrounding normal tissue. Lumpectomy is typically followed by radiation therapy to reduce the risk of recurrence. Most women with early-stage breast cancer are candidates for lumpectomy.</p>
+                        </div>
+                        
+                        <div id="mastectomy" class="card">
+                            <h3>Mastectomy</h3>
+                            <p>Mastectomy involves removing all breast tissue. There are several types of mastectomy:</p>
+                            <ul class="enhanced-list">
+                                <li><strong>Total (Simple) Mastectomy:</strong> Removes the entire breast but not the lymph nodes or muscle tissue.</li>
+                                <li><strong>Modified Radical Mastectomy:</strong> Removes the entire breast and some lymph nodes.</li>
+                                <li><strong>Skin-Sparing Mastectomy:</strong> Preserves the skin over the breast for reconstruction.</li>
+                                <li><strong>Nipple-Sparing Mastectomy:</strong> Preserves the skin, nipple, and areola for reconstruction.</li>
+                            </ul>
+                        </div>
+                        
+                        <div id="lymph-nodes" class="card">
+                            <h3>Lymph Node Surgery</h3>
+                            <p>To determine if cancer has spread to lymph nodes, one of these procedures may be performed:</p>
+                            <ul class="enhanced-list">
+                                <li><strong>Sentinel Lymph Node Biopsy:</strong> Identifies and removes the first lymph node(s) most likely to be affected.</li>
+                                <li><strong>Axillary Lymph Node Dissection:</strong> Removes multiple lymph nodes in the armpit if cancer is found in the sentinel nodes.</li>
+                            </ul>
                         </div>
                     </section>
 
-                    <section id="treatment-types">
+                    <section id="treatment-types" class="content-section">
                         <h2>Types of Treatment</h2>
-                        <div class="treatment-content">
-                            <p>After surgery, additional treatments may be recommended to destroy any remaining cancer cells and reduce the risk of recurrence. These are known as adjuvant therapies.</p>
+                        <p>In addition to surgery, your treatment plan may include one or more of the following therapies:</p>
+                        
+                        <div class="card-grid">
+                            <div class="card" id="chemotherapy">
+                                <div class="card-icon">
+                                    <i class="fas fa-pills"></i>
+                                </div>
+                                <h3>Chemotherapy</h3>
+                                <p>Uses drugs to kill cancer cells throughout the body. May be given before surgery (neoadjuvant) or after surgery (adjuvant).</p>
+                            </div>
                             
-                            <div class="treatment-types-grid">
-                                <div class="treatment-type" id="chemotherapy">
-                                    <h3>Chemotherapy</h3>
-                                    <p>Medicines that travel through the bloodstream to destroy cancer cells anywhere in the body. Chemotherapy may be given before surgery (neoadjuvant) or after surgery (adjuvant).</p>
+                            <div class="card" id="radiation">
+                                <div class="card-icon">
+                                    <i class="fas fa-radiation"></i>
                                 </div>
-                                
-                                <div class="treatment-type" id="radiation">
-                                    <h3>Radiation Therapy</h3>
-                                    <p>Uses high-energy rays to target and kill cancer cells. Typically given after lumpectomy, but sometimes after mastectomy depending on cancer characteristics.</p>
+                                <h3>Radiation Therapy</h3>
+                                <p>Uses high-energy beams to kill cancer cells in a specific area. Often given after lumpectomy to reduce the risk of recurrence.</p>
+                            </div>
+                            
+                            <div class="card" id="hormone">
+                                <div class="card-icon">
+                                    <i class="fas fa-venus"></i>
                                 </div>
-                                
-                                <div class="treatment-type" id="hormone">
-                                    <h3>Hormone Therapy</h3>
-                                    <p>Blocks the effects of estrogen or reduces estrogen production to slow or stop the growth of hormone-receptor-positive breast cancers.</p>
+                                <h3>Hormone Therapy</h3>
+                                <p>Blocks hormone receptors or lowers hormone levels to prevent cancer growth. Used for hormone receptor-positive cancers.</p>
+                            </div>
+                            
+                            <div class="card" id="targeted">
+                                <div class="card-icon">
+                                    <i class="fas fa-bullseye"></i>
                                 </div>
-                                
-                                <div class="treatment-type" id="targeted">
-                                    <h3>Targeted Therapy</h3>
-                                    <p>Drugs that target specific proteins involved in cancer cell growth. HER2-targeted therapies are used for HER2-positive breast cancers.</p>
+                                <h3>Targeted Therapy</h3>
+                                <p>Attacks specific abnormalities within cancer cells. Includes HER2-targeted drugs for HER2-positive cancers.</p>
+                            </div>
+                            
+                            <div class="card" id="immunotherapy">
+                                <div class="card-icon">
+                                    <i class="fas fa-shield-alt"></i>
                                 </div>
-                                
-                                <div class="treatment-type" id="immunotherapy">
-                                    <h3>Immunotherapy</h3>
-                                    <p>Helps the immune system recognize and attack cancer cells. Currently used primarily for certain types of triple-negative breast cancer.</p>
-                                </div>
+                                <h3>Immunotherapy</h3>
+                                <p>Helps the immune system recognize and attack cancer cells. Being explored in clinical trials for breast cancer.</p>
                             </div>
                         </div>
                     </section>
 
-                    <section id="clinical-trials">
+                    <section id="clinical-trials" class="content-section">
                         <h2>Clinical Trials</h2>
-                        <div class="trials-content">
+                        <div class="card">
+                            <h3>Participating in Research</h3>
                             <p>Clinical trials are research studies that test new treatments to see if they are safe and effective. Participating in a clinical trial may give you access to treatments that are not otherwise available.</p>
                             
-                            <div class="clinical-trial-steps">
-                                <div class="trial-step">
-                                    <h3>Find a Clinical Trial</h3>
+                            <div class="numbered-list">
+                                <div class="numbered-item">
+                                    <h4>Find a Clinical Trial</h4>
                                     <p>Speak with your doctor about clinical trials that might be right for you, or search the National Cancer Institute's database at <a href="https://www.cancer.gov/clinicaltrials" target="_blank">cancer.gov/clinicaltrials</a></p>
                                 </div>
                                 
-                                <div class="trial-step">
-                                    <h3>Understand the Trial</h3>
+                                <div class="numbered-item">
+                                    <h4>Understand the Trial</h4>
                                     <p>Learn about the purpose of the trial, what treatments are being studied, and what tests and procedures are involved.</p>
                                 </div>
                                 
-                                <div class="trial-step">
-                                    <h3>Assess Eligibility</h3>
+                                <div class="numbered-item">
+                                    <h4>Assess Eligibility</h4>
                                     <p>Each trial has specific criteria for who can participate, based on factors such as cancer type, stage, previous treatments, and overall health.</p>
                                 </div>
                                 
-                                <div class="trial-step">
-                                    <h3>Weigh Benefits and Risks</h3>
+                                <div class="numbered-item">
+                                    <h4>Weigh Benefits and Risks</h4>
                                     <p>Consider the potential benefits (access to new treatments, close monitoring) and risks (unknown side effects, possibly ineffective treatment).</p>
                                 </div>
                             </div>
                         </div>
                     </section>
 
-                    <section id="side-effects">
+                    <section id="side-effects" class="content-section">
                         <h2>Managing Side Effects</h2>
-                        <div class="side-effects-content">
-                            <p>Breast cancer treatments can cause side effects. Many side effects are temporary and can be managed with medications or lifestyle changes.</p>
-                            
-                            <div class="side-effects-grid">
-                                <div class="side-effect-card">
-                                    <h3>Physical Side Effects</h3>
-                                    <ul>
-                                        <li>Fatigue</li>
-                                        <li>Nausea and vomiting</li>
-                                        <li>Hair loss</li>
-                                        <li>Lymphedema (swelling)</li>
-                                        <li>Pain or numbness</li>
-                                    </ul>
+                        <p>Breast cancer treatments can cause side effects. Many side effects are temporary and can be managed with medications or lifestyle changes.</p>
+                        
+                        <div class="card-grid">
+                            <div class="card">
+                                <div class="card-icon">
+                                    <i class="fas fa-heartbeat"></i>
                                 </div>
-                                
-                                <div class="side-effect-card">
-                                    <h3>Emotional Side Effects</h3>
-                                    <ul>
-                                        <li>Anxiety</li>
-                                        <li>Depression</li>
-                                        <li>Fear of recurrence</li>
-                                        <li>Body image concerns</li>
-                                        <li>Stress</li>
-                                    </ul>
-                                </div>
-                                
-                                <div class="side-effect-card">
-                                    <h3>Long-Term Effects</h3>
-                                    <ul>
-                                        <li>Fertility issues</li>
-                                        <li>Menopausal symptoms</li>
-                                        <li>Heart health concerns</li>
-                                        <li>Cognitive changes</li>
-                                        <li>Bone health issues</li>
-                                    </ul>
-                                </div>
+                                <h3>Physical Side Effects</h3>
+                                <ul class="enhanced-list">
+                                    <li>Fatigue</li>
+                                    <li>Nausea and vomiting</li>
+                                    <li>Hair loss</li>
+                                    <li>Lymphedema (swelling)</li>
+                                    <li>Pain or numbness</li>
+                                </ul>
                             </div>
                             
-                            <p>Always discuss any side effects with your healthcare team. Many resources are available to help manage side effects and improve your quality of life during and after treatment.</p>
+                            <div class="card">
+                                <div class="card-icon">
+                                    <i class="fas fa-brain"></i>
+                                </div>
+                                <h3>Emotional Side Effects</h3>
+                                <ul class="enhanced-list">
+                                    <li>Anxiety</li>
+                                    <li>Depression</li>
+                                    <li>Fear of recurrence</li>
+                                    <li>Body image concerns</li>
+                                    <li>Stress</li>
+                                </ul>
+                            </div>
+                            
+                            <div class="card">
+                                <div class="card-icon">
+                                    <i class="fas fa-hourglass-half"></i>
+                                </div>
+                                <h3>Long-Term Effects</h3>
+                                <ul class="enhanced-list">
+                                    <li>Fertility issues</li>
+                                    <li>Menopausal symptoms</li>
+                                    <li>Heart health concerns</li>
+                                    <li>Cognitive changes</li>
+                                    <li>Bone health issues</li>
+                                </ul>
+                            </div>
                         </div>
+                        
+                        <p>Always discuss any side effects with your healthcare team. Many resources are available to help manage side effects and improve your quality of life during and after treatment.</p>
                     </section>
 
-                    <section id="quality-care">
+                    <section id="quality-care" class="content-section">
                         <h2>Getting Quality Care</h2>
-                        <div class="quality-content">
+                        <div class="card">
+                            <h3>Ensuring the Best Care</h3>
                             <p>Receiving high-quality care is essential for the best possible outcome. Here are some tips for ensuring you receive quality care:</p>
                             
-                            <ul class="quality-care-checklist">
+                            <ul class="enhanced-list">
                                 <li>Seek care at a breast cancer center or from providers who specialize in breast cancer</li>
                                 <li>Ask about the treatment team's experience with your specific type of breast cancer</li>
                                 <li>Get a second opinion, especially for major treatment decisions</li>
@@ -317,6 +256,13 @@
                             
                             <p>Remember that you are your own best advocate. Don't hesitate to ask questions and express your concerns.</p>
                         </div>
+                        
+                        <div class="cta-section">
+                            <h3>Need Help With Your Treatment Plan?</h3>
+                            <p>Our team is available to answer questions and provide support throughout your treatment journey.</p>
+                            <a href="../../../pages/contact.html" class="btn-primary">Contact Our Team</a>
+                            <a href="../../../pages/support.html" class="btn-outline">Find Support Resources</a>
+                        </div>
                     </section>
                 </div>
             </div>
@@ -325,30 +271,22 @@
 
     <footer id="footer"></footer>
 
-    <script id="utils-script" src="../js/utils.js"></script>
-    <script id="components-script" src="../js/components.js"></script>
-    <script id="hero-script" src="../js/hero.js"></script>
+    <script id="utils-script" src="../../../js/utils.js"></script>
+    <script id="components-script" src="../../../js/components.js"></script>
+    <script id="hero-script" src="../../../js/hero.js"></script>
     <script>
-        // Define basePath for component loading
-        const basePath = '/Cancer/';
-        
-        // Initialize components
         document.addEventListener('DOMContentLoaded', function() {
-            // Load header and footer
-            loadComponent('#header', 'header.html');
-            loadComponent('#footer', 'footer.html');
+            console.log('[Debug] Treatment page loaded');
             
-            // Load breadcrumb (with configuration)
-            loadBreadcrumb('#breadcrumb-container', [
-                { text: 'Home', url: basePath + 'index.html' },
-                { text: 'About Breast Cancer', url: basePath + 'pages/about-breast-cancer.html' },
-                { text: 'Treatment', url: '#' }
-            ]);
-            
-            // Initialize page-specific scripts
-            if (typeof initPage === 'function') {
-                initPage();
+            // Load header and footer components
+            if (typeof loadHeader === 'function') {
+                loadHeader();
             }
+            if (typeof loadFooter === 'function') {
+                loadFooter();
+            }
+            
+            // Hero is initialized by hero.js
         });
     </script>
 </body>

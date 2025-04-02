@@ -10,123 +10,12 @@
     <!-- Dynamic asset path resolution will be handled by JavaScript -->
     <link rel="icon" id="favicon-link" href="../images/favicon.svg" type="image/svg+xml">
     <link rel="stylesheet" id="styles-link" href="../css/styles.css">
+    <link rel="stylesheet" id="breast-cancer-styles" href="../../../css/breast-cancer.css">
     <link rel="stylesheet" id="theme-link" href="../css/komen-theme.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
     <!-- Page-specific styles -->
-    <style id="page-styles">
-        .survivorship-content {
-            margin-bottom: 2.5rem;
-        }
-        
-        .care-plan, .effects-grid, .challenges-grid, 
-        .lifestyle-grid, .relationship-grid, .work-grid,
-        .support-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 1.5rem;
-            margin: 1.5rem 0;
-        }
-        
-        .component-card, .effect-card, .challenge-card, 
-        .lifestyle-card, .relationship-card, .work-card,
-        .support-card {
-            background-color: #f8f9fa;
-            border-radius: 8px;
-            padding: 1.5rem;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-            transition: transform 0.3s ease;
-        }
-        
-        .component-card:hover, .effect-card:hover, 
-        .challenge-card:hover, .lifestyle-card:hover, 
-        .relationship-card:hover, .work-card:hover,
-        .support-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-        }
-        
-        .plan-components {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 1.5rem;
-            margin-top: 1.5rem;
-        }
-        
-        .component-card h4, .challenge-card h4, .work-card h4 {
-            color: #d43f8d;
-            margin-bottom: 0.75rem;
-        }
-        
-        .emotional-content, .relationships-content, 
-        .work-content, .support-content {
-            margin-top: 1.5rem;
-        }
-        
-        .connect-box {
-            background-color: #f0f7fd;
-            border-left: 4px solid #007bff;
-            padding: 1.5rem;
-            margin-top: 2rem;
-            border-radius: 0 8px 8px 0;
-        }
-        
-        /* Color-coded cards for emotional challenges */
-        .challenge-card:nth-child(1) {
-            border-top: 4px solid #d43f8d;
-        }
-        
-        .challenge-card:nth-child(2) {
-            border-top: 4px solid #17a2b8;
-        }
-        
-        .challenge-card:nth-child(3) {
-            border-top: 4px solid #ffc107;
-        }
-        
-        .challenge-card:nth-child(4) {
-            border-top: 4px solid #28a745;
-        }
-        
-        /* Color-coded cards for lifestyle */
-        .lifestyle-card:nth-child(1) {
-            border-top: 4px solid #28a745; /* Nutrition - green */
-        }
-        
-        .lifestyle-card:nth-child(2) {
-            border-top: 4px solid #007bff; /* Exercise - blue */
-        }
-        
-        .lifestyle-card:nth-child(3) {
-            border-top: 4px solid #6f42c1; /* Stress Management - purple */
-        }
-
-        /* Responsive adjustments */
-        @media (max-width: 768px) {
-            .care-plan, .effects-grid, .challenges-grid, 
-            .lifestyle-grid, .relationship-grid, .work-grid,
-            .support-grid {
-                grid-template-columns: 1fr;
-            }
-        }
-        
-        .section-image {
-            margin-bottom: 1.5rem;
-            overflow: hidden;
-            border-radius: 8px;
-        }
-        
-        .section-image img {
-            width: 100%;
-            height: auto;
-            transition: transform 0.3s ease;
-        }
-        
-        .section-image img:hover {
-            transform: scale(1.03);
-        }
-    </style>
-</head>
+        <!-- Inline styles removed as they're now in breast-cancer.css --></head>
 <body class="theme-komen">
     <!-- Header will be loaded here -->
     <header id="header"></header>

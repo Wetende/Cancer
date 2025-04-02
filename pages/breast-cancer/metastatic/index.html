@@ -10,102 +10,12 @@
     <!-- Dynamic asset path resolution will be handled by JavaScript -->
     <link rel="icon" id="favicon-link" href="../images/favicon.svg" type="image/svg+xml">
     <link rel="stylesheet" id="styles-link" href="../css/styles.css">
+    <link rel="stylesheet" id="breast-cancer-styles" href="../../../css/breast-cancer.css">
     <link rel="stylesheet" id="theme-link" href="../css/komen-theme.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
     <!-- Page-specific styles -->
-    <style id="page-styles">
-        .metastatic-content {
-            margin-bottom: 2.5rem;
-        }
-        
-        .info-box {
-            background-color: #f8f9fa;
-            border-radius: 8px;
-            padding: 1.5rem;
-            margin: 1.5rem 0;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-        }
-        
-        .common-sites {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 1rem;
-            margin-top: 1rem;
-        }
-        
-        .common-sites li {
-            background-color: #e6f2ff;
-            border-radius: 4px;
-            padding: 0.5rem 1rem;
-            font-weight: 500;
-        }
-        
-        .symptoms-grid, .quality-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-            gap: 1.5rem;
-            margin-top: 1.5rem;
-        }
-        
-        .symptom-card, .treatment-card, .quality-card, .support-card {
-            background-color: #f8f9fa;
-            border-radius: 8px;
-            padding: 1.5rem;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-            transition: transform 0.3s ease;
-        }
-        
-        .symptom-card:hover, .treatment-card:hover, 
-        .quality-card:hover, .support-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-        }
-        
-        .treatment-options {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-            gap: 1.5rem;
-            margin-top: 1.5rem;
-        }
-        
-        .treatment-goals, .diagnostic-tools, .monitoring-info, 
-        .trials-info, .research-updates {
-            margin-top: 2rem;
-        }
-        
-        .support-content {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-            gap: 1.5rem;
-            margin-top: 1.5rem;
-        }
-        
-        .research-content {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-            gap: 1.5rem;
-            margin-top: 1.5rem;
-        }
-        
-        /* Color-coded cards */
-        .symptom-card:nth-child(1) {
-            border-top: 4px solid #D81B60; /* Bone - pink */
-        }
-        
-        .symptom-card:nth-child(2) {
-            border-top: 4px solid #FFC107; /* Liver - amber */
-        }
-        
-        .symptom-card:nth-child(3) {
-            border-top: 4px solid #2196F3; /* Lung - blue */
-        }
-        
-        .symptom-card:nth-child(4) {
-            border-top: 4px solid #9C27B0; /* Brain - purple */
-        }
-    </style>
-</head>
+        <!-- Inline styles removed as they're now in breast-cancer.css --></head>
 <body class="theme-komen">
     <!-- Header will be loaded here -->
     <header id="header"></header>

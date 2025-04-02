@@ -9,7 +9,7 @@
 </div>
 <nav class="navbar">
     <div class="navbar-container">
-        <a href="/Cancer/index.html" class="navbar-brand" data-href="/Cancer/index.html">
+        <a href="#" class="navbar-brand" data-href="index.html">
             <h1>Nzoya Foundation</h1>
         </a>
         <button class="navbar-toggle" aria-label="Toggle navigation">
@@ -18,13 +18,38 @@
             <span></span>
         </button>
         <ul class="navbar-menu">
-            <li><a href="index.html" data-href="index.html">Home</a></li>
-            <li><a href="pages/about.html" data-href="pages/about.html">About</a></li>
-            <li><a href="pages/breast-cancer.html" data-href="pages/breast-cancer.html">Breast Cancer</a></li>
-            <li><a href="pages/screening.html" data-href="pages/screening.html">Screening</a></li>
-            <li><a href="pages/resources.html" data-href="pages/resources.html">Resources</a></li>
-            <li><a href="pages/faq.html" data-href="pages/faq.html">FAQ</a></li>
-            <li><a href="pages/contact.html" data-href="pages/contact.html">Contact</a></li>
+            <li><a href="#" data-href="index.html">Home</a></li>
+            <li><a href="#" data-href="pages/about.html">About</a></li>
+            <li><a href="#" data-href="pages/breast-cancer.html">Breast Cancer</a></li>
+            <li><a href="#" data-href="pages/screening.html">Screening</a></li>
+            <li><a href="#" data-href="pages/resources.html">Resources</a></li>
+            <li><a href="#" data-href="pages/faq.html">FAQ</a></li>
+            <li><a href="#" data-href="pages/contact.html">Contact</a></li>
         </ul>
     </div>
-</nav> 
+</nav>
+
+<script>
+// Path fixing script for header component
+document.addEventListener('DOMContentLoaded', function() {
+    // Fix links in the header using utility functions if available
+    if (window.utils && typeof window.utils.resolvePath === 'function') {
+        // Use the utility function to fix the paths
+        document.querySelectorAll('a[data-href]').forEach(link => {
+            const dataHref = link.getAttribute('data-href');
+            link.setAttribute('href', window.utils.resolvePath(dataHref));
+        });
+    } else {
+        // Fallback method if utils isn't available
+        const currentPath = window.location.pathname;
+        const segments = currentPath.split('/').filter(Boolean);
+        const depth = segments.length;
+        const basePath = depth > 0 ? '../'.repeat(depth - 1) : './';
+        
+        document.querySelectorAll('a[data-href]').forEach(link => {
+            const dataHref = link.getAttribute('data-href');
+            link.setAttribute('href', basePath + dataHref);
+        });
+    }
+});
+</script> 

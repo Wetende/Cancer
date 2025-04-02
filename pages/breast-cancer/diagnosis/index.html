@@ -7,118 +7,30 @@
     <meta name="keywords" content="breast cancer diagnosis, breast biopsy, pathology report, breast cancer symptoms, Bellevue, WA">
     <meta name="author" content="Nzoya Foundation">
     <title>Breast Cancer Diagnosis | Nzoya Foundation</title>
-    <link rel="icon" id="favicon-link" href="../images/favicon.svg" type="image/svg+xml">
-    <link rel="stylesheet" id="styles-link" href="../css/styles.css">
+    <link rel="icon" id="favicon-link" href="../../../images/favicon.svg" type="image/svg+xml">
+    <link rel="stylesheet" id="styles-link" href="../../../css/styles.css">
+    <link rel="stylesheet" id="breast-cancer-styles" href="../../../css/breast-cancer.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
-    <style id="page-styles">
-        .diagnosis-steps {
-            counter-reset: diagnosis-step;
-            margin: 2rem 0;
-        }
-        
-        .diagnosis-step {
-            position: relative;
-            padding-left: 3.5rem;
-            margin-bottom: 2rem;
-        }
-        
-        .diagnosis-step:before {
-            counter-increment: diagnosis-step;
-            content: counter(diagnosis-step);
-            position: absolute;
-            left: 0;
-            top: 0;
-            width: 2.5rem;
-            height: 2.5rem;
-            background-color: #e46b76;
-            color: white;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-weight: bold;
-            font-size: 1.25rem;
-        }
-        
-        .biopsy-types-grid, .questions-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-            gap: 1.5rem;
-            margin: 1.5rem 0;
-        }
-        
-        .biopsy-type, .question-card {
-            border: 1px solid #e9e9e9;
-            border-radius: 8px;
-            padding: 1.5rem;
-            background-color: #fff;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
-            transition: transform 0.3s, box-shadow 0.3s;
-        }
-        
-        .biopsy-type:hover, .question-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-        }
-        
-        .biopsy-type__image {
-            width: 100%;
-            height: 180px;
-            object-fit: cover;
-            border-radius: 6px;
-            margin-bottom: 1rem;
-        }
-        
-        .biopsy-type h3, .question-card h3 {
-            color: #e46b76;
-            margin-top: 0;
-            margin-bottom: 0.75rem;
-            font-size: 1.25rem;
-        }
-        
-        .pathology-table {
-            width: 100%;
-            border-collapse: collapse;
-            margin: 1.5rem 0;
-        }
-        
-        .pathology-table th {
-            background-color: #e46b76;
-            color: white;
-            text-align: left;
-            padding: 0.75rem 1rem;
-        }
-        
-        .pathology-table td {
-            padding: 0.75rem 1rem;
-            border-bottom: 1px solid #e9e9e9;
-        }
-        
-        .pathology-table tr:nth-child(even) {
-            background-color: #f9f9f9;
-        }
-        
-        .pathology-table tr:hover {
-            background-color: #f0f0f0;
-        }
-    </style>
-</head>
+        <!-- Inline styles removed as they're now in breast-cancer.css --></head>
 <body class="theme-komen">
     <header id="header"></header>
 
     <main class="diagnosis-page">
-        <section class="hero-section">
+        <!-- Hero section -->
+        <section class="hero-section" id="hero-container">
+            <!-- Hero content will be loaded by hero.js -->
+        </section>
+        
+        <div class="breadcrumb-container">
             <div class="container">
                 <nav class="breadcrumb">
                     <a href="../../../index.html">Home</a> &gt;
                     <a href="../../breast-cancer.html">Breast Cancer</a> &gt;
                     <span>Diagnosis</span>
                 </nav>
-                <h1>Breast Cancer Diagnosis</h1>
-                <p class="lead">Understanding a breast cancer diagnosis can be overwhelming. Learn about the diagnostic process, types of biopsies, how to interpret pathology reports, and important questions to ask your healthcare team.</p>
             </div>
-        </section>
+        </div>
 
         <div class="container">
             <div class="content-grid">
@@ -378,9 +290,9 @@
 
     <footer id="footer"></footer>
 
-    <script id="utils-script" src="../js/utils.js"></script>
-    <script id="components-script" src="../js/components.js"></script>
-    <script id="hero-script" src="../js/hero.js"></script>
+    <script id="utils-script" src="../../../js/utils.js"></script>
+    <script id="components-script" src="../../../js/components.js"></script>
+    <script id="hero-script" src="../../../js/hero.js"></script>
     <script>
         document.addEventListener('DOMContentLoaded', function() {
             console.log('[Debug] Diagnosis page loaded');

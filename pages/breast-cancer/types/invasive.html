@@ -6,112 +6,31 @@
     <meta name="description" content="Learn about invasive breast cancer, including symptoms, diagnosis, treatment options, and prognosis.">
     <meta name="keywords" content="invasive breast cancer, IDC, ILC, breast cancer symptoms, breast cancer treatment">
     <title>Invasive Breast Cancer | Types of Breast Cancer</title>
-    <link rel="icon" href="../images/favicon.svg" type="image/svg+xml">
-    <link rel="stylesheet" href="../css/styles.css">
+    <link rel="icon" id="favicon-link" href="../../../images/favicon.svg" type="image/svg+xml">
+    <link rel="stylesheet" id="styles-link" href="../../../css/styles.css">
+    <link rel="stylesheet" id="breast-cancer-styles" href="../../../css/breast-cancer.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <style>
-        .type-card {
-            background: #fff;
-            border-radius: 10px;
-            padding: 1.5rem;
-            margin-bottom: 2rem;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-        }
-
-        .type-card h3 {
-            color: #d43f8d;
-            margin-bottom: 1rem;
-        }
-
-        .symptom-list {
-            list-style: none;
-            padding-left: 0;
-        }
-
-        .symptom-list li {
-            padding-left: 1.5rem;
-            position: relative;
-            margin-bottom: 0.5rem;
-        }
-
-        .symptom-list li:before {
-            content: '\f0da';
-            font-family: 'Font Awesome 5 Free';
-            font-weight: 900;
-            position: absolute;
-            left: 0;
-            color: #d43f8d;
-        }
-
-        .treatment-options {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 1.5rem;
-            margin-top: 1.5rem;
-        }
-
-        .treatment-card {
-            background: #f8f9fa;
-            border-radius: 8px;
-            padding: 1.5rem;
-            border-left: 4px solid #d43f8d;
-        }
-
-        /* CTA Section styles */
-        .cta-section {
-            background: linear-gradient(135deg, #fce4f1, #e4f1fc);
-            padding: 3rem 2rem;
-            border-radius: 15px;
-            text-align: center;
-            margin-top: 3rem;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-        }
-
-        .cta-section h3 {
-            color: #333;
-            margin-bottom: 1rem;
-            font-size: 1.8rem;
-        }
-
-        .cta-section p {
-            color: #666;
-            margin-bottom: 2rem;
-            font-size: 1.1rem;
-        }
-
-        .btn-primary {
-            background: linear-gradient(135deg, #d43f8d, #c03579);
-            color: white;
-            padding: 1rem 2.5rem;
-            border-radius: 50px;
-            text-decoration: none;
-            font-weight: 600;
-            display: inline-block;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-            border: none;
-        }
-
-        .btn-primary:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 5px 15px rgba(212, 63, 141, 0.4);
-        }
-    </style>
+    <!-- Inline styles removed as they're now in breast-cancer.css -->
 </head>
 <body class="theme-komen">
     <header id="header"></header>
 
-    <main id="main-content" class="invasive-cancer-page">
+    <main id="main-content" class="types-page">
         <!-- Hero section -->
-        <section class="hero-section">
-            <div class="container">
-                <div class="hero-image">
-                    <img src="../images/content/medical-5051144_1280.jpg" alt="Invasive Breast Cancer" class="full-width-image" id="hero-img">
-                </div>
-                <div id="breadcrumb-container"></div>
-                <h1 id="page-title">Invasive Breast Cancer</h1>
-                <p class="lead" id="page-description">Invasive breast cancer occurs when cancer cells spread beyond the ducts or lobules into surrounding breast tissue. Learn about the types, symptoms, diagnosis, and treatment options for invasive breast cancer.</p>
-            </div>
+        <section class="hero-section" id="hero-container">
+            <!-- Hero content will be loaded by hero.js -->
         </section>
+        
+        <div class="breadcrumb-container">
+            <div class="container">
+                <nav class="breadcrumb">
+                    <a href="../../../index.html">Home</a> &gt;
+                    <a href="../../breast-cancer.html">Breast Cancer</a> &gt;
+                    <a href="../types/index.html">Types</a> &gt;
+                    <span>Invasive Breast Cancer</span>
+                </nav>
+            </div>
+        </div>
 
         <!-- Content section -->
         <div class="container">
@@ -136,12 +55,12 @@
                     <section id="types" class="content-section">
                         <h2>Types of Invasive Breast Cancer</h2>
                         
-                        <div class="type-card">
+                        <div class="card">
                             <h3>Invasive Ductal Carcinoma (IDC)</h3>
                             <p>The most common type of invasive breast cancer, accounting for about 80% of all cases. It begins in the milk ducts and spreads into surrounding breast tissue.</p>
                         </div>
 
-                        <div class="type-card">
+                        <div class="card">
                             <h3>Invasive Lobular Carcinoma (ILC)</h3>
                             <p>The second most common type, starting in the milk-producing lobules. It can be harder to detect on mammograms and may appear in multiple areas of the breast.</p>
                         </div>
@@ -149,49 +68,67 @@
 
                     <section id="symptoms" class="content-section">
                         <h2>Signs and Symptoms</h2>
-                        <ul class="symptom-list">
-                            <li>A new lump or mass in the breast</li>
-                            <li>Changes in breast size or shape</li>
-                            <li>Skin changes (dimpling, redness, or thickening)</li>
-                            <li>Nipple changes or discharge</li>
-                            <li>Breast pain or tenderness</li>
-                            <li>Swelling in the armpit area</li>
-                        </ul>
+                        <div class="card">
+                            <h3>Common Symptoms</h3>
+                            <ul class="enhanced-list">
+                                <li>A new lump or mass in the breast</li>
+                                <li>Changes in breast size or shape</li>
+                                <li>Skin changes (dimpling, redness, or thickening)</li>
+                                <li>Nipple changes or discharge</li>
+                                <li>Breast pain or tenderness</li>
+                                <li>Swelling in the armpit area</li>
+                            </ul>
+                        </div>
                     </section>
 
                     <section id="diagnosis" class="content-section">
                         <h2>Diagnosis</h2>
-                        <p>Diagnosis typically involves multiple steps and may include:</p>
-                        <ul class="symptom-list">
-                            <li>Physical examination</li>
-                            <li>Mammogram and/or breast ultrasound</li>
-                            <li>Breast MRI</li>
-                            <li>Biopsy to confirm cancer presence</li>
-                            <li>Additional imaging to check for spread</li>
-                        </ul>
+                        <div class="card">
+                            <h3>Diagnostic Process</h3>
+                            <p>Diagnosis typically involves multiple steps and may include:</p>
+                            <ul class="enhanced-list">
+                                <li>Physical examination</li>
+                                <li>Mammogram and/or breast ultrasound</li>
+                                <li>Breast MRI</li>
+                                <li>Biopsy to confirm cancer presence</li>
+                                <li>Additional imaging to check for spread</li>
+                            </ul>
+                        </div>
                     </section>
 
                     <section id="treatment" class="content-section">
                         <h2>Treatment Options</h2>
                         <p>Treatment plans are personalized based on various factors including cancer stage, type, and individual patient characteristics.</p>
                         
-                        <div class="treatment-options">
-                            <div class="treatment-card">
+                        <div class="card-grid">
+                            <div class="card">
+                                <div class="card-icon">
+                                    <i class="fas fa-hospital"></i>
+                                </div>
                                 <h3>Surgery</h3>
                                 <p>Options include lumpectomy (breast-conserving surgery) or mastectomy (removal of the entire breast).</p>
                             </div>
 
-                            <div class="treatment-card">
+                            <div class="card">
+                                <div class="card-icon">
+                                    <i class="fas fa-radiation"></i>
+                                </div>
                                 <h3>Radiation Therapy</h3>
                                 <p>Often used after surgery to destroy any remaining cancer cells and reduce the risk of recurrence.</p>
                             </div>
 
-                            <div class="treatment-card">
+                            <div class="card">
+                                <div class="card-icon">
+                                    <i class="fas fa-pills"></i>
+                                </div>
                                 <h3>Chemotherapy</h3>
                                 <p>May be given before surgery (neoadjuvant) or after surgery (adjuvant) to kill cancer cells throughout the body.</p>
                             </div>
 
-                            <div class="treatment-card">
+                            <div class="card">
+                                <div class="card-icon">
+                                    <i class="fas fa-flask"></i>
+                                </div>
                                 <h3>Hormone Therapy</h3>
                                 <p>For hormone receptor-positive cancers, helps prevent cancer growth stimulated by hormones.</p>
                             </div>
@@ -200,25 +137,29 @@
 
                     <section id="prognosis" class="content-section">
                         <h2>Prognosis</h2>
-                        <p>The prognosis for invasive breast cancer varies depending on several factors:</p>
-                        <ul class="symptom-list">
-                            <li>Stage at diagnosis</li>
-                            <li>Tumor grade and type</li>
-                            <li>Hormone receptor status</li>
-                            <li>HER2 status</li>
-                            <li>Age and overall health</li>
-                            <li>Response to treatment</li>
-                        </ul>
+                        <div class="card">
+                            <h3>Survival Rates and Outlook</h3>
+                            <p>Prognosis depends on several factors including:</p>
+                            <ul class="enhanced-list">
+                                <li>Stage at diagnosis</li>
+                                <li>Tumor grade and type</li>
+                                <li>Hormone receptor status</li>
+                                <li>HER2 status</li>
+                                <li>Age and overall health</li>
+                            </ul>
+                            <p>With early detection and advancing treatment options, survival rates continue to improve. The 5-year survival rate for localized invasive breast cancer is approximately 99%.</p>
+                        </div>
                     </section>
 
                     <section id="support" class="content-section">
                         <h2>Support and Resources</h2>
-                        <p>A breast cancer diagnosis can be overwhelming. We're here to help you understand your diagnosis and connect you with the resources you need.</p>
+                        <p>A breast cancer diagnosis can be overwhelming. Our support services can help you navigate your treatment journey.</p>
                         
                         <div class="cta-section">
-                            <h3>Questions About Invasive Breast Cancer?</h3>
-                            <p>Our team is here to help you understand your diagnosis and treatment options.</p>
-                            <a href="./contact.html" class="btn btn-primary">Contact Us Today</a>
+                            <h3>Need Support with Invasive Breast Cancer?</h3>
+                            <p>Our team of specialists is ready to support you throughout your diagnosis and treatment journey.</p>
+                            <a href="../../../pages/contact.html" class="btn-primary">Contact Our Team</a>
+                            <a href="../types/index.html" class="btn-outline">Explore Other Cancer Types</a>
                         </div>
                     </section>
                 </div>
@@ -228,26 +169,22 @@
 
     <footer id="footer"></footer>
 
-    <!-- Scripts -->
-    <script src="../js/utils.js"></script>
-    <script src="../js/components.js"></script>
-    <script src="../js/hero.js"></script>
+    <script id="utils-script" src="../../../js/utils.js"></script>
+    <script id="components-script" src="../../../js/components.js"></script>
+    <script id="hero-script" src="../../../js/hero.js"></script>
     <script>
-        // Define basePath for component loading
-        const basePath = '/Cancer/';
-        
         document.addEventListener('DOMContentLoaded', function() {
-            // Load header and footer
-            loadComponent('#header', 'header.html');
-            loadComponent('#footer', 'footer.html');
+            console.log('[Debug] Invasive Breast Cancer page loaded');
             
-            // Load breadcrumb
-            loadBreadcrumb('#breadcrumb-container', [
-                { text: 'Home', url: basePath + 'index.html' },
-                { text: 'About Breast Cancer', url: basePath + 'pages/about-breast-cancer.html' },
-                { text: 'Types', url: basePath + 'pages/breast-cancer/facts-statistics.html#breast-cancer-types' },
-                { text: 'Invasive Breast Cancer', url: '#' }
-            ]);
+            // Load header and footer components
+            if (typeof loadHeader === 'function') {
+                loadHeader();
+            }
+            if (typeof loadFooter === 'function') {
+                loadFooter();
+            }
+            
+            // Hero is initialized by hero.js
         });
     </script>
 </body>
