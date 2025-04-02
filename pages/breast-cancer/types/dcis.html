@@ -7,219 +7,32 @@
     <meta name="keywords" content="DCIS, ductal carcinoma in situ, non-invasive breast cancer, breast cancer types, early stage breast cancer">
     <title>Ductal Carcinoma In Situ (DCIS) | Types of Breast Cancer</title>
     
-    <link rel="icon" href="../images/favicon.svg" type="image/svg+xml">
-    <link rel="stylesheet" href="../css/styles.css">
+    <link rel="icon" id="favicon-link" href="../../../images/favicon.svg" type="image/svg+xml">
+    <link rel="stylesheet" id="styles-link" href="../../../css/styles.css">
+    <link rel="stylesheet" id="breast-cancer-styles" href="../../../css/breast-cancer.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     
-    <style>
-        /* Page-specific styles */
-        .info-card {
-            background: #fff;
-            border-radius: 15px;
-            padding: 2rem;
-            margin-bottom: 2rem;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-        }
-
-        .info-card h3 {
-            color: #d43f8d;
-            margin-bottom: 1rem;
-            font-size: 1.4rem;
-        }
-
-        .key-points {
-            list-style: none;
-            padding: 0;
-        }
-
-        .key-points li {
-            padding: 1rem;
-            margin-bottom: 1rem;
-            background: #f8f9fa;
-            border-radius: 8px;
-            position: relative;
-            padding-left: 2.5rem;
-        }
-
-        .key-points li:before {
-            content: '\f0eb';
-            font-family: 'Font Awesome 5 Free';
-            font-weight: 900;
-            color: #d43f8d;
-            position: absolute;
-            left: 1rem;
-        }
-
-        .stats-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 1.5rem;
-            margin: 2rem 0;
-        }
-
-        .stat-card {
-            background: linear-gradient(135deg, #fce4f1, #e4f1fc);
-            padding: 1.5rem;
-            border-radius: 10px;
-            text-align: center;
-        }
-
-        .stat-card h4 {
-            color: #333;
-            margin-bottom: 0.5rem;
-        }
-
-        .stat-card .number {
-            font-size: 2rem;
-            color: #d43f8d;
-            font-weight: bold;
-            margin: 0.5rem 0;
-        }
-
-        .treatment-options {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 1.5rem;
-            margin-top: 1.5rem;
-        }
-
-        .treatment-card {
-            background: #fff;
-            padding: 1.5rem;
-            border-radius: 10px;
-            text-align: left;
-            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
-        }
-
-        .treatment-card i {
-            font-size: 2rem;
-            color: #d43f8d;
-            margin-bottom: 1rem;
-        }
-
-        .treatment-card h4 {
-            margin-bottom: 0.5rem;
-            color: #333;
-        }
-
-        .treatment-card ul {
-            list-style: none;
-            padding: 0;
-        }
-
-        .treatment-card li {
-            margin-bottom: 0.5rem;
-            padding-left: 1.5rem;
-            position: relative;
-        }
-
-        .treatment-card li:before {
-            content: '\f054';
-            font-family: 'Font Awesome 5 Free';
-            font-weight: 900;
-            color: #d43f8d;
-            position: absolute;
-            left: 0;
-            font-size: 0.8rem;
-        }
-
-        .risk-factors {
-            background: #fff;
-            padding: 2rem;
-            border-radius: 15px;
-            margin-top: 2rem;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-        }
-
-        .risk-factors h3 {
-            color: #333;
-            margin-bottom: 1rem;
-        }
-
-        .risk-list {
-            columns: 2;
-            column-gap: 2rem;
-            list-style: none;
-            padding: 0;
-        }
-
-        .risk-list li {
-            margin-bottom: 1rem;
-            break-inside: avoid;
-            padding-left: 1.5rem;
-            position: relative;
-        }
-
-        .risk-list li:before {
-            content: '\f071';
-            font-family: 'Font Awesome 5 Free';
-            font-weight: 900;
-            color: #d43f8d;
-            position: absolute;
-            left: 0;
-        }
-
-        @media (max-width: 768px) {
-            .risk-list {
-                columns: 1;
-            }
-        }
-
-        /* Add CTA section styles */
-        .cta-section {
-            background: linear-gradient(135deg, #fce4f1, #e4f1fc);
-            padding: 3rem 2rem;
-            border-radius: 15px;
-            text-align: center;
-            margin-top: 3rem;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-        }
-
-        .cta-section h3 {
-            color: #333;
-            margin-bottom: 1rem;
-            font-size: 1.8rem;
-        }
-
-        .cta-section p {
-            color: #666;
-            margin-bottom: 2rem;
-            font-size: 1.1rem;
-        }
-
-        .btn-primary {
-            background: linear-gradient(135deg, #d43f8d, #c03579);
-            color: white;
-            padding: 1rem 2.5rem;
-            border-radius: 50px;
-            text-decoration: none;
-            font-weight: 600;
-            display: inline-block;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-            border: none;
-        }
-
-        .btn-primary:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 5px 15px rgba(212, 63, 141, 0.3);
-        }
-    </style>
+    <!-- Inline styles removed as they're now in breast-cancer.css -->
 </head>
 <body class="theme-komen">
     <header id="header"></header>
 
-    <main id="main-content" class="dcis-page">
-        <!-- Hero section -->
-        <section class="hero-section">
-            <div class="container">
-                <div class="hero-image">
-                    <img src="../images/content/dcis-diagram.jpg" alt="DCIS Diagram" class="full-width-image" id="hero-img">
-                </div>
-                <div id="breadcrumb-container"></div>
-                <h1 id="page-title">Ductal Carcinoma In Situ (DCIS)</h1>
-                <p class="lead" id="page-description">Understanding non-invasive breast cancer that starts in the milk ducts.</p>
-            </div>
+    <main id="main-content" class="types-page">
+        <!-- Hero section with overlay -->
+        <section class="hero-section" id="hero-container">
+            <!-- Hero content will be loaded by hero.js -->
         </section>
+        
+        <div class="breadcrumb-container">
+            <div class="container">
+                <nav class="breadcrumb">
+                    <a href="../../../index.html">Home</a> &gt;
+                    <a href="../../breast-cancer.html">Breast Cancer</a> &gt;
+                    <a href="../types/index.html">Types</a> &gt;
+                    <span>DCIS</span>
+                </nav>
+            </div>
+        </div>
 
         <div class="container">
             <div class="content-grid">
@@ -234,6 +47,7 @@
                             <li><a href="#treatment">Treatment Options</a></li>
                             <li><a href="#risk-factors">Risk Factors</a></li>
                             <li><a href="#prevention">Prevention</a></li>
+                            <li><a href="#support">Support & Resources</a></li>
                         </ul>
                     </nav>
                 </aside>
@@ -242,25 +56,22 @@
                 <div class="main-content">
                     <section id="overview" class="content-section">
                         <h2>Overview</h2>
-                        <div class="info-card">
+                        <div class="card">
                             <h3>What is DCIS?</h3>
                             <p>Ductal Carcinoma In Situ (DCIS) is a non-invasive breast cancer where abnormal cells are found in the lining of the breast milk ducts. The term "in situ" means that the abnormal cells remain in their original place and haven't spread to surrounding breast tissue.</p>
                             
                             <div class="stats-grid">
                                 <div class="stat-card">
-                                    <h4>Detection Rate</h4>
-                                    <div class="number">20%</div>
+                                    <h3>20%</h3>
                                     <p>of breast cancers are DCIS</p>
                                 </div>
                                 <div class="stat-card">
-                                    <h4>Survival Rate</h4>
-                                    <div class="number">98%</div>
+                                    <h3>98%</h3>
                                     <p>5-year survival rate</p>
                                 </div>
                                 <div class="stat-card">
-                                    <h4>Average Age</h4>
-                                    <div class="number">55</div>
-                                    <p>years at diagnosis</p>
+                                    <h3>55</h3>
+                                    <p>years - average age at diagnosis</p>
                                 </div>
                             </div>
                         </div>
@@ -268,9 +79,9 @@
 
                     <section id="symptoms" class="content-section">
                         <h2>Signs & Symptoms</h2>
-                        <div class="info-card">
+                        <div class="card">
                             <h3>Common Symptoms</h3>
-                            <ul class="key-points">
+                            <ul class="enhanced-list">
                                 <li>DCIS usually has no signs or symptoms</li>
                                 <li>Most cases are detected through mammogram screening</li>
                                 <li>May appear as tiny spots of calcium (microcalcifications) on mammograms</li>
@@ -281,9 +92,9 @@
 
                     <section id="diagnosis" class="content-section">
                         <h2>Diagnosis</h2>
-                        <div class="info-card">
+                        <div class="card">
                             <h3>Diagnostic Methods</h3>
-                            <ul class="key-points">
+                            <ul class="enhanced-list">
                                 <li>Mammogram - Primary screening tool</li>
                                 <li>Breast biopsy - Confirms diagnosis</li>
                                 <li>MRI - May be used in specific cases</li>
@@ -294,29 +105,35 @@
 
                     <section id="treatment" class="content-section">
                         <h2>Treatment Options</h2>
-                        <div class="treatment-options">
-                            <div class="treatment-card">
-                                <i class="fas fa-cut"></i>
-                                <h4>Surgery</h4>
-                                <ul>
+                        <div class="card-grid">
+                            <div class="card">
+                                <div class="card-icon">
+                                    <i class="fas fa-cut"></i>
+                                </div>
+                                <h3>Surgery</h3>
+                                <ul class="enhanced-list">
                                     <li>Lumpectomy (breast-conserving)</li>
                                     <li>Mastectomy (full breast removal)</li>
                                     <li>Reconstruction options available</li>
                                 </ul>
                             </div>
-                            <div class="treatment-card">
-                                <i class="fas fa-radiation"></i>
-                                <h4>Radiation Therapy</h4>
-                                <ul>
+                            <div class="card">
+                                <div class="card-icon">
+                                    <i class="fas fa-radiation"></i>
+                                </div>
+                                <h3>Radiation Therapy</h3>
+                                <ul class="enhanced-list">
                                     <li>Often follows lumpectomy</li>
                                     <li>Reduces recurrence risk</li>
                                     <li>Targeted treatment area</li>
                                 </ul>
                             </div>
-                            <div class="treatment-card">
-                                <i class="fas fa-pills"></i>
-                                <h4>Hormone Therapy</h4>
-                                <ul>
+                            <div class="card">
+                                <div class="card-icon">
+                                    <i class="fas fa-pills"></i>
+                                </div>
+                                <h3>Hormone Therapy</h3>
+                                <ul class="enhanced-list">
                                     <li>For hormone-receptor-positive DCIS</li>
                                     <li>Tamoxifen or aromatase inhibitors</li>
                                     <li>Reduces recurrence risk</li>
@@ -327,28 +144,30 @@
 
                     <section id="risk-factors" class="content-section">
                         <h2>Risk Factors</h2>
-                        <div class="risk-factors">
+                        <div class="card">
                             <h3>Common Risk Factors</h3>
-                            <ul class="risk-list">
-                                <li>Age over 50</li>
-                                <li>Family history of breast cancer</li>
-                                <li>Previous breast biopsies</li>
-                                <li>Dense breast tissue</li>
-                                <li>Early onset of menstruation</li>
-                                <li>Late menopause</li>
-                                <li>Never having children</li>
-                                <li>First pregnancy after age 30</li>
-                                <li>Hormone replacement therapy</li>
-                                <li>Obesity</li>
-                            </ul>
+                            <div class="two-column-list">
+                                <ul class="enhanced-list">
+                                    <li>Age over 50</li>
+                                    <li>Family history of breast cancer</li>
+                                    <li>Previous breast biopsies</li>
+                                    <li>Dense breast tissue</li>
+                                    <li>Early onset of menstruation</li>
+                                    <li>Late menopause</li>
+                                    <li>Never having children</li>
+                                    <li>First pregnancy after age 30</li>
+                                    <li>Hormone replacement therapy</li>
+                                    <li>Obesity</li>
+                                </ul>
+                            </div>
                         </div>
                     </section>
 
                     <section id="prevention" class="content-section">
                         <h2>Prevention</h2>
-                        <div class="info-card">
+                        <div class="card">
                             <h3>Preventive Measures</h3>
-                            <ul class="key-points">
+                            <ul class="enhanced-list">
                                 <li>Regular mammogram screenings</li>
                                 <li>Maintain a healthy weight</li>
                                 <li>Regular physical activity</li>
@@ -361,35 +180,40 @@
                     <section id="support" class="content-section">
                         <h2>Support and Resources</h2>
                         <p>Being diagnosed with DCIS can be overwhelming. We provide comprehensive support services and resources to help you through your journey.</p>
+                        
+                        <div class="cta-section">
+                            <h3>Have Questions About DCIS?</h3>
+                            <p>Our team is here to support you with information and resources for your breast cancer journey.</p>
+                            <a href="../../../pages/contact.html" class="btn-primary">Contact Our Team</a>
+                            <a href="../types/index.html" class="btn-outline">Explore Other Cancer Types</a>
+                        </div>
                     </section>
                 </div>
             </div>
-            <a href="./contact.html" class="btn btn-primary">Questions About DCIS? Contact Us</a>
         </div>
     </main>
 
     <footer id="footer"></footer>
 
     <!-- Scripts -->
-    <script src="../js/utils.js"></script>
-    <script src="../js/components.js"></script>
-    <script src="../js/hero.js"></script>
+    <script id="utils-script" src="../../../js/utils.js"></script>
+    <script id="components-script" src="../../../js/components.js"></script>
+    <script id="hero-script" src="../../../js/hero.js"></script>
     <script>
-        // Define basePath for component loading
-        const basePath = '/Cancer/';
-        
         document.addEventListener('DOMContentLoaded', function() {
-            // Load header and footer
-            loadComponent('#header', 'header.html');
-            loadComponent('#footer', 'footer.html');
+            console.log('[Debug] DCIS page loaded');
             
-            // Load breadcrumb
-            loadBreadcrumb('#breadcrumb-container', [
-                { text: 'Home', url: basePath + 'index.html' },
-                { text: 'About Breast Cancer', url: basePath + 'pages/about-breast-cancer.html' },
-                { text: 'Types', url: basePath + 'pages/breast-cancer/types/index.html' },
-                { text: 'DCIS', url: '#' }
-            ]);
+            // Load header and footer components
+            if (typeof loadHeader === 'function') {
+                loadHeader();
+            }
+            if (typeof loadFooter === 'function') {
+                loadFooter();
+            }
+            
+            // Hero is initialized by hero.js
+            
+            // Simplified breadcrumb - our component loader now handles paths correctly
         });
     </script>
 </body>

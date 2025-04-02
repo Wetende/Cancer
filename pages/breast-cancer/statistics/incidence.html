@@ -5,10 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Explore comprehensive breast cancer incidence statistics, trends, and demographic data.">
     <meta name="keywords" content="breast cancer statistics, incidence rates, cancer trends, demographic data, breast cancer risk">
-    <title>Breast Cancer Incidence Statistics | Cancer Statistics</title>
+    <title>Breast Cancer Incidence Statistics | Nzoya Foundation</title>
     
-    <link rel="icon" href="../images/favicon.svg" type="image/svg+xml">
-    <link rel="stylesheet" href="../css/styles.css">
+    <link rel="icon" id="favicon-link" href="../../../images/favicon.svg" type="image/svg+xml">
+    <link rel="stylesheet" id="styles-link" href="../../../css/styles.css">
+    <link rel="stylesheet" id="breast-cancer-styles" href="../../../css/breast-cancer.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     
@@ -195,16 +196,20 @@
 
     <main id="main-content" class="statistics-page">
         <!-- Hero section -->
-        <section class="hero-section">
-            <div class="container">
-                <div class="hero-image">
-                    <img src="../images/content/statistics-hero.jpg" alt="Breast Cancer Statistics" class="full-width-image" id="hero-img">
-                </div>
-                <div id="breadcrumb-container"></div>
-                <h1 id="page-title">Breast Cancer Incidence Statistics</h1>
-                <p class="lead" id="page-description">Understanding the trends and patterns of breast cancer occurrence across different populations.</p>
-            </div>
+        <section class="hero-section" id="hero-container">
+            <!-- Hero content will be loaded by hero.js -->
         </section>
+        
+        <div class="breadcrumb-container">
+            <div class="container">
+                <nav class="breadcrumb">
+                    <a href="../../../index.html">Home</a> &gt;
+                    <a href="../../breast-cancer.html">Breast Cancer</a> &gt;
+                    <a href="../statistics/index.html">Statistics</a> &gt;
+                    <span>Incidence</span>
+                </nav>
+            </div>
+        </div>
 
         <div class="container">
             <div class="content-grid">
@@ -226,25 +231,25 @@
                 <div class="main-content">
                     <section id="overview" class="content-section">
                         <h2>Overview</h2>
-                        <div class="stats-card">
+                        <div class="card">
                             <h3>Key Statistics</h3>
-                            <div class="key-stats">
-                                <div class="stat-item">
-                                    <div class="number">287,850</div>
+                            <div class="stats-grid">
+                                <div class="stat-card">
+                                    <h3>287,850</h3>
                                     <p>New cases estimated in 2023</p>
                                 </div>
-                                <div class="stat-item">
-                                    <div class="number">1 in 8</div>
+                                <div class="stat-card">
+                                    <h3>1 in 8</h3>
                                     <p>Women will develop breast cancer</p>
                                 </div>
-                                <div class="stat-item">
-                                    <div class="number">63</div>
+                                <div class="stat-card">
+                                    <h3>63</h3>
                                     <p>Median age at diagnosis</p>
                                 </div>
                             </div>
                         </div>
 
-                        <div class="stats-card">
+                        <div class="card">
                             <h3>Annual Incidence Trend</h3>
                             <div class="chart-container">
                                 <canvas id="incidenceChart"></canvas>
@@ -254,29 +259,36 @@
 
                     <section id="trends" class="content-section">
                         <h2>Current Trends</h2>
-                        <div class="stats-card">
+                        <div class="card">
                             <h3>Recent Observations</h3>
-                            <div class="trend-box">
-                                <div class="trend-item">
-                                    <i class="fas fa-chart-line trend-icon"></i>
-                                    <div class="trend-info">
-                                        <h5>Increasing Early Detection</h5>
-                                        <p>More cases being detected at earlier stages due to improved screening</p>
-                                    </div>
+                            
+                            <div class="trend-item">
+                                <div class="card-icon">
+                                    <i class="fas fa-chart-line"></i>
                                 </div>
-                                <div class="trend-item">
-                                    <i class="fas fa-users trend-icon"></i>
-                                    <div class="trend-info">
-                                        <h5>Age Distribution Shift</h5>
-                                        <p>Growing incidence in women under 50</p>
-                                    </div>
+                                <div>
+                                    <h4>Increasing Early Detection</h4>
+                                    <p>More cases being detected at earlier stages due to improved screening</p>
                                 </div>
-                                <div class="trend-item">
-                                    <i class="fas fa-map-marker-alt trend-icon"></i>
-                                    <div class="trend-info">
-                                        <h5>Geographic Variations</h5>
-                                        <p>Higher rates in developed regions</p>
-                                    </div>
+                            </div>
+                            
+                            <div class="trend-item">
+                                <div class="card-icon">
+                                    <i class="fas fa-users"></i>
+                                </div>
+                                <div>
+                                    <h4>Age Distribution Shift</h4>
+                                    <p>Growing incidence in women under 50</p>
+                                </div>
+                            </div>
+                            
+                            <div class="trend-item">
+                                <div class="card-icon">
+                                    <i class="fas fa-map-marker-alt"></i>
+                                </div>
+                                <div>
+                                    <h4>Geographic Variations</h4>
+                                    <p>Higher rates in developed regions</p>
                                 </div>
                             </div>
                         </div>
@@ -284,19 +296,19 @@
 
                     <section id="demographics" class="content-section">
                         <h2>Demographics</h2>
-                        <div class="demographic-grid">
-                            <div class="demographic-card">
-                                <h4>Age Distribution</h4>
-                                <ul class="stat-list">
+                        <div class="stats-grid">
+                            <div class="card">
+                                <h3>Age Distribution</h3>
+                                <ul class="enhanced-list">
                                     <li>Under 40: 5% of cases</li>
                                     <li>40-50: 15% of cases</li>
                                     <li>50-65: 40% of cases</li>
                                     <li>Over 65: 40% of cases</li>
                                 </ul>
                             </div>
-                            <div class="demographic-card">
-                                <h4>Ethnic Distribution</h4>
-                                <ul class="stat-list">
+                            <div class="card">
+                                <h3>Ethnic Distribution</h3>
+                                <ul class="enhanced-list">
                                     <li>White: 130.8 per 100,000</li>
                                     <li>African American: 126.7 per 100,000</li>
                                     <li>Asian/Pacific Islander: 93.7 per 100,000</li>
@@ -308,7 +320,7 @@
 
                     <section id="risk-analysis" class="content-section">
                         <h2>Risk Analysis</h2>
-                        <div class="stats-card">
+                        <div class="card">
                             <h3>Risk Factors Impact</h3>
                             <div class="chart-container">
                                 <canvas id="riskChart"></canvas>
@@ -318,11 +330,23 @@
 
                     <section id="global-comparison" class="content-section">
                         <h2>Global Comparison</h2>
-                        <div class="stats-card">
+                        <div class="card">
                             <h3>International Incidence Rates</h3>
                             <div class="chart-container">
                                 <canvas id="globalChart"></canvas>
                             </div>
+                        </div>
+                    </section>
+
+                    <section id="resources" class="content-section">
+                        <h2>Resources and Understanding</h2>
+                        <p>Making sense of breast cancer statistics can be challenging. We're here to help you understand what these numbers mean for you.</p>
+
+                        <div class="cta-section">
+                            <h3>Have Questions About Cancer Statistics?</h3>
+                            <p>Our team can help you interpret these numbers and understand your personal risk.</p>
+                            <a href="../../../pages/contact.html" class="btn-primary">Contact Our Team</a>
+                            <a href="../../risk-factors/index.html" class="btn-outline">Explore Risk Factors</a>
                         </div>
                     </section>
                 </div>
@@ -332,32 +356,28 @@
 
     <footer id="footer"></footer>
 
-    <!-- Scripts -->
-    <script src="../js/utils.js"></script>
-    <script src="../js/components.js"></script>
-    <script src="../js/hero.js"></script>
+    <script id="utils-script" src="../../../js/utils.js"></script>
+    <script id="components-script" src="../../../js/components.js"></script>
+    <script id="hero-script" src="../../../js/hero.js"></script>
     <script>
-        // Define basePath for component loading
-        const basePath = '/Cancer/';
-        
         document.addEventListener('DOMContentLoaded', function() {
-            // Load header and footer
-            loadComponent('#header', 'header.html');
-            loadComponent('#footer', 'footer.html');
+            console.log('[Debug] Statistics Incidence page loaded');
             
-            // Load breadcrumb
-            loadBreadcrumb('#breadcrumb-container', [
-                { text: 'Home', url: basePath + 'index.html' },
-                { text: 'About Breast Cancer', url: basePath + 'pages/about-breast-cancer.html' },
-                { text: 'Statistics', url: basePath + 'pages/breast-cancer/statistics/index.html' },
-                { text: 'Incidence', url: '#' }
-            ]);
-
-            // Initialize charts
-            initializeCharts();
+            // Load header and footer components
+            if (typeof loadHeader === 'function') {
+                loadHeader();
+            }
+            if (typeof loadFooter === 'function') {
+                loadFooter();
+            }
+            
+            // Hero is initialized by hero.js
+            
+            // Initialize charts after page has loaded
+            initCharts();
         });
-
-        function initializeCharts() {
+        
+        function initCharts() {
             // Incidence Trend Chart
             const incidenceCtx = document.getElementById('incidenceChart').getContext('2d');
             new Chart(incidenceCtx, {

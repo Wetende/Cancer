@@ -7,125 +7,27 @@
     <meta name="keywords" content="breast cancer screening, mammogram, breast self-exam, early detection, Bellevue, WA">
     <meta name="author" content="Nzoya Foundation">
     <title>Breast Cancer Screening | Nzoya Foundation</title>
-    <link rel="icon" id="favicon-link" href="../images/favicon.svg" type="image/svg+xml">
-    <link rel="stylesheet" id="styles-link" href="../css/styles.css">
+    <link rel="icon" id="favicon-link" href="../../../images/favicon.svg" type="image/svg+xml">
+    <link rel="stylesheet" id="styles-link" href="../../../css/styles.css">
+    <link rel="stylesheet" id="breast-cancer-styles" href="../../../css/breast-cancer.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
-    <style id="page-styles">
-        .screening-types-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-            gap: 2rem;
-            margin: 2rem 0;
-        }
-        
-        .screening-type {
-            border: 1px solid #e9e9e9;
-            border-radius: 8px;
-            padding: 1.5rem;
-            background-color: #fff;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
-            transition: transform 0.3s, box-shadow 0.3s;
-        }
-        
-        .screening-type:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-        }
-        
-        .screening-type__image {
-            width: 100%;
-            height: 180px;
-            object-fit: cover;
-            border-radius: 6px;
-            margin-bottom: 1rem;
-        }
-        
-        .screening-type h3 {
-            color: #e46b76;
-            margin-top: 0;
-            margin-bottom: 0.75rem;
-            font-size: 1.25rem;
-        }
-        
-        .self-exam-steps {
-            counter-reset: exam-step;
-            margin: 2rem 0;
-        }
-        
-        .step-item {
-            position: relative;
-            padding-left: 3.5rem;
-            margin-bottom: 2rem;
-        }
-        
-        .step-item__number {
-            position: absolute;
-            left: 0;
-            top: 0;
-            width: 2.5rem;
-            height: 2.5rem;
-            background-color: #e46b76;
-            color: white;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-weight: bold;
-            font-size: 1.25rem;
-        }
-        
-        .guidelines-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-            gap: 1.5rem;
-            margin: 1.5rem 0;
-        }
-        
-        .guideline-card {
-            border: 1px solid #e9e9e9;
-            border-radius: 8px;
-            overflow: hidden;
-            background-color: #fff;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
-        }
-        
-        .guideline-card__header {
-            background-color: #e46b76;
-            color: white;
-            padding: 0.75rem 1.5rem;
-        }
-        
-        .guideline-card__title {
-            margin: 0;
-            font-size: 1.25rem;
-        }
-        
-        .guideline-card__list {
-            padding: 1.5rem;
-            list-style-position: inside;
-        }
-        
-        .guideline-card__list li {
-            margin-bottom: 0.5rem;
-        }
-    </style>
-</head>
+        <!-- Inline styles removed as they're now in breast-cancer.css --></head>
 <body class="theme-komen">
     <header id="header"></header>
 
     <main class="screening-page">
-        <section class="hero-section">
+        <div id="hero-container"></div>
+        
+        <div class="breadcrumb-container">
             <div class="container">
                 <nav class="breadcrumb">
                     <a href="../../../index.html">Home</a> &gt;
                     <a href="../../breast-cancer.html">Breast Cancer</a> &gt;
                     <span>Screening</span>
                 </nav>
-                <h1>Breast Cancer Screening</h1>
-                <p class="lead">Screening can help find breast cancer early, when it's easier to treat. Learn about different screening options, recommended guidelines by age, and how to perform a breast self-examination.</p>
             </div>
-        </section>
+        </div>
 
         <div class="container">
             <div class="content-grid">
@@ -362,9 +264,9 @@
 
     <footer id="footer"></footer>
 
-    <script id="utils-script" src="../js/utils.js"></script>
-    <script id="components-script" src="../js/components.js"></script>
-    <script id="hero-script" src="../js/hero.js"></script>
+    <script id="utils-script" src="../../../js/utils.js"></script>
+    <script id="components-script" src="../../../js/components.js"></script>
+    <script id="hero-script" src="../../../js/hero.js"></script>
     <script>
         // Initialize page
         document.addEventListener('DOMContentLoaded', function() {

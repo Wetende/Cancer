@@ -6,125 +6,30 @@
     <meta name="description" content="Learn about inflammatory breast cancer (IBC), a rare but aggressive form of breast cancer, including symptoms, diagnosis, and treatment options.">
     <meta name="keywords" content="inflammatory breast cancer, IBC, breast cancer symptoms, breast cancer treatment, aggressive breast cancer">
     <title>Inflammatory Breast Cancer | Types of Breast Cancer</title>
-    <link rel="icon" href="../images/favicon.svg" type="image/svg+xml">
-    <link rel="stylesheet" href="../css/styles.css">
+    <link rel="icon" href="../../../images/favicon.svg" type="image/svg+xml">
+    <link rel="stylesheet" href="../../../css/styles.css">
+    <link rel="stylesheet" id="breast-cancer-styles" href="../../../css/breast-cancer.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <style>
-        .warning-box {
-            background-color: #fff3cd;
-            border-left: 4px solid #ffc107;
-            padding: 1.5rem;
-            margin: 1.5rem 0;
-            border-radius: 4px;
-        }
-
-        .warning-box h3 {
-            color: #856404;
-            margin-bottom: 0.5rem;
-        }
-
-        .symptom-list {
-            list-style: none;
-            padding-left: 0;
-        }
-
-        .symptom-list li {
-            padding-left: 1.5rem;
-            position: relative;
-            margin-bottom: 0.5rem;
-        }
-
-        .symptom-list li:before {
-            content: '\f0da';
-            font-family: 'Font Awesome 5 Free';
-            font-weight: 900;
-            position: absolute;
-            left: 0;
-            color: #d43f8d;
-        }
-
-        .treatment-options {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 1.5rem;
-            margin-top: 1.5rem;
-        }
-
-        .treatment-card {
-            background: #f8f9fa;
-            border-radius: 8px;
-            padding: 1.5rem;
-            border-left: 4px solid #d43f8d;
-        }
-
-        .info-box {
-            background: #e3f2fd;
-            border-left: 4px solid #2196f3;
-            padding: 1.5rem;
-            margin: 1.5rem 0;
-            border-radius: 4px;
-        }
-
-        .info-box h3 {
-            color: #0d47a1;
-            margin-bottom: 0.5rem;
-        }
-
-        /* CTA Section styles */
-        .cta-section {
-            background: linear-gradient(135deg, #fce4f1, #e4f1fc);
-            padding: 3rem 2rem;
-            border-radius: 15px;
-            text-align: center;
-            margin-top: 3rem;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-        }
-
-        .cta-section h3 {
-            color: #333;
-            margin-bottom: 1rem;
-            font-size: 1.8rem;
-        }
-
-        .cta-section p {
-            color: #666;
-            margin-bottom: 2rem;
-            font-size: 1.1rem;
-        }
-
-        .btn-primary {
-            background: linear-gradient(135deg, #d43f8d, #c03579);
-            color: white;
-            padding: 1rem 2.5rem;
-            border-radius: 50px;
-            text-decoration: none;
-            font-weight: 600;
-            display: inline-block;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-            border: none;
-        }
-
-        .btn-primary:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 5px 15px rgba(212, 63, 141, 0.4);
-        }
-    </style>
-</head>
+        <!-- Inline styles removed as they're now in breast-cancer.css --></head>
 <body class="theme-komen">
     <header id="header"></header>
 
     <main id="main-content" class="inflammatory-cancer-page">
         <!-- Hero section -->
-        <section class="hero-section">
-            <div class="container">
-                <div class="hero-image">
-                    <img src="../images/content/medical-5051144_1280.jpg" alt="Inflammatory Breast Cancer" class="full-width-image" id="hero-img">
-                </div>
-                <div id="breadcrumb-container"></div>
-                <h1 id="page-title">Inflammatory Breast Cancer (IBC)</h1>
-                <p class="lead" id="page-description">Inflammatory breast cancer is a rare but aggressive form of breast cancer that requires immediate medical attention. Learn about its unique symptoms, diagnosis methods, and treatment approaches.</p>
-            </div>
+        <section class="hero-section" id="hero-container">
+            <!-- Hero content will be loaded by the loadHeroWithOverlay function -->
         </section>
+        
+        <div class="breadcrumb-container">
+            <div class="container">
+                <nav class="breadcrumb">
+                    <a href="../../../index.html">Home</a> &gt;
+                    <a href="../../breast-cancer.html">Breast Cancer</a> &gt;
+                    <a href="../types/index.html">Types</a> &gt;
+                    <span>Inflammatory Breast Cancer</span>
+                </nav>
+            </div>
+        </div>
 
         <!-- Content section -->
         <div class="container">
@@ -245,25 +150,22 @@
     <footer id="footer"></footer>
 
     <!-- Scripts -->
-    <script src="../js/utils.js"></script>
-    <script src="../js/components.js"></script>
-    <script src="../js/hero.js"></script>
+    <script id="utils-script" src="../../../js/utils.js"></script>
+    <script id="components-script" src="../../../js/components.js"></script>
+    <script id="hero-script" src="../../../js/hero.js"></script>
     <script>
-        // Define basePath for component loading
-        const basePath = '/Cancer/';
-        
         document.addEventListener('DOMContentLoaded', function() {
-            // Load header and footer
-            loadComponent('#header', 'header.html');
-            loadComponent('#footer', 'footer.html');
+            console.log('[Debug] Inflammatory Breast Cancer page loaded');
             
-            // Load breadcrumb
-            loadBreadcrumb('#breadcrumb-container', [
-                { text: 'Home', url: basePath + 'index.html' },
-                { text: 'About Breast Cancer', url: basePath + 'pages/about-breast-cancer.html' },
-                { text: 'Types', url: basePath + 'pages/breast-cancer/facts-statistics.html#breast-cancer-types' },
-                { text: 'Inflammatory Breast Cancer', url: '#' }
-            ]);
+            // Load header and footer components
+            if (typeof loadHeader === 'function') {
+                loadHeader();
+            }
+            if (typeof loadFooter === 'function') {
+                loadFooter();
+            }
+            
+            // Hero is initialized by hero.js
         });
     </script>
 </body>

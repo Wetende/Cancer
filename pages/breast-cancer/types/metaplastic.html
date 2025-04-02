@@ -6,146 +6,30 @@
     <meta name="description" content="Learn about metaplastic breast cancer, a rare and aggressive form of breast cancer, including symptoms, diagnosis, and treatment options.">
     <meta name="keywords" content="metaplastic breast cancer, MBC, breast cancer symptoms, breast cancer treatment, aggressive breast cancer">
     <title>Metaplastic Breast Cancer | Types of Breast Cancer</title>
-    <link rel="icon" href="../images/favicon.svg" type="image/svg+xml">
-    <link rel="stylesheet" href="../css/styles.css">
+    <link rel="icon" href="../../../images/favicon.svg" type="image/svg+xml">
+    <link rel="stylesheet" href="../../../css/styles.css">
+    <link rel="stylesheet" id="breast-cancer-styles" href="../../../css/breast-cancer.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <style>
-        .warning-box {
-            background-color: #fff3cd;
-            border-left: 4px solid #ffc107;
-            padding: 1.5rem;
-            margin: 1.5rem 0;
-            border-radius: 4px;
-        }
-
-        .warning-box h3 {
-            color: #856404;
-            margin-bottom: 0.5rem;
-        }
-
-        .type-card {
-            background: #fff;
-            border-radius: 10px;
-            padding: 1.5rem;
-            margin-bottom: 2rem;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-        }
-
-        .type-card h3 {
-            color: #d43f8d;
-            margin-bottom: 1rem;
-        }
-
-        .symptom-list {
-            list-style: none;
-            padding-left: 0;
-        }
-
-        .symptom-list li {
-            padding-left: 1.5rem;
-            position: relative;
-            margin-bottom: 0.5rem;
-        }
-
-        .symptom-list li:before {
-            content: '\f0da';
-            font-family: 'Font Awesome 5 Free';
-            font-weight: 900;
-            position: absolute;
-            left: 0;
-            color: #d43f8d;
-        }
-
-        .treatment-options {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 1.5rem;
-            margin-top: 1.5rem;
-        }
-
-        .treatment-card {
-            background: #f8f9fa;
-            border-radius: 8px;
-            padding: 1.5rem;
-            border-left: 4px solid #d43f8d;
-        }
-
-        .stats-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 1.5rem;
-            margin: 1.5rem 0;
-        }
-
-        .stat-card {
-            background: #fff;
-            padding: 1.5rem;
-            border-radius: 8px;
-            text-align: center;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-        }
-
-        .stat-card h3 {
-            color: #d43f8d;
-            font-size: 2rem;
-            margin-bottom: 0.5rem;
-        }
-
-        /* CTA Section styles */
-        .cta-section {
-            background: linear-gradient(135deg, #fce4f1, #e4f1fc);
-            padding: 3rem 2rem;
-            border-radius: 15px;
-            text-align: center;
-            margin-top: 3rem;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-        }
-
-        .cta-section h3 {
-            color: #333;
-            margin-bottom: 1rem;
-            font-size: 1.8rem;
-        }
-
-        .cta-section p {
-            color: #666;
-            margin-bottom: 2rem;
-            font-size: 1.1rem;
-        }
-
-        .btn-primary {
-            background: linear-gradient(135deg, #d43f8d, #c03579);
-            color: white;
-            padding: 1rem 2.5rem;
-            border-radius: 50px;
-            text-decoration: none;
-            font-weight: 600;
-            display: inline-block;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-            border: none;
-        }
-
-        .btn-primary:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 5px 15px rgba(212, 63, 141, 0.4);
-        }
-    </style>
-</head>
+        <!-- Inline styles removed as they're now in breast-cancer.css --></head>
 <body class="theme-komen">
     <header id="header"></header>
 
     <main id="main-content" class="metaplastic-cancer-page">
         <!-- Hero section -->
-        <section class="hero-section">
-            <div class="container">
-                <div class="hero-image">
-                    <img src="../images/content/medical-5051144_1280.jpg" alt="Metaplastic Breast Cancer" class="full-width-image" id="hero-img">
-                </div>
-                <div id="breadcrumb-container"></div>
-                <h1 id="page-title">Metaplastic Breast Cancer</h1>
-                <p class="lead" id="page-description">Metaplastic breast cancer is a rare and aggressive form of breast cancer that can be challenging to treat. Learn about its unique characteristics, diagnosis methods, and treatment approaches.</p>
-            </div>
+        <section class="hero-section" id="hero-container">
+            <!-- Hero content will be loaded by the loadHeroWithOverlay function -->
         </section>
+        
+        <div class="breadcrumb-container">
+            <div class="container">
+                <nav class="breadcrumb">
+                    <a href="../../../index.html">Home</a> &gt;
+                    <a href="../../breast-cancer.html">Breast Cancer</a> &gt;
+                    <a href="../types/index.html">Types</a> &gt;
+                    <span>Metaplastic Breast Cancer</span>
+                </nav>
+            </div>
+        </div>
 
         <!-- Content section -->
         <div class="container">
@@ -296,25 +180,22 @@
     <footer id="footer"></footer>
 
     <!-- Scripts -->
-    <script src="../js/utils.js"></script>
-    <script src="../js/components.js"></script>
-    <script src="../js/hero.js"></script>
+    <script id="utils-script" src="../../../js/utils.js"></script>
+    <script id="components-script" src="../../../js/components.js"></script>
+    <script id="hero-script" src="../../../js/hero.js"></script>
     <script>
-        // Define basePath for component loading
-        const basePath = '/Cancer/';
-        
         document.addEventListener('DOMContentLoaded', function() {
-            // Load header and footer
-            loadComponent('#header', 'header.html');
-            loadComponent('#footer', 'footer.html');
+            console.log('[Debug] Metaplastic Breast Cancer page loaded');
             
-            // Load breadcrumb
-            loadBreadcrumb('#breadcrumb-container', [
-                { text: 'Home', url: basePath + 'index.html' },
-                { text: 'About Breast Cancer', url: basePath + 'pages/about-breast-cancer.html' },
-                { text: 'Types', url: basePath + 'pages/breast-cancer/facts-statistics.html#breast-cancer-types' },
-                { text: 'Metaplastic Breast Cancer', url: '#' }
-            ]);
+            // Load header and footer components
+            if (typeof loadHeader === 'function') {
+                loadHeader();
+            }
+            if (typeof loadFooter === 'function') {
+                loadFooter();
+            }
+            
+            // Hero is initialized by hero.js
         });
     </script>
 </body>

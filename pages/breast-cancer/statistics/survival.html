@@ -5,9 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Learn about breast cancer survival rates, trends, and factors that influence survival outcomes. Find detailed statistics and information about breast cancer prognosis.">
     <meta name="keywords" content="breast cancer survival rates, breast cancer prognosis, breast cancer survival statistics, breast cancer survival by stage, breast cancer outcomes">
-    <title>Breast Cancer Survival Statistics | Cancer Statistics</title>
-    <link rel="icon" href="../images/favicon.svg" type="image/svg+xml">
-    <link rel="stylesheet" href="../css/styles.css">
+    <title>Breast Cancer Survival Statistics | Nzoya Foundation</title>
+    <link rel="icon" id="favicon-link" href="../../../images/favicon.svg" type="image/svg+xml">
+    <link rel="stylesheet" id="styles-link" href="../../../css/styles.css">
+    <link rel="stylesheet" id="breast-cancer-styles" href="../../../css/breast-cancer.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
         .stats-grid {
@@ -158,16 +159,20 @@
 
     <main id="main-content" class="survival-stats-page">
         <!-- Hero section -->
-        <section class="hero-section">
-            <div class="container">
-                <div class="hero-image">
-                    <img src="../images/content/medical-5051144_1280.jpg" alt="Breast Cancer Survival Statistics" class="full-width-image" id="hero-img">
-                </div>
-                <div id="breadcrumb-container"></div>
-                <h1 id="page-title">Breast Cancer Survival Statistics</h1>
-                <p class="lead" id="page-description">Understanding breast cancer survival rates and the factors that influence them can help patients and healthcare providers make informed decisions about treatment and care.</p>
-            </div>
+        <section class="hero-section" id="hero-container">
+            <!-- Hero content will be loaded by hero.js -->
         </section>
+        
+        <div class="breadcrumb-container">
+            <div class="container">
+                <nav class="breadcrumb">
+                    <a href="../../../index.html">Home</a> &gt;
+                    <a href="../../breast-cancer.html">Breast Cancer</a> &gt;
+                    <a href="../statistics/index.html">Statistics</a> &gt;
+                    <span>Survival</span>
+                </nav>
+            </div>
+        </div>
 
         <!-- Content section -->
         <div class="container">
@@ -213,7 +218,7 @@
                         <h2>Survival Rates by Stage</h2>
                         <p>Survival rates vary significantly depending on the stage at diagnosis:</p>
 
-                        <table class="survival-table">
+                        <table class="data-table">
                             <thead>
                                 <tr>
                                     <th>Stage</th>
@@ -255,9 +260,12 @@
                         <h2>Survival Trends</h2>
                         <p>Breast cancer survival rates have been improving over time due to several factors:</p>
 
-                        <div class="trend-chart">
+                        <div class="card">
+                            <div class="card-icon">
+                                <i class="fas fa-chart-line"></i>
+                            </div>
                             <h3>Key Improvements</h3>
-                            <ul class="info-list">
+                            <ul class="enhanced-list">
                                 <li>Death rates have dropped 43% from 1989 to 2020</li>
                                 <li>Earlier detection through regular screening</li>
                                 <li>More effective treatments</li>
@@ -271,9 +279,12 @@
                         <h2>Factors Affecting Survival</h2>
                         <p>Several factors can influence breast cancer survival rates:</p>
 
-                        <div class="factor-card">
-                            <h3><i class="fas fa-microscope"></i> Biological Factors</h3>
-                            <ul class="info-list">
+                        <div class="card">
+                            <div class="card-icon">
+                                <i class="fas fa-microscope"></i>
+                            </div>
+                            <h3>Biological Factors</h3>
+                            <ul class="enhanced-list">
                                 <li>Cancer stage at diagnosis</li>
                                 <li>Tumor grade and size</li>
                                 <li>Hormone receptor status</li>
@@ -282,9 +293,12 @@
                             </ul>
                         </div>
 
-                        <div class="factor-card">
-                            <h3><i class="fas fa-user-md"></i> Treatment Factors</h3>
-                            <ul class="info-list">
+                        <div class="card">
+                            <div class="card-icon">
+                                <i class="fas fa-user-md"></i>
+                            </div>
+                            <h3>Treatment Factors</h3>
+                            <ul class="enhanced-list">
                                 <li>Type of treatment received</li>
                                 <li>Response to treatment</li>
                                 <li>Access to quality healthcare</li>
@@ -292,9 +306,12 @@
                             </ul>
                         </div>
 
-                        <div class="factor-card">
-                            <h3><i class="fas fa-user"></i> Personal Factors</h3>
-                            <ul class="info-list">
+                        <div class="card">
+                            <div class="card-icon">
+                                <i class="fas fa-user"></i>
+                            </div>
+                            <h3>Personal Factors</h3>
+                            <ul class="enhanced-list">
                                 <li>Age at diagnosis</li>
                                 <li>Overall health status</li>
                                 <li>Lifestyle factors</li>
@@ -307,9 +324,12 @@
                         <h2>Demographics and Survival</h2>
                         <p>Survival rates can vary among different demographic groups:</p>
 
-                        <div class="factor-card">
-                            <h3><i class="fas fa-chart-bar"></i> Key Demographic Trends</h3>
-                            <ul class="info-list">
+                        <div class="card">
+                            <div class="card-icon">
+                                <i class="fas fa-chart-bar"></i>
+                            </div>
+                            <h3>Key Demographic Trends</h3>
+                            <ul class="enhanced-list">
                                 <li>Higher survival rates in women diagnosed at younger ages</li>
                                 <li>Variations in survival rates among different racial and ethnic groups</li>
                                 <li>Geographic differences in survival rates</li>
@@ -325,7 +345,7 @@
                         <div class="cta-section">
                             <h3>Questions About Survival Statistics?</h3>
                             <p>Our team can help you understand what these numbers mean for your specific situation.</p>
-                            <a href="./contact.html" class="btn btn-primary">Questions About Survival Rates? Contact Us</a>
+                            <a href="../../../pages/contact.html" class="btn-primary">Contact Our Support Team</a>
                         </div>
                     </section>
                 </div>
@@ -335,26 +355,22 @@
 
     <footer id="footer"></footer>
 
-    <!-- Scripts -->
-    <script src="../js/utils.js"></script>
-    <script src="../js/components.js"></script>
-    <script src="../js/hero.js"></script>
+    <script id="utils-script" src="../../../js/utils.js"></script>
+    <script id="components-script" src="../../../js/components.js"></script>
+    <script id="hero-script" src="../../../js/hero.js"></script>
     <script>
-        // Define basePath for component loading
-        const basePath = '/Cancer/';
-        
         document.addEventListener('DOMContentLoaded', function() {
-            // Load header and footer
-            loadComponent('#header', 'header.html');
-            loadComponent('#footer', 'footer.html');
+            console.log('[Debug] Survival Statistics page loaded');
             
-            // Load breadcrumb
-            loadBreadcrumb('#breadcrumb-container', [
-                { text: 'Home', url: basePath + 'index.html' },
-                { text: 'About Breast Cancer', url: basePath + 'pages/about-breast-cancer.html' },
-                { text: 'Statistics', url: basePath + 'pages/breast-cancer/facts-statistics.html' },
-                { text: 'Survival Statistics', url: '#' }
-            ]);
+            // Load header and footer components
+            if (typeof loadHeader === 'function') {
+                loadHeader();
+            }
+            if (typeof loadFooter === 'function') {
+                loadFooter();
+            }
+            
+            // Hero is initialized by hero.js
         });
     </script>
 </body>
