@@ -163,4 +163,33 @@
 .accordion-content.active {
     max-height: 1000px;
     padding: 0 var(--spacing-4) var(--spacing-4);
+}
+
+/* Google Auth Buttons - REMOVED */
+/* These styles are no longer needed since we're using direct form embedding */
+
+.thank-you-message {
+    text-align: center;
+    padding: 40px 20px;
+}
+
+.thank-you-message h3 {
+    color: #28a745;
+    margin-bottom: 15px;
+}
+
+.thank-you-message p {
+    margin-bottom: 20px;
+}
+
+/* Form container */
+.form-container {
+    background: white;
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
+
+#form-content {
+    min-height: 200px;
 } 
